@@ -76,6 +76,7 @@
 		18A6FA992130031600709EC9 /* NLEBNFParserFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A6FA842130031500709EC9 /* NLEBNFParserFactory.m */; };
 		18A6FA9C21300D5800709EC9 /* UIAlertController+XDS.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A6FA9B21300D5800709EC9 /* UIAlertController+XDS.m */; };
 		18A6FA9E21300E7900709EC9 /* libicucore.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 18A6FA9D21300E7900709EC9 /* libicucore.tbd */; };
+		18A6FAA92130145900709EC9 /* libGDTMobSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 18A6FAA82130145900709EC9 /* libGDTMobSDK.a */; };
 		A01579F31DE1776C00CD7DDB /* ico_back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A01579F11DE1776C00CD7DDB /* ico_back@2x.png */; };
 		A01579F41DE1776C00CD7DDB /* ico_back@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = A01579F21DE1776C00CD7DDB /* ico_back@3x.png */; };
 		A05EB8EB1DE0244300148A5B /* OCAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = A05EB8D81DE0244300148A5B /* OCAlertView.m */; };
@@ -266,6 +267,15 @@
 		18A6FA9A21300D5800709EC9 /* UIAlertController+XDS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertController+XDS.h"; sourceTree = "<group>"; };
 		18A6FA9B21300D5800709EC9 /* UIAlertController+XDS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertController+XDS.m"; sourceTree = "<group>"; };
 		18A6FA9D21300E7900709EC9 /* libicucore.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libicucore.tbd; path = usr/lib/libicucore.tbd; sourceTree = SDKROOT; };
+		18A6FAA02130145900709EC9 /* GDTNativeExpressAdView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDTNativeExpressAdView.h; sourceTree = "<group>"; };
+		18A6FAA12130145900709EC9 /* GDTMobBannerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDTMobBannerView.h; sourceTree = "<group>"; };
+		18A6FAA22130145900709EC9 /* GDTNativeAd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDTNativeAd.h; sourceTree = "<group>"; };
+		18A6FAA32130145900709EC9 /* GDTSDKConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDTSDKConfig.h; sourceTree = "<group>"; };
+		18A6FAA42130145900709EC9 /* GDTMobInterstitial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDTMobInterstitial.h; sourceTree = "<group>"; };
+		18A6FAA52130145900709EC9 /* GDTSplashAd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDTSplashAd.h; sourceTree = "<group>"; };
+		18A6FAA62130145900709EC9 /* GDTNativeExpressAd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDTNativeExpressAd.h; sourceTree = "<group>"; };
+		18A6FAA72130145900709EC9 /* GDTSDKDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDTSDKDefines.h; sourceTree = "<group>"; };
+		18A6FAA82130145900709EC9 /* libGDTMobSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGDTMobSDK.a; sourceTree = "<group>"; };
 		6CB566B05B747CCEC832F7BB /* Pods_iHappy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iHappy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A01579F11DE1776C00CD7DDB /* ico_back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ico_back@2x.png"; sourceTree = "<group>"; };
 		A01579F21DE1776C00CD7DDB /* ico_back@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ico_back@3x.png"; sourceTree = "<group>"; };
@@ -381,6 +391,7 @@
 				18A6FA9E21300E7900709EC9 /* libicucore.tbd in Frameworks */,
 				A24B53CD1EB941BE005D34C6 /* JavaScriptCore.framework in Frameworks */,
 				FC6676AF1EAAD55D0066C81F /* QuartzCore.framework in Frameworks */,
+				18A6FAA92130145900709EC9 /* libGDTMobSDK.a in Frameworks */,
 				E28B84A8A36AAB50D4A6C2B8 /* Pods_iHappy.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -744,6 +755,22 @@
 			path = BNFParser;
 			sourceTree = "<group>";
 		};
+		18A6FA9F2130145900709EC9 /* GDTMob */ = {
+			isa = PBXGroup;
+			children = (
+				18A6FAA02130145900709EC9 /* GDTNativeExpressAdView.h */,
+				18A6FAA12130145900709EC9 /* GDTMobBannerView.h */,
+				18A6FAA22130145900709EC9 /* GDTNativeAd.h */,
+				18A6FAA32130145900709EC9 /* GDTSDKConfig.h */,
+				18A6FAA42130145900709EC9 /* GDTMobInterstitial.h */,
+				18A6FAA52130145900709EC9 /* GDTSplashAd.h */,
+				18A6FAA62130145900709EC9 /* GDTNativeExpressAd.h */,
+				18A6FAA72130145900709EC9 /* GDTSDKDefines.h */,
+				18A6FAA82130145900709EC9 /* libGDTMobSDK.a */,
+			);
+			path = GDTMob;
+			sourceTree = "<group>";
+		};
 		A05EB8C61DE0244300148A5B /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
@@ -1079,6 +1106,7 @@
 		FCAFC6061EAED5C300B48C83 /* Vender */ = {
 			isa = PBXGroup;
 			children = (
+				18A6FA9F2130145900709EC9 /* GDTMob */,
 				18A6FA4D212FFF7F00709EC9 /* TaskQueue */,
 				FCAFC60B1EAED74900B48C83 /* XDSSideMenu */,
 			);
@@ -1494,6 +1522,10 @@
 				INFOPLIST_FILE = iHappy/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/iHappy/Vender/GDTMob",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.onlinecredit.laomoneyUAT;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "4d06affb-67de-4ffe-ab9c-5b3f754c4ccb";
@@ -1515,6 +1547,10 @@
 				INFOPLIST_FILE = iHappy/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/iHappy/Vender/GDTMob",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.onlinecredit.laomoneyUAT;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "4d06affb-67de-4ffe-ab9c-5b3f754c4ccb";
