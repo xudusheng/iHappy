@@ -43,7 +43,7 @@ NSString * const MovieListViewController_movieCellIdentifier = @"IHPMovieCell";
     layout.itemSize = CGSizeMake(width, width*4/3);
     //创建collectionView 通过一个布局策略layout来创建
     self.movieCollectionView = [[UICollectionView alloc]initWithFrame:CGRectZero collectionViewLayout:layout];
-    _movieCollectionView.backgroundColor = [UIColor whiteColor];
+    _movieCollectionView.backgroundColor = [UIColor groupTableViewBackgroundColor];
     //代理设置
     _movieCollectionView.delegate=self;
     _movieCollectionView.dataSource=self;

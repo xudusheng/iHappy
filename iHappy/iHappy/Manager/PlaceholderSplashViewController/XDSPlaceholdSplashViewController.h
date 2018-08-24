@@ -1,7 +1,8 @@
 //
-//  XDSPlaceholdSplashViewController.h
+//  ComPlaceholdSplashViewController.h
+//  NLAppEngine
 //
-//  Copyright (c) 2014 xudusheng. All rights reserved.
+//  Copyright (c) 2014 NeuLion. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

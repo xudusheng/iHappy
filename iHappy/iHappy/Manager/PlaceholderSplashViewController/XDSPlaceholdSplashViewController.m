@@ -1,7 +1,8 @@
 //
-//  XDSPlaceholdSplashViewController.m
+//  ComPlaceholdSplashViewController.m
+//  NLAppEngine
 //
-//  Copyright (c) 2014 xudusheng. All rights reserved.
+//  Copyright (c) 2014 NeuLion. All rights reserved.
 //
 
 #import "XDSPlaceholdSplashViewController.h"
@@ -37,13 +38,16 @@ static UIStatusBarStyle splashVCStatusBarStyle = UIStatusBarStyleDefault;
     [super viewDidLoad];
     
     if (!self.isCustomView) {
-        self.view.backgroundColor = [UIColor blackColor];
-        
         self.splashImageView = [[UIImageView alloc] initWithFrame:self.view.bounds];
         [self.view addSubview:self.splashImageView];
-        
         NSString * imageName = [self getCurrentLaunchImageName];
         self.splashImageView.image = [UIImage imageNamed:imageName];
+        
+//        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"LaunchScreen" bundle:nil];
+//        UIViewController *lanchVC = [storyboard instantiateViewControllerWithIdentifier:@"LaunchScreenViewController"];
+//        lanchVC.view.frame = self.view.bounds;
+//        [self.view addSubview:lanchVC.view];
+//        [self addChildViewController:lanchVC];
     }
 }
 
@@ -58,9 +62,18 @@ static UIStatusBarStyle splashVCStatusBarStyle = UIStatusBarStyleDefault;
 }
 
 #if TARGET_OS_IOS
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+    
+    if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad) {
+        return UIDeviceOrientationIsLandscape((UIDeviceOrientation)interfaceOrientation);
+    }else {
+        return UIDeviceOrientationIsPortrait((UIDeviceOrientation)interfaceOrientation);
+    }
+}
+
 -(BOOL)shouldAutorotate
 {
-    return YES;
+    return NO;
 }
 
 -(UIInterfaceOrientationMask)supportedInterfaceOrientations
@@ -87,7 +100,6 @@ static UIStatusBarStyle splashVCStatusBarStyle = UIStatusBarStyleDefault;
     NSArray *imageDicts = [[[NSBundle mainBundle] infoDictionary] valueForKey:@"UILaunchImages"];
     
 #if TARGET_OS_IOS
-    
     UIInterfaceOrientation orientation = self.preferredInterfaceOrientationForPresentation;
     NSString* viewOrientation = @"Portrait";
     
@@ -95,7 +107,6 @@ static UIStatusBarStyle splashVCStatusBarStyle = UIStatusBarStyleDefault;
         viewSize = CGSizeMake(viewSize.height, viewSize.width);
         viewOrientation = @"Landscape";
     }
-    
     for (NSDictionary * dic in imageDicts) {
         CGSize imageSize = CGSizeFromString(dic[@"UILaunchImageSize"]);
         NSString *orientation = dic[@"UILaunchImageOrientation"];
@@ -105,18 +116,6 @@ static UIStatusBarStyle splashVCStatusBarStyle = UIStatusBarStyleDefault;
     }
     
     return currentImageName;
-    
-#elif TARGET_OS_TV
-    
-    for (NSDictionary * dic in imageDicts) {
-        CGSize imageSize = CGSizeFromString(dic[@"UILaunchImageSize"]);
-        if(CGSizeEqualToSize(viewSize, imageSize)){
-            currentImageName = dic[@"UILaunchImageName"];
-        }
-    }
-    
-    return currentImageName;
-    
 #endif
     
     return nil;

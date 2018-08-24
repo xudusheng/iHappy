@@ -15,6 +15,8 @@ NSString *const kGDTMobSDKSplashAdId = @"9040714184494018";
 
 @property (nonatomic, strong) GDTSplashAd *splashAd;
 @property (nonatomic, strong) UIView *bottomView;
+@property (nonatomic, assign) BOOL showAdWhenEnterForground;
+
 
 @end
 
@@ -28,8 +30,14 @@ NSString *const kGDTMobSDKSplashAdId = @"9040714184494018";
     });
     return sharedInstance;
 }
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:UIApplicationWillEnterForegroundNotification
+                                                  object:nil];
+}
 
 - (void)showSplashAd {
+
     self.splashAd = [[GDTSplashAd alloc] initWithAppId:kGDTMobSDKAppId placementId:kGDTMobSDKSplashAdId];
     self.splashAd.delegate = self;
     self.splashAd.fetchDelay = 5;
@@ -40,7 +48,6 @@ NSString *const kGDTMobSDKSplashAdId = @"9040714184494018";
         splashImage = [UIImage imageNamed:@"SplashSmall"];
     }
     self.splashAd.backgroundImage = splashImage;
-    
     self.bottomView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height * 0.25)];
     self.bottomView.backgroundColor = [UIColor whiteColor];
     UIImageView *logo = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"SplashLogo"]];
@@ -50,64 +57,36 @@ NSString *const kGDTMobSDKSplashAdId = @"9040714184494018";
     
     UIWindow *fK = [[UIApplication sharedApplication] keyWindow];
     [self.splashAd loadAdAndShowInWindow:fK withBottomView:self.bottomView skipView:nil];
-
+    
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:UIApplicationWillEnterForegroundNotification
+                                                  object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(handleAppDidBecomeActiveNotification)
+                                                 name:UIApplicationWillEnterForegroundNotification
+                                               object:nil];
+    self.showAdWhenEnterForground = NO;
 }
 
+
+- (void)handleAppDidBecomeActiveNotification {
+    if (self.showAdWhenEnterForground) {
+        [self showSplashAd];
+    }
+}
 
 #pragma mark - GDTSplashAdDelegate
-- (void)splashAdSuccessPresentScreen:(GDTSplashAd *)splashAd
-{
-    NSLog(@"%s",__FUNCTION__);
-}
-
-- (void)splashAdFailToPresent:(GDTSplashAd *)splashAd withError:(NSError *)error
-{
-    NSLog(@"%s%@",__FUNCTION__,error);
-}
-
-- (void)splashAdExposured:(GDTSplashAd *)splashAd
-{
-    NSLog(@"%s",__FUNCTION__);
-}
-
-- (void)splashAdClicked:(GDTSplashAd *)splashAd
-{
-    NSLog(@"%s",__FUNCTION__);
-}
-
-- (void)splashAdApplicationWillEnterBackground:(GDTSplashAd *)splashAd
-{
-    NSLog(@"%s",__FUNCTION__);
-}
-
-- (void)splashAdWillClosed:(GDTSplashAd *)splashAd
-{
-    NSLog(@"%s",__FUNCTION__);
-}
-
-- (void)splashAdClosed:(GDTSplashAd *)splashAd
-{
-    NSLog(@"%s",__FUNCTION__);
+- (void)splashAdClosed:(GDTSplashAd *)splashAd {
     self.splashAd = nil;
+    self.bottomView = nil;
+    //取消本类中的performSelector:方法
+    [[self class] cancelPreviousPerformRequestsWithTarget:self];
+    [self performSelector:@selector(canShowAd) withObject:nil afterDelay:30];
 }
 
-- (void)splashAdWillPresentFullScreenModal:(GDTSplashAd *)splashAd
-{
-    NSLog(@"%s",__FUNCTION__);
+- (void)canShowAd {
+    self.showAdWhenEnterForground = YES;
 }
 
-- (void)splashAdDidPresentFullScreenModal:(GDTSplashAd *)splashAd
-{
-    NSLog(@"%s",__FUNCTION__);
-}
-
-- (void)splashAdWillDismissFullScreenModal:(GDTSplashAd *)splashAd
-{
-    NSLog(@"%s",__FUNCTION__);
-}
-
-- (void)splashAdDidDismissFullScreenModal:(GDTSplashAd *)splashAd
-{
-    NSLog(@"%s",__FUNCTION__);
-}
 @end

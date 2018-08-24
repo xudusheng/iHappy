@@ -17,6 +17,7 @@
 #import "XDSMasterViewController.h"
 #import "XDSPlaceholdSplashViewController.h"
 
+
 @interface AppDelegate ()
 
 @property (nonatomic, weak) XDSPlaceholdSplashViewController * placeholdSplashViewController;
@@ -35,8 +36,9 @@
     self.window.rootViewController = rootViewController;
 
     [self showPlaceholderSplashView];
+    [self.window makeKeyAndVisible];
+    [[XDSAdManager sharedManager] showSplashAd];
     [self stareLaunchQueue];
-
     
     return YES;
 }
@@ -171,7 +173,7 @@ NSString *const kIHPFetchConfigTaskID = @"IHPFetchConfigTask";
     self.contentController = [[IHYMainViewController alloc] init];
     _contentController.menuModel = menus.firstObject;
     UINavigationController * nav = [[UINavigationController alloc] initWithRootViewController:_contentController];
-
+    nav.navigationBar.translucent = NO;
     
     self.mainmeunVC = [[XDSSideMenu alloc] initWithContentViewController:nav
                                                   leftMenuViewController:_leftMenu
