@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface XDSRootViewController : XDSRootRequestViewController
+@interface XDSBaseViewController : XDSRootRequestViewController
 
 - (void)popBack:(UIBarButtonItem *)barButtonItem;
 
