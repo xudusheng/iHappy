@@ -77,6 +77,13 @@
 		18A6FA9C21300D5800709EC9 /* UIAlertController+XDS.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A6FA9B21300D5800709EC9 /* UIAlertController+XDS.m */; };
 		18A6FA9E21300E7900709EC9 /* libicucore.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 18A6FA9D21300E7900709EC9 /* libicucore.tbd */; };
 		18A6FAA92130145900709EC9 /* libGDTMobSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 18A6FAA82130145900709EC9 /* libGDTMobSDK.a */; };
+		18A6FAAD213018CC00709EC9 /* XDSAdManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A6FAAC213018CC00709EC9 /* XDSAdManager.m */; };
+		18A6FAB021301D4B00709EC9 /* libxml2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 18A6FAAF21301D4A00709EC9 /* libxml2.tbd */; };
+		18A6FAB221301D5400709EC9 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 18A6FAB121301D5400709EC9 /* libz.tbd */; };
+		18A6FAB421301D5F00709EC9 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18A6FAB321301D5F00709EC9 /* AdSupport.framework */; };
+		18A6FAB621301D6800709EC9 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18A6FAB521301D6800709EC9 /* CoreLocation.framework */; };
+		18A6FAB821301D7400709EC9 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18A6FAB721301D7400709EC9 /* Security.framework */; };
+		18A6FABA21301E0100709EC9 /* Ad.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18A6FAB921301E0100709EC9 /* Ad.xcassets */; };
 		A01579F31DE1776C00CD7DDB /* ico_back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A01579F11DE1776C00CD7DDB /* ico_back@2x.png */; };
 		A01579F41DE1776C00CD7DDB /* ico_back@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = A01579F21DE1776C00CD7DDB /* ico_back@3x.png */; };
 		A05EB8EB1DE0244300148A5B /* OCAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = A05EB8D81DE0244300148A5B /* OCAlertView.m */; };
@@ -103,7 +110,6 @@
 		A0D46B861DE0173500637681 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A0D46B851DE0173500637681 /* Assets.xcassets */; };
 		A24B53CD1EB941BE005D34C6 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A24B53CC1EB941BE005D34C6 /* JavaScriptCore.framework */; };
 		E28B84A8A36AAB50D4A6C2B8 /* Pods_iHappy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CB566B05B747CCEC832F7BB /* Pods_iHappy.framework */; };
-		FC0900D81EB96838003289BE /* jquery.js in Resources */ = {isa = PBXBuildFile; fileRef = FC0900D71EB96838003289BE /* jquery.js */; };
 		FC0B7C6E1EC751C90022E504 /* IHPBiZhiListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC0B7C6D1EC751C90022E504 /* IHPBiZhiListViewController.m */; };
 		FC0B7C721EC759880022E504 /* YSERequestFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = FC0B7C711EC759880022E504 /* YSERequestFetcher.m */; };
 		FC0B7C781EC75C290022E504 /* YSEClassifyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FC0B7C771EC75C290022E504 /* YSEClassifyModel.m */; };
@@ -276,6 +282,16 @@
 		18A6FAA62130145900709EC9 /* GDTNativeExpressAd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDTNativeExpressAd.h; sourceTree = "<group>"; };
 		18A6FAA72130145900709EC9 /* GDTSDKDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDTSDKDefines.h; sourceTree = "<group>"; };
 		18A6FAA82130145900709EC9 /* libGDTMobSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGDTMobSDK.a; sourceTree = "<group>"; };
+		18A6FAAB213018CC00709EC9 /* XDSAdManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XDSAdManager.h; sourceTree = "<group>"; };
+		18A6FAAC213018CC00709EC9 /* XDSAdManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XDSAdManager.m; sourceTree = "<group>"; };
+		18A6FAAE21301A4400709EC9 /* XDSManagerHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XDSManagerHeader.h; sourceTree = "<group>"; };
+		18A6FAAF21301D4A00709EC9 /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = usr/lib/libxml2.tbd; sourceTree = SDKROOT; };
+		18A6FAB121301D5400709EC9 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		18A6FAB321301D5F00709EC9 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
+		18A6FAB521301D6800709EC9 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		18A6FAB721301D7400709EC9 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		18A6FAB921301E0100709EC9 /* Ad.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Ad.xcassets; sourceTree = "<group>"; };
+		18A6FACF21301FE900709EC9 /* XDSVenderHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XDSVenderHeader.h; sourceTree = "<group>"; };
 		6CB566B05B747CCEC832F7BB /* Pods_iHappy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iHappy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A01579F11DE1776C00CD7DDB /* ico_back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ico_back@2x.png"; sourceTree = "<group>"; };
 		A01579F21DE1776C00CD7DDB /* ico_back@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ico_back@3x.png"; sourceTree = "<group>"; };
@@ -327,7 +343,6 @@
 		A0D46B8A1DE0173500637681 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A24B53CC1EB941BE005D34C6 /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		DDF28F2EE953D3A78F924489 /* Pods-iHappy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iHappy.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iHappy/Pods-iHappy.debug.xcconfig"; sourceTree = "<group>"; };
-		FC0900D71EB96838003289BE /* jquery.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = jquery.js; sourceTree = "<group>"; };
 		FC0B7C6C1EC751C90022E504 /* IHPBiZhiListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IHPBiZhiListViewController.h; sourceTree = "<group>"; };
 		FC0B7C6D1EC751C90022E504 /* IHPBiZhiListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IHPBiZhiListViewController.m; sourceTree = "<group>"; };
 		FC0B7C701EC759880022E504 /* YSERequestFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YSERequestFetcher.h; sourceTree = "<group>"; };
@@ -388,6 +403,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18A6FAB821301D7400709EC9 /* Security.framework in Frameworks */,
+				18A6FAB621301D6800709EC9 /* CoreLocation.framework in Frameworks */,
+				18A6FAB421301D5F00709EC9 /* AdSupport.framework in Frameworks */,
+				18A6FAB221301D5400709EC9 /* libz.tbd in Frameworks */,
+				18A6FAB021301D4B00709EC9 /* libxml2.tbd in Frameworks */,
 				18A6FA9E21300E7900709EC9 /* libicucore.tbd in Frameworks */,
 				A24B53CD1EB941BE005D34C6 /* JavaScriptCore.framework in Frameworks */,
 				FC6676AF1EAAD55D0066C81F /* QuartzCore.framework in Frameworks */,
@@ -610,12 +630,14 @@
 		18A6FA1B212FCB9200709EC9 /* Manager */ = {
 			isa = PBXGroup;
 			children = (
+				18A6FAAE21301A4400709EC9 /* XDSManagerHeader.h */,
 				18A6FA34212FFEDD00709EC9 /* XDSBaseManager.h */,
 				18A6FA35212FFEDD00709EC9 /* XDSBaseManager.m */,
 				18A6FA2E212FCC1600709EC9 /* XDSSettingsManager.h */,
 				18A6FA2F212FCC1600709EC9 /* XDSSettingsManager.m */,
 				18A6FA31212FCC1700709EC9 /* XDSStartupManager.h */,
 				18A6FA30212FCC1700709EC9 /* XDSStartupManager.m */,
+				18A6FAAA213017C100709EC9 /* AdManager */,
 				18A6FA54212FFFB900709EC9 /* PlaceholderSplashViewController */,
 				18A6FA1C212FCB9D00709EC9 /* ConfigManager */,
 				18A6FA24212FCB9D00709EC9 /* LocalizableManager */,
@@ -771,6 +793,16 @@
 			path = GDTMob;
 			sourceTree = "<group>";
 		};
+		18A6FAAA213017C100709EC9 /* AdManager */ = {
+			isa = PBXGroup;
+			children = (
+				18A6FAAB213018CC00709EC9 /* XDSAdManager.h */,
+				18A6FAAC213018CC00709EC9 /* XDSAdManager.m */,
+				18A6FAB921301E0100709EC9 /* Ad.xcassets */,
+			);
+			path = AdManager;
+			sourceTree = "<group>";
+		};
 		A05EB8C61DE0244300148A5B /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
@@ -884,7 +916,6 @@
 				18A6FA5B213000A300709EC9 /* XDSRootViewController.h */,
 				18A6FA5C213000A300709EC9 /* XDSRootViewController.m */,
 				FC1A8C2C1EAC1FD900E66FF8 /* menu.json */,
-				FC0900D71EB96838003289BE /* jquery.js */,
 				18A6FA1B212FCB9200709EC9 /* Manager */,
 				FC0B7C6B1EC751690022E504 /* Bizhi */,
 				092CAED51DE2861F008127DA /* Q2002 */,
@@ -919,6 +950,11 @@
 		BA0789C7B7ED35F85C150384 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				18A6FAB721301D7400709EC9 /* Security.framework */,
+				18A6FAB521301D6800709EC9 /* CoreLocation.framework */,
+				18A6FAB321301D5F00709EC9 /* AdSupport.framework */,
+				18A6FAB121301D5400709EC9 /* libz.tbd */,
+				18A6FAAF21301D4A00709EC9 /* libxml2.tbd */,
 				18A6FA9D21300E7900709EC9 /* libicucore.tbd */,
 				A24B53CC1EB941BE005D34C6 /* JavaScriptCore.framework */,
 				FC6676AE1EAAD55D0066C81F /* QuartzCore.framework */,
@@ -1109,6 +1145,7 @@
 				18A6FA9F2130145900709EC9 /* GDTMob */,
 				18A6FA4D212FFF7F00709EC9 /* TaskQueue */,
 				FCAFC60B1EAED74900B48C83 /* XDSSideMenu */,
+				18A6FACF21301FE900709EC9 /* XDSVenderHeader.h */,
 			);
 			path = Vender;
 			sourceTree = "<group>";
@@ -1199,12 +1236,12 @@
 				A05EB9241DE04EF400148A5B /* icon_jiazai@2x.png in Resources */,
 				FC1A8C2D1EAC1FD900E66FF8 /* menu.json in Resources */,
 				18A6FA862130031500709EC9 /* json.bnf in Resources */,
-				FC0900D81EB96838003289BE /* jquery.js in Resources */,
 				18A6FA2D212FCB9D00709EC9 /* Localizable_en.string in Resources */,
 				092CAEFF1DE28620008127DA /* IHYMovieDetailInfoView.xib in Resources */,
 				FC61CA911FB439E3000B97DB /* LaunchScreen.storyboard in Resources */,
 				A01579F41DE1776C00CD7DDB /* ico_back@3x.png in Resources */,
 				092CAF2F1DE2B20F008127DA /* IHYNewsListCell.xib in Resources */,
+				18A6FABA21301E0100709EC9 /* Ad.xcassets in Resources */,
 				A01579F31DE1776C00CD7DDB /* ico_back@2x.png in Resources */,
 				FCA032421F8DD7DE00600581 /* PYSearch.bundle in Resources */,
 				09F90D7A1DE2D2F600542684 /* IHYNewsMultableImageCell.xib in Resources */,
@@ -1318,6 +1355,7 @@
 				092CAEFD1DE28620008127DA /* IHYMoviePlayButtonModel.m in Sources */,
 				18A6FA8C2130031600709EC9 /* NLEBNFParserState.m in Sources */,
 				FC8B89AA1EBC8073000AD27A /* IHPPlayerViewController.m in Sources */,
+				18A6FAAD213018CC00709EC9 /* XDSAdManager.m in Sources */,
 				18A6FA3A212FFF0D00709EC9 /* RegexKitLite.m in Sources */,
 				FC0B7C7B1EC7FD5A0022E504 /* YSECategoryModel.m in Sources */,
 				092CAEFE1DE28620008127DA /* IHYMovieDetailInfoView.m in Sources */,
@@ -1526,6 +1564,48 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/iHappy/Vender/GDTMob",
 				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-framework",
+					"\"AFNetworking\"",
+					"-framework",
+					"\"AspectsV1_4_2\"",
+					"-framework",
+					"\"CWFoundation\"",
+					"-framework",
+					"\"CWStackController\"",
+					"-framework",
+					"\"DACircularProgress\"",
+					"-framework",
+					"\"FMDB\"",
+					"-framework",
+					"\"GDataXML_HTML\"",
+					"-framework",
+					"\"IQKeyboardManager\"",
+					"-framework",
+					"\"JDStatusBarNotification\"",
+					"-framework",
+					"\"JSONKit_NoWarning\"",
+					"-framework",
+					"\"JSONModel\"",
+					"-framework",
+					"\"MBProgressHUD\"",
+					"-framework",
+					"\"MJRefresh\"",
+					"-framework",
+					"\"MWPhotoBrowser\"",
+					"-framework",
+					"\"Masonry\"",
+					"-framework",
+					"\"Reachability\"",
+					"-framework",
+					"\"SDWebImage\"",
+					"-framework",
+					"\"YYModel\"",
+					"-framework",
+					"\"hpple\"",
+					"-ObjC",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.onlinecredit.laomoneyUAT;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "4d06affb-67de-4ffe-ab9c-5b3f754c4ccb";
@@ -1550,6 +1630,48 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/iHappy/Vender/GDTMob",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-framework",
+					"\"AFNetworking\"",
+					"-framework",
+					"\"AspectsV1_4_2\"",
+					"-framework",
+					"\"CWFoundation\"",
+					"-framework",
+					"\"CWStackController\"",
+					"-framework",
+					"\"DACircularProgress\"",
+					"-framework",
+					"\"FMDB\"",
+					"-framework",
+					"\"GDataXML_HTML\"",
+					"-framework",
+					"\"IQKeyboardManager\"",
+					"-framework",
+					"\"JDStatusBarNotification\"",
+					"-framework",
+					"\"JSONKit_NoWarning\"",
+					"-framework",
+					"\"JSONModel\"",
+					"-framework",
+					"\"MBProgressHUD\"",
+					"-framework",
+					"\"MJRefresh\"",
+					"-framework",
+					"\"MWPhotoBrowser\"",
+					"-framework",
+					"\"Masonry\"",
+					"-framework",
+					"\"Reachability\"",
+					"-framework",
+					"\"SDWebImage\"",
+					"-framework",
+					"\"YYModel\"",
+					"-framework",
+					"\"hpple\"",
+					"-ObjC",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.onlinecredit.laomoneyUAT;
 				PRODUCT_NAME = "$(TARGET_NAME)";

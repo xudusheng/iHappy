@@ -41,11 +41,7 @@
     return YES;
 }
 
-#pragma mark - Placehold Splash View methods
-//- (void)showPlaceholderSplashViewWithViewController:(XDSPlaceholdSplashViewController *)viewController{
-//    viewController.isCustomView = YES;
-//    [self displayPlaceholderSplashView:viewController];
-//}
+#pragma mark - Placehold Splash View methoda
 
 - (void)removePlaceholderSplashView{
     [self.placeholdSplashViewController removeFromParentViewController];
@@ -175,8 +171,7 @@ NSString *const kIHPFetchConfigTaskID = @"IHPFetchConfigTask";
     self.contentController = [[IHYMainViewController alloc] init];
     _contentController.menuModel = menus.firstObject;
     UINavigationController * nav = [[UINavigationController alloc] initWithRootViewController:_contentController];
-//    self.window.rootViewController = nav;
-//    return;
+
     
     self.mainmeunVC = [[XDSSideMenu alloc] initWithContentViewController:nav
                                                   leftMenuViewController:_leftMenu

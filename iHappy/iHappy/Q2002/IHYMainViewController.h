@@ -6,7 +6,6 @@
 //  Copyright © 2016年 上海优蜜科技有限公司. All rights reserved.
 //
 
-#import <WMPageController/WMPageController.h>
 #import "IHYViewControllerModel.h"
 @interface IHYMainViewController : WMPageController
     

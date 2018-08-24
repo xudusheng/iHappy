@@ -201,6 +201,9 @@
 #pragma mark - 点击事件处理
 //TODO:菜单
 - (void)showMenu{
+//    [[XDSAdManager sharedManager] showSplashAd];
+//    return;
+    
     AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
 //    [delegate.mainmeunVC presentLeftMenuViewController];
     [delegate.mainmeunVC presentRightMenuViewController];
@@ -208,6 +211,7 @@
 
 //TODO:搜索
 - (void)showSearchVC{
+    
     IHYHomsSearchViewController *searchVC = [[IHYHomsSearchViewController alloc] init];
 //    searchVC.hotSearches = self.hotSearchKeys;
     searchVC.searchPlaceholder = @"输入搜索关键字";
@@ -222,9 +226,6 @@
     _menuModel = menuModel;
     self.title = _menuModel.title;
     [self reloadData];
-    
-//    [self setBarItems];
-
 }
 
 #pragma mark - 内存管理相关
