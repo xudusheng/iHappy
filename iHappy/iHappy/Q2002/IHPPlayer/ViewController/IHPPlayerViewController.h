@@ -6,9 +6,9 @@
 //  Copyright © 2017年 上海优蜜科技有限公司. All rights reserved.
 //
 
-#import "XDSRootViewController.h"
+#import "XDSBaseViewController.h"
 #import "IHYMovieModel.h"
-@interface IHPPlayerViewController : XDSRootViewController
+@interface IHPPlayerViewController : XDSBaseViewController
 
 @property (strong, nonatomic)IHYMovieModel * movieModel;
 

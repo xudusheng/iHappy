@@ -12,7 +12,7 @@
 #import "XDSRootRequestTableViewController.h"
 #import "XDSRootRequestViewController.h"
 #import "XDSRootTableViewController.h"
-#import "XDSRootViewController.h"
+#import "XDSBaseViewController.h"
 
 
 #endif /* XDSRootControllerHeader_h */

@@ -10,15 +10,14 @@
 #import "IHYMovieListViewController.h"
 #import "IHPMenuViewController.h"
 #import "AppDelegate.h"
-#import "IHPSearchViewController.h"
 #import "IHYNewsListViewController.h"
 #import "IHPBiZhiListViewController.h"
 
-#import "PYSearch.h"
+#import "IHYHomsSearchViewController.h"
+@interface IHYMainViewController ()<UISearchBarDelegate>
 
-@interface IHYMainViewController ()<PYSearchViewControllerDelegate>
-
-@property (strong, nonatomic) IHPSearchViewController *searchResultVC;
+@property (strong, nonatomic) UISearchBar *searchBar;
+@property (strong, nonatomic) UIButton *menuButton;
 
 @end
 
@@ -35,8 +34,71 @@
 
 #pragma mark - UI相关
 - (void)createMainViewControllerUI{
-    [self setBarItems];
+    self.navigationController.navigationBar.translucent = NO;
+    self.navigationController.navigationBar.shadowImage = [UIImage new];
+    
+    
+    CGFloat marginLeft = 15;
+    CGFloat marginRight = marginLeft;
+    CGFloat navHeight = 44;
+    CGFloat searchbarHeight = 29;
+    UIView *titleView = [[UIView alloc] initWithFrame:CGRectMake(marginLeft, 0, DEVIECE_SCREEN_WIDTH - marginLeft - marginRight, navHeight)];
+
+//    if ([IHPConfigManager shareManager].menus.count > 1) {
+        CGFloat buttonHeight = 35;
+        UIButton *menuButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        menuButton.clipsToBounds = NO;
+        menuButton.frame = CGRectMake(0, navHeight/2 - buttonHeight/2, buttonHeight, buttonHeight);
+        [menuButton addTarget:self action:@selector(showMenu) forControlEvents:UIControlEventTouchUpInside];
+        [menuButton setImage:[UIImage imageNamed:@"nav_menu_icon"] forState:UIControlStateNormal];
+        self.menuButton = menuButton;
+        [titleView addSubview:menuButton];
+//    }
+    [self configSearchBar];
+    _searchBar.frame = CGRectMake(CGRectGetMaxX(_menuButton.frame), navHeight/2 - searchbarHeight/2, CGRectGetWidth(titleView.frame) - searchbarHeight, searchbarHeight);
+
+    [titleView addSubview:_searchBar];
+    
+
+    
+    self.navigationItem.titleView = titleView;
 }
+
+- (void)configSearchBar {
+    
+    UISearchBar *searchBar = [[UISearchBar alloc] init];
+    searchBar.delegate = self;
+    searchBar.searchBarStyle = UISearchBarStyleMinimal;
+    searchBar.searchTextPositionAdjustment = UIOffsetMake(10, 0);
+    searchBar.backgroundColor = [UIColor clearColor];
+    //    [searchBar setImage:[UIImage imageNamed:@"dbarcode"]forSearchBarIcon:UISearchBarIconBookmark state:UIControlStateNormal];
+    //    [searchBar setSearchFieldBackgroundImage:[UIImage imageNamed:@"Input_box"] forState:UIControlStateNormal];
+    
+    //光标属性
+//    searchBar.tintColor = [UIColor bsnlcolor_999999];
+    
+//    UITextField *searchField = [searchBar valueForKeyPath:@"_searchField"];
+//    searchField.textColor = [UIColor bsnlcolor_999999];
+//    searchField.backgroundColor = [UIColor bsnlcolor_F5F5F5];
+//    searchField.font = FONT_SIZE(12);
+//    searchField.borderStyle = UITextBorderStyleNone;
+//    [searchField setValue:[UIColor bsnlcolor_C7C7C7] forKeyPath:@"_placeholderLabel.textColor"];
+//    [searchField setValue:FONT_SIZE(12) forKeyPath:@"_placeholderLabel.font"];
+    
+    //替换放大镜
+    //    UIImageView *leftView = [[UIImageView alloc] init];
+    //    leftView.image = IMG(@"12333");
+    //    leftView.frame = CGRectMake(0, 0, 16, 16);
+    //    searchField.leftView = leftView;
+    
+//    UIButton *clearButton = [searchField valueForKeyPath:@"_clearButton"];
+//    [clearButton setImage:[UIImage imageNamed:@"soushuo_delete"] forState:UIControlStateNormal];
+//    [clearButton setImage:[UIImage imageNamed:@"soushuo_delete"] forState:UIControlStateHighlighted];
+//
+//    self.searchTextField = searchField;
+    self.searchBar = searchBar;
+}
+
 - (void)setBarItems{
     if ([IHPConfigManager shareManager].menus.count > 1) {
         UIBarButtonItem *leftItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"nav_menu_icon"]
@@ -129,55 +191,30 @@
         searchViewController.searchSuggestions = @[];
     }
 }
+
+- (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar {
+    NSLog(@"前往搜索页");
+    [self showSearchVC];
+    
+    return NO;
+}
 #pragma mark - 点击事件处理
 //TODO:菜单
 - (void)showMenu{
     AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    [delegate.mainmeunVC presentLeftMenuViewController];
+//    [delegate.mainmeunVC presentLeftMenuViewController];
+    [delegate.mainmeunVC presentRightMenuViewController];
 }
 
 //TODO:搜索
 - (void)showSearchVC{
-//    IHPSearchViewController *searchVC = [[IHPSearchViewController alloc] init];
-//    [self.navigationController pushViewController:searchVC animated:YES];
-    // 1. Create an Array of popular search
-    NSArray *hotSeaches = @[];
-    // 2. Create a search view controller
-    PYSearchViewController *searchViewController = [PYSearchViewController searchViewControllerWithHotSearches:hotSeaches searchBarPlaceholder:@"输入视频关键词" didSearchBlock:^(PYSearchViewController *searchViewController, UISearchBar *searchBar, NSString *searchText) {
-        // Called when search begain.
-        // eg：Push to a temp view controller
-        
-        UIViewController *targetVC;
-        IHPSubMenuModel * model = _menuModel.subMenus.firstObject;
-        if (_menuModel.type == IHPMenuTypeJuheNews) {
-            IHYNewsListViewController * newsVC = [[IHYNewsListViewController alloc]init];
-            newsVC.rootUrl = _menuModel.rooturl;
-            newsVC.firstPageUrl = model.url;
-            targetVC = newsVC;
-        }else if(_menuModel.type == IHPMenuTypeBizhi){
-            IHPBiZhiListViewController * bizhiVC = [[IHPBiZhiListViewController alloc]init];
-            bizhiVC.rootUrl = _menuModel.rooturl;
-            bizhiVC.firstPageUrl = model.url;
-            targetVC = bizhiVC;
-        }else{
-            NSString *url = @"http://www.q2002.com/search?wd=";
-            url = [url stringByAppendingString:searchText];
-            
-            IHYMovieListViewController * movieVC = [[IHYMovieListViewController alloc]init];
-            movieVC.firstPageUrl = url;
-            movieVC.title = searchText;
-            targetVC = movieVC;
-        }
-        [searchViewController.navigationController pushViewController:targetVC animated:YES];
-    }];
-    // 3. Set style for popular search and search history
-    searchViewController.hotSearchStyle = PYHotSearchStyleDefault;
-    searchViewController.searchHistoryStyle = PYSearchHistoryStyleNormalTag;
-    // 4. Set delegate
-    searchViewController.delegate = self;
-    // 5. Present a navigation controller
-    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:searchViewController];
-    [self presentViewController:nav animated:YES completion:nil];
+    IHYHomsSearchViewController *searchVC = [[IHYHomsSearchViewController alloc] init];
+//    searchVC.hotSearches = self.hotSearchKeys;
+    searchVC.searchPlaceholder = @"输入搜索关键字";
+    
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:searchVC];
+    nav.navigationBar.translucent = NO;
+    [self presentViewController:nav animated:NO completion:nil];
     
 }
 #pragma mark - 其他私有方法
@@ -186,7 +223,7 @@
     self.title = _menuModel.title;
     [self reloadData];
     
-    [self setBarItems];
+//    [self setBarItems];
 
 }
 

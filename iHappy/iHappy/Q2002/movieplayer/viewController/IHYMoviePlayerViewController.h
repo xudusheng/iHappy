@@ -6,9 +6,9 @@
 //  Copyright © 2016年 上海优蜜科技有限公司. All rights reserved.
 //
 
-#import "XDSRootViewController.h"
+#import "XDSBaseViewController.h"
 
-@interface IHYMoviePlayerViewController : XDSRootViewController
+@interface IHYMoviePlayerViewController : XDSBaseViewController
 
 NS_ASSUME_NONNULL_BEGIN
 

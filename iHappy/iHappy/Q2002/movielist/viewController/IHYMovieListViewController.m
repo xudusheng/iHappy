@@ -57,8 +57,6 @@ NSString * const MovieListViewController_movieCellIdentifier = @"IHPMovieCell";
     
     _movieCollectionView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(fetchMovieListTop)];
     _movieCollectionView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreData)];
-    [_movieCollectionView.mj_header beginRefreshing];
-    
 }
 
 #pragma mark - 网络请求
@@ -189,6 +187,11 @@ NSString * const MovieListViewController_movieCellIdentifier = @"IHPMovieCell";
     }else{
         [_movieCollectionView.mj_footer endRefreshingWithNoMoreData];
     }
+}
+
+- (void)setFirstPageUrl:(NSString *)firstPageUrl {
+    _firstPageUrl = firstPageUrl;
+    [self fetchMovieListTop];
 }
 #pragma mark - 内存管理相关
 - (void)movieListViewControllerDataInit{

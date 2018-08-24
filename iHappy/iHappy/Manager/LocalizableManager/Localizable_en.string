@@ -1,0 +1,128 @@
+##Version 7.0727
+
+
+#Tabbar
+bx.tabbar.home.title = 今日热推
+bx.tabbar.community.title = 社区
+bx.tabbar.vip.title = 升级赚钱
+bx.tabbar.cart.title = 购物车
+bx.tabbar.me.title = 我的
+
+
+#首页
+bx.home.default.category.title = 今日推荐
+bx.search.default.placeholder = 碧斯诺兰
+bx.search.cancel.title = 取消
+bx.search.hotsearch.title = 搜索推荐
+bx.search.historysearch.title = 历史搜索
+
+#商品详情
+bx.goodsdetail.title = 商品详情
+bx.goodsdetail.menuview.goods.title = 商品
+bx.goodsdetail.menuview.detail.title = 详情
+
+bx.goodsdetail.cell.detailinfo.time.title = 限时抢购
+bx.goodsdetail.cell.detailinfo.time.subtitle = 距结束仅剩
+bx.goodsdetail.cell.detailinfo.commission.title = 最高佣金
+bx.goodsdetail.cell.detailinfo.vipprive.title = 兰蜜价
+
+bx.goodsdetail.tag.ziying = 自营
+bx.goodsdetail.tag.zhaoshang = 招商
+bx.goodsdetail.tag.new = 新品
+bx.goodsdetail.tag.combo = 套餐
+
+
+bx.goodsdetail.cell.presale.deposit.title = 阶段1：定金
+bx.goodsdetail.cell.presale.deposit.subtitle = 定金小计：
+bx.goodsdetail.cell.presale.finalpay.title = 阶段2：尾款
+bx.goodsdetail.cell.presale.finalpay.subtitle = 尾款小计：
+
+bx.goodsdetail.cell.coupon.title = 领券
+bx.goodsdetail.cell.activity.title = 促销
+bx.goodsdetail.cell.property.title = 规格
+bx.goodsdetail.cell.service.title = 服务
+bx.goodsdetail.cell.property.title = 规格
+bx.goodsdetail.purchase.service = 客服
+bx.goodsdetail.purchase.shoppingcart = 购物车
+bx.goodsdetail.purchase.favirate = 加入购物车
+
+bx.goodsdetail.purchase.purchase = 立即购买
+bx.goodsdetail.purchase.prepay = 支付定金
+bx.goodsdetail.purchase.presale = 提前加入购物车
+bx.goodsdetail.purchase.forsale = 该商品还未开售
+bx.goodsdetail.purchase.saleout = 该商品已售罄
+bx.goodsdetail.purchase.unshelve = 该商品已下架
+
+bx.goodsdetail.selectsku.failed.sku = 请选择规格及数量~
+bx.goodsdetail.property.pleasechoose = 请选中完整的规格信息
+
+bx.goodsdetail.addshoppingcart.failed = 添加失败，不要灰心哦~
+bx.goodsdetail.addshoppingcart.success = 添加成功，在购物车等亲~
+
+bx.goodsdetail.addcoupon.failed = 出了点效益为，领取优惠券失败哦~
+bx.goodsdetail.addcoupon.success = 已成功领取优惠券~\n请前往 我的->我的优惠券 查看
+
+
+bx.goodsdetail.couponslist.header.title = 优惠券
+bx.goodsdetail.activitylist.header.title = 促销活动
+bx.goodsdetail.property.donebutton.title = 确定
+
+bx.goodsdetail.property.purchasecount.title = 购买数量
+
+bx.goodsdetail.servicelist.header.title = 服务说明
+bx.goodsdetail.servicelist.donebutton.title = 知道了
+
+bx.goodsdetail.combo.title = 套餐选择
+bx.goodsdetail.combo.donebutton.title = 确定
+
+
+
+
+#我的
+bx.mine.bookmark.add.tip.success = 收藏成功，请前往\n我的->我的收藏夹 查看
+bx.mine.bookmark.add.tip.failed = 阿哦~\n出了点小问题，暂时无法收藏~
+bx.mine.bookmark.remove.tip.success = 取消收藏成功
+bx.mine.bookmark.remove.tip.failed = 阿哦~\n出了点小问题，暂时无法取消收藏~
+
+#loading
+bx.loading.footer.normal = 上拉加载更多
+bx.loading.footer.pulling = 松开立即刷新
+bx.loading.footer.refreshing = 正在刷新数据...
+bx.loading.footer.nomoredata = 已经到底了~
+
+bx.goodsdetail.tableview.footer.title = 上拉查看详情
+bx.goodsdetail.webview.header.title = 下拉查看商品信息
+
+#blank page
+bx.blank.page.tip.title.connecterror = 网络出错，请检查您的网络
+bx.blank.page.reload.title.connecterror = 刷新
+bx.blank.page.tip.title.apperror = 很抱歉，程序出问题了
+bx.blank.page.reload.title.apperror = 刷新
+bx.blank.page.tip.title.address = 您还没有添加新的地址
+bx.blank.page.reload.title.address = 添加新的地址
+bx.blank.page.tip.title.order = 您还没有交易的订单哦~
+bx.blank.page.reload.title.order = 去下单
+bx.blank.page.tip.title.shoppingcart = 您的购物车空空如也~
+bx.blank.page.reload.title.shoppingcart = 去逛逛
+bx.blank.page.tip.title.collection = 您还没有任何收藏的商品
+bx.blank.page.reload.title.collection = 去逛逛
+bx.blank.page.tip.title.searchgoods = 没找到您要找的商品
+bx.blank.page.reload.title.searchgoods = 回首页
+bx.blank.page.tip.title.daqu = 您暂无大区成员
+bx.blank.page.reload.title.daqu = 分享二维码
+bx.blank.page.tip.title.withdraw = 您暂无获得佣金哦~
+bx.blank.page.reload.title.withdraw = 回首页
+bx.blank.page.tip.title.empty = 空页面
+bx.blank.page.reload.title.empty = 回首页
+bx.blank.page.tip.title.coupon = 您暂时没有可以使用的优惠券哦~
+bx.blank.page.reload.title.coupon = 取领券
+
+bx.blank.page.tip.title.unknowerror = 貌似出了点差错，好忧伤~
+bx.blank.page.reload.title.unknowerror  = 刷新
+
+
+
+
+
+bx.ui.cancel = 取消
+bx.ui.ok = 确定

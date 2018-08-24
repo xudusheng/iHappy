@@ -13,7 +13,7 @@
 #import "IHPConfigModel.h"
 #import "IHPMenuViewController.h"
 
-#import "NLETaskQueue.h"
+#import "XDSTaskQueue.h"
 #import "XDSMasterViewController.h"
 #import "XDSPlaceholdSplashViewController.h"
 
@@ -21,7 +21,7 @@
 
 @property (nonatomic, weak) XDSPlaceholdSplashViewController * placeholdSplashViewController;
 
-@property (nonatomic, strong) NLETaskQueue *launchTaskQueue;
+@property (nonatomic, strong) XDSTaskQueue *launchTaskQueue;
 @end
 
 @implementation AppDelegate
@@ -71,21 +71,21 @@
 NSString *const kIHPFetchConfigTaskID = @"IHPFetchConfigTask";
 - (void)stareLaunchQueue{
     __weak typeof(self)weakSelf = self;
-    self.launchTaskQueue = [NLETaskQueue taskQueue];
-    NLETask * fetchConfigTask = [NLETask task];
+    self.launchTaskQueue = [XDSTaskQueue taskQueue];
+    XDSTask * fetchConfigTask = [XDSTask task];
     fetchConfigTask.taskId = kIHPFetchConfigTaskID;
-    fetchConfigTask.taskContentBlock = ^(NLETask * task) {
+    fetchConfigTask.taskContentBlock = ^(XDSTask * task) {
         [weakSelf fetchConfigData];
     };
     [self.launchTaskQueue addTask:fetchConfigTask];
-    [self.launchTaskQueue goWithFinishedBlock:^(NLETaskQueue *taskQueue) {
+    [self.launchTaskQueue goWithFinishedBlock:^(XDSTaskQueue *taskQueue) {
         [weakSelf removePlaceholderSplashView];
         [weakSelf showAppView];
     }];
 }
 
 - (void)finishTaskWithTaksID:(NSString *)taskID{
-    NLETask *task = [self.launchTaskQueue taskWithTaskId:taskID];
+    XDSTask *task = [self.launchTaskQueue taskWithTaskId:taskID];
     [task taskHasFinished];
 }
 

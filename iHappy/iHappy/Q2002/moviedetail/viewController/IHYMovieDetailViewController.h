@@ -8,7 +8,7 @@
 
 #import "XDSRootViewController.h"
 #import "IHYMovieModel.h"
-@interface IHYMovieDetailViewController : XDSRootViewController
+@interface IHYMovieDetailViewController : XDSBaseViewController
 
     @property (strong, nonatomic)IHYMovieModel * movieModel;
 @end

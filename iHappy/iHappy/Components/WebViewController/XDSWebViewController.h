@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface XDSWebViewController : XDSRootViewController
+@interface XDSWebViewController : XDSBaseViewController
 
 @property (strong, nonatomic)NSString * requestURL;
 
