@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#define IHYMovieDetailInfoViewInitialHeight 220
+#define IHYMovieDetailInfoViewInitialHeight 230
 @interface IHYMovieDetailInfoTitleAndContentModel : XDSRootModel
 @property (copy, nonatomic) NSString * title;
 @property (copy, nonatomic) NSString * content;

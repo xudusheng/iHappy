@@ -8,7 +8,9 @@
 
 #import "XDSPlayerView.h"
 #import "XDSGestureDetectingImageView.h"
+#import "UIViewController+XDSMediaBrowser.h"
 
+#import "XDSFullPlayerVC.h"
 @interface XDSPlayerView () <XDSGestureDetectingImageViewDelegate>
 @property (strong, nonatomic)AVPlayer *myPlayer;//播放器
 @property (strong, nonatomic)AVPlayerItem *item;//播放单元
@@ -29,6 +31,7 @@
 
 @property (nonatomic,strong) UILabel *errorLabel;//用于显示该视频无法播放
 @property (nonatomic,strong) UIActivityIndicatorView *loadingView;//视频加载提示器
+
 @end
 
 
@@ -174,7 +177,17 @@ static NSInteger PlayerUIHiddenTimeInterval = 0;
     self.gestureDetectingView.hidden = YES;//player创建之前隐藏各种按钮
 }
 
+- (void)setFrame:(CGRect)frame {
+    [super setFrame:frame];
+    [self updateFrames];
+}
+
 - (void)updateFrames {
+    
+    
+    self.gestureDetectingView.frame = self.bounds;
+    self.playButton.center = CGPointMake(CGRectGetWidth(self.bounds)/2, CGRectGetHeight(self.bounds)/2);
+    self.playerLayer.frame = self.bounds;
     
     CGFloat contaiterHeight = 40;
     CGFloat containerWidth = CGRectGetWidth(self.bounds);
@@ -217,6 +230,15 @@ static NSInteger PlayerUIHiddenTimeInterval = 0;
     self.avSlider.frame = frame;
 }
 
+- (void)showButtons {
+    self.playButton.hidden = NO;
+    self.containerView.hidden = NO;
+}
+- (void)hideButtons {
+    self.playButton.hidden = YES;
+    self.containerView.hidden = YES;
+}
+
 - (void)playButtonClick:(UIButton *)playButton{
     switch (self.playStatus) {
         case XDSPlayerViewPlayStatusReadyToPlay:
@@ -248,9 +270,17 @@ static NSInteger PlayerUIHiddenTimeInterval = 0;
 
 - (void)fullScreenButtonClick:(UIButton *)fullScreenButton {
     NSLog(@"全屏播放");
+
+    [self hideButtons];
     [self restartTimer];
     [[NSNotificationCenter defaultCenter] postNotificationName:kXDSPlayerViewNotificationNameFullScreen object:nil];
+    
+    XDSFullPlayerVC *fullVC = [[XDSFullPlayerVC alloc] init];
+    fullVC.playerView = self;
+    [self.viewController presentViewController:fullVC translucent:YES animated:NO completion:nil];
+
 }
+
 
 - (void)restartTimer {
     if (_mTimer) {
@@ -417,6 +447,13 @@ static NSInteger PlayerUIHiddenTimeInterval = 0;
     self.item = nil;
     [self stopTimer];
 }
+
+- (void)dealloc {
+    NSLog(@"==播放器被销毁了==");
+}
+
+
+
 
 @end
 

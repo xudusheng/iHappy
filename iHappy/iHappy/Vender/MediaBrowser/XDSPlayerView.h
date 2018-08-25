@@ -33,6 +33,8 @@ UIKIT_EXTERN NSString *const kXDSPlayerViewNotificationNameFullScreen;
 - (void)playerDisappear;
 - (void)playerAppear;
 
+- (void)showButtons;
+- (void)hideButtons;
 /**
  销毁播放器
  */

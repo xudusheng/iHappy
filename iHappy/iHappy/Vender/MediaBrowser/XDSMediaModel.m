@@ -10,6 +10,13 @@
 #import <SDWebImage/SDWebImageManager.h>
 #import <SDWebImage/SDImageCache.h>
 #import <SDWebImage/UIImage+GIF.h>
+
+@interface SDImageCache(DiskCache)
+
+- (nullable NSData *)diskImageDataBySearchingAllPathsForKey:(nullable NSString *)key;
+
+@end
+
 @implementation XDSMediaModel
 
 - (void)downloadImage:(NSURL *)url
@@ -44,7 +51,7 @@
     if (cacheImageKey) {
         UIImage *image = nil;
         if (self.mediaType == XDSMediaTypeGif) {
-            NSData *data = [[SDImageCache sharedImageCache] diskImageDataForKey:cacheImageKey];
+            NSData *data = [[SDImageCache sharedImageCache] diskImageDataBySearchingAllPathsForKey:cacheImageKey];
             image = [UIImage sd_animatedGIFWithData:data];
         }else {
             image = [[SDImageCache sharedImageCache] imageFromCacheForKey:cacheImageKey];

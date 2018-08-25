@@ -132,6 +132,8 @@
 		A227A84C2130641300568BCB /* SplashSmall.png in Resources */ = {isa = PBXBuildFile; fileRef = A227A8482130641300568BCB /* SplashSmall.png */; };
 		A227A84D2130641300568BCB /* SplashX.png in Resources */ = {isa = PBXBuildFile; fileRef = A227A8492130641300568BCB /* SplashX.png */; };
 		A24B53CD1EB941BE005D34C6 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A24B53CC1EB941BE005D34C6 /* JavaScriptCore.framework */; };
+		A24FCBE421319AB2001A05DB /* XDSFullPlayerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A24FCBE321319AB2001A05DB /* XDSFullPlayerVC.m */; };
+		A24FCBE721319BF0001A05DB /* UIViewController+XDSMediaBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = A24FCBE621319BF0001A05DB /* UIViewController+XDSMediaBrowser.m */; };
 		E28B84A8A36AAB50D4A6C2B8 /* Pods_iHappy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CB566B05B747CCEC832F7BB /* Pods_iHappy.framework */; };
 		FC0B7C6E1EC751C90022E504 /* IHPBiZhiListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC0B7C6D1EC751C90022E504 /* IHPBiZhiListViewController.m */; };
 		FC0B7C721EC759880022E504 /* YSERequestFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = FC0B7C711EC759880022E504 /* YSERequestFetcher.m */; };
@@ -395,6 +397,10 @@
 		A227A8482130641300568BCB /* SplashSmall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SplashSmall.png; sourceTree = "<group>"; };
 		A227A8492130641300568BCB /* SplashX.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SplashX.png; sourceTree = "<group>"; };
 		A24B53CC1EB941BE005D34C6 /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		A24FCBE221319AB2001A05DB /* XDSFullPlayerVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XDSFullPlayerVC.h; sourceTree = "<group>"; };
+		A24FCBE321319AB2001A05DB /* XDSFullPlayerVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XDSFullPlayerVC.m; sourceTree = "<group>"; };
+		A24FCBE521319BF0001A05DB /* UIViewController+XDSMediaBrowser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+XDSMediaBrowser.h"; sourceTree = "<group>"; };
+		A24FCBE621319BF0001A05DB /* UIViewController+XDSMediaBrowser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+XDSMediaBrowser.m"; sourceTree = "<group>"; };
 		DDF28F2EE953D3A78F924489 /* Pods-iHappy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iHappy.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iHappy/Pods-iHappy.debug.xcconfig"; sourceTree = "<group>"; };
 		FC0B7C6C1EC751C90022E504 /* IHPBiZhiListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IHPBiZhiListViewController.h; sourceTree = "<group>"; };
 		FC0B7C6D1EC751C90022E504 /* IHPBiZhiListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IHPBiZhiListViewController.m; sourceTree = "<group>"; };
@@ -872,6 +878,10 @@
 				18A6FAEB2130DF3700709EC9 /* XDSMediaModel.m */,
 				18A6FAE82130DF3700709EC9 /* XDSMediaBrowser.h */,
 				18A6FAD52130DF3700709EC9 /* XDSMediaBrowser.m */,
+				A24FCBE221319AB2001A05DB /* XDSFullPlayerVC.h */,
+				A24FCBE321319AB2001A05DB /* XDSFullPlayerVC.m */,
+				A24FCBE521319BF0001A05DB /* UIViewController+XDSMediaBrowser.h */,
+				A24FCBE621319BF0001A05DB /* UIViewController+XDSMediaBrowser.m */,
 				18A6FAD82130DF3700709EC9 /* img */,
 			);
 			path = MediaBrowser;
@@ -1508,6 +1518,7 @@
 				09F90D741DE2C06000542684 /* XDSWebViewController.m in Sources */,
 				092CAF061DE28620008127DA /* IHYMovieListViewController.m in Sources */,
 				18A6FA2C212FCB9D00709EC9 /* XDSLocalizableManager.m in Sources */,
+				A24FCBE421319AB2001A05DB /* XDSFullPlayerVC.m in Sources */,
 				18A6FAF02130DF3800709EC9 /* XDSMediaBrowser.m in Sources */,
 				092CAEFC1DE28620008127DA /* IHYMovieInfoModel.m in Sources */,
 				A05EB8ED1DE0244300148A5B /* XDSKeychain.m in Sources */,
@@ -1554,6 +1565,7 @@
 				18A6FA932130031600709EC9 /* NLEBNFParseResult.m in Sources */,
 				18A6FA59212FFFB900709EC9 /* XDSPlaceholdSplashViewController.m in Sources */,
 				FC1A8C3D1EAC298800E66FF8 /* IHPConfigManager.m in Sources */,
+				A24FCBE721319BF0001A05DB /* UIViewController+XDSMediaBrowser.m in Sources */,
 				18A6FA29212FCB9D00709EC9 /* XDSConfigManager.m in Sources */,
 				092CAF2E1DE2B20F008127DA /* IHYNewsListCell.m in Sources */,
 				18A6FA4C212FFF1900709EC9 /* mztools.c in Sources */,

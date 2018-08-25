@@ -41,6 +41,7 @@ NSString * const MovieListViewController_movieCellIdentifier = @"IHPMovieCell";
     CGFloat itemMargin = 10;
     CGFloat width = (DEVIECE_SCREEN_WIDTH - itemMargin * 4)/3;
     layout.itemSize = CGSizeMake(width, width*4/3);
+    layout.sectionInset = UIEdgeInsetsMake(itemMargin, itemMargin, itemMargin, itemMargin);
     //创建collectionView 通过一个布局策略layout来创建
     self.movieCollectionView = [[UICollectionView alloc]initWithFrame:CGRectZero collectionViewLayout:layout];
     _movieCollectionView.backgroundColor = [UIColor groupTableViewBackgroundColor];

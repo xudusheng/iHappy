@@ -13,6 +13,8 @@
 #import "AppDelegate.h"
 //#import "IHYMoviePlayerViewController.h"
 //#import "ZFPlayer.h"
+
+#import "XDSPlayerView.h"
 @interface IHPPlayerViewController ()
 <
 UICollectionViewDelegate,
@@ -24,6 +26,7 @@ UIWebViewDelegate
 @property (strong, nonatomic) UICollectionView * moviedetailCollectionView;
 
 //@property (strong, nonatomic) ZFPlayerView *playerView;
+@property (strong, nonatomic) XDSPlayerView *playerView;
 @property (strong, nonatomic) UIView *playerContentView;
 
 @property (strong, nonatomic) UIWebView * webView;
@@ -36,6 +39,7 @@ UIWebViewDelegate
 @implementation IHPPlayerViewController
 - (void)dealloc{
     NSLog(@"%@ ==> dealloc", [self class]);
+    [self.playerView destroyPlayer];
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -112,6 +116,17 @@ UIWebViewDelegate
     [self.navigationController.navigationBar setTranslucent:NO];
     self.view.backgroundColor = [UIColor whiteColor];
 
+    self.playerContentView = [[UIView alloc] initWithFrame: CGRectMake(0, 0, DEVIECE_SCREEN_WIDTH, IHYMovieDetailInfoViewInitialHeight)];
+    self.playerContentView.backgroundColor = [UIColor blackColor];
+    [self.view addSubview:self.playerContentView];
+    
+    self.playerView = [[XDSPlayerView alloc] initWithFrame:self.playerContentView.bounds];
+    self.webView = [[UIWebView alloc]initWithFrame:self.playerContentView.bounds];
+    self.webView.mediaPlaybackRequiresUserAction = YES;
+    self.webView.scalesPageToFit = YES;
+    self.webView.delegate = self;
+    self.webView.backgroundColor = [UIColor blackColor];
+    
     //创建一个layout布局类
     UICollectionViewFlowLayout * layout = [[UICollectionViewFlowLayout alloc]init];
     //设置布局方向为垂直流布局
@@ -135,20 +150,11 @@ UIWebViewDelegate
 
     [_moviedetailCollectionView registerClass:[IHYMoviePlayButtonCell class] forCellWithReuseIdentifier:@"cell"];
     [_moviedetailCollectionView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.mas_equalTo(0);
+        make.top.equalTo(self.playerContentView.mas_bottom);
+        make.left.bottom.right.mas_equalTo(0);
     }];
 
 
-    self.playerContentView = [[UIView alloc] initWithFrame: CGRectMake(0, -IHYMovieDetailInfoViewInitialHeight, DEVIECE_SCREEN_WIDTH, IHYMovieDetailInfoViewInitialHeight)];
-    self.playerContentView.backgroundColor = [UIColor blackColor];
-    self.webView = [[UIWebView alloc]initWithFrame:self.playerContentView.bounds];
-    self.webView.mediaPlaybackRequiresUserAction = YES;
-    self.webView.delegate = self;
-    self.webView.backgroundColor = [UIColor blackColor];
-//    [self.view addSubview:_webView];
-
-    _moviedetailCollectionView.contentInset = UIEdgeInsetsMake(IHYMovieDetailInfoViewInitialHeight, 0, 100, 0);
-    [_moviedetailCollectionView addSubview:self.playerContentView];
 
     [self fetchMovieInfo];
 
@@ -356,6 +362,8 @@ UIWebViewDelegate
 - (void)stripVideoSrc:(NSData *)data playerUrl:(NSString *)playerUrl{
     TFHpple * hpp = [[TFHpple alloc] initWithHTMLData:data];
     TFHppleElement * video = [hpp searchWithXPathQuery:@"//video"].firstObject;
+//    TFHppleElement * iframe = [hpp searchWithXPathQuery:@"//iframe"].firstObject;
+    
     BOOL playerWebView = YES;
     NSString *videoUrl = @"";
     if (video != nil) {
@@ -366,36 +374,42 @@ UIWebViewDelegate
     }
 
     
-    //======================纯webView显示====================
-    if (!self.webView.superview) {
-        [self.playerContentView addSubview:self.webView];
-    }
-    NSURL * url = [NSURL URLWithString:playerUrl];
-    NSURLRequest * request = [NSURLRequest requestWithURL:url];
-    [_webView loadRequest:request];
+//    //======================纯webView显示====================
+//    if (!self.webView.superview) {
+//        [self.playerContentView addSubview:self.webView];
+//    }
+//    NSURL * url = [NSURL URLWithString:playerUrl];
+//    NSURLRequest * request = [NSURLRequest requestWithURL:url];
+//    [_webView loadRequest:request];
     //====================== player + webView显示 ====================
-    //    if (playerWebView) {
-    //        [self.playerView removeFromSuperview];
-    //        if (!self.webView.superview) {
-    //            [self.playerContentView addSubview:self.webView];
-    //        }
-    //        NSURL * url = [NSURL URLWithString:playerUrl];
-    //        NSURLRequest * request = [NSURLRequest requestWithURL:url];
-    //        [_webView loadRequest:request];
-    //    }else{
-    //        [self.webView removeFromSuperview];
-    //        if (![self.playerView superview]) {
-    //            [self.playerContentView addSubview:self.playerView];
-    //        }
-    //
-    //        [self playWithZPPLayer:videoUrl];
-    //    }
+        if (playerWebView) {
+            [self.playerView removeFromSuperview];
+            if (!self.webView.superview) {
+                [self.playerContentView addSubview:self.webView];
+            }
+            NSURL * url = [NSURL URLWithString:playerUrl];
+            NSURLRequest * request = [NSURLRequest requestWithURL:url];
+            [_webView loadRequest:request];
+        }else{
+            [self.webView removeFromSuperview];
+            if (![self.playerView superview]) {
+                [self.playerContentView addSubview:self.playerView];
+            }
+    
+            [self playWithXDSPlayer:videoUrl];
+        }
 
     self.title = [NSString stringWithFormat:@"%@-%@", self.movieModel.name, self.selectedMovieModel.title];
     [self.moviedetailCollectionView cw_scrollToTopAnimated:YES];
     [self.moviedetailCollectionView reloadData];
 }
 
+- (void)playWithXDSPlayer:(NSString *)videoSrc {
+    XDSMediaModel *mediaModel = [[XDSMediaModel alloc] init];
+    mediaModel.mediaURL = [NSURL URLWithString:videoSrc];
+    mediaModel.mediaType = XDSMediaTypeVideo;
+    self.playerView.mediaModel = mediaModel;
+}
 
 //- (void)playWithZPPLayer:(NSString *)videoSrc{
 //
