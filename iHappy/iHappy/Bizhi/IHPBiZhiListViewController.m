@@ -9,18 +9,17 @@
 #import "IHPBiZhiListViewController.h"
 #import "YSERequestFetcher.h"
 #import "INSImageItemCollectionViewCell.h"
-#import "MWPhotoBrowser.h"
+#import "XDSMediaBrowserVC.h"
 @interface IHPBiZhiListViewController ()<
 UICollectionViewDelegate,
 UICollectionViewDataSource,
-UICollectionViewDelegateFlowLayout,
-MWPhotoBrowserDelegate
+UICollectionViewDelegateFlowLayout
 >
 @property (strong, nonatomic) NSMutableArray<YSEImageModel *> * imageList;
 @property (strong, nonatomic) UICollectionView * collectionView;
 @property (copy, nonatomic) NSString * nextPageUrl;
 
-@property (strong, nonatomic) MWPhotoBrowser *pictureBrowser;
+@property (strong, nonatomic) XDSMediaBrowserVC *mediaBrowserVC;
 
 @end
 
@@ -107,10 +106,8 @@ CGFloat const kBiZhiCollectionViewCellsGap = 5.0;
         [self.collectionView reloadData];
         [self saveNextPageInfo:responseObj];
         
-        if (self.pictureBrowser.view.window) {
-            [self.pictureBrowser reloadData];
-            [self.pictureBrowser setCurrentPhotoIndex:self.pictureBrowser.currentIndex];
-        }
+        self.mediaBrowserVC.imageModelArray = self.imageList;
+
     }];
 
 }
@@ -165,66 +162,28 @@ CGFloat const kBiZhiCollectionViewCellsGap = 5.0;
     return UIEdgeInsetsMake(kBiZhiCollectionViewCellsGap, kBiZhiCollectionViewCellsGap, 0, kBiZhiCollectionViewCellsGap);
 }
 
-//TODO:MWPhotoBrowserDelegate
-- (NSUInteger)numberOfPhotosInPhotoBrowser:(MWPhotoBrowser *)photoBrowser{
-    return _imageList.count;
-}
-- (id<MWPhoto>)photoBrowser:(MWPhotoBrowser *)photoBrowser photoAtIndex:(NSUInteger)index{
-    if (index < _imageList.count) {
-        YSEImageModel *model = _imageList[index];
-        NSString *image_url = model.href;
-        NSString *subfix = @"jpg";
-        image_url = [image_url componentsSeparatedByString:subfix].firstObject;
-        image_url = [image_url stringByAppendingString:subfix];
-        
-        NSURL *url = [NSURL URLWithString:image_url];
-        MWPhoto *photo = [MWPhoto photoWithURL:url];
-        photo.caption = model.title;
-        return photo;
-    }
-    return nil;
-}
-
-- (void)photoBrowser:(MWPhotoBrowser *)photoBrowser didDisplayPhotoAtIndex:(NSUInteger)index{
-    if (index == _imageList.count - 1) {
-        [self footerRequest];
-    }
-}
-
 #pragma mark - 点击事件处理
 //TODO: showPhotoBrowser
 - (void)showPhotoBrowserWithCurrentPhotoIndex:(NSInteger)currentPhotoIndex{
 
-    // Create browser
-    [self.pictureBrowser setCurrentPhotoIndex:currentPhotoIndex];
-    [self.navigationController pushViewController:self.pictureBrowser animated:YES];
+    [self createMediaBrowserView];
+    [self presentViewController:self.mediaBrowserVC animated:NO completion:nil];
+    
+}
+- (void)createMediaBrowserView {
+    NSMutableArray *mediaModelArray = [NSMutableArray arrayWithCapacity:0];
+    for (YSEImageModel *mediaModel in _imageList) {
+        XDSMediaModel *videoModel = [[XDSMediaModel alloc] init];
+        videoModel.mediaURL = [NSURL URLWithString:mediaModel.href];
+        videoModel.mediaType = XDSMediaTypeImage;
+//        videoModel.placeholderImage = [UIImage placeholderImage:frame];
+        [mediaModelArray addObject:videoModel];
+    }
+    
+    XDSMediaBrowserVC *mediaBrowserVC = [[XDSMediaBrowserVC alloc] initWithMediaModelArray:mediaModelArray];
+    self.mediaBrowserVC = mediaBrowserVC;
 }
 
-- (MWPhotoBrowser *)pictureBrowser{
-    if (nil == _pictureBrowser) {
-        _pictureBrowser = ({
-            BOOL displayActionButton = true;
-            BOOL displaySelectionButtons = false;
-            BOOL displayNavArrows = false;
-            BOOL enableGrid = true;
-            BOOL startOnGrid = false;
-            BOOL autoPlayOnAppear = false;
-            MWPhotoBrowser *browser = [[MWPhotoBrowser alloc] init];
-            browser.delegate = self;
-            browser.displayActionButton = displayActionButton;
-            browser.displayNavArrows = displayNavArrows;
-            browser.displaySelectionButtons = displaySelectionButtons;
-            browser.alwaysShowControls = displaySelectionButtons;
-            browser.zoomPhotosToFill = true;
-            browser.enableGrid = enableGrid;
-            browser.startOnGrid = startOnGrid;
-            browser.enableSwipeToDismiss = true;
-            browser.autoPlayOnAppear = autoPlayOnAppear;
-            browser;
-        });
-    }
-    return _pictureBrowser;
-}
 #pragma mark - 其他私有方法
 //TODO:getCellHeight
 - (CGFloat)getCellHeightWithImageModel:(YSEImageModel *)imageModel width:(CGFloat)width{

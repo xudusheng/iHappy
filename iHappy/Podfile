@@ -1,10 +1,7 @@
 
 
 platform :ios, '8.0'
-source 'https://github.com/CocoaPods/Specs.git'
 
-use_frameworks!
-inhibit_all_warnings!
 
 target 'iHappy' do
 
@@ -13,11 +10,11 @@ pod 'GDataXML-HTML', '~> 1.3.0'
 pod 'Reachability', '~> 3.2'
 pod 'JSONKit-NoWarning', '~> 1.2'
 pod 'FMDB', '~> 2.6.2'
-pod 'SDWebImage', '~> 3.7.3'
+pod 'SDWebImage'
 pod 'MJRefresh', '~> 3.0.2'
 pod 'Masonry', '~> 0.6.3'
 pod 'IQKeyboardManager', '~> 3.3.2'
-pod 'MWPhotoBrowser', '~> 2.1.2'
+#pod 'MWPhotoBrowser', '~> 2.1.2'
 pod 'YYModel', '~> 1.0.4'
 pod 'JSONModel'
 pod 'WMPageController'
@@ -37,6 +34,10 @@ pod 'hpple'
 #pod 'ReactiveCocoa', '~> 4.2.1'
 
 end
+
+source 'https://github.com/CocoaPods/Specs.git'
+use_frameworks!
+inhibit_all_warnings!
 
 #post_install do |installer|
 #    installer.pods_project.targets.each do |target|

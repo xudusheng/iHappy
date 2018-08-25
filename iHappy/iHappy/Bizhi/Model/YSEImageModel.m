@@ -10,8 +10,7 @@
 
 @implementation YSEImageModel
 
-- (instancetype)init
-{
+- (instancetype)init {
     self = [super init];
     if (self) {
         self.title = @"";
@@ -27,6 +26,17 @@
     self.href = href;
     self.width = width;
     self.height = height;
+}
+
+
+- (XDSMediaModel *)mediaModel {
+    if (_mediaModel) {
+        _mediaModel = [[XDSMediaModel alloc] init];
+        XDSMediaModel *videoModel = [[XDSMediaModel alloc] init];
+        videoModel.mediaURL = [NSURL URLWithString:self.href];
+        videoModel.mediaType = XDSMediaTypeImage;
+    }
+    return _mediaModel;
 }
 
 @end
