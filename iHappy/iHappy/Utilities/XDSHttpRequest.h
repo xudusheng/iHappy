@@ -21,7 +21,7 @@ UIKIT_EXTERN NSString *const kTimeCallOut;//链接超时
                  showHUD:(BOOL)showHUD
                  HUDText:(NSString *)HUDText
            showFailedHUD:(BOOL)showFailedHUD
-                 success:(void(^)(BOOL success, NSDictionary * successResult))success
+                 success:(void(^)(BOOL success, id successResult))success
                   failed:(void(^)(NSString * errorDescription))failed;
 
 
@@ -40,7 +40,7 @@ UIKIT_EXTERN NSString *const kTimeCallOut;//链接超时
                               showHUD:(BOOL)showHUD
                               HUDText:(NSString *)HUDText
                         showFailedHUD:(BOOL)showFailedHUD
-                              success:(void(^)(BOOL success, NSDictionary * successResult))success
+                              success:(void(^)(BOOL success, id successResult))success
                                failed:(void(^)(NSString * errorDescription))failed;
 #pragma mark - 取消请求
 - (void)cancelRequest;

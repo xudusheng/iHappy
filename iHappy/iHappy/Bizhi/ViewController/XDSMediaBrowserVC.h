@@ -7,18 +7,11 @@
 //
 
 #import "XDSBaseViewController.h"
-#import "YSEImageModel.h"
-
+#import "XDSMediaModel.h"
 @interface XDSMediaBrowserVC : XDSBaseViewController
 
-- (instancetype)initWithMediaModelArray:(NSArray<YSEImageModel *> *)imageModelArray;
 
-@property (nonatomic,strong) NSArray<YSEImageModel *> *imageModelArray;
-
-@end
-
-
-@interface XDSMediaBrowserVC (unavailible)
-- (instancetype)init NS_UNAVAILABLE;
+@property (nonatomic,strong) NSArray<XDSMediaModel *> *mediaModelArray;
 
 @end
+

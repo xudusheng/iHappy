@@ -12,46 +12,40 @@
 @interface XDSMediaBrowserVC ()
 
 @property (nonatomic,strong) XDSMediaBrowser *mediaBrowser;
-@property (nonatomic,strong) NSMutableArray<XDSMediaModel *> *mediaModelArray;
 
 @end
 
 @implementation XDSMediaBrowserVC
 
-- (instancetype)initWithMediaModelArray:(NSArray<YSEImageModel *> *)imageModelArray{
-    if (self = [super init]) {
-        self.imageModelArray = imageModelArray;
-    }
-    return self;
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
-
-
 - (void)viewDidLoad {
     [super viewDidLoad];
-
-    self.mediaModelArray = [NSMutableArray arrayWithCapacity:0];
-    
     [self createMediaView];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hanldeSingleTap) name:kXDSPlayerViewNotificationNameSingleTap object:nil];
 }
 
 
 - (void)createMediaView {
     self.mediaBrowser = [[XDSMediaBrowser alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.bounds), CGRectGetHeight(self.view.bounds))];
     self.mediaBrowser.mediaModelArray = _mediaModelArray;
-    self.mediaBrowser.zoomable = NO;
-    self.mediaBrowser.clipsToBounds = NO;
+    self.mediaBrowser.zoomable = YES;
+    self.mediaBrowser.clipsToBounds = YES;
     [self.view addSubview:self.mediaBrowser];
 }
 
 
-- (void)setImageModelArray:(NSArray<YSEImageModel *> *)imageModelArray {
-    _imageModelArray = imageModelArray;
-    [self.mediaModelArray removeAllObjects];
-    for (YSEImageModel *imageModel in _imageModelArray) {
-        [self.mediaModelArray addObject:imageModel.mediaModel];
-    }
+- (void)hanldeSingleTap {
+    [self dismissViewControllerAnimated:NO completion:nil];
+}
+
+- (void)setMediaModelArray:(NSArray<XDSMediaModel *> *)mediaModelArray {
+    _mediaModelArray = mediaModelArray;
     [self.mediaBrowser reloadData];
 }
+
 
 
 @end

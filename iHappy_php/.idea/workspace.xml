@@ -1,0 +1,660 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="42a7f7c0-6ec3-4ed8-bc7b-eb7f13112532" name="Default" comment="" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
+    <pharConfigPath>$PROJECT_DIR$/QueryList/composer.json</pharConfigPath>
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="pachong.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/meizi/pachong.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1041">
+              <caret line="109" column="63" lean-forward="false" selection-start-line="109" selection-start-column="41" selection-end-line="109" selection-end-column="63" />
+              <folding>
+                <element signature="e#6#87#0#PHP" expanded="true" />
+                <marker date="1535298533000" expanded="true" signature="550:605" ph="INSERT INTO meizi... " />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="query.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/meizi/query.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="120">
+              <caret line="13" column="0" lean-forward="true" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+              <folding>
+                <marker date="1535300045000" expanded="true" signature="457:514" ph="select * fro... meizi" />
+                <marker date="1535300045000" expanded="true" signature="713:752" ph="select * fro... meizi" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="querydetail.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/meizi/querydetail.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="225">
+              <caret line="20" column="0" lean-forward="true" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+              <folding>
+                <marker date="1535299699000" expanded="true" signature="541:607" ph="select * fro... picture" />
+                <marker date="1535299699000" expanded="true" signature="1299:1345" ph="select * fro... meizi" />
+                <marker date="1535299699000" expanded="true" signature="2610:2875" ph="INSERT INTO picture... " />
+                <marker date="1535299699000" expanded="true" signature="3964:4229" ph="INSERT INTO picture... " />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="query.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/video/query.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="525">
+              <caret line="40" column="0" lean-forward="true" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
+              <folding>
+                <marker date="1535301128000" expanded="true" signature="762:819" ph="select * fro... video" />
+                <marker date="1535301128000" expanded="true" signature="1037:1097" ph="select * fro... video" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="jsonresult.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/jsonresult.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="75">
+              <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="26" selection-end-column="1" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="pachong.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/video/pachong.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="400">
+              <caret line="75" column="37" lean-forward="false" selection-start-line="75" selection-start-column="27" selection-end-line="75" selection-end-column="37" />
+              <folding>
+                <marker date="1535257413000" expanded="true" signature="657:798" ph="INSERT INTO video... " />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="queryplayer.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/video/queryplayer.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding>
+                <marker date="1535257191000" expanded="true" signature="505:549" ph="select * fro... episode" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="000.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/meizi/000.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="314">
+              <caret line="21" column="13" lean-forward="false" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
+              <folding>
+                <element signature="n#style#0;n#span#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="e#1865#1871#0" expanded="true" />
+                <element signature="e#7139#7145#0" expanded="true" />
+                <element signature="n#style#0;n#p#0;n#div#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="111.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/meizi/111.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="60">
+              <caret line="4" column="70" lean-forward="false" selection-start-line="4" selection-start-column="64" selection-end-line="4" selection-end-column="70" />
+              <folding>
+                <element signature="n#style#0;n#span#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="e#1863#1869#0" expanded="true" />
+                <element signature="e#7140#7146#0" expanded="true" />
+                <element signature="n#style#0;n#p#0;n#div#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="querydetail.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/video/querydetail.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="45">
+              <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="10" selection-end-column="33" />
+              <folding>
+                <marker date="1535286243000" expanded="true" signature="489:568" ph="select * fro... episode" />
+                <marker date="1535286243000" expanded="true" signature="1904:1950" ph="select * fro... video" />
+                <marker date="1535286243000" expanded="true" signature="4045:4405" ph="INSERT INTO episode... " />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>find_date</find>
+      <find>article_ctime</find>
+      <find>class=&quot;row&quot;</find>
+      <find>class=&quot;panel</find>
+      <find>class=&quot;col-md-12&quot;</find>
+      <find>class=&quot;col-md-12</find>
+      <find>class=&quot;panel-heading&quot;</find>
+      <find>$detailvalue</find>
+      <find>col-md-8</find>
+      <find>col-md-12</find>
+      <find>md5key</find>
+      <find>ekey</find>
+      <find>querydetailquerydetail</find>
+      <find>$md5string</find>
+      <find>href</find>
+      <find>$bo</find>
+      <find>mysqli_errno</find>
+      <find>$_GET</find>
+      <find>querydetail</find>
+      <find>$size</find>
+      <find>querylist</find>
+      <find>$section</find>
+      <find>echo</find>
+      <find>INSERT INTO</find>
+      <find>utf-</find>
+      <find>crawl_data</find>
+      <find>startFetchData</find>
+    </findStrings>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/QueryList/QueryList.php" />
+        <option value="$PROJECT_DIR$/QL/QueryList.class.php" />
+        <option value="$PROJECT_DIR$/qList.php" />
+        <option value="$PROJECT_DIR$/index.php" />
+        <option value="$PROJECT_DIR$/qlist.php" />
+        <option value="$PROJECT_DIR$/webcrawler.html" />
+        <option value="$PROJECT_DIR$/xxx.php" />
+        <option value="$PROJECT_DIR$/detailList.php" />
+        <option value="$PROJECT_DIR$/dslist.php" />
+        <option value="$PROJECT_DIR$/xxx.html" />
+        <option value="$PROJECT_DIR$/queryplayer.php" />
+        <option value="$PROJECT_DIR$/webcrawler.php" />
+        <option value="$PROJECT_DIR$/database.php" />
+        <option value="$PROJECT_DIR$/query.php" />
+        <option value="$PROJECT_DIR$/querydetail.php" />
+        <option value="$PROJECT_DIR$/video/queryplayer.php" />
+        <option value="$PROJECT_DIR$/video/webcrawler.php" />
+        <option value="$PROJECT_DIR$/video/pachong.php" />
+        <option value="$PROJECT_DIR$/meizi/database.php" />
+        <option value="$PROJECT_DIR$/jsonresult.php" />
+        <option value="$PROJECT_DIR$/video/querydetail.php" />
+        <option value="$PROJECT_DIR$/meizi/111.html" />
+        <option value="$PROJECT_DIR$/meizi/222.html" />
+        <option value="$PROJECT_DIR$/meizi/333.html" />
+        <option value="$PROJECT_DIR$/meizi/444.html" />
+        <option value="$PROJECT_DIR$/meizi/000.html" />
+        <option value="$PROJECT_DIR$/meizi/pachong.php" />
+        <option value="$PROJECT_DIR$/meizi/querydetail.php" />
+        <option value="$PROJECT_DIR$/meizi/query.php" />
+        <option value="$PROJECT_DIR$/video/query.php" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="NodePackageJsonFileManager">
+    <packageJsonPaths />
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="15" />
+    <option name="y" value="24" />
+    <option name="width" value="1527" />
+    <option name="height" value="1328" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="Scratches" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="iHappy" type="b2602c69:ProjectViewProjectNode" />
+              <item name="iHappy" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="iHappy" type="b2602c69:ProjectViewProjectNode" />
+              <item name="iHappy" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="meizi" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="iHappy" type="b2602c69:ProjectViewProjectNode" />
+              <item name="iHappy" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="QueryList" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="iHappy" type="b2602c69:ProjectViewProjectNode" />
+              <item name="iHappy" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="video" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="settings.editor.selected.configurable" value="preferences.fileTypes" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/meizi" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/video" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false">
+    <option name="remove_strategy" value="false" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="42a7f7c0-6ec3-4ed8-bc7b-eb7f13112532" name="Default" comment="" />
+      <created>1529720750767</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1529720750767</updated>
+      <workItem from="1529720752030" duration="14891000" />
+      <workItem from="1529820029617" duration="80823000" />
+      <workItem from="1535251487570" duration="16594000" />
+      <workItem from="1535269217445" duration="757000" />
+      <workItem from="1535270048913" duration="4932000" />
+      <workItem from="1535276756366" duration="5702000" />
+      <workItem from="1535288579771" duration="10838000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="134537000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="15" y="24" width="1527" height="1328" extended-state="0" />
+    <layout>
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23444663" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.php" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <option name="time" value="6" />
+    </breakpoint-manager>
+    <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/video/querydetail.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="22" column="24" lean-forward="false" selection-start-line="22" selection-start-column="24" selection-end-line="22" selection-end-column="24" />
+          <folding>
+            <marker date="1535286243000" expanded="true" signature="489:568" ph="select * fro... episode" />
+            <marker date="1535286243000" expanded="true" signature="1904:1950" ph="select * fro... video" />
+            <marker date="1535286243000" expanded="true" signature="4045:4405" ph="INSERT INTO episode... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/mysqli/mysqli.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="11190">
+          <caret line="746" column="22" lean-forward="false" selection-start-line="746" selection-start-column="10" selection-end-line="746" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/video/query.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="28" column="29" lean-forward="true" selection-start-line="28" selection-start-column="29" selection-end-line="28" selection-end-column="29" />
+          <folding>
+            <marker date="1535301128000" expanded="true" signature="762:819" ph="select * fro... video" />
+            <marker date="1535301128000" expanded="true" signature="1037:1097" ph="select * fro... video" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/video/pachong.php" />
+    <entry file="file://$PROJECT_DIR$/meizi/pachong.php" />
+    <entry file="file://$PROJECT_DIR$/meizi/000.html" />
+    <entry file="file://$PROJECT_DIR$/detailList.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="570">
+          <caret line="38" column="8" lean-forward="true" selection-start-line="38" selection-start-column="8" selection-end-line="38" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/meizi/querydetail.php" />
+    <entry file="file://$PROJECT_DIR$/QueryList/QueryList.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="21" column="19" lean-forward="true" selection-start-line="21" selection-start-column="19" selection-end-line="22" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/meizi/database.php" />
+    <entry file="file://$PROJECT_DIR$/video/queryplayer.php" />
+    <entry file="file://$PROJECT_DIR$/video/querydetail.php" />
+    <entry file="file://$PROJECT_DIR$/meizi/query.php" />
+    <entry file="file://$PROJECT_DIR$/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="870">
+          <caret line="58" column="0" lean-forward="false" selection-start-line="58" selection-start-column="0" selection-end-line="63" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/video/database.php" />
+    <entry file="file://$PROJECT_DIR$/video/query.php" />
+    <entry file="file://$PROJECT_DIR$/video/pachong.php" />
+    <entry file="file://$PROJECT_DIR$/detailList.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="30" column="25" lean-forward="false" selection-start-line="30" selection-start-column="21" selection-end-line="30" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dslist.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="840">
+          <caret line="56" column="26" lean-forward="false" selection-start-line="56" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/video/queryplayer.php" />
+    <entry file="file://$PROJECT_DIR$/video/querydetail.php" />
+    <entry file="file://$PROJECT_DIR$/video/pachong.php" />
+    <entry file="file://$PROJECT_DIR$/QueryList/src/QueryList.php" />
+    <entry file="file://$PROJECT_DIR$/phpQuery/phpQuery.php" />
+    <entry file="file://$PROJECT_DIR$/QL/QueryList.class.php" />
+    <entry file="file://$PROJECT_DIR$/QL/phpQuery.php" />
+    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/mssql/mssql.php" />
+    <entry file="file://$PROJECT_DIR$/xxx.php" />
+    <entry file="file://$PROJECT_DIR$/webcrawler.html" />
+    <entry file="file://$PROJECT_DIR$/xxx.html" />
+    <entry file="file://$PROJECT_DIR$/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="32" column="32" lean-forward="false" selection-start-line="32" selection-start-column="32" selection-end-line="32" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/video/database.php" />
+    <entry file="file://$PROJECT_DIR$/dslist.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="422">
+          <caret line="29" column="0" lean-forward="false" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/detailList.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/QueryList/QueryList.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="21" column="19" lean-forward="false" selection-start-line="21" selection-start-column="19" selection-end-line="22" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/meizi/database.php" />
+    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/mysqli/mysqli.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="11145">
+          <caret line="746" column="22" lean-forward="false" selection-start-line="746" selection-start-column="10" selection-end-line="746" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/standard/standard_0.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1077">
+          <caret line="470" column="9" lean-forward="false" selection-start-line="470" selection-start-column="9" selection-end-line="470" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/meizi/222.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1176">
+          <caret line="237" column="7" lean-forward="false" selection-start-line="237" selection-start-column="7" selection-end-line="237" selection-end-column="7" />
+          <folding>
+            <element signature="n#style#0;n#span#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="e#1861#1867#0" expanded="true" />
+            <element signature="e#7182#7188#0" expanded="true" />
+            <element signature="n#style#0;n#p#0;n#div#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/meizi/333.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1116">
+          <caret line="237" column="7" lean-forward="false" selection-start-line="237" selection-start-column="7" selection-end-line="237" selection-end-column="7" />
+          <folding>
+            <element signature="n#style#0;n#span#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="e#1864#1870#0" expanded="true" />
+            <element signature="e#7142#7148#0" expanded="true" />
+            <element signature="n#style#0;n#p#0;n#div#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/meizi/444.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="7" lean-forward="false" selection-start-line="5" selection-start-column="7" selection-end-line="5" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/meizi/111.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="70" lean-forward="false" selection-start-line="4" selection-start-column="64" selection-end-line="4" selection-end-column="70" />
+          <folding>
+            <element signature="n#style#0;n#span#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="e#1863#1869#0" expanded="true" />
+            <element signature="e#7140#7146#0" expanded="true" />
+            <element signature="n#style#0;n#p#0;n#div#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/meizi/000.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="314">
+          <caret line="21" column="13" lean-forward="false" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
+          <folding>
+            <element signature="n#style#0;n#span#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="e#1865#1871#0" expanded="true" />
+            <element signature="e#7139#7145#0" expanded="true" />
+            <element signature="n#style#0;n#p#0;n#div#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/video/queryplayer.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1535257191000" expanded="true" signature="505:549" ph="select * fro... episode" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/video/pachong.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="400">
+          <caret line="75" column="37" lean-forward="false" selection-start-line="75" selection-start-column="27" selection-end-line="75" selection-end-column="37" />
+          <folding>
+            <marker date="1535257413000" expanded="true" signature="657:798" ph="INSERT INTO video... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/meizi/pachong.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1041">
+          <caret line="109" column="63" lean-forward="false" selection-start-line="109" selection-start-column="41" selection-end-line="109" selection-end-column="63" />
+          <folding>
+            <element signature="e#6#87#0#PHP" expanded="true" />
+            <marker date="1535298533000" expanded="true" signature="550:605" ph="INSERT INTO meizi... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/meizi/querydetail.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="20" column="0" lean-forward="true" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+          <folding>
+            <marker date="1535299699000" expanded="true" signature="541:607" ph="select * fro... picture" />
+            <marker date="1535299699000" expanded="true" signature="1299:1345" ph="select * fro... meizi" />
+            <marker date="1535299699000" expanded="true" signature="2610:2875" ph="INSERT INTO picture... " />
+            <marker date="1535299699000" expanded="true" signature="3964:4229" ph="INSERT INTO picture... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jsonresult.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="26" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/meizi/query.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="13" column="0" lean-forward="true" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+          <folding>
+            <marker date="1535300045000" expanded="true" signature="457:514" ph="select * fro... meizi" />
+            <marker date="1535300045000" expanded="true" signature="713:752" ph="select * fro... meizi" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/video/querydetail.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="10" selection-end-column="33" />
+          <folding>
+            <marker date="1535286243000" expanded="true" signature="489:568" ph="select * fro... episode" />
+            <marker date="1535286243000" expanded="true" signature="1904:1950" ph="select * fro... video" />
+            <marker date="1535286243000" expanded="true" signature="4045:4405" ph="INSERT INTO episode... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/video/query.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="525">
+          <caret line="40" column="0" lean-forward="true" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
+          <folding>
+            <marker date="1535301128000" expanded="true" signature="762:819" ph="select * fro... video" />
+            <marker date="1535301128000" expanded="true" signature="1037:1097" ph="select * fro... video" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

@@ -17,6 +17,7 @@ pod 'IQKeyboardManager', '~> 3.3.2'
 #pod 'MWPhotoBrowser', '~> 2.1.2'
 pod 'YYModel', '~> 1.0.4'
 pod 'JSONModel'
+pod 'MJExtension'
 pod 'WMPageController'
 #pod 'ZFPlayer', '~> 2.1.3'
 

@@ -11,5 +11,6 @@
 #define XDSVenderHeader_h
 
 #import "WMPageController.h"
+#import <MJExtension/MJExtension.h>
 
 #endif /* XDSVenderHeader_h */

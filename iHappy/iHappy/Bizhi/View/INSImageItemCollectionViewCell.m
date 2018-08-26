@@ -61,9 +61,9 @@ NSString *const kImageItemCollectionViewCellIdentifier = @"INSImageItemCollectio
     if (self.imageModel == nil) {
         return;
     }
-    NSURL *url = [NSURL URLWithString:_imageModel.href];
+    NSURL *url = [NSURL URLWithString:_imageModel.image_src];
     [_bgImageView sd_setImageWithURL:url placeholderImage:nil options:SDWebImageTransformAnimatedImage];
-    _titleLabel.text = _imageModel.title;
+    _titleLabel.text = _imageModel.name;
 }
 
 @end

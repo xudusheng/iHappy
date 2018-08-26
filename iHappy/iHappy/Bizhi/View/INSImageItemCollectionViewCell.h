@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "YSEImageModel.h"
+#import "XDSMeituModel.h"
 
 UIKIT_EXTERN NSString *const kImageItemCollectionViewCellIdentifier;
 
@@ -16,6 +16,6 @@ UIKIT_EXTERN NSString *const kImageItemCollectionViewCellIdentifier;
 @property (strong, nonatomic) UIImageView *bgImageView;
 @property (strong, nonatomic) UILabel *titleLabel;
 
-@property (strong, nonatomic) YSEImageModel *imageModel;
+@property (strong, nonatomic) XDSMeituModel *imageModel;
 
 @end

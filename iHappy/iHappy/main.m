@@ -33,3 +33,8 @@ int main(int argc, char * argv[]) {
 //- (void)ocMainTabBarControllerDataInit{
 //
 //}
+
+
+
+//sudo apachectl start
+//

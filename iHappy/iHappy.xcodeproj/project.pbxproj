@@ -127,6 +127,7 @@
 		A0D46B7B1DE0173500637681 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A0D46B7A1DE0173500637681 /* main.m */; };
 		A0D46B7E1DE0173500637681 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A0D46B7D1DE0173500637681 /* AppDelegate.m */; };
 		A0D46B861DE0173500637681 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A0D46B851DE0173500637681 /* Assets.xcassets */; };
+		A208A6CD2132B39600900DFC /* XDSMeituModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A208A6CC2132B39600900DFC /* XDSMeituModel.m */; };
 		A227A84A2130641300568BCB /* SplashLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = A227A8462130641300568BCB /* SplashLogo.png */; };
 		A227A84B2130641300568BCB /* SplashNormal.png in Resources */ = {isa = PBXBuildFile; fileRef = A227A8472130641300568BCB /* SplashNormal.png */; };
 		A227A84C2130641300568BCB /* SplashSmall.png in Resources */ = {isa = PBXBuildFile; fileRef = A227A8482130641300568BCB /* SplashSmall.png */; };
@@ -135,7 +136,7 @@
 		A24FCBE421319AB2001A05DB /* XDSFullPlayerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A24FCBE321319AB2001A05DB /* XDSFullPlayerVC.m */; };
 		A24FCBE721319BF0001A05DB /* UIViewController+XDSMediaBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = A24FCBE621319BF0001A05DB /* UIViewController+XDSMediaBrowser.m */; };
 		E28B84A8A36AAB50D4A6C2B8 /* Pods_iHappy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CB566B05B747CCEC832F7BB /* Pods_iHappy.framework */; };
-		FC0B7C6E1EC751C90022E504 /* IHPBiZhiListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC0B7C6D1EC751C90022E504 /* IHPBiZhiListViewController.m */; };
+		FC0B7C6E1EC751C90022E504 /* IHPMeituListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC0B7C6D1EC751C90022E504 /* IHPMeituListViewController.m */; };
 		FC0B7C721EC759880022E504 /* YSERequestFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = FC0B7C711EC759880022E504 /* YSERequestFetcher.m */; };
 		FC0B7C781EC75C290022E504 /* YSEClassifyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FC0B7C771EC75C290022E504 /* YSEClassifyModel.m */; };
 		FC0B7C7B1EC7FD5A0022E504 /* YSECategoryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FC0B7C7A1EC7FD5A0022E504 /* YSECategoryModel.m */; };
@@ -392,6 +393,8 @@
 		A0D46B7D1DE0173500637681 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		A0D46B851DE0173500637681 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A0D46B8A1DE0173500637681 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A208A6CB2132B39600900DFC /* XDSMeituModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XDSMeituModel.h; sourceTree = "<group>"; };
+		A208A6CC2132B39600900DFC /* XDSMeituModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XDSMeituModel.m; sourceTree = "<group>"; };
 		A227A8462130641300568BCB /* SplashLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SplashLogo.png; sourceTree = "<group>"; };
 		A227A8472130641300568BCB /* SplashNormal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SplashNormal.png; sourceTree = "<group>"; };
 		A227A8482130641300568BCB /* SplashSmall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SplashSmall.png; sourceTree = "<group>"; };
@@ -402,8 +405,8 @@
 		A24FCBE521319BF0001A05DB /* UIViewController+XDSMediaBrowser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+XDSMediaBrowser.h"; sourceTree = "<group>"; };
 		A24FCBE621319BF0001A05DB /* UIViewController+XDSMediaBrowser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+XDSMediaBrowser.m"; sourceTree = "<group>"; };
 		DDF28F2EE953D3A78F924489 /* Pods-iHappy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iHappy.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iHappy/Pods-iHappy.debug.xcconfig"; sourceTree = "<group>"; };
-		FC0B7C6C1EC751C90022E504 /* IHPBiZhiListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IHPBiZhiListViewController.h; sourceTree = "<group>"; };
-		FC0B7C6D1EC751C90022E504 /* IHPBiZhiListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IHPBiZhiListViewController.m; sourceTree = "<group>"; };
+		FC0B7C6C1EC751C90022E504 /* IHPMeituListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IHPMeituListViewController.h; sourceTree = "<group>"; };
+		FC0B7C6D1EC751C90022E504 /* IHPMeituListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IHPMeituListViewController.m; sourceTree = "<group>"; };
 		FC0B7C701EC759880022E504 /* YSERequestFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YSERequestFetcher.h; sourceTree = "<group>"; };
 		FC0B7C711EC759880022E504 /* YSERequestFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YSERequestFetcher.m; sourceTree = "<group>"; };
 		FC0B7C761EC75C290022E504 /* YSEClassifyModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YSEClassifyModel.h; sourceTree = "<group>"; };
@@ -1092,8 +1095,8 @@
 				FC0B7C731EC75C190022E504 /* Model */,
 				FC0B7C741EC75C190022E504 /* View */,
 				18A6FAFF2130E1B400709EC9 /* ViewController */,
-				FC0B7C6C1EC751C90022E504 /* IHPBiZhiListViewController.h */,
-				FC0B7C6D1EC751C90022E504 /* IHPBiZhiListViewController.m */,
+				FC0B7C6C1EC751C90022E504 /* IHPMeituListViewController.h */,
+				FC0B7C6D1EC751C90022E504 /* IHPMeituListViewController.m */,
 			);
 			path = Bizhi;
 			sourceTree = "<group>";
@@ -1118,6 +1121,8 @@
 				FC0B7C7D1EC7FF830022E504 /* YSEColorModel.m */,
 				FC0B7C7F1EC801B50022E504 /* YSEImageModel.h */,
 				FC0B7C801EC801B50022E504 /* YSEImageModel.m */,
+				A208A6CB2132B39600900DFC /* XDSMeituModel.h */,
+				A208A6CC2132B39600900DFC /* XDSMeituModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1416,6 +1421,7 @@
 				"${BUILT_PRODUCTS_DIR}/JDStatusBarNotification/JDStatusBarNotification.framework",
 				"${BUILT_PRODUCTS_DIR}/JSONKit-NoWarning/JSONKit_NoWarning.framework",
 				"${BUILT_PRODUCTS_DIR}/JSONModel/JSONModel.framework",
+				"${BUILT_PRODUCTS_DIR}/MJExtension/MJExtension.framework",
 				"${BUILT_PRODUCTS_DIR}/MJRefresh/MJRefresh.framework",
 				"${BUILT_PRODUCTS_DIR}/Masonry/Masonry.framework",
 				"${BUILT_PRODUCTS_DIR}/Reachability/Reachability.framework",
@@ -1436,6 +1442,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JDStatusBarNotification.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JSONKit_NoWarning.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JSONModel.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJExtension.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJRefresh.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Masonry.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reachability.framework",
@@ -1478,6 +1485,7 @@
 				18A6FA12212F983E00709EC9 /* IHYHomsSearchViewController.m in Sources */,
 				FCA032431F8DD7DE00600581 /* PYSearchConst.m in Sources */,
 				092CAF0F1DE28D23008127DA /* UIViewController+HideNavigationBar.m in Sources */,
+				A208A6CD2132B39600900DFC /* XDSMeituModel.m in Sources */,
 				092CAEFD1DE28620008127DA /* IHYMoviePlayButtonModel.m in Sources */,
 				18A6FA8C2130031600709EC9 /* NLEBNFParserState.m in Sources */,
 				FC8B89AA1EBC8073000AD27A /* IHPPlayerViewController.m in Sources */,
@@ -1554,7 +1562,7 @@
 				18A6FA962130031600709EC9 /* NLEBNFTokenizerFactory.m in Sources */,
 				18A6FAEC2130DF3800709EC9 /* XDSGestureDetectingImageView.m in Sources */,
 				A05EB9071DE02D6700148A5B /* UIColor+Hex.m in Sources */,
-				FC0B7C6E1EC751C90022E504 /* IHPBiZhiListViewController.m in Sources */,
+				FC0B7C6E1EC751C90022E504 /* IHPMeituListViewController.m in Sources */,
 				18A6FA942130031600709EC9 /* NLEBNFSequence.m in Sources */,
 				A0D46B7B1DE0173500637681 /* main.m in Sources */,
 				18A6FA922130031600709EC9 /* NLEBNFIndex.m in Sources */,

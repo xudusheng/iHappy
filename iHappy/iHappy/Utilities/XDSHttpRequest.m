@@ -28,7 +28,7 @@ NSString *const key = @"huidaibao";
                  showHUD:(BOOL)showHUD
                  HUDText:(NSString *)HUDText
            showFailedHUD:(BOOL)showFailedHUD
-                 success:(void(^)(BOOL success, NSDictionary * successResult))success
+                 success:(void(^)(BOOL success,  id successResult))success
                   failed:(void(^)(NSString * errorDescription))failed{
     if (![self isWebAvailible]) {
         failed(kConnectWebFailed);
@@ -46,9 +46,7 @@ NSString *const key = @"huidaibao";
 
     AFHTTPSessionManager * manager = [AFHTTPSessionManager manager];
     manager.responseSerializer = [AFJSONResponseSerializer serializer];//使用这个将得到的是JSON
-
-    [manager.requestSerializer setValue:@"40623ab568c9f719af56d75a499926b0" forHTTPHeaderField:@"X-Bmob-Application-Id"];
-    [manager.requestSerializer setValue:@"b02905ffe9915574dc16200df988aa80" forHTTPHeaderField:@"X-Bmob-REST-API-Key"];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript", @"text/html", nil];
     
     self.sessionDataTask = [manager GET:urlString parameters:reqParam?reqParam:@{}
                                                       progress:^(NSProgress * _Nonnull downloadProgress) {
@@ -87,7 +85,9 @@ NSString *const key = @"huidaibao";
                                                               errorDetail = kLoadFailed;
                                                           }
                                                           
-                                                          failed(errorDetail);
+                                                          if (failed) {
+                                                              failed(errorDetail);
+                                                          }
                                                           
                                                       }];
     

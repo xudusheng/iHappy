@@ -1,21 +1,23 @@
 //
-//  IHPBiZhiListViewController.m
+//  IHPMeituListViewController.m
 //  iHappy
 //
 //  Created by dusheng.xu on 2017/5/13.
 //  Copyright © 2017年 上海优蜜科技有限公司. All rights reserved.
 //
 
-#import "IHPBiZhiListViewController.h"
+#import "IHPMeituListViewController.h"
 #import "YSERequestFetcher.h"
 #import "INSImageItemCollectionViewCell.h"
 #import "XDSMediaBrowserVC.h"
-@interface IHPBiZhiListViewController ()<
+
+#import "XDSMeituModel.h"
+@interface IHPMeituListViewController ()<
 UICollectionViewDelegate,
 UICollectionViewDataSource,
 UICollectionViewDelegateFlowLayout
 >
-@property (strong, nonatomic) NSMutableArray<YSEImageModel *> * imageList;
+@property (strong, nonatomic) NSMutableArray<XDSMeituModel *> * meituList;
 @property (strong, nonatomic) UICollectionView * collectionView;
 @property (copy, nonatomic) NSString * nextPageUrl;
 
@@ -23,10 +25,10 @@ UICollectionViewDelegateFlowLayout
 
 @end
 
-@implementation IHPBiZhiListViewController
-CGFloat const kBiZhiCollectionViewMinimumLineSpacing = 5.0;
-CGFloat const kBiZhiCollectionViewMinimumInteritemSpacing = 5.0;
-CGFloat const kBiZhiCollectionViewCellsGap = 5.0;
+@implementation IHPMeituListViewController
+CGFloat const kBiZhiCollectionViewMinimumLineSpacing = 10.0;
+CGFloat const kBiZhiCollectionViewMinimumInteritemSpacing = 10.0;
+CGFloat const kBiZhiCollectionViewCellsGap =10.0;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -76,43 +78,74 @@ CGFloat const kBiZhiCollectionViewCellsGap = 5.0;
 #pragma mark - 网络请求
 #pragma mark - 网络请求
 - (void)headerRequest{
-    [self fetchImageList:YES];
     [_collectionView.mj_footer resetNoMoreData];
+    [self fetchImageList:YES];
 }
 - (void)footerRequest{
-    if (_nextPageUrl.length) {
-        [self fetchImageList:NO];
-    }else{
-        [_collectionView.mj_footer endRefreshing];
-    }
+    [self fetchImageList:NO];
 }
 
 - (void)fetchImageList:(BOOL)isTop{
     
+    NSString *url = @"http://localhost/iHappy/meizi/query";
+    NSInteger size = 1000;
+    NSInteger page = self.meituList.count/size;
+    NSDictionary *params = @{
+                             @"size":@(size),
+                             @"page":@(page),
+                             };
     __weak typeof(self)weakSelf = self;
-    NSString *url = [_rootUrl stringByAppendingString:isTop?self.firstPageUrl:self.nextPageUrl];
-    [[[YSERequestFetcher alloc] init] p_fetchHomePage:url complete:^(YSERequestFetcher *requestFetcher, NSDictionary *responseObj, NSError *error) {
-        [weakSelf.collectionView.mj_header endRefreshing];
-        [weakSelf.collectionView.mj_footer endRefreshing];
-        
-        if (responseObj[@"error"] != nil || responseObj == nil) {
-            return;
-        }
-        NSArray *fetchedImageList = responseObj[kBiZhiImageListKey];
-        
-        isTop?[self.imageList removeAllObjects]:NULL;
-        [self.imageList addObjectsFromArray:fetchedImageList];
-        [self.collectionView.collectionViewLayout invalidateLayout];
-        [self.collectionView reloadData];
-        [self saveNextPageInfo:responseObj];
-        
-        self.mediaBrowserVC.imageModelArray = self.imageList;
+    [[[XDSHttpRequest alloc] init] GETWithURLString:url
+                                           reqParam:params
+                                      hudController:self
+                                            showHUD:NO
+                                            HUDText:nil
+                                      showFailedHUD:YES
+                                            success:^(BOOL success, NSDictionary *successResult) {
+                                                
+                                                [weakSelf.collectionView.mj_header endRefreshing];
+                                                [weakSelf.collectionView.mj_footer endRefreshing];
+                                                
+                                                NSArray *meiziList = [XDSMeituModel mj_objectArrayWithKeyValuesArray:successResult];
+                                                isTop?[self.meituList removeAllObjects]:NULL;
+                                                [self.meituList addObjectsFromArray:meiziList];
+                                                [self.collectionView.collectionViewLayout invalidateLayout];
+                                                [self.collectionView reloadData];
+                                                
 
-    }];
-
+                                                
+                                            } failed:^(NSString *errorDescription) {
+                                                [weakSelf.collectionView.mj_header endRefreshing];
+                                                [weakSelf.collectionView.mj_footer endRefreshing];
+                                            }];
 }
 
-//TODO:保存下一页的链接
+
+- (void)fetchDetailImageListWithMd5key:(NSString *)md5key{
+    
+    NSString *url = @"http://localhost/iHappy/meizi/querydetail";
+    NSDictionary *params = @{
+                             @"md5key":md5key?md5key:@"",
+                             };
+    __weak typeof(self)weakSelf = self;
+    [[[XDSHttpRequest alloc] init] GETWithURLString:url
+                                           reqParam:params
+                                      hudController:self
+                                            showHUD:NO
+                                            HUDText:nil
+                                      showFailedHUD:YES
+                                            success:^(BOOL success, NSDictionary *successResult) {
+                                                NSArray *imageArray = [XDSDetailImageModel mj_objectArrayWithKeyValuesArray:successResult];
+                                                if (imageArray.count) {
+                                                    [weakSelf showMediaBrowserView:imageArray];
+                                                }
+                                            } failed:nil];
+    
+    
+    
+}
+
+//TODO:保存下一页的链接 
 - (void)saveNextPageInfo:(NSDictionary *)result{
     
     NSString *nextPageHref = result[kBiZhiNextPageHrefKey];
@@ -133,11 +166,11 @@ CGFloat const kBiZhiCollectionViewCellsGap = 5.0;
     return 1;
 }
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    return self.imageList.count;
+    return self.meituList.count;
 }
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     INSImageItemCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kImageItemCollectionViewCellIdentifier forIndexPath:indexPath];
-    YSEImageModel *model = _imageList[indexPath.row];
+    XDSMeituModel *model = _meituList[indexPath.row];
     cell.imageModel = model;
     [cell p_loadCell];
     return cell;
@@ -145,16 +178,16 @@ CGFloat const kBiZhiCollectionViewCellsGap = 5.0;
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     [collectionView deselectItemAtIndexPath:indexPath animated:YES];
-//    YSEImageModel *selectedModel = _imageList[indexPath.row];
-    [self showPhotoBrowserWithCurrentPhotoIndex:indexPath.row];
+    XDSMeituModel *model = _meituList[indexPath.row];
+    [self fetchDetailImageListWithMd5key:model.md5key];
+    
 
 }
 
 //TODO:UICollectionViewDelegateFlowLayout
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
-    YSEImageModel *model = _imageList[indexPath.row];
-    CGFloat cellWidth  = (DEVIECE_SCREEN_WIDTH - 4*kBiZhiCollectionViewCellsGap)/3;
-    CGFloat cellHeight = [self getCellHeightWithImageModel:model width:cellWidth];
+    CGFloat cellWidth  = (DEVIECE_SCREEN_WIDTH - 3*kBiZhiCollectionViewCellsGap)/2;
+    CGFloat cellHeight = cellWidth;
     return CGSizeMake(cellWidth, cellHeight);
 }
 
@@ -164,38 +197,31 @@ CGFloat const kBiZhiCollectionViewCellsGap = 5.0;
 
 #pragma mark - 点击事件处理
 //TODO: showPhotoBrowser
-- (void)showPhotoBrowserWithCurrentPhotoIndex:(NSInteger)currentPhotoIndex{
 
-    [self createMediaBrowserView];
-    [self presentViewController:self.mediaBrowserVC animated:NO completion:nil];
-    
-}
-- (void)createMediaBrowserView {
+- (void)showMediaBrowserView:(NSArray <XDSDetailImageModel*> *)imageArray {
     NSMutableArray *mediaModelArray = [NSMutableArray arrayWithCapacity:0];
-    for (YSEImageModel *mediaModel in _imageList) {
+    for (XDSDetailImageModel *mediaModel in imageArray) {
         XDSMediaModel *videoModel = [[XDSMediaModel alloc] init];
-        videoModel.mediaURL = [NSURL URLWithString:mediaModel.href];
+        videoModel.mediaURL = [NSURL URLWithString:mediaModel.image_src];
         videoModel.mediaType = XDSMediaTypeImage;
 //        videoModel.placeholderImage = [UIImage placeholderImage:frame];
         [mediaModelArray addObject:videoModel];
     }
     
-    XDSMediaBrowserVC *mediaBrowserVC = [[XDSMediaBrowserVC alloc] initWithMediaModelArray:mediaModelArray];
+    XDSMediaBrowserVC *mediaBrowserVC = [[XDSMediaBrowserVC alloc] init];
+    mediaBrowserVC.mediaModelArray = mediaModelArray;
     self.mediaBrowserVC = mediaBrowserVC;
+    [self presentViewController:mediaBrowserVC animated:YES completion:nil];
 }
 
 #pragma mark - 其他私有方法
-//TODO:getCellHeight
-- (CGFloat)getCellHeightWithImageModel:(YSEImageModel *)imageModel width:(CGFloat)width{
-    CGFloat imageHeight = imageModel.height.floatValue;
-    CGFloat imageWidth = imageModel.width.floatValue;
-    return (imageHeight * width / imageWidth);
-}
 
 #pragma mark - 内存管理相关
 - (void)biZhiListViewControllerDataInit{
-    self.imageList = [NSMutableArray arrayWithCapacity:0];
+    self.meituList = [NSMutableArray arrayWithCapacity:0];
 }
 
-
 @end
+
+
+

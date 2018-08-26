@@ -100,7 +100,11 @@
     }
     return self;
 }
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    [self.searchBar becomeFirstResponder];
 
+}
 - (void)awakeFromNib
 {
     [super awakeFromNib];
@@ -145,7 +149,7 @@
 {
     [super viewDidAppear:animated];
     
-    [self.searchBar becomeFirstResponder];
+//    [self.searchBar becomeFirstResponder];
 }
 
 - (void)viewWillAppear:(BOOL)animated

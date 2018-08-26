@@ -1,5 +1,5 @@
 //
-//  IHPBiZhiListViewController.h
+//  IHPMeituListViewController
 //  iHappy
 //
 //  Created by dusheng.xu on 2017/5/13.
@@ -8,7 +8,7 @@
 
 #import "XDSRootRequestViewController.h"
 #import "YSEClassifyModel.h"
-@interface IHPBiZhiListViewController : XDSRootRequestViewController
+@interface IHPMeituListViewController : XDSRootRequestViewController
 
 @property (strong, nonatomic) YSEClassifyModel *classifyModel;//第一页、当前被选中的分类model
 @property (copy, nonatomic) NSString * rootUrl;

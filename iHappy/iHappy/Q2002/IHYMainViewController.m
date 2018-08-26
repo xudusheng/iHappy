@@ -11,7 +11,7 @@
 #import "IHPMenuViewController.h"
 #import "AppDelegate.h"
 #import "IHYNewsListViewController.h"
-#import "IHPBiZhiListViewController.h"
+#import "IHPMeituListViewController.h"
 
 #import "IHYHomsSearchViewController.h"
 @interface IHYMainViewController ()<UISearchBarDelegate>
@@ -138,7 +138,7 @@
         newsVC.firstPageUrl = model.url;
         return newsVC;
     }else if(_menuModel.type == IHPMenuTypeBizhi){
-        IHPBiZhiListViewController * bizhiVC = [[IHPBiZhiListViewController alloc]init];
+        IHPMeituListViewController * bizhiVC = [[IHPMeituListViewController alloc]init];
         bizhiVC.rootUrl = _menuModel.rooturl;
         bizhiVC.firstPageUrl = model.url;
         return bizhiVC;
