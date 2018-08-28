@@ -21,7 +21,7 @@
 @interface XDSDetailImageModel : NSObject
 
 @property (copy, nonatomic) NSString *md5key;
-@property (copy, nonatomic) NSString *ttle;
+@property (copy, nonatomic) NSString *title;
 @property (copy, nonatomic) NSString *image_src;
 
 @end

@@ -52,7 +52,7 @@ NSString *const key = @"huidaibao";
                                                       progress:^(NSProgress * _Nonnull downloadProgress) {
                                                           
                                                       } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-                                                          NSLog(@" ============ %@", responseObject);
+//                                                          NSLog(@" ============ %@", responseObject);
                                                           [XDSUtilities hideHud:hudController.view];
                                                           id result = responseObject;
                                                           if (result && [result isKindOfClass:[NSDictionary class]]) {

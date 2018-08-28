@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "XDSMeituModel.h"
 
+#define XDS_IMAGE_ITEM_TITLE_LABEL_HEIGHT 35
 UIKIT_EXTERN NSString *const kImageItemCollectionViewCellIdentifier;
 
 @interface INSImageItemCollectionViewCell : IHPRootCollectionCell
