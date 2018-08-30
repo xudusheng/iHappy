@@ -23,15 +23,12 @@ UICollectionViewDelegateFlowLayout
 
 @property (strong, nonatomic) XDSMediaBrowserVC *mediaBrowserVC;
 
-@property (assign, nonatomic) NSInteger index;
-
-
 @end
 
 @implementation IHPMeituListViewController
-CGFloat const kBiZhiCollectionViewMinimumLineSpacing = 10.f;
-CGFloat const kBiZhiCollectionViewMinimumInteritemSpacing = 10.f;
-CGFloat const kBiZhiCollectionViewCellsGap = 10.0;
+CGFloat const kBiZhiCollectionViewMinimumLineSpacing = 10.0;
+CGFloat const kBiZhiCollectionViewMinimumInteritemSpacing = 10.0;
+CGFloat const kBiZhiCollectionViewCellsGap =10.0;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -91,7 +88,7 @@ CGFloat const kBiZhiCollectionViewCellsGap = 10.0;
 - (void)fetchImageList:(BOOL)isTop{
     
     NSString *url = @"http://localhost/iHappy/meizi/query";
-    NSInteger size = 20;
+    NSInteger size = 1000;
     NSInteger page = self.meituList.count/size;
     NSDictionary *params = @{
                              @"size":@(size),
@@ -114,6 +111,7 @@ CGFloat const kBiZhiCollectionViewCellsGap = 10.0;
                                                 [self.meituList addObjectsFromArray:meiziList];
                                                 [self.collectionView.collectionViewLayout invalidateLayout];
                                                 [self.collectionView reloadData];
+                                                
 
                                                 
                                             } failed:^(NSString *errorDescription) {
@@ -122,42 +120,27 @@ CGFloat const kBiZhiCollectionViewCellsGap = 10.0;
                                             }];
 }
 
-- (void)fetchAllDetailImages {
-    if (self.index >= _meituList.count) {
-        return;
-    }
-    NSLog(@"正在请求第 %ld 条数据", self.index + 1);
-    XDSMeituModel *model = _meituList[self.index];
-    self.index ++;
-    @autoreleasepool {
-        [self fetchDetailImageListWithMd5key:model.md5key];
-    }
-}
 
 - (void)fetchDetailImageListWithMd5key:(NSString *)md5key{
     
+    NSString *url = @"http://localhost/iHappy/meizi/querydetail";
+    NSDictionary *params = @{
+                             @"md5key":md5key?md5key:@"",
+                             };
+    __weak typeof(self)weakSelf = self;
+    [[[XDSHttpRequest alloc] init] GETWithURLString:url
+                                           reqParam:params
+                                      hudController:self
+                                            showHUD:NO
+                                            HUDText:nil
+                                      showFailedHUD:YES
+                                            success:^(BOOL success, NSDictionary *successResult) {
+                                                NSArray *imageArray = [XDSDetailImageModel mj_objectArrayWithKeyValuesArray:successResult];
+                                                if (imageArray.count) {
+                                                    [weakSelf showMediaBrowserView:imageArray];
+                                                }
+                                            } failed:nil];
     
-        NSString *url = @"http://localhost/iHappy/meizi/querydetail";
-        NSDictionary *params = @{
-                                 @"md5key":md5key?md5key:@"",
-                                 };
-        __weak typeof(self)weakSelf = self;
-        [[[XDSHttpRequest alloc] init] GETWithURLString:url
-                                               reqParam:params
-                                          hudController:self
-                                                showHUD:NO
-                                                HUDText:nil
-                                          showFailedHUD:YES
-                                                success:^(BOOL success, NSDictionary *successResult) {
-                                                    NSArray *imageArray = [XDSDetailImageModel mj_objectArrayWithKeyValuesArray:successResult];
-                                                    if (imageArray.count) {
-                                                        [weakSelf showMediaBrowserView:imageArray];
-                                                    }else {
-                                                        [XDSUtilities showHud:@"啊哦，找到对应的图片~" rootView:self.view hideAfter:1.5];
-                                                    }
-//                                                    [weakSelf fetchAllDetailImages];
-                                                    
-                                                } failed:nil];
     
     
 }
@@ -197,13 +180,14 @@ CGFloat const kBiZhiCollectionViewCellsGap = 10.0;
     [collectionView deselectItemAtIndexPath:indexPath animated:YES];
     XDSMeituModel *model = _meituList[indexPath.row];
     [self fetchDetailImageListWithMd5key:model.md5key];
+    
 
 }
 
 //TODO:UICollectionViewDelegateFlowLayout
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
     CGFloat cellWidth  = (DEVIECE_SCREEN_WIDTH - 3*kBiZhiCollectionViewCellsGap)/2;
-    CGFloat cellHeight = cellWidth + XDS_IMAGE_ITEM_TITLE_LABEL_HEIGHT;
+    CGFloat cellHeight = cellWidth;
     return CGSizeMake(cellWidth, cellHeight);
 }
 
