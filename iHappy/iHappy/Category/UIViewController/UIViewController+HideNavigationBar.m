@@ -35,9 +35,9 @@ void hideNavigationBar_swizzleMethod(Class class, SEL originalSelector, SEL swiz
 }
 
 + (void)load{
-    hideNavigationBar_swizzleMethod(self,
-                  @selector(viewWillAppear:),
-                  @selector(hideNavigationBar_ViewWillAppear:));
+//    hideNavigationBar_swizzleMethod(self,
+//                  @selector(viewWillAppear:),
+//                  @selector(hideNavigationBar_ViewWillAppear:));
 }
 
 - (void)hideNavigationBar_ViewWillAppear:(BOOL)animated{
@@ -58,6 +58,25 @@ char * hidesTopBarWhenPushedKey = "hidesTopBarWhenPushed";
 - (BOOL)hidesTopBarWhenPushed{
     id hidesTopBarWhenPushed = objc_getAssociatedObject(self, hidesTopBarWhenPushedKey);
     return [hidesTopBarWhenPushed boolValue];
+}
+
+
+///获取安全区顶部高度
+- (CGFloat)getSafeAreaTop{
+    if (@available(iOS 11.0, *)) {
+        return self.view.safeAreaInsets.top;//44
+    } else {
+        return 0.0;
+    }
+}
+
+///获取安全区底部高度
+- (CGFloat)getSafeAreaBottom{
+    if (@available(iOS 11.0, *)) {
+        return self.view.safeAreaInsets.bottom;//34
+    } else {
+        return 0.0;
+    }
 }
 
 @end

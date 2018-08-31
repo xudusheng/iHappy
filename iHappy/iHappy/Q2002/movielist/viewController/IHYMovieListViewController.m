@@ -39,7 +39,7 @@ NSString * const MovieListViewController_movieCellIdentifier = @"IHPMovieCell";
     layout.scrollDirection = UICollectionViewScrollDirectionVertical;
     //设置每个item的大小
     CGFloat itemMargin = 10;
-    CGFloat width = (DEVIECE_SCREEN_WIDTH - itemMargin * 4)/3;
+    CGFloat width = (DEVIECE_SCREEN_WIDTH - itemMargin * 4)/3-0.1;
     layout.itemSize = CGSizeMake(width, width*4/3);
     layout.sectionInset = UIEdgeInsetsMake(itemMargin, itemMargin, itemMargin, itemMargin);
     //创建collectionView 通过一个布局策略layout来创建

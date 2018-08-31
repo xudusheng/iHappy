@@ -28,7 +28,7 @@ UICollectionViewDelegateFlowLayout
 @implementation IHPMeituListViewController
 CGFloat const kBiZhiCollectionViewMinimumLineSpacing = 10.0;
 CGFloat const kBiZhiCollectionViewMinimumInteritemSpacing = 10.0;
-CGFloat const kBiZhiCollectionViewCellsGap =10.0;
+CGFloat const kBiZhiCollectionViewCellsGap = 10.0;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -187,7 +187,7 @@ CGFloat const kBiZhiCollectionViewCellsGap =10.0;
 //TODO:UICollectionViewDelegateFlowLayout
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
     CGFloat cellWidth  = (DEVIECE_SCREEN_WIDTH - 3*kBiZhiCollectionViewCellsGap)/2;
-    CGFloat cellHeight = cellWidth;
+    CGFloat cellHeight = cellWidth+25;
     return CGSizeMake(cellWidth, cellHeight);
 }
 

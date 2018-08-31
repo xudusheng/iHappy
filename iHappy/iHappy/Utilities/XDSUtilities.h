@@ -118,4 +118,13 @@ typedef NS_ENUM(NSInteger, CalculateType){
 + (CGFloat)heightForString:(NSString *)value
                 limitWidth:(CGFloat)limitWidth
                       font:(UIFont *)font;
+
+
+#pragma mark - 适配相关
+///获取window安全区底部高度
+- (CGFloat)getWindowSafeAreaBottom;
+
+///获取window安全区顶部高度
+- (CGFloat)getWindowSafeAreaTo;
+
 @end

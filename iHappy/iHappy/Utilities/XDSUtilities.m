@@ -532,4 +532,21 @@
     CGSize size = [value boundingRectWithSize:infoSize options:NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading attributes:dic context:nil].size;
     return size.height;
 }
+
+#pragma mark - 适配相关
+///获取window安全区底部高度
+- (CGFloat)getWindowSafeAreaBottom{
+    if (@available(iOS 11.0, *)) {
+        return [UIApplication sharedApplication].delegate.window.safeAreaInsets.bottom;//34
+    }
+    return 0.0;
+}
+
+///获取window安全区顶部高度
+- (CGFloat)getWindowSafeAreaTop{
+    if (@available(iOS 11.0, *)) {
+        return [UIApplication sharedApplication].delegate.window.safeAreaInsets.top;//44
+    }
+    return 0.0;
+}
 @end

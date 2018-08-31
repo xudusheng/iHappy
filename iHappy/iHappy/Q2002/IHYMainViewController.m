@@ -24,7 +24,10 @@
 @implementation IHYMainViewController
 
 - (void)viewDidLoad {
+    self.menuViewStyle = WMMenuViewStyleLine;
+
     [super viewDidLoad];
+    
     [self mainViewControllerDataInit];
     [self createMainViewControllerUI];
     [self reloadData];
@@ -71,31 +74,6 @@
     searchBar.searchTextPositionAdjustment = UIOffsetMake(10, 0);
     searchBar.backgroundColor = [UIColor clearColor];
     searchBar.placeholder = @"输入搜索关键字";
-    //    [searchBar setImage:[UIImage imageNamed:@"dbarcode"]forSearchBarIcon:UISearchBarIconBookmark state:UIControlStateNormal];
-    //    [searchBar setSearchFieldBackgroundImage:[UIImage imageNamed:@"Input_box"] forState:UIControlStateNormal];
-    
-    //光标属性
-    //    searchBar.tintColor = [UIColor bsnlcolor_999999];
-    
-    //    UITextField *searchField = [searchBar valueForKeyPath:@"_searchField"];
-    //    searchField.textColor = [UIColor bsnlcolor_999999];
-    //    searchField.backgroundColor = [UIColor bsnlcolor_F5F5F5];
-    //    searchField.font = FONT_SIZE(12);
-    //    searchField.borderStyle = UITextBorderStyleNone;
-    //    [searchField setValue:[UIColor bsnlcolor_C7C7C7] forKeyPath:@"_placeholderLabel.textColor"];
-    //    [searchField setValue:FONT_SIZE(12) forKeyPath:@"_placeholderLabel.font"];
-    
-    //替换放大镜
-    //    UIImageView *leftView = [[UIImageView alloc] init];
-    //    leftView.image = IMG(@"12333");
-    //    leftView.frame = CGRectMake(0, 0, 16, 16);
-    //    searchField.leftView = leftView;
-    
-    //    UIButton *clearButton = [searchField valueForKeyPath:@"_clearButton"];
-    //    [clearButton setImage:[UIImage imageNamed:@"soushuo_delete"] forState:UIControlStateNormal];
-    //    [clearButton setImage:[UIImage imageNamed:@"soushuo_delete"] forState:UIControlStateHighlighted];
-    //
-    //    self.searchTextField = searchField;
     self.searchBar = searchBar;
 }
 
@@ -157,8 +135,10 @@
 
 - (CGRect)pageController:(WMPageController *)pageController preferredFrameForContentView:(WMScrollView *)contentView {
     CGRect frame = [UIScreen mainScreen].bounds;
-    frame.size.height = DEVIECE_SCREEN_HEIGHT;
-    return [UIScreen mainScreen].bounds;
+    CGFloat height = DEVIECE_SCREEN_HEIGHT - [self getSafeAreaTop] - [self getSafeAreaBottom] - DEVICE_NAVBAR_HEIGHT - 35;
+    frame.origin.y = 35;
+    frame.size.height = height;
+    return frame;
 }
 
 - (CGRect)pageController:(WMPageController *)pageController preferredFrameForMenuView:(WMMenuView *)menuView {

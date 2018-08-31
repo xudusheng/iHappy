@@ -33,7 +33,7 @@ UICollectionViewDelegateFlowLayout
 - (void)createBrowserUI {
     self.zoomable = YES;
     [self addSubview:self.mCollectionView];
-    _mCollectionView.clipsToBounds = NO;
+//    _mCollectionView.clipsToBounds = NO;
 }
 
 - (void)setMediaModelArray:(NSArray<XDSMediaModel *> *)mediaModelArray {

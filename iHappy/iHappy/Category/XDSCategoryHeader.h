@@ -13,6 +13,6 @@
 #import "NSString+Helper.h"
 #import "CALayer+Addition.h"
 #import "UIColor+Hex.h"
-
+#import "UIViewController+HideNavigationBar.h"
 
 #endif /* XDSCategoryHeader_h */

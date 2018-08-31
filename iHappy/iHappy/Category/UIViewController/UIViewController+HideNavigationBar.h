@@ -12,4 +12,10 @@
 
 @property (assign, nonatomic)BOOL hidesTopBarWhenPushed;
 
+///获取安全区顶部高度
+- (CGFloat)getSafeAreaTop;
+
+///获取安全区底部高度
+- (CGFloat)getSafeAreaBottom;
+
 @end

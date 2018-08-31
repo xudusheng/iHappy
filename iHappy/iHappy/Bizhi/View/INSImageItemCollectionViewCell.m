@@ -14,6 +14,11 @@ NSString *const kImageItemCollectionViewCellIdentifier = @"INSImageItemCollectio
 
 - (instancetype)initWithFrame:(CGRect)frame{
     if (self = [super initWithFrame:frame]) {
+        self.contentView.backgroundColor = [UIColor whiteColor];
+        self.contentView.layer.shadowColor = [UIColor blackColor].CGColor;//阴影颜色
+        self.contentView.layer.shadowOffset = CGSizeMake(0, 1);//偏移距离
+        self.contentView.layer.shadowOpacity = 0.5;//不透明度
+        self.contentView.layer.shadowRadius = 3.f;//半径
         [self createImageItemCollectionViewCellUI];
     }
     return self;
@@ -22,8 +27,12 @@ NSString *const kImageItemCollectionViewCellIdentifier = @"INSImageItemCollectio
 
 //MARK:UI
 - (void)createImageItemCollectionViewCellUI{
+    CGFloat width = CGRectGetWidth(self.frame);
+    CGFloat height = CGRectGetHeight(self.frame);
+    CGFloat gap = 10.f;
+    CGFloat imageWidth = width - gap*2;
     self.bgImageView = ({
-        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectZero];
+        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(gap, gap, imageWidth, imageWidth)];
         imageView.backgroundColor = [UIColor lightGrayColor];
         imageView.translatesAutoresizingMaskIntoConstraints = false;
         [self.contentView addSubview:imageView];
@@ -31,28 +40,21 @@ NSString *const kImageItemCollectionViewCellIdentifier = @"INSImageItemCollectio
     });
 
     self.titleLabel = ({
-        UILabel *label = [[UILabel alloc] initWithFrame:CGRectZero];
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(gap, CGRectGetMaxY(self.bgImageView.frame), imageWidth, height - CGRectGetMaxY(self.bgImageView.frame))];
         label.translatesAutoresizingMaskIntoConstraints = false;
         label.font = [UIFont systemFontOfSize:12];
-        label.textColor = [UIColor whiteColor];
-        label.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.4];
+        label.textColor = [UIColor darkGrayColor];
+        label.backgroundColor = [UIColor whiteColor];
         [self.contentView addSubview:label];
         label;
-        
     });
 
+//    self.contentView.clipsToBounds = NO;
+//    self.contentView.layer.shadowColor = [UIColor lightGrayColor].CGColor;
+//    self.contentView.layer.shadowOffset = CGSizeMake(3, 3);
     
-    NSDictionary *viewsDict = NSDictionaryOfVariableBindings(_bgImageView, _titleLabel);
+
     
-    NSArray *bgImageView_h = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|[_bgImageView]|" options:NSLayoutFormatAlignAllLeft metrics:nil views:viewsDict];
-    NSArray *bgImageView_v = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|[_bgImageView]|" options:NSLayoutFormatAlignAllLeft metrics:nil views:viewsDict];
-    NSArray *titleLabel_h = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|[_titleLabel]|" options:NSLayoutFormatAlignAllLeft metrics:nil views:viewsDict];
-    NSArray *titleLabel_v = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[_titleLabel(==25)]|" options:NSLayoutFormatAlignAllLeft metrics:nil views:viewsDict];
-    
-    [self.contentView addConstraints:bgImageView_h];
-    [self.contentView addConstraints:bgImageView_v];
-    [self.contentView addConstraints:titleLabel_h];
-    [self.contentView addConstraints:titleLabel_v];
     
 }
 
