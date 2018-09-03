@@ -12,5 +12,7 @@
 
 #import "WMPageController.h"
 #import <MJExtension/MJExtension.h>
+#import <MJRefresh/MJRefresh.h>
+
 
 #endif /* XDSVenderHeader_h */

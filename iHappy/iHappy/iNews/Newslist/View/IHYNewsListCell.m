@@ -24,11 +24,12 @@
 }
 
 
-- (void)cellWithNewsModel:(IHYNewsModel *)newsModel{
+- (void)cellWithNewsModel:(XDSNewsModel *)newsModel{
     _titleLabel.text = newsModel.title;
-    _dateLabel.text = newsModel.date;
+    _dateLabel.text = newsModel.publishDateStr;
     
-    [_iconImageView sd_setImageWithURL:[NSURL URLWithString:newsModel.thumbnail_pic_s] placeholderImage:nil];
+    NSString *image = newsModel.imageUrls.count?newsModel.imageUrls.firstObject:@"";
+    [_iconImageView sd_setImageWithURL:[NSURL URLWithString:image] placeholderImage:nil];
     
 }
 

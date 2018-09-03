@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "IHYNewsModel.h"
+#import "XDSNewsModel.h"
 @interface IHYNewsListCell : UITableViewCell
 
-- (void)cellWithNewsModel:(IHYNewsModel *)newsModel;
+- (void)cellWithNewsModel:(XDSNewsModel *)newsModel;
 @end

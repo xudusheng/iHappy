@@ -22,13 +22,30 @@
     // Initialization code
 }
 
-- (void)cellWithNewsModel:(IHYNewsModel *)newsModel{
+- (void)cellWithNewsModel:(XDSNewsModel *)newsModel{
     _titleLabel.text = newsModel.title;
-    _dateLabel.text = newsModel.date;
-    _autherLabel.text = newsModel.author_name;
-    [_iconImageView sd_setImageWithURL:[NSURL URLWithString:newsModel.thumbnail_pic_s] placeholderImage:nil];
-    [_icon1ImageView sd_setImageWithURL:[NSURL URLWithString:newsModel.thumbnail_pic_s02] placeholderImage:nil];
-    [_icon2ImageView sd_setImageWithURL:[NSURL URLWithString:newsModel.thumbnail_pic_s03] placeholderImage:nil];
+    _dateLabel.text = newsModel.publishDateStr;
+    _autherLabel.text = newsModel.posterScreenName;
+    
+    NSString *image1 = @"";
+    NSString *image2 = @"";
+    NSString *image3 = @"";
+    if (newsModel.imageUrls.count < 1) {
+        
+    }else if (newsModel.imageUrls.count == 1) {
+        image1 = newsModel.imageUrls.firstObject;
+    }else if (newsModel.imageUrls.count == 2) {
+        image1 = newsModel.imageUrls.firstObject;
+        image2 = newsModel.imageUrls.lastObject;
+    }else {
+        image1 = newsModel.imageUrls.firstObject;
+        image2 = newsModel.imageUrls[1];
+        image3 = newsModel.imageUrls[2];
+
+    }
+    [_iconImageView sd_setImageWithURL:[NSURL URLWithString:image1] placeholderImage:nil];
+    [_icon1ImageView sd_setImageWithURL:[NSURL URLWithString:image2] placeholderImage:nil];
+    [_icon2ImageView sd_setImageWithURL:[NSURL URLWithString:image3] placeholderImage:nil];
 
 }
 @end

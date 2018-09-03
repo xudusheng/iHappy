@@ -103,6 +103,10 @@
 		18A6FAFD2130DF3800709EC9 /* btn_play@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A6FAE42130DF3700709EC9 /* btn_play@3x.png */; };
 		18A6FAFE2130DF3800709EC9 /* XDSMediaModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A6FAEB2130DF3700709EC9 /* XDSMediaModel.m */; };
 		18A6FB022130E2D300709EC9 /* XDSMediaBrowserVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A6FB012130E2D300709EC9 /* XDSMediaBrowserVC.m */; };
+		18F8EB502139564100168506 /* XDSNewsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F8EB4F2139564100168506 /* XDSNewsModel.m */; };
+		18F8EB592139626F00168506 /* XDS_CustomMjRefreshHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F8EB562139626F00168506 /* XDS_CustomMjRefreshHeader.m */; };
+		18F8EB5A2139626F00168506 /* XDS_CustomMjRefreshFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F8EB572139626F00168506 /* XDS_CustomMjRefreshFooter.m */; };
+		18F8EB5C2139634000168506 /* down.png in Resources */ = {isa = PBXBuildFile; fileRef = 18F8EB5B2139634000168506 /* down.png */; };
 		A01579F31DE1776C00CD7DDB /* ico_back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A01579F11DE1776C00CD7DDB /* ico_back@2x.png */; };
 		A01579F41DE1776C00CD7DDB /* ico_back@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = A01579F21DE1776C00CD7DDB /* ico_back@3x.png */; };
 		A05EB8EB1DE0244300148A5B /* OCAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = A05EB8D81DE0244300148A5B /* OCAlertView.m */; };
@@ -344,6 +348,14 @@
 		18A6FAEB2130DF3700709EC9 /* XDSMediaModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XDSMediaModel.m; sourceTree = "<group>"; };
 		18A6FB002130E2D300709EC9 /* XDSMediaBrowserVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XDSMediaBrowserVC.h; sourceTree = "<group>"; };
 		18A6FB012130E2D300709EC9 /* XDSMediaBrowserVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XDSMediaBrowserVC.m; sourceTree = "<group>"; };
+		18F8EB4E2139564100168506 /* XDSNewsModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XDSNewsModel.h; sourceTree = "<group>"; };
+		18F8EB4F2139564100168506 /* XDSNewsModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XDSNewsModel.m; sourceTree = "<group>"; };
+		18F8EB532139626F00168506 /* XDS_CustomMjRefreshFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDS_CustomMjRefreshFooter.h; sourceTree = "<group>"; };
+		18F8EB542139626F00168506 /* XDS_CustomMjRefreshHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDS_CustomMjRefreshHeader.h; sourceTree = "<group>"; };
+		18F8EB562139626F00168506 /* XDS_CustomMjRefreshHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XDS_CustomMjRefreshHeader.m; sourceTree = "<group>"; };
+		18F8EB572139626F00168506 /* XDS_CustomMjRefreshFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XDS_CustomMjRefreshFooter.m; sourceTree = "<group>"; };
+		18F8EB5B2139634000168506 /* down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = down.png; sourceTree = "<group>"; };
+		18F8EB5D2139655700168506 /* XDSComponentsHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XDSComponentsHeader.h; sourceTree = "<group>"; };
 		6CB566B05B747CCEC832F7BB /* Pods_iHappy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iHappy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A01579F11DE1776C00CD7DDB /* ico_back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ico_back@2x.png"; sourceTree = "<group>"; };
 		A01579F21DE1776C00CD7DDB /* ico_back@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ico_back@3x.png"; sourceTree = "<group>"; };
@@ -640,6 +652,8 @@
 			children = (
 				09F90D6B1DE2BD8600542684 /* IHYNewsModel.h */,
 				09F90D6C1DE2BD8600542684 /* IHYNewsModel.m */,
+				18F8EB4E2139564100168506 /* XDSNewsModel.h */,
+				18F8EB4F2139564100168506 /* XDSNewsModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -669,10 +683,12 @@
 		09F90D6E1DE2BF2A00542684 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				18F8EB512139626F00168506 /* XDSMJfresh */,
 				FC0B7C851EC8B7920022E504 /* View */,
 				FC9667BE1EC1C55200DA1A96 /* XDSMasterViewController.h */,
 				FC9667BF1EC1C55200DA1A96 /* XDSMasterViewController.m */,
 				09F90D6F1DE2C06000542684 /* WebViewController */,
+				18F8EB5D2139655700168506 /* XDSComponentsHeader.h */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -916,6 +932,18 @@
 				18A6FB012130E2D300709EC9 /* XDSMediaBrowserVC.m */,
 			);
 			path = ViewController;
+			sourceTree = "<group>";
+		};
+		18F8EB512139626F00168506 /* XDSMJfresh */ = {
+			isa = PBXGroup;
+			children = (
+				18F8EB5B2139634000168506 /* down.png */,
+				18F8EB542139626F00168506 /* XDS_CustomMjRefreshHeader.h */,
+				18F8EB562139626F00168506 /* XDS_CustomMjRefreshHeader.m */,
+				18F8EB532139626F00168506 /* XDS_CustomMjRefreshFooter.h */,
+				18F8EB572139626F00168506 /* XDS_CustomMjRefreshFooter.m */,
+			);
+			path = XDSMJfresh;
 			sourceTree = "<group>";
 		};
 		A05EB8C61DE0244300148A5B /* Utilities */ = {
@@ -1357,6 +1385,7 @@
 				092CAF051DE28620008127DA /* IHPMovieCell.xib in Resources */,
 				A05EB9251DE04EF400148A5B /* icon_jiazai@3x.png in Resources */,
 				18A6FAF22130DF3800709EC9 /* btn_stop@3x.png in Resources */,
+				18F8EB5C2139634000168506 /* down.png in Resources */,
 				A0D46B861DE0173500637681 /* Assets.xcassets in Resources */,
 				18A6FAFB2130DF3800709EC9 /* btn-amplification@3x.png in Resources */,
 				A05EB9241DE04EF400148A5B /* icon_jiazai@2x.png in Resources */,
@@ -1471,12 +1500,14 @@
 				18A6FA882130031500709EC9 /* NLEPropertyParser.m in Sources */,
 				092CAEFA1DE28620008127DA /* IHYMainViewController.m in Sources */,
 				18A6FA5A212FFFB900709EC9 /* XDSPlaceholdSplashManager.m in Sources */,
+				18F8EB592139626F00168506 /* XDS_CustomMjRefreshHeader.m in Sources */,
 				18A6FAED2130DF3800709EC9 /* XDSMediaBrowserViewLayout.m in Sources */,
 				FC0B7C7E1EC7FF840022E504 /* YSEColorModel.m in Sources */,
 				092CAF071DE28620008127DA /* IHYMoviePlayerViewController.m in Sources */,
 				092CAF041DE28620008127DA /* IHPMovieCell.m in Sources */,
 				18A6FA8D2130031600709EC9 /* NLEBNFSequenceFactory.m in Sources */,
 				FCAFC6181EAEDE1900B48C83 /* IHPMenuViewController.m in Sources */,
+				18F8EB5A2139626F00168506 /* XDS_CustomMjRefreshFooter.m in Sources */,
 				18A6FA952130031600709EC9 /* NLEStack.m in Sources */,
 				18A6FB022130E2D300709EC9 /* XDSMediaBrowserVC.m in Sources */,
 				18A6FA872130031500709EC9 /* NLEBNFToken.m in Sources */,
@@ -1532,6 +1563,7 @@
 				092CAEFC1DE28620008127DA /* IHYMovieInfoModel.m in Sources */,
 				A05EB8ED1DE0244300148A5B /* XDSKeychain.m in Sources */,
 				A05EB8FE1DE0277E00148A5B /* CALayer+Addition.m in Sources */,
+				18F8EB502139564100168506 /* XDSNewsModel.m in Sources */,
 				18A6FA2A212FCB9D00709EC9 /* XDSConfigItem.m in Sources */,
 				A05EB91C1DE03B2500148A5B /* XDSRootTableViewController.m in Sources */,
 				18A6FA982130031600709EC9 /* NLEBNFIndexNode.m in Sources */,
@@ -1767,7 +1799,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 8RW49AS53X;
 				GCC_PREFIX_HEADER = iHappy/IPYPrefixHeader.pch;
 				INFOPLIST_FILE = iHappy/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -1816,8 +1848,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.onlinecredit.laomoneyUAT;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "4d06affb-67de-4ffe-ab9c-5b3f754c4ccb";
-				PROVISIONING_PROFILE_SPECIFIER = com.onlinecredit.laomoneyUAT;
+				PROVISIONING_PROFILE = "abcd2365-cfc1-4588-8f01-a93b5064e24f";
+				PROVISIONING_PROFILE_SPECIFIER = "XC Wildcard Development";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

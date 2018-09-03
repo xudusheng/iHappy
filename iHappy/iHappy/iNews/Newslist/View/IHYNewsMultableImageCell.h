@@ -7,10 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "IHYNewsModel.h"
+#import "XDSNewsModel.h"
 
 @interface IHYNewsMultableImageCell : UITableViewCell
 
-- (void)cellWithNewsModel:(IHYNewsModel *)newsModel;
+- (void)cellWithNewsModel:(XDSNewsModel *)newsModel;
 
 @end

@@ -9,10 +9,13 @@
 #import "IHYNewsListViewController.h"
 #import "IHYNewsListCell.h"
 #import "IHYNewsMultableImageCell.h"
+#import "XDSNewsModel.h"
 @interface IHYNewsListViewController ()<UITableViewDelegate, UITableViewDataSource>
 
-@property (strong, nonatomic) UITableView * newsTableView;
-@property (strong, nonatomic) NSMutableArray * newsList;
+@property (strong, nonatomic) UITableView *newsTableView;
+@property (strong, nonatomic) NSMutableArray<XDSNewsModel*> *newsList;
+
+@property (nonatomic,assign) NSInteger currentPage;
 
 @end
 
@@ -45,14 +48,27 @@ NSString * const IHYNewsListViewController_IHYNewsMultableImageCellIdentifier = 
     [_newsTableView registerNib:[UINib nibWithNibName:IHYNewsListViewController_IHYNewsMultableImageCellIdentifier bundle:nil]
          forCellReuseIdentifier:IHYNewsListViewController_IHYNewsMultableImageCellIdentifier];
     
-    _newsTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(fetchNewsListTop)];
-    [_newsTableView.mj_header beginRefreshing];
+    self.newsTableView.mj_header = [XDS_CustomMjRefreshHeader headerWithRefreshingBlock:^{
+        [self fetchNewsListTop];
+    }];
+    
+    __weak typeof(self)weakSelf = self;
+    self.newsTableView.mj_footer = [XDS_CustomMjRefreshFooter footerWithRefreshingBlock:^{
+        [weakSelf fetchNewsListBottom];
+    }];
+
+    [XDSUtilities showHud:self.view text:nil];
+    [self fetchNewsListTop];
 }
 
 #pragma mark - 网络请求
+- (void)fetchNewsListBottom {
+    
+}
 - (void)fetchNewsListTop{
     __weak typeof(self)weakSelf = self;
-    [[[XDSHttpRequest alloc] init] GETWithURLString:_firstPageUrl
+    NSString *url = [NSString stringWithFormat:@"http://120.76.205.241:8000/news/qihoo?kw=头条&apikey=cz1wjvkzGtuomNDXgLxmdq5aIwgytQvHHe0Dc8OcfHQva6hKQgDoDyBdUAQngGt6&pageToken=%ld", _currentPage];
+    [[[XDSHttpRequest alloc] init] GETWithURLString:url
                                            reqParam:nil
                                       hudController:self
                                             showHUD:NO
@@ -60,26 +76,22 @@ NSString * const IHYNewsListViewController_IHYNewsMultableImageCellIdentifier = 
                                       showFailedHUD:YES
                                             success:^(BOOL success, NSDictionary *successResult) {
                                                 [weakSelf.newsTableView.mj_header endRefreshing];
-                                                NSArray * newsList = successResult[@"data"];
-                                                [weakSelf dealNews:newsList];
+                                                [weakSelf.newsTableView.mj_footer endRefreshing];
+                                                XDSNewsResponstModel *responseModel = [XDSNewsResponstModel mj_objectWithKeyValues:successResult];
+                                                if (responseModel.hasNext) {
+                                                    [weakSelf.newsTableView.mj_footer endRefreshingWithNoMoreData];
+                                                }
+                                                
+                                                (weakSelf.currentPage == 0) ? [weakSelf.newsList removeAllObjects] : NULL;
+                                                [weakSelf.newsList addObjectsFromArray:responseModel.newsList];
+                                                [weakSelf.newsTableView reloadData];
                                                 
                                             } failed:^(NSString *errorDescription) {
                                                 [weakSelf.newsTableView.mj_header endRefreshing];
-                                                
+                                                [weakSelf.newsTableView.mj_footer endRefreshing];
                                             }];
 }
 
-- (void)dealNews:(NSArray *)newsList{
-    if (newsList.count) {
-        [_newsList removeAllObjects];
-        for (NSDictionary  * aNews in newsList) {
-            IHYNewsModel * newsModel = [[IHYNewsModel alloc] init];
-            [newsModel setValuesForKeysWithDictionary:aNews];
-            [_newsList addObject:newsModel];
-        }
-        [_newsTableView reloadData];
-    }
-}
 #pragma mark - 代理方法
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return _newsList.count;
@@ -88,7 +100,7 @@ NSString * const IHYNewsListViewController_IHYNewsMultableImageCellIdentifier = 
     return CGFLOAT_MIN;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    IHYNewsModel * newsModel = _newsList[indexPath.row];
+    XDSNewsModel *newsModel = _newsList[indexPath.row];
     
     CGFloat imageWidth = (DEVIECE_SCREEN_WIDTH - 10*4)/3;
     CGFloat imageHeight = imageWidth*3/4;
@@ -96,15 +108,15 @@ NSString * const IHYNewsListViewController_IHYNewsMultableImageCellIdentifier = 
     return imageHeight + (newsModel.isMultableImageNews?70:20);
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    IHYNewsModel * newsModel = _newsList[indexPath.row];
+    XDSNewsModel *newsModel = _newsList[indexPath.row];
     
     if (newsModel.isMultableImageNews) {
-        IHYNewsMultableImageCell * cell = [tableView dequeueReusableCellWithIdentifier:IHYNewsListViewController_IHYNewsMultableImageCellIdentifier forIndexPath:indexPath];
+        IHYNewsMultableImageCell *cell = [tableView dequeueReusableCellWithIdentifier:IHYNewsListViewController_IHYNewsMultableImageCellIdentifier forIndexPath:indexPath];
         [cell cellWithNewsModel:newsModel];
         return cell;
         
     }else{
-        IHYNewsListCell * cell = [tableView dequeueReusableCellWithIdentifier:IHYNewsListViewController_IHYNewsListCellIdentifier forIndexPath:indexPath];
+        IHYNewsListCell *cell = [tableView dequeueReusableCellWithIdentifier:IHYNewsListViewController_IHYNewsListCellIdentifier forIndexPath:indexPath];
         [cell cellWithNewsModel:newsModel];
         return cell;
     }
@@ -114,7 +126,7 @@ NSString * const IHYNewsListViewController_IHYNewsMultableImageCellIdentifier = 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    IHYNewsModel * newsModel = _newsList[indexPath.row];
+    XDSNewsModel *newsModel = _newsList[indexPath.row];
     XDSWebViewController * webVC = [[XDSWebViewController alloc] init];
     webVC.requestURL = newsModel.url;
     [self.navigationController pushViewController:webVC animated:YES];

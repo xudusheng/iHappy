@@ -27,7 +27,7 @@
 #import "XDSVenderHeader.h"
 #import "XDSManagerHeader.h"
 
-
+#import "XDSComponentsHeader.h"
 #import "IPYHeaderFile.h"
 
 
