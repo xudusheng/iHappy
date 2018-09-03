@@ -113,7 +113,7 @@
     if (_menuModel.type == IHPMenuTypeJuheNews) {
         IHYNewsListViewController * newsVC = [[IHYNewsListViewController alloc]init];
         newsVC.rootUrl = _menuModel.rooturl;
-        newsVC.firstPageUrl = model.url;
+        newsVC.typeName = model.title;
         return newsVC;
     }else if(_menuModel.type == IHPMenuTypeBizhi){
         IHPMeituListViewController * bizhiVC = [[IHPMeituListViewController alloc]init];

@@ -63,11 +63,19 @@ NSString * const IHYNewsListViewController_IHYNewsMultableImageCellIdentifier = 
 
 #pragma mark - 网络请求
 - (void)fetchNewsListBottom {
-    
+    self.currentPage += 1;
+    [self fetchNewsList];
 }
 - (void)fetchNewsListTop{
+    self.currentPage = 1;
+//    [self.newsTableView.mj_footer resetNoMoreData];
+    [self fetchNewsList];
+}
+- (void)fetchNewsList{
     __weak typeof(self)weakSelf = self;
-    NSString *url = [NSString stringWithFormat:@"http://120.76.205.241:8000/news/qihoo?kw=头条&apikey=cz1wjvkzGtuomNDXgLxmdq5aIwgytQvHHe0Dc8OcfHQva6hKQgDoDyBdUAQngGt6&pageToken=%ld", _currentPage];
+    NSString *typeName = _typeName.length?_typeName:@"头条";
+    NSString *url = [NSString stringWithFormat:@"%@&kw=%@&pageToken=%ld",_rootUrl, typeName, _currentPage];
+    
     [[[XDSHttpRequest alloc] init] GETWithURLString:url
                                            reqParam:nil
                                       hudController:self
@@ -78,7 +86,7 @@ NSString * const IHYNewsListViewController_IHYNewsMultableImageCellIdentifier = 
                                                 [weakSelf.newsTableView.mj_header endRefreshing];
                                                 [weakSelf.newsTableView.mj_footer endRefreshing];
                                                 XDSNewsResponstModel *responseModel = [XDSNewsResponstModel mj_objectWithKeyValues:successResult];
-                                                if (responseModel.hasNext) {
+                                                if (responseModel.hasNext == NO) {
                                                     [weakSelf.newsTableView.mj_footer endRefreshingWithNoMoreData];
                                                 }
                                                 
@@ -105,7 +113,7 @@ NSString * const IHYNewsListViewController_IHYNewsMultableImageCellIdentifier = 
     CGFloat imageWidth = (DEVIECE_SCREEN_WIDTH - 10*4)/3;
     CGFloat imageHeight = imageWidth*3/4;
     
-    return imageHeight + (newsModel.isMultableImageNews?70:20);
+    return imageHeight + (newsModel.isMultableImageNews?90:20);
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     XDSNewsModel *newsModel = _newsList[indexPath.row];

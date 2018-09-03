@@ -1351,7 +1351,7 @@
 				TargetAttributes = {
 					A0D46B751DE0173500637681 = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = C7C8DA83Q8;
+						DevelopmentTeam = 8RW49AS53X;
 						ProvisioningStyle = Manual;
 					};
 				};
@@ -1735,7 +1735,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = C7C8DA83Q8;
+				DEVELOPMENT_TEAM = 8RW49AS53X;
 				GCC_PREFIX_HEADER = iHappy/IPYPrefixHeader.pch;
 				INFOPLIST_FILE = iHappy/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -1784,8 +1784,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.onlinecredit.laomoneyUAT;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "00131509-d27c-4674-85cf-2ce853064c7a";
-				PROVISIONING_PROFILE_SPECIFIER = develop_new;
+				PROVISIONING_PROFILE = "abcd2365-cfc1-4588-8f01-a93b5064e24f";
+				PROVISIONING_PROFILE_SPECIFIER = "XC Wildcard Development";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;

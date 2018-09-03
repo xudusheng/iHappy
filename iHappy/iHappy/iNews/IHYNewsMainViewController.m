@@ -28,7 +28,8 @@
 - (UIViewController *)pageController:(WMPageController *)pageController viewControllerAtIndex:(NSInteger)index {
     IHYViewControllerModel * model = _controllerModels[index];
     IHYNewsListViewController * movieVC = [[IHYNewsListViewController alloc]init];
-    movieVC.firstPageUrl = model.firstPageURL;
+    movieVC.rootUrl = model.firstPageURL;
+    
     return movieVC;
 }
     

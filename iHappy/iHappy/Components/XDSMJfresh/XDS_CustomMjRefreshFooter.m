@@ -27,7 +27,7 @@ CGFloat const kCustomMJRefreshFooterHeight = 44.f;
     
     self.mTitleLabel = ({
         UILabel *label = [[UILabel alloc] init];
-        label.textColor = [UIColor lightTextColor];
+        label.textColor = [UIColor darkTextColor];
         label.font = [UIFont systemFontOfSize:12];
         label.textAlignment = NSTextAlignmentCenter;
         label.numberOfLines = 1;
@@ -37,9 +37,9 @@ CGFloat const kCustomMJRefreshFooterHeight = 44.f;
     
     
     // loading
-    UIActivityIndicatorView *loading = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-    [self addSubview:loading];
-    self.loadingView = loading;
+//    UIActivityIndicatorView *loading = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+//    [self addSubview:loading];
+//    self.loadingView = loading;
     
     
     self.leftLine = ({

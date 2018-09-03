@@ -43,35 +43,27 @@ NSString *const key = @"huidaibao";
     }
     
     urlString = [urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-
     AFHTTPSessionManager * manager = [AFHTTPSessionManager manager];
     manager.responseSerializer = [AFJSONResponseSerializer serializer];//使用这个将得到的是JSON
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript", @"text/html", nil];
-    
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
+
     self.sessionDataTask = [manager GET:urlString parameters:reqParam?reqParam:@{}
                                                       progress:^(NSProgress * _Nonnull downloadProgress) {
                                                           
                                                       } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
                                                           NSLog(@" ============ %@", responseObject);
+                                                          [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
                                                           [XDSUtilities hideHud:hudController.view];
-                                                          id result = responseObject;
-                                                          if (result && [result isKindOfClass:[NSDictionary class]]) {
-                                                              NSString * error_code = [XDSUtilities stringFromidString:result[@"error_code"]];
-                                                              NSDictionary * successResult = result[@"result"];
-                                                              NSString * reason = [XDSUtilities stringFromidString:result[@"reason"]];
-                                                              if ([error_code isEqualToString:@"0"]) {
-                                                                  success(YES, successResult);
-                                                              }else{
-                                                                  [self showFailedHUD:showFailedHUD Failed:reason rootView:hudController.view];
-                                                                  failed(reason);
-                                                              }
-                                                          }else{
+                                                          if (responseObject) {
+                                                              success(YES, responseObject);
+                                                          }else {
                                                               [self showFailedHUD:showFailedHUD Failed:kAnalysisFailed rootView:hudController.view];
                                                               failed(kAnalysisFailed);
                                                           }
                                                           
                                                       } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-                                                          
+                                                          [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
                                                           [XDSUtilities hideHud:hudController.view];
                                                           NSString *errorDetail = [error localizedDescription];
                                                           NSLog(@"error = %@", errorDetail);
