@@ -8,6 +8,31 @@
 
 #import "XDSMeituModel.h"
 
+@implementation XDSMeiziResponseModel
+
++ (NSDictionary *)mj_replacedKeyFromPropertyName {
+    return @{@"meiziList":@"result"};
+}
++ (NSDictionary *)mj_objectClassInArray {
+    return @{@"meiziList":@"XDSMeituModel"};
+}
+
+@end
+
+
+
+@implementation XDSDetaimImageResponseModel
+
++ (NSDictionary *)mj_replacedKeyFromPropertyName {
+    return @{@"imageList":@"result"};
+}
++ (NSDictionary *)mj_objectClassInArray {
+    return @{@"imageList":@"XDSDetailImageModel"};
+}
+
+@end
+
+
 @implementation XDSMeituModel
 
 @end

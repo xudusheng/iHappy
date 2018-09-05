@@ -12,6 +12,7 @@
 #import "XDSMediaBrowserVC.h"
 
 #import "XDSMeituModel.h"
+
 @interface IHPMeituListViewController ()<
 UICollectionViewDelegate,
 UICollectionViewDataSource,
@@ -87,8 +88,8 @@ CGFloat const kBiZhiCollectionViewCellsGap = 10.0;
 
 - (void)fetchImageList:(BOOL)isTop{
     
-    NSString *url = @"http://localhost/iHappy/meizi/query";
-    NSInteger size = 1000;
+    NSString *url = @"http://134.175.54.80/ihappy/meizi/query.php";
+    NSInteger size = 20;
     NSInteger page = self.meituList.count/size;
     NSDictionary *params = @{
                              @"size":@(size),
@@ -106,13 +107,12 @@ CGFloat const kBiZhiCollectionViewCellsGap = 10.0;
                                                 [weakSelf.collectionView.mj_header endRefreshing];
                                                 [weakSelf.collectionView.mj_footer endRefreshing];
                                                 
-                                                NSArray *meiziList = [XDSMeituModel mj_objectArrayWithKeyValuesArray:successResult];
+                                                XDSMeiziResponseModel *responseModel = [XDSMeiziResponseModel mj_objectWithKeyValues:successResult];
+                                                NSArray *meiziList = responseModel.meiziList;
                                                 isTop?[self.meituList removeAllObjects]:NULL;
                                                 [self.meituList addObjectsFromArray:meiziList];
                                                 [self.collectionView.collectionViewLayout invalidateLayout];
                                                 [self.collectionView reloadData];
-                                                
-
                                                 
                                             } failed:^(NSString *errorDescription) {
                                                 [weakSelf.collectionView.mj_header endRefreshing];
@@ -123,7 +123,7 @@ CGFloat const kBiZhiCollectionViewCellsGap = 10.0;
 
 - (void)fetchDetailImageListWithMd5key:(NSString *)md5key{
     
-    NSString *url = @"http://localhost/iHappy/meizi/querydetail";
+    NSString *url = @"http://134.175.54.80/ihappy/meizi/querydetail.php";
     NSDictionary *params = @{
                              @"md5key":md5key?md5key:@"",
                              };
@@ -135,7 +135,8 @@ CGFloat const kBiZhiCollectionViewCellsGap = 10.0;
                                             HUDText:nil
                                       showFailedHUD:YES
                                             success:^(BOOL success, NSDictionary *successResult) {
-                                                NSArray *imageArray = [XDSDetailImageModel mj_objectArrayWithKeyValuesArray:successResult];
+                                                XDSDetaimImageResponseModel *responseModel = [XDSDetaimImageResponseModel mj_objectWithKeyValues:successResult];
+                                                NSArray *imageArray = responseModel.imageList;
                                                 if (imageArray.count) {
                                                     [weakSelf showMediaBrowserView:imageArray];
                                                 }

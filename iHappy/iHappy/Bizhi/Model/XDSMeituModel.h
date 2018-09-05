@@ -8,6 +8,32 @@
 
 #import <Foundation/Foundation.h>
 
+@class XDSMeituModel;
+@class XDSDetailImageModel;
+@interface XDSMeiziResponseModel : NSObject
+
+@property (nonatomic,strong) NSArray<XDSMeituModel*> *meiziList;
+@property (nonatomic,assign) NSInteger error_code;
+@property (nonatomic,copy) NSString *errormessage;
+
+@end
+
+
+
+
+@interface XDSDetaimImageResponseModel : NSObject
+
+@property (nonatomic,strong) NSArray<XDSDetailImageModel*> *imageList;
+@property (nonatomic,assign) NSInteger error_code;
+@property (nonatomic,copy) NSString *errormessage;
+
+@end
+
+
+
+
+//--------------------
+
 @interface XDSMeituModel : NSObject
 
 @property (copy, nonatomic) NSString *md5key;
@@ -21,7 +47,7 @@
 @interface XDSDetailImageModel : NSObject
 
 @property (copy, nonatomic) NSString *md5key;
-@property (copy, nonatomic) NSString *ttle;
+@property (copy, nonatomic) NSString *title;
 @property (copy, nonatomic) NSString *image_src;
 
 @end
