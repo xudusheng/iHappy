@@ -25,7 +25,7 @@
             _movieImageView.image = nil;
             _titleLabel.text = @"";
         }else{
-            [_movieImageView sd_setImageWithURL:[NSURL URLWithString:movieModel.imageurl] placeholderImage:nil];
+            [_movieImageView sd_setImageWithURL:[NSURL URLWithString:movieModel.image_src] placeholderImage:nil];
             _titleLabel.text = movieModel.name;
         }
         

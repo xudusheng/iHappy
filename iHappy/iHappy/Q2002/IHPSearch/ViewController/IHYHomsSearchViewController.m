@@ -70,27 +70,22 @@
 #pragma mark - 网络请求
 
 #pragma mark - 代理方法
-#define SEARCH_URL @"http://www.q2002.com/search?wd="
 - (void)searchViewController:(PYSearchViewController *)searchViewController
       didSearchWithSearchBar:(UISearchBar *)searchBar
                   searchText:(NSString *)searchText {
-    NSString *url = [SEARCH_URL stringByAppendingString:searchText];
-    self.resultVC.firstPageUrl = url;
+    self.resultVC.keyword = searchText;
 }
 
 - (void)searchViewController:(PYSearchViewController *)searchViewController
    didSelectHotSearchAtIndex:(NSInteger)index
                   searchText:(NSString *)searchText{
-    NSString *url = [SEARCH_URL stringByAppendingString:searchText];
-    self.resultVC.firstPageUrl = url;
-    
+    self.resultVC.keyword = searchText;
 }
 
 - (void)searchViewController:(PYSearchViewController *)searchViewController
 didSelectSearchHistoryAtIndex:(NSInteger)index
                   searchText:(NSString *)searchText {
-    NSString *url = [SEARCH_URL stringByAppendingString:searchText];
-    self.resultVC.firstPageUrl = url;
+    self.resultVC.keyword = searchText;
     
 }
 #pragma mark - setter & getter

@@ -123,7 +123,8 @@
         
     }else{
         IHYMovieListViewController * movieVC = [[IHYMovieListViewController alloc]init];
-        movieVC.firstPageUrl = model.url;
+        movieVC.rootUrl = _menuModel.rooturl;
+        movieVC.type = model.url;
         return movieVC;
     }
 }
