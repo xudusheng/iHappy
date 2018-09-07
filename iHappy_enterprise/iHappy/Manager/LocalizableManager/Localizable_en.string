@@ -1,0 +1,12 @@
+##Version 7.0727
+
+
+xds.loading.footer.normal = 上拉加载更多
+xds.loading.footer.pulling = 松开立即刷新
+xds.loading.footer.refreshing = 正在刷新数据...
+xds.loading.footer.nomoredata = 已经到底了~
+
+
+
+xds.ui.cancel = 取消
+xds.ui.ok = 确定
