@@ -23,7 +23,6 @@
 #define DEVIECE_SCREEN_HEIGHT [UIScreen mainScreen].bounds.size.height
 #define DEVICE_NAVBAR_HEIGHT 64.f
 #define DEVICE_TABBAR_HEIGHT 49.f
-#define REQUEST_PAGE_SIZE 20
 
 #pragma mark - 第三方库
 #import "JSONModelLib.h"

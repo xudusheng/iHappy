@@ -107,7 +107,6 @@
 		18F8EB592139626F00168506 /* XDS_CustomMjRefreshHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F8EB562139626F00168506 /* XDS_CustomMjRefreshHeader.m */; };
 		18F8EB5A2139626F00168506 /* XDS_CustomMjRefreshFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F8EB572139626F00168506 /* XDS_CustomMjRefreshFooter.m */; };
 		18F8EB5C2139634000168506 /* down.png in Resources */ = {isa = PBXBuildFile; fileRef = 18F8EB5B2139634000168506 /* down.png */; };
-		18FC5DF021415C39004F6BB9 /* XDSBaseResponseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FC5DEF21415C39004F6BB9 /* XDSBaseResponseModel.m */; };
 		A01579F31DE1776C00CD7DDB /* ico_back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A01579F11DE1776C00CD7DDB /* ico_back@2x.png */; };
 		A01579F41DE1776C00CD7DDB /* ico_back@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = A01579F21DE1776C00CD7DDB /* ico_back@3x.png */; };
 		A05EB8EB1DE0244300148A5B /* OCAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = A05EB8D81DE0244300148A5B /* OCAlertView.m */; };
@@ -357,8 +356,6 @@
 		18F8EB572139626F00168506 /* XDS_CustomMjRefreshFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XDS_CustomMjRefreshFooter.m; sourceTree = "<group>"; };
 		18F8EB5B2139634000168506 /* down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = down.png; sourceTree = "<group>"; };
 		18F8EB5D2139655700168506 /* XDSComponentsHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XDSComponentsHeader.h; sourceTree = "<group>"; };
-		18FC5DEE21415C39004F6BB9 /* XDSBaseResponseModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XDSBaseResponseModel.h; sourceTree = "<group>"; };
-		18FC5DEF21415C39004F6BB9 /* XDSBaseResponseModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XDSBaseResponseModel.m; sourceTree = "<group>"; };
 		6CB566B05B747CCEC832F7BB /* Pods_iHappy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iHappy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A01579F11DE1776C00CD7DDB /* ico_back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ico_back@2x.png"; sourceTree = "<group>"; };
 		A01579F21DE1776C00CD7DDB /* ico_back@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ico_back@3x.png"; sourceTree = "<group>"; };
@@ -949,15 +946,6 @@
 			path = XDSMJfresh;
 			sourceTree = "<group>";
 		};
-		18FC5DED21415C23004F6BB9 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				18FC5DEE21415C39004F6BB9 /* XDSBaseResponseModel.h */,
-				18FC5DEF21415C39004F6BB9 /* XDSBaseResponseModel.m */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
 		A05EB8C61DE0244300148A5B /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
@@ -1076,7 +1064,6 @@
 				092CAED51DE2861F008127DA /* Q2002 */,
 				A05EB90F1DE039D200148A5B /* iNews */,
 				FCAFC6061EAED5C300B48C83 /* Vender */,
-				18FC5DED21415C23004F6BB9 /* Model */,
 				A0D46B851DE0173500637681 /* Assets.xcassets */,
 				A0D46B8A1DE0173500637681 /* Info.plist */,
 				A0D46B791DE0173500637681 /* Supporting Files */,
@@ -1533,7 +1520,6 @@
 				A208A6CD2132B39600900DFC /* XDSMeituModel.m in Sources */,
 				092CAEFD1DE28620008127DA /* IHYMoviePlayButtonModel.m in Sources */,
 				18A6FA8C2130031600709EC9 /* NLEBNFParserState.m in Sources */,
-				18FC5DF021415C39004F6BB9 /* XDSBaseResponseModel.m in Sources */,
 				FC8B89AA1EBC8073000AD27A /* IHPPlayerViewController.m in Sources */,
 				18A6FAAD213018CC00709EC9 /* XDSAdManager.m in Sources */,
 				18A6FA3A212FFF0D00709EC9 /* RegexKitLite.m in Sources */,
