@@ -9,10 +9,11 @@
 #import "IHPPlayerViewController.h"
 #import "IHYMovieInfoHeaderView.h"
 #import "IHYMoviePlayButtonModel.h"
-#import "IHYMoviePlayButtonCell.h"
+#import "XDSEpisodeCell.h"
 #import "AppDelegate.h"
+#import "XDSepisodeModel.h"
 //#import "IHYMoviePlayerViewController.h"
-//#import "ZFPlayer.h"
+#import "ZFPlayer.h"
 
 #import "XDSPlayerView.h"
 @interface IHPPlayerViewController ()
@@ -22,25 +23,22 @@ UICollectionViewDataSource,
 UICollectionViewDelegateFlowLayout,
 UIWebViewDelegate
 >
-@property (strong, nonatomic) NSMutableArray<NSDictionary *> * movieButtonList;
-@property (strong, nonatomic) UICollectionView * moviedetailCollectionView;
+@property (strong, nonatomic) NSMutableArray<NSArray<XDSEpisodeModel*> *> *episodeModelList;
+@property (strong, nonatomic) UICollectionView *mCollectionView;
 
-//@property (strong, nonatomic) ZFPlayerView *playerView;
-@property (strong, nonatomic) XDSPlayerView *playerView;
+@property (strong, nonatomic) ZFPlayerView *playerView;
+//@property (strong, nonatomic) XDSPlayerView *playerView;
 @property (strong, nonatomic) UIView *playerContentView;
 
 @property (strong, nonatomic) UIWebView * webView;
 @property (nonatomic,assign)BOOL didWebViewLoadOK;
 
-@property (strong, nonatomic) IHYMoviePlayButtonModel *selectedMovieModel;
+@property (strong, nonatomic) XDSEpisodeModel *selectedEpisodeModel;
 
 @end
 
 @implementation IHPPlayerViewController
-- (void)dealloc{
-    NSLog(@"%@ ==> dealloc", [self class]);
-    [self.playerView destroyPlayer];
-}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
 
@@ -70,7 +68,7 @@ UIWebViewDelegate
 
     [[UIDevice currentDevice] setValue:@"UIInterfaceOrientationLandscapeLeft" forKey:@"orientation"];
 
-    //强制zhuan'p：
+    //强制转屏：
     if ([[UIDevice currentDevice] respondsToSelector:@selector(setOrientation:)]) {
         SEL selector = NSSelectorFromString(@"setOrientation:");
         NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:[UIDevice instanceMethodSignatureForSelector:selector]];
@@ -120,7 +118,20 @@ UIWebViewDelegate
     self.playerContentView.backgroundColor = [UIColor blackColor];
     [self.view addSubview:self.playerContentView];
     
-    self.playerView = [[XDSPlayerView alloc] initWithFrame:self.playerContentView.bounds];
+//    self.playerView = [[XDSPlayerView alloc] initWithFrame:self.playerContentView.bounds];
+    NSURL *videoURL = [NSURL URLWithString:@""];
+    ZFPlayerModel *playerModel = [[ZFPlayerModel alloc] init];
+    playerModel.title            = self.selectedEpisodeModel.title;
+    playerModel.videoURL         = videoURL;
+    playerModel.placeholderImage = [UIImage imageNamed:@"loading_bgView1"];
+    playerModel.fatherView       = self.playerContentView;
+    
+    
+    
+    
+    
+    
+    
     self.webView = [[UIWebView alloc]initWithFrame:self.playerContentView.bounds];
     self.webView.mediaPlaybackRequiresUserAction = YES;
     self.webView.scalesPageToFit = YES;
@@ -139,98 +150,116 @@ UIWebViewDelegate
     layout.estimatedItemSize = CGSizeMake(30, width);
 
     //创建collectionView 通过一个布局策略layout来创建
-    self.moviedetailCollectionView = [[UICollectionView alloc]initWithFrame:CGRectZero collectionViewLayout:layout];
-    _moviedetailCollectionView.backgroundColor = [UIColor whiteColor];
+    self.mCollectionView = [[UICollectionView alloc]initWithFrame:CGRectZero collectionViewLayout:layout];
+    _mCollectionView.backgroundColor = [UIColor whiteColor];
 
     //代理设置
-    _moviedetailCollectionView.delegate=self;
-    _moviedetailCollectionView.dataSource=self;
+    _mCollectionView.delegate=self;
+    _mCollectionView.dataSource=self;
     //注册item类型 这里使用系统的类型
-    [self.view addSubview:_moviedetailCollectionView];
+    [self.view addSubview:_mCollectionView];
 
-    [_moviedetailCollectionView registerClass:[IHYMoviePlayButtonCell class] forCellWithReuseIdentifier:@"cell"];
-    [_moviedetailCollectionView mas_makeConstraints:^(MASConstraintMaker *make) {
+    [_mCollectionView registerClass:[XDSEpisodeCell class] forCellWithReuseIdentifier:@"cell"];
+    [_mCollectionView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.playerContentView.mas_bottom);
         make.left.bottom.right.mas_equalTo(0);
     }];
 
 
 
-    [self fetchMovieInfo];
+    [self fetchEpisodeList];
 
 }
 
 #pragma mark - 网络请求
-- (void)fetchMovieInfo{
-
+- (void)fetchEpisodeList{
+//    NSString *url = @"http://134.175.54.80/ihappy/video/query.php";
+    NSString *url = @"http://172.16.8.81/ihappy/video/query.php";
+    NSString *md5key = self.movieModel.md5key?self.movieModel.md5key:@"";
+    NSDictionary *params = @{
+                             @"md5key":md5key
+                             };
+    
     __weak typeof(self)weakSelf = self;
-    [[[XDSHttpRequest alloc] init] htmlRequestWithHref:_movieModel.href
-                                         hudController:self
-                                               showHUD:YES
-                                               HUDText:nil
-                                         showFailedHUD:YES
-                                               success:^(BOOL success, NSData * htmlData) {
-                                                   NSLog(@"utf8 = %@", [[NSString alloc] initWithData:htmlData encoding:NSUTF8StringEncoding]);
-                                                   [weakSelf detailHtmlData:htmlData];
-                                               } failed:^(NSString *errorDescription) {
-
-                                               }];
-
+    [[[XDSHttpRequest alloc] init] GETWithURLString:url
+                                           reqParam:params
+                                      hudController:self
+                                            showHUD:NO
+                                            HUDText:nil
+                                      showFailedHUD:YES
+                                            success:^(BOOL success, NSDictionary *successResult) {
+                                                XDSBaseResponseModel *responseModel = [XDSBaseResponseModel mj_objectWithKeyValues:successResult];
+                                                for (NSArray *episodeList in responseModel.result) {
+                                                    NSArray *episodeModelList = [XDSEpisodeModel mj_objectArrayWithKeyValuesArray:episodeList];
+                                                    episodeModelList = [episodeModelList sortedArrayUsingComparator:^NSComparisonResult(XDSEpisodeModel* _Nonnull obj1, XDSEpisodeModel* _Nonnull obj2) {
+                                                        return obj1.sort > obj2.sort;
+                                                    }];
+                                                    [weakSelf.episodeModelList addObject:episodeModelList];
+                                                }
+                                                if (weakSelf.episodeModelList.count && [weakSelf.episodeModelList.firstObject count]) {
+                                                    weakSelf.selectedEpisodeModel = weakSelf.episodeModelList[0][0];
+                                                }
+                                                [weakSelf.mCollectionView reloadData];
+                                            } failed:^(NSString *errorDescription) {
+                                                
+                                            }];
+    
 }
 
-#pragma mark - 网络请求
-//TODO: 请求播放页面
-- (void)fetchMoviePlayer{
+- (void)fetchPlayerInfo {
+    static NSInteger reloadTimes = 0;
+    NSString *url = @"http://172.16.8.81/ihappy/video/queryplayer.php";
+    NSString *ekey = self.selectedEpisodeModel.ekey?self.selectedEpisodeModel.ekey:@"";
+    NSDictionary *params = @{
+                             @"ekey":ekey
+                             };
+    
     __weak typeof(self)weakSelf = self;
-    [[[XDSHttpRequest alloc] init] htmlRequestWithHref:self.selectedMovieModel.playerHref
-                                         hudController:self
-                                               showHUD:YES
-                                               HUDText:nil
-                                         showFailedHUD:YES
-                                               success:^(BOOL success, NSData * htmlData) {
-                                                   [weakSelf dealPlayerData:htmlData];
-                                               } failed:^(NSString *errorDescription) {
-
-                                               }];
-
+    [[[XDSHttpRequest alloc] init] GETWithURLString:url
+                                           reqParam:params
+                                      hudController:self
+                                            showHUD:NO
+                                            HUDText:nil
+                                      showFailedHUD:YES
+                                            success:^(BOOL success, NSDictionary *successResult) {
+                                                NSString *player = successResult[@"player"];
+                                                NSString *player_alter = successResult[@"player_alter"];
+                                                if (!player.length && !player_alter.length) {
+                                                    if (reloadTimes < 3) {
+                                                        [self fetchPlayerInfo];
+                                                        reloadTimes += 1;
+                                                        return;
+                                                    }
+                                                    
+                                                }else {
+                                                    weakSelf.selectedEpisodeModel.player = player;
+                                                    weakSelf.selectedEpisodeModel.player_alter = player_alter;
+                                                }
+                                                [weakSelf startPlay];
+                                                
+                                            } failed:^(NSString *errorDescription) {
+                                            }];
 }
 
 #pragma mark - 代理方法
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
-    return _movieButtonList.count;
+    return _episodeModelList.count;
 }
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    NSDictionary * buttonList_section = _movieButtonList[section];
-
-    return [buttonList_section[@"buttonList"] count];
+    return [_episodeModelList[section] count];
 }
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
-    IHYMoviePlayButtonCell * cell  = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
-    NSDictionary * buttonList_section = _movieButtonList[indexPath.section];
-    NSArray * buttonList = buttonList_section[@"buttonList"];
-    IHYMoviePlayButtonModel * buttonModel = buttonList[indexPath.row];
-    cell.titleLabel.text = buttonModel.title;
-
-    cell.backgroundColor = [UIColor colorWithHexString:@"#eeeeee"];
-    cell.layer.cornerRadius = 3;
-    cell.layer.masksToBounds = YES;
-    cell.titleLabel.textColor = [UIColor colorWithHexString:@"#666666"];
-    if (buttonModel == self.selectedMovieModel) {
-        cell.titleLabel.textColor = [UIColor redColor];
-    }
+    XDSEpisodeCell *cell  = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
+    XDSEpisodeModel *episodeModel = _episodeModelList[indexPath.section][indexPath.row];
+    [cell setEpisodeModel:episodeModel isSelected:episodeModel == self.selectedEpisodeModel];
 
     return cell;
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-    NSDictionary * buttonList_section = _movieButtonList[indexPath.section];
-    NSArray * buttonList = buttonList_section[@"buttonList"];
-    IHYMoviePlayButtonModel * buttonModel = buttonList[indexPath.row];
-    self.selectedMovieModel = buttonModel;
-//    IHYMoviePlayerViewController * playerVC = [[IHYMoviePlayerViewController alloc] init];
-//    playerVC.movieSrc = buttonModel.playerHref;
-//    [self.navigationController pushViewController:playerVC animated:YES];
+    XDSEpisodeModel *episodeModel = _episodeModelList[indexPath.section][indexPath.row];
+    self.selectedEpisodeModel = episodeModel;
 }
 
 
@@ -251,216 +280,94 @@ UIWebViewDelegate
     NSLog(@"orient = %@", @(orient));
 }
 #pragma mark - 其他私有方法
-//TODO:解析视频信息与选集
-- (void)detailHtmlData:(NSData *)htmlData{
-    TFHpple * hpp = [[TFHpple alloc] initWithHTMLData:htmlData];
-
-    NSArray * img_lazy_elments = [hpp searchWithXPathQuery:@"//img[@class=\"lazy\"]"];
-    NSString * movieImage = @"";
-    if (img_lazy_elments.count > 0) {
-        TFHppleElement * img_lazy_elment = img_lazy_elments.firstObject;
-        movieImage = [img_lazy_elment objectForKey:@"src"];
-    }
-
-    NSArray * dt_dd_elements = [hpp searchWithXPathQuery:@"//dl//dt|//dd"];
-    NSMutableArray * titleAndContentModels = [NSMutableArray arrayWithCapacity:0];
-    for (TFHppleElement * dt_dd_element in dt_dd_elements) {
-        NSString * content = dt_dd_element.text;
-        NSString * title = [dt_dd_element firstChildWithTagName:@"span"].text;
-        NSLog(@"%@ = %@\n", title, content);
-        IHYMovieDetailInfoTitleAndContentModel * model = [[IHYMovieDetailInfoTitleAndContentModel alloc] init];
-        model.title = title;
-        model.content = content;
-        [titleAndContentModels addObject:model];
-    }
-
-
-    TFHppleElement * sumary_element = [hpp searchWithXPathQuery:@"//div[@class=\"tab-jq ctc\"]"].firstObject;
-    NSString * sumary = sumary_element.text;
-    NSLog(@"%@", sumary);
-
-    NSArray * show_player_gogo_elements = [hpp searchWithXPathQuery:@"//div[@class=\"show_player_gogo\"]//ul"];
-    NSArray * bofangqi_elements = [hpp searchWithXPathQuery:@"//li[@class=\"on bofangqi\"]"];
-    NSMutableArray * bofangqi = [NSMutableArray arrayWithCapacity:0];
-    for (int i = 0; i < show_player_gogo_elements.count; i ++) {
-        TFHppleElement * show_player_gogo_element = show_player_gogo_elements[i];
-        NSString * playerDesc = @"";
-        if (i < bofangqi_elements.count) {
-            TFHppleElement * bofangqi_element = bofangqi_elements[i];
-            playerDesc = bofangqi_element.text;
-        }
-        NSLog(@"%@", playerDesc);
-        NSMutableArray * buttonArray = [NSMutableArray arrayWithCapacity:0];
-        NSArray * button_li_elements = [show_player_gogo_element childrenWithTagName:@"li"];
-        for (TFHppleElement * button_li_element in button_li_elements) {
-            TFHppleElement * button_a_element = [button_li_element firstChildWithTagName:@"a"];
-            NSString * href = [button_a_element objectForKey:@"href"];
-            NSString * buttonTitle = button_a_element.text;
-            NSLog(@"%@ = %@", buttonTitle, href);
-            if (!href || !buttonTitle || [buttonTitle containsString:@"更多"]) {
-                continue;
-            }
-            IHYMoviePlayButtonModel * buttonModel = [[IHYMoviePlayButtonModel alloc] init];
-            [buttonModel setValuesForKeysWithDictionary:@{@"title":buttonTitle, @"playerHref":href}];
-            [buttonArray addObject:buttonModel];
-        }
-
-        [bofangqi addObject:@{@"title":playerDesc, @"buttonList":buttonArray}];
-    }
-
-    NSArray * footer_elements = [hpp searchWithXPathQuery:@"//div[@class=\"footer clearfix\"]//p"];
-    NSMutableString * footerDisc = [NSMutableString string];
-    for (TFHppleElement * p_element in footer_elements) {
-        NSString * text = p_element.text;
-        [footerDisc appendString:text];
-        [footerDisc appendString:@"\n"];
-    };
-    NSLog(@"%@", footerDisc);
-
-
-    if (bofangqi.count > 0) {
-        [_movieButtonList removeAllObjects];
-        [_movieButtonList addObjectsFromArray:bofangqi];
-        [_moviedetailCollectionView reloadData];
-    }
-
-
-    if (_movieButtonList.count) {
-        NSDictionary * buttonList_section = _movieButtonList.firstObject;
-        NSArray * buttonList = buttonList_section[@"buttonList"];
-        if (buttonList.count) {
-            IHYMoviePlayButtonModel * buttonModel = buttonList.firstObject;
-            self.selectedMovieModel = buttonModel;
-        }
-    }
-
-}
-
-//TODO:解析播放器代码
-- (void)dealPlayerData:(NSData *)PlayerData{
-    TFHpple * hpp = [[TFHpple alloc] initWithHTMLData:PlayerData];
-    TFHppleElement * iframe = [hpp searchWithXPathQuery:@"//iframe"].firstObject;
-    if (iframe != nil) {
-        NSString * playerSrc = [iframe objectForKey:@"src"];
-
-        __weak typeof(self)weakSelf = self;
-        [[[XDSHttpRequest alloc] init] htmlRequestWithHref:playerSrc
-                                             hudController:self
-                                                   showHUD:YES
-                                                   HUDText:nil
-                                             showFailedHUD:YES
-                                                   success:^(BOOL success, NSData * htmlData) {
-                                                       NSLog(@"%@", [[NSString alloc] initWithData:htmlData encoding:NSUTF8StringEncoding]);
-                                                       [weakSelf stripVideoSrc:htmlData playerUrl:playerSrc];
-                                                   } failed:^(NSString *errorDescription) {
-
-                                                   }];
-    }
-}
-
-//TODO:解析获取视频地址
-- (void)stripVideoSrc:(NSData *)data playerUrl:(NSString *)playerUrl{
-    TFHpple * hpp = [[TFHpple alloc] initWithHTMLData:data];
-    TFHppleElement * video = [hpp searchWithXPathQuery:@"//video"].firstObject;
-//    TFHppleElement * iframe = [hpp searchWithXPathQuery:@"//iframe"].firstObject;
+- (void)startPlay {
     
-    BOOL playerWebView = YES;
-    NSString *videoUrl = @"";
-    if (video != nil) {
-        videoUrl = [video objectForKey:@"src"];
-        if (videoUrl.length) {
-            playerWebView = NO;
+    BOOL hasNoPlayUrl = self.selectedEpisodeModel.player.length < 1 && self.selectedEpisodeModel.player_alter.length < 1 && self.selectedEpisodeModel.vedio.length < 1;
+
+    if (self.selectedEpisodeModel.vedio.length || hasNoPlayUrl) {
+        [self.webView removeFromSuperview];
+        [self playWithZPPLayer:self.selectedEpisodeModel];
+    }else {
+        [self.playerView removeFromSuperview];
+        if (!self.webView.superview) {
+            [self.playerContentView addSubview:self.webView];
         }
+        
+        NSURL * url = [NSURL URLWithString:self.selectedEpisodeModel.player_alter.length?self.selectedEpisodeModel.player_alter:self.selectedEpisodeModel.player];
+        NSURLRequest * request = [NSURLRequest requestWithURL:url];
+        [_webView loadRequest:request];
+        
     }
 
-    
-//    //======================纯webView显示====================
-//    if (!self.webView.superview) {
-//        [self.playerContentView addSubview:self.webView];
-//    }
-//    NSURL * url = [NSURL URLWithString:playerUrl];
-//    NSURLRequest * request = [NSURLRequest requestWithURL:url];
-//    [_webView loadRequest:request];
-    //====================== player + webView显示 ====================
-        if (playerWebView) {
-            [self.playerView removeFromSuperview];
-            if (!self.webView.superview) {
-                [self.playerContentView addSubview:self.webView];
-            }
-            NSURL * url = [NSURL URLWithString:playerUrl];
-            NSURLRequest * request = [NSURLRequest requestWithURL:url];
-            [_webView loadRequest:request];
-        }else{
-            [self.webView removeFromSuperview];
-            if (![self.playerView superview]) {
-                [self.playerContentView addSubview:self.playerView];
-            }
-    
-            [self playWithXDSPlayer:videoUrl];
-        }
 
-    self.title = [NSString stringWithFormat:@"%@-%@", self.movieModel.name, self.selectedMovieModel.title];
-    [self.moviedetailCollectionView cw_scrollToTopAnimated:YES];
-    [self.moviedetailCollectionView reloadData];
+    self.title = [NSString stringWithFormat:@"%@-%@", self.movieModel.name, self.selectedEpisodeModel.title];
+    [self.mCollectionView cw_scrollToTopAnimated:YES];
+    [self.mCollectionView reloadData];
 }
 
-- (void)playWithXDSPlayer:(NSString *)videoSrc {
-    XDSMediaModel *mediaModel = [[XDSMediaModel alloc] init];
-    mediaModel.mediaURL = [NSURL URLWithString:videoSrc];
-    mediaModel.mediaType = XDSMediaTypeVideo;
-    self.playerView.mediaModel = mediaModel;
-}
-
-//- (void)playWithZPPLayer:(NSString *)videoSrc{
-//
-//    NSURL *videoURL = [NSURL URLWithString:videoSrc];
-//    ZFPlayerModel *playerModel = [[ZFPlayerModel alloc] init];
-//    playerModel.title            = self.selectedMovieModel.title;
-//    playerModel.videoURL         = videoURL;
-//    playerModel.placeholderImage = [UIImage imageNamed:@"loading_bgView1"];
-//    playerModel.fatherView       = self.playerContentView;
-//
-//    [self.playerView playerControlView:nil playerModel:playerModel];
+//- (void)playWithXDSPlayer:(NSString *)videoSrc {
+//    XDSMediaModel *mediaModel = [[XDSMediaModel alloc] init];
+//    mediaModel.mediaURL = [NSURL URLWithString:videoSrc];
+//    mediaModel.mediaType = XDSMediaTypeVideo;
+//    self.playerView.mediaModel = mediaModel;
 //}
 
-- (void)setSelectedMovieModel:(IHYMoviePlayButtonModel *)selectedMovieModel{
-    _selectedMovieModel = selectedMovieModel;
-//    [self.playerView resetPlayer];
-    [self fetchMoviePlayer];
+- (void)playWithZPPLayer:(XDSEpisodeModel *)episodeModel{
+
+    NSURL *videoURL = [NSURL URLWithString:episodeModel.player];
+    ZFPlayerModel *playerModel = [[ZFPlayerModel alloc] init];
+    playerModel.title            = episodeModel.title;
+    playerModel.videoURL         = videoURL;
+    playerModel.placeholderImage = [UIImage imageNamed:@"loading_bgView1"];
+    playerModel.fatherView       = self.playerContentView;
+    [self.playerView playerControlView:nil playerModel:playerModel];
+}
+
+- (void)setSelectedEpisodeModel:(XDSEpisodeModel *)selectedEpisodeModel {
+    _selectedEpisodeModel = selectedEpisodeModel;
+    //    [self.playerView resetPlayer];
+    //    [self fetchMoviePlayer];
+    
+    if (_selectedEpisodeModel.player.length) {
+        [self startPlay];
+    }else {
+        [self fetchPlayerInfo];
+    }
+    [self.mCollectionView reloadData];
 }
 
 
-//- (ZFPlayerView *)playerView{
-//    if (!_playerView) {
-//        _playerView = [[ZFPlayerView alloc] init];
-//
-//        /*****************************************************************************************
-//         *   // 指定控制层(可自定义)
-//         *   // ZFPlayerControlView *controlView = [[ZFPlayerControlView alloc] init];
-//         *   // 设置控制层和播放模型
-//         *   // 控制层传nil，默认使用ZFPlayerControlView(如自定义可传自定义的控制层)
-//         *   // 等效于 [_playerView playerModel:self.playerModel];
-//         ******************************************************************************************/
-////        [_playerView playerControlView:nil playerModel:playerModel];
-//
-//        // 设置代理
-//        //    playerView.delegate = self;
-//
-//        //（可选设置）可以设置视频的填充模式，内部设置默认（ZFPlayerLayerGravityResizeAspect：等比例填充，直到一个维度到达区域边界）
-//        // _playerView.playerLayerGravity = ZFPlayerLayerGravityResize;
-//
-//        // 打开下载功能（默认没有这个功能）
-//        _playerView.hasDownload    = YES;
-//
-//        // 打开预览图
-//        _playerView.hasPreviewView = YES;
-//    }
-//    return _playerView;
-//
-//}
+- (ZFPlayerView *)playerView{
+    if (!_playerView) {
+        _playerView = [[ZFPlayerView alloc] init];
+
+        /*****************************************************************************************
+         *   // 指定控制层(可自定义)
+         *   // ZFPlayerControlView *controlView = [[ZFPlayerControlView alloc] init];
+         *   // 设置控制层和播放模型
+         *   // 控制层传nil，默认使用ZFPlayerControlView(如自定义可传自定义的控制层)
+         *   // 等效于 [_playerView playerModel:self.playerModel];
+         ******************************************************************************************/
+//        [_playerView playerControlView:nil playerModel:playerModel];
+
+        // 设置代理
+        //    playerView.delegate = self;
+
+        //（可选设置）可以设置视频的填充模式，内部设置默认（ZFPlayerLayerGravityResizeAspect：等比例填充，直到一个维度到达区域边界）
+        // _playerView.playerLayerGravity = ZFPlayerLayerGravityResize;
+
+        // 打开下载功能（默认没有这个功能）
+        _playerView.hasDownload    = YES;
+
+        // 打开预览图
+        _playerView.hasPreviewView = YES;
+    }
+    return _playerView;
+
+}
 #pragma mark - 内存管理相关
 - (void)movieDetailViewControllerDataInit{
-    self.movieButtonList = [[NSMutableArray alloc] init];
+    self.episodeModelList = [[NSMutableArray alloc] init];
 
 }
 

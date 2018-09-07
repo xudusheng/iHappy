@@ -9,7 +9,7 @@
 #import "IHYMovieDetailViewController.h"
 #import "IHYMovieInfoHeaderView.h"
 #import "IHYMoviePlayButtonModel.h"
-#import "IHYMoviePlayButtonCell.h"
+#import "XDSEpisodeCell.h"
 #import "IHYMoviePlayerViewController.h"
 @interface IHYMovieDetailViewController ()<UICollectionViewDelegate, UICollectionViewDataSource>
 @property (strong, nonatomic) NSMutableArray<NSDictionary *> * movieButtonList;
@@ -58,7 +58,7 @@
     //注册item类型 这里使用系统的类型
     [self.view addSubview:_moviedetailCollectionView];
     
-    [_moviedetailCollectionView registerClass:[IHYMoviePlayButtonCell class] forCellWithReuseIdentifier:@"cell"];
+    [_moviedetailCollectionView registerClass:[XDSEpisodeCell class] forCellWithReuseIdentifier:@"cell"];
     [_moviedetailCollectionView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.mas_equalTo(0);
     }];
@@ -101,12 +101,12 @@
 }
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
-    IHYMoviePlayButtonCell * cell  = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
+    XDSEpisodeCell * cell  = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
     NSDictionary * buttonList_section = _movieButtonList[indexPath.section];
     NSArray * buttonList = buttonList_section[@"buttonLies"];
     IHYMoviePlayButtonModel * buttonModel = buttonList[indexPath.row];
     
-    cell.titleLabel.text = buttonModel.title;
+//    cell.titleLabel.text = buttonModel.title;
     return cell;
 }
 
