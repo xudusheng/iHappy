@@ -16,7 +16,7 @@
 @property (nonatomic,copy) NSString *href;//地址
 @property (nonatomic,copy) NSString *player;//视频地址
 @property (nonatomic,copy) NSString *player_alter;//备选地址
-@property (nonatomic,copy) NSString *vedio;//备选地址
+@property (nonatomic,copy) NSString *video;//备选地址
 @property (nonatomic,assign) NSInteger sort;//剧集顺序
 @property (nonatomic,assign) NSInteger section;
 

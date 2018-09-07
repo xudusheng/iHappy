@@ -17,7 +17,7 @@
 @implementation IHYHomsSearchViewController
 
 - (void)viewDidLoad {
-
+    
     [super viewDidLoad];
 }
 
@@ -31,21 +31,21 @@
     
     self.searchBar.placeholder = self.searchPlaceholder;
     
-//    self.cancelButton.titleLabel.font = [UIFont systemFontOfSize:14];
-//    [self.cancelButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-//    [self.cancelButton setTitle:XDSLocalizedString(@"bx.search.cancel.title", nil) forState:UIControlStateNormal];
+    //    self.cancelButton.titleLabel.font = [UIFont systemFontOfSize:14];
+    //    [self.cancelButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    //    [self.cancelButton setTitle:XDSLocalizedString(@"bx.search.cancel.title", nil) forState:UIControlStateNormal];
     
-//    self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
-//    [self setSearchBarBackgroundColor:[UIColor bsnlcolor_F5F5F5]];
-
+    //    self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
+    //    [self setSearchBarBackgroundColor:[UIColor bsnlcolor_F5F5F5]];
+    
     self.searchHistoryStyle = PYSearchHistoryStyleBorderTag;
     self.hotSearchStyle = PYHotSearchStyleBorderTag;
     self.swapHotSeachWithSearchHistory = YES;
-//    self.hotSearchTitle = XDSLocalizedString(@"bx.search.hotsearch.title", nil);
-//    self.searchHistoryTitle = XDSLocalizedString(@"bx.search.historysearch.title", nil);
+    //    self.hotSearchTitle = XDSLocalizedString(@"bx.search.hotsearch.title", nil);
+    //    self.searchHistoryTitle = XDSLocalizedString(@"bx.search.historysearch.title", nil);
     [self.emptyButton setTitle:@"" forState:UIControlStateNormal];
-//    self.emptyButton.x += self.emptyButton.width/2;
-//    self.emptyButton.width /= 2;
+    //    self.emptyButton.x += self.emptyButton.width/2;
+    //    self.emptyButton.width /= 2;
     
     
     self.searchHistoriesCount = 10;
@@ -70,27 +70,22 @@
 #pragma mark - 网络请求
 
 #pragma mark - 代理方法
-#define SEARCH_URL @"http://www.q2002.com/search?wd="
 - (void)searchViewController:(PYSearchViewController *)searchViewController
       didSearchWithSearchBar:(UISearchBar *)searchBar
                   searchText:(NSString *)searchText {
-    NSString *url = [SEARCH_URL stringByAppendingString:searchText];
-    self.resultVC.firstPageUrl = url;
+    self.resultVC.keyword = searchText;
 }
 
 - (void)searchViewController:(PYSearchViewController *)searchViewController
    didSelectHotSearchAtIndex:(NSInteger)index
                   searchText:(NSString *)searchText{
-    NSString *url = [SEARCH_URL stringByAppendingString:searchText];
-    self.resultVC.firstPageUrl = url;
-    
+    self.resultVC.keyword = searchText;
 }
 
 - (void)searchViewController:(PYSearchViewController *)searchViewController
 didSelectSearchHistoryAtIndex:(NSInteger)index
                   searchText:(NSString *)searchText {
-    NSString *url = [SEARCH_URL stringByAppendingString:searchText];
-    self.resultVC.firstPageUrl = url;
+    self.resultVC.keyword = searchText;
     
 }
 #pragma mark - setter & getter

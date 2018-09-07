@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "XDSBaseResponseModel.h"
 
 UIKIT_EXTERN NSString *const kConnectWebFailed;//网络连接失败
 UIKIT_EXTERN NSString *const kAnalysisFailed;//数据解析出错

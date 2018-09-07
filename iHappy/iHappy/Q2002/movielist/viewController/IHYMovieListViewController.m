@@ -16,7 +16,7 @@
 @property (strong, nonatomic) NSMutableArray<IHYMovieModel *> * movieList;
 @property (strong, nonatomic) UICollectionView * movieCollectionView;
 @property (copy, nonatomic) NSString * nextPageUrl;
-
+@property (nonatomic,assign) NSInteger currentPage;
 @end
 
 @implementation IHYMovieListViewController
@@ -56,19 +56,54 @@ NSString * const MovieListViewController_movieCellIdentifier = @"IHPMovieCell";
         make.edges.mas_equalTo(0);
     }];
     
-    _movieCollectionView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(fetchMovieListTop)];
-    _movieCollectionView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreData)];
+    _movieCollectionView.mj_header = [XDS_CustomMjRefreshHeader headerWithRefreshingTarget:self refreshingAction:@selector(headerRequest)];
+    _movieCollectionView.mj_footer = [XDS_CustomMjRefreshFooter footerWithRefreshingTarget:self refreshingAction:@selector(footerRequest)];
+    [self.movieCollectionView.mj_header beginRefreshing];
 }
 
 #pragma mark - 网络请求
-- (void)fetchMovieListTop{
+
+- (void)headerRequest{
+    self.currentPage = 0;
     [self fetchMovieList:YES];
     [_movieCollectionView.mj_footer resetNoMoreData];
 }
-- (void)loadMoreData{
-    if (_nextPageUrl.length) {
-        [self fetchMovieList:NO];
-    }
+- (void)footerRequest{
+    self.currentPage += 1;
+    [self fetchMovieList:NO];
+}
+
+
+- (void)fetchMovieList:(BOOL)isTop{
+    NSString *url = self.rootUrl;
+    NSDictionary *params = @{
+                             @"type":self.type,
+                             @"size":@(REQUEST_PAGE_SIZE),
+                             @"page":@(_currentPage),
+                             };
+    
+    __weak typeof(self)weakSelf = self;
+    
+    [[[XDSHttpRequest alloc] init] GETWithURLString:url
+                                           reqParam:params
+                                      hudController:self
+                                            showHUD:NO
+                                            HUDText:nil
+                                      showFailedHUD:YES
+                                            success:^(BOOL success, NSDictionary *successResult) {
+                                                XDSBaseResponseModel *responseModel = [XDSBaseResponseModel mj_objectWithKeyValues:successResult];
+                                                NSArray *movieList = [IHYMovieModel mj_objectArrayWithKeyValuesArray:responseModel.result];
+                                                
+                                                if (movieList.count) {
+                                                    (weakSelf.currentPage == 0) ? [weakSelf.movieList removeAllObjects] : NULL;
+                                                }
+                                                [self.movieList addObjectsFromArray:movieList];
+                                                [self.movieCollectionView reloadData];
+                                                [weakSelf endRefresh];
+                                            } failed:^(NSString *errorDescription) {
+                                                [weakSelf endRefresh];
+                                            }];
+    
 }
 #pragma mark - 代理方法
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
@@ -86,10 +121,10 @@ NSString * const MovieListViewController_movieCellIdentifier = @"IHPMovieCell";
 
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-//    IHYMovieModel * movieModel = _movieList[indexPath.row];
-//    IHYMovieDetailViewController * movieDetailVC = [[IHYMovieDetailViewController alloc] init];
-//    movieDetailVC.movieModel = movieModel;
-//    [self.navigationController pushViewController:movieDetailVC animated:YES];
+    //    IHYMovieModel * movieModel = _movieList[indexPath.row];
+    //    IHYMovieDetailViewController * movieDetailVC = [[IHYMovieDetailViewController alloc] init];
+    //    movieDetailVC.movieModel = movieModel;
+    //    [self.navigationController pushViewController:movieDetailVC animated:YES];
     
     IHYMovieModel * movieModel = _movieList[indexPath.row];
     IHPPlayerViewController * movieDetailVC = [[IHPPlayerViewController alloc] init];
@@ -99,100 +134,15 @@ NSString * const MovieListViewController_movieCellIdentifier = @"IHPMovieCell";
     
 }
 #pragma mark - 点击事件处理
-- (void)fetchMovieList:(BOOL)isTop{
-    __weak typeof(self)weakSelf = self;
-    [[[XDSHttpRequest alloc] init] htmlRequestWithHref:isTop?_firstPageUrl:_nextPageUrl
-                                         hudController:self
-                                               showHUD:NO
-                                               HUDText:nil
-                                         showFailedHUD:YES
-                                               success:^(BOOL success, NSData * htmlData) {
-                                                   if (success) {
-                                                       [weakSelf detailHtmlData:htmlData needClearOldData:isTop];
-                                                   }else{
-                                                       [XDSUtilities showHud:@"数据请求失败，请稍后重试" rootView:self.navigationController.view hideAfter:1.2];
-                                                   }
-                                                   [weakSelf endRefresh];
-                                               } failed:^(NSString *errorDescription) {
-                                                   [weakSelf endRefresh];
-                                               }];
-}
 
 #pragma mark - 其他私有方法
 
 - (void)endRefresh{
     [_movieCollectionView.mj_header endRefreshing];
     [_movieCollectionView.mj_footer endRefreshing];
-    if (!self.nextPageUrl.length) {
-        [_movieCollectionView.mj_footer endRefreshingWithNoMoreData];
-    }else {
-        [_movieCollectionView.mj_footer resetNoMoreData];
+    if (_movieList.count%REQUEST_PAGE_SIZE > 0) {
+        [self.movieCollectionView.mj_footer endRefreshingWithNoMoreData];
     }
-}
-- (void)detailHtmlData:(NSData *)htmlData needClearOldData:(BOOL)needClearOldData{
-    TFHpple * hpp = [[TFHpple alloc] initWithHTMLData:htmlData];
-    
-    NSArray * pageElements = [hpp searchWithXPathQuery:@"//div[@class =\"pages\"]//ul"];
-    
-    if (pageElements.count > 0) {
-        TFHppleElement * pageElement = pageElements.firstObject;
-        NSArray * childElements = [pageElement childrenWithTagName:@"li"];
-        self.nextPageUrl = nil;
-        for (int i = 0; i < childElements.count; i ++) {
-            TFHppleElement * li_element = childElements[i];
-            NSString * className = [li_element objectForKey:@"class"];
-            if ([className isEqualToString:@"on"] && i + 1 < childElements.count) {
-                TFHppleElement * nextPage_element = childElements[i+1];
-                NSString * nextHref =  [[nextPage_element firstChildWithTagName:@"a"] objectForKey:@"href"];
-                self.nextPageUrl =nextHref;
-                break;
-            }
-        }
-    }else{
-        self.nextPageUrl = nil;
-    }
-    
-    
-    NSArray * rowElements = [hpp searchWithXPathQuery:@"//li[@class=\"p1 m1\"]"];
-    NSMutableArray * newMovies = [NSMutableArray arrayWithCapacity:0];
-    for (TFHppleElement * oneElements in rowElements) {
-        TFHppleElement * a_link_hover =  [oneElements firstChildWithClassName:@"link-hover"];//跳转地址
-        TFHppleElement * image_lazy =  [a_link_hover firstChildWithClassName:@"lazy"];//图片
-        
-        TFHppleElement * span_lzbz =  [a_link_hover firstChildWithClassName:@"lzbz"];
-        TFHppleElement * p_name = [span_lzbz firstChildWithClassName:@"name"];//名称
-        TFHppleElement * p_actor =  [span_lzbz childrenWithClassName:@"actor"].lastObject;//更新时间
-        
-        TFHppleElement * p_other =  [a_link_hover firstChildWithClassName:@"other"];//其他描述
-        
-        NSString * name = p_name.text;
-        NSString * href = [a_link_hover objectForKey:@"href"];
-        NSString * imageurl = [image_lazy objectForKey:@"src"];
-        NSString * update = p_actor.text;
-        NSString * other = p_other.text;
-        
-        IHYMovieModel * model = [[IHYMovieModel alloc] init];
-        model.name = name;
-        model.href = href;
-        model.imageurl = imageurl;
-        model.update = update;
-        model.other = other;
-        [newMovies addObject:model];
-    }
-    if (newMovies.count > 0) {
-        if (needClearOldData) {
-            [_movieList removeAllObjects];
-        }
-        [_movieList addObjectsFromArray:newMovies];
-        [_movieCollectionView reloadData];
-    }else{
-        [_movieCollectionView.mj_footer endRefreshingWithNoMoreData];
-    }
-}
-
-- (void)setFirstPageUrl:(NSString *)firstPageUrl {
-    _firstPageUrl = firstPageUrl;
-    [self fetchMovieListTop];
 }
 #pragma mark - 内存管理相关
 - (void)movieListViewControllerDataInit{

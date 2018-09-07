@@ -25,7 +25,7 @@
 
 - (void)viewDidLoad {
     self.menuViewStyle = WMMenuViewStyleLine;
-
+    
     [super viewDidLoad];
     
     [self mainViewControllerDataInit];
@@ -39,7 +39,7 @@
 - (void)createMainViewControllerUI{
     self.navigationController.navigationBar.translucent = NO;
     self.navigationController.navigationBar.shadowImage = [UIImage new];
-
+    
     
     CGFloat marginLeft = 15;
     CGFloat marginRight = marginLeft;
@@ -123,7 +123,8 @@
         
     }else{
         IHYMovieListViewController * movieVC = [[IHYMovieListViewController alloc]init];
-        movieVC.firstPageUrl = model.url;
+        movieVC.rootUrl = _menuModel.rooturl;
+        movieVC.type = model.url;
         return movieVC;
     }
 }

@@ -140,6 +140,7 @@
 		A24B53CD1EB941BE005D34C6 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A24B53CC1EB941BE005D34C6 /* JavaScriptCore.framework */; };
 		A24FCBE421319AB2001A05DB /* XDSFullPlayerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A24FCBE321319AB2001A05DB /* XDSFullPlayerVC.m */; };
 		A24FCBE721319BF0001A05DB /* UIViewController+XDSMediaBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = A24FCBE621319BF0001A05DB /* UIViewController+XDSMediaBrowser.m */; };
+		A29B03F52142D88100876433 /* XDSBaseResponseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A29B03F42142D88100876433 /* XDSBaseResponseModel.m */; };
 		E28B84A8A36AAB50D4A6C2B8 /* Pods_iHappy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CB566B05B747CCEC832F7BB /* Pods_iHappy.framework */; };
 		FC0B7C6E1EC751C90022E504 /* IHPMeituListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC0B7C6D1EC751C90022E504 /* IHPMeituListViewController.m */; };
 		FC0B7C721EC759880022E504 /* YSERequestFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = FC0B7C711EC759880022E504 /* YSERequestFetcher.m */; };
@@ -419,6 +420,8 @@
 		A24FCBE321319AB2001A05DB /* XDSFullPlayerVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XDSFullPlayerVC.m; sourceTree = "<group>"; };
 		A24FCBE521319BF0001A05DB /* UIViewController+XDSMediaBrowser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+XDSMediaBrowser.h"; sourceTree = "<group>"; };
 		A24FCBE621319BF0001A05DB /* UIViewController+XDSMediaBrowser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+XDSMediaBrowser.m"; sourceTree = "<group>"; };
+		A29B03F32142D88100876433 /* XDSBaseResponseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDSBaseResponseModel.h; sourceTree = "<group>"; };
+		A29B03F42142D88100876433 /* XDSBaseResponseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XDSBaseResponseModel.m; sourceTree = "<group>"; };
 		DDF28F2EE953D3A78F924489 /* Pods-iHappy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iHappy.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iHappy/Pods-iHappy.debug.xcconfig"; sourceTree = "<group>"; };
 		FC0B7C6C1EC751C90022E504 /* IHPMeituListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IHPMeituListViewController.h; sourceTree = "<group>"; };
 		FC0B7C6D1EC751C90022E504 /* IHPMeituListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IHPMeituListViewController.m; sourceTree = "<group>"; };
@@ -1085,6 +1088,7 @@
 				092CAED51DE2861F008127DA /* Q2002 */,
 				A05EB90F1DE039D200148A5B /* iNews */,
 				FCAFC6061EAED5C300B48C83 /* Vender */,
+				A29B03F22142D88100876433 /* Model */,
 				A0D46B851DE0173500637681 /* Assets.xcassets */,
 				A0D46B8A1DE0173500637681 /* Info.plist */,
 				A0D46B791DE0173500637681 /* Supporting Files */,
@@ -1110,6 +1114,15 @@
 				A227A8492130641300568BCB /* SplashX.png */,
 			);
 			path = adImage;
+			sourceTree = "<group>";
+		};
+		A29B03F22142D88100876433 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A29B03F32142D88100876433 /* XDSBaseResponseModel.h */,
+				A29B03F42142D88100876433 /* XDSBaseResponseModel.m */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		A5D9E6B680318E792349A23C /* Pods */ = {
@@ -1525,6 +1538,7 @@
 				092CAF001DE28620008127DA /* IHYMovieInfoHeaderView.m in Sources */,
 				18A6FA902130031600709EC9 /* NLEBNFTokens.m in Sources */,
 				18A6FA12212F983E00709EC9 /* IHYHomsSearchViewController.m in Sources */,
+				A29B03F52142D88100876433 /* XDSBaseResponseModel.m in Sources */,
 				FCA032431F8DD7DE00600581 /* PYSearchConst.m in Sources */,
 				092CAF0F1DE28D23008127DA /* UIViewController+HideNavigationBar.m in Sources */,
 				A208A6CD2132B39600900DFC /* XDSMeituModel.m in Sources */,
