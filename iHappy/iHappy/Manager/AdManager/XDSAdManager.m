@@ -8,14 +8,21 @@
 
 #import "XDSAdManager.h"
 #import "GDTSplashAd.h"
+#import "GDTMobBannerView.h"
 
 NSString *const kGDTMobSDKAppId = @"1105344611";
 NSString *const kGDTMobSDKSplashAdId = @"9040714184494018";
+NSString *const kGDTMobSDKBannerAdId = @"4090812164690039";
 @interface XDSAdManager () <GDTSplashAdDelegate>
 
+//开屏广告
 @property (nonatomic, strong) GDTSplashAd *splashAd;
 @property (nonatomic, strong) UIView *bottomView;
 @property (nonatomic, assign) BOOL showAdWhenEnterForground;
+
+//banner广告
+@property (nonatomic, strong) GDTMobBannerView *bannerView;
+
 
 
 @end
@@ -36,6 +43,7 @@ NSString *const kGDTMobSDKSplashAdId = @"9040714184494018";
                                                   object:nil];
 }
 
+//开屏广告
 - (void)showSplashAd {
 
     self.splashAd = [[GDTSplashAd alloc] initWithAppId:kGDTMobSDKAppId placementId:kGDTMobSDKSplashAdId];
@@ -87,6 +95,34 @@ NSString *const kGDTMobSDKSplashAdId = @"9040714184494018";
 
 - (void)canShowAd {
     self.showAdWhenEnterForground = YES;
+}
+
+
+//banner广告
+- (void)loadBannerAdFromViewController:(UIViewController *)fromViewController{
+    [[self bannerViewWithCurrentViewController:fromViewController] loadAdAndShow];
+}
+- (GDTMobBannerView *)bannerView {
+    return _bannerView;
+}
+- (GDTMobBannerView *)bannerViewWithCurrentViewController:(UIViewController *)currentViewController{
+    if (!_bannerView) {
+//        CGRect rect = {CGPointZero, GDTMOB_AD_SUGGEST_SIZE_320x50};
+        CGRect rect = {0, 0, DEVIECE_SCREEN_WIDTH, GDTMOB_AD_SUGGEST_SIZE_320x50.height};
+        _bannerView = [[GDTMobBannerView alloc] initWithFrame:rect appId:kGDTMobSDKAppId placementId:kGDTMobSDKBannerAdId];
+        _bannerView.currentViewController = currentViewController;
+        _bannerView.interval = 20;//刷新间隔
+        _bannerView.isAnimationOn = NO;//是否添加动画
+        _bannerView.showCloseBtn = NO;//是否添加隐藏按钮
+        _bannerView.isGpsOn = NO;//是否添加GPS
+//        _bannerView.delegate = self;
+    }
+    return _bannerView;
+}
+//移除banner广告
+- (void)removeBannerAd {
+    [self.bannerView removeFromSuperview];
+    self.bannerView = nil;
 }
 
 @end

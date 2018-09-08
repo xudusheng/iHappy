@@ -48,8 +48,7 @@ static NSString * managerMappingFile = nil;
     return NSClassFromString(key);
 }
 
-+ (NSString *)configForCurrentClass
-{
++ (NSString *)configForCurrentClass {
     [XDSBaseManager initManagerMap];
     
     NSString * value = NSStringFromClass(self.class);

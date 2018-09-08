@@ -104,6 +104,7 @@
 		18A6FAFD2130DF3800709EC9 /* btn_play@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A6FAE42130DF3700709EC9 /* btn_play@3x.png */; };
 		18A6FAFE2130DF3800709EC9 /* XDSMediaModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A6FAEB2130DF3700709EC9 /* XDSMediaModel.m */; };
 		18A6FB022130E2D300709EC9 /* XDSMediaBrowserVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A6FB012130E2D300709EC9 /* XDSMediaBrowserVC.m */; };
+		18AED1B1214360570044DE84 /* XDSPlayerBannerAdCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18AED1B0214360570044DE84 /* XDSPlayerBannerAdCell.m */; };
 		18F8EB502139564100168506 /* XDSNewsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F8EB4F2139564100168506 /* XDSNewsModel.m */; };
 		18F8EB592139626F00168506 /* XDS_CustomMjRefreshHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F8EB562139626F00168506 /* XDS_CustomMjRefreshHeader.m */; };
 		18F8EB5A2139626F00168506 /* XDS_CustomMjRefreshFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F8EB572139626F00168506 /* XDS_CustomMjRefreshFooter.m */; };
@@ -352,6 +353,8 @@
 		18A6FAEB2130DF3700709EC9 /* XDSMediaModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XDSMediaModel.m; sourceTree = "<group>"; };
 		18A6FB002130E2D300709EC9 /* XDSMediaBrowserVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XDSMediaBrowserVC.h; sourceTree = "<group>"; };
 		18A6FB012130E2D300709EC9 /* XDSMediaBrowserVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XDSMediaBrowserVC.m; sourceTree = "<group>"; };
+		18AED1AF214360570044DE84 /* XDSPlayerBannerAdCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XDSPlayerBannerAdCell.h; sourceTree = "<group>"; };
+		18AED1B0214360570044DE84 /* XDSPlayerBannerAdCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XDSPlayerBannerAdCell.m; sourceTree = "<group>"; };
 		18F8EB4E2139564100168506 /* XDSNewsModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XDSNewsModel.h; sourceTree = "<group>"; };
 		18F8EB4F2139564100168506 /* XDSNewsModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XDSNewsModel.m; sourceTree = "<group>"; };
 		18F8EB532139626F00168506 /* XDS_CustomMjRefreshFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDS_CustomMjRefreshFooter.h; sourceTree = "<group>"; };
@@ -723,6 +726,8 @@
 		185347612142096E00013F81 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				18AED1AF214360570044DE84 /* XDSPlayerBannerAdCell.h */,
+				18AED1B0214360570044DE84 /* XDSPlayerBannerAdCell.m */,
 			);
 			name = View;
 			path = iHappy/Q2002/movieplayer/View;
@@ -1626,6 +1631,7 @@
 				18A6FAEE2130DF3800709EC9 /* XDSZoomingScrollView.m in Sources */,
 				18A6FA4A212FFF1900709EC9 /* zip.c in Sources */,
 				A05EB91A1DE03B2500148A5B /* XDSRootRequestTableViewController.m in Sources */,
+				18AED1B1214360570044DE84 /* XDSPlayerBannerAdCell.m in Sources */,
 				A05EB92B1DE0880000148A5B /* XDSRootModel.m in Sources */,
 				18A6FA932130031600709EC9 /* NLEBNFParseResult.m in Sources */,
 				18A6FA59212FFFB900709EC9 /* XDSPlaceholdSplashViewController.m in Sources */,
