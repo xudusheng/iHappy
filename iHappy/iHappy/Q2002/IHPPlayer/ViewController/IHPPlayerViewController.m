@@ -11,10 +11,11 @@
 #import "IHYMoviePlayButtonModel.h"
 #import "XDSEpisodeCell.h"
 #import "XDSPlayerBannerAdCell.h"
+#import "XDSVideoSummaryCell.h"
+#import "XDSPlayerSectionHeader.h"
 
 #import "AppDelegate.h"
 #import "XDSepisodeModel.h"
-//#import "IHYMoviePlayerViewController.h"
 #import "ZFPlayer.h"
 
 #import "XDSPlayerView.h"
@@ -29,8 +30,13 @@ UIWebViewDelegate
 @property (strong, nonatomic) UICollectionView *mCollectionView;
 
 @property (strong, nonatomic) ZFPlayerView *playerView;
+@property (nonatomic,assign)ZFPlayerState playerState;
+
 //@property (strong, nonatomic) XDSPlayerView *playerView;
 @property (strong, nonatomic) UIView *playerContentView;
+
+@property (weak, nonatomic) UIButton *hiddenSummaryButton;//隐藏与展开简介按钮
+
 
 @property (strong, nonatomic) UIWebView * webView;
 @property (nonatomic,assign)BOOL didWebViewLoadOK;
@@ -41,8 +47,12 @@ UIWebViewDelegate
 
 @implementation IHPPlayerViewController
 
-NSInteger const kPlaceholderSectionNumbers = 1;
+NSInteger const kPlaceholderSectionNumbers = 2;
 
+- (void)dealloc
+{
+    [self.playerView removeObserver:self forKeyPath:@"state"];
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -153,10 +163,11 @@ NSInteger const kPlaceholderSectionNumbers = 1;
     layout.scrollDirection = UICollectionViewScrollDirectionVertical;
     
     //设置每个item的大小
-    CGFloat width = DEVIECE_SCREEN_WIDTH - 21;
-    layout.itemSize = CGSizeMake(width, 30);
-    layout.minimumLineSpacing = 10;
-    layout.estimatedItemSize = CGSizeMake(width, 50);
+//    CGFloat width = DEVIECE_SCREEN_WIDTH;
+////    layout.itemSize = CGSizeMake(width, 30);
+    layout.minimumLineSpacing = 5;
+    layout.minimumInteritemSpacing = 10;
+//    layout.estimatedItemSize = CGSizeMake(width, 50);
     
     //创建collectionView 通过一个布局策略layout来创建
     self.mCollectionView = [[UICollectionView alloc]initWithFrame:CGRectZero collectionViewLayout:layout];
@@ -170,6 +181,9 @@ NSInteger const kPlaceholderSectionNumbers = 1;
     
     [_mCollectionView registerClass:[XDSEpisodeCell class] forCellWithReuseIdentifier:NSStringFromClass([XDSEpisodeCell class])];
     [_mCollectionView registerClass:[XDSPlayerBannerAdCell class] forCellWithReuseIdentifier:NSStringFromClass([XDSPlayerBannerAdCell class])];
+    [_mCollectionView registerNib:[UINib nibWithNibName:NSStringFromClass([XDSVideoSummaryCell class]) bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:NSStringFromClass([XDSVideoSummaryCell class])];
+    [_mCollectionView registerNib:[UINib nibWithNibName:NSStringFromClass([XDSPlayerSectionHeader class]) bundle:[NSBundle mainBundle]] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:NSStringFromClass([XDSPlayerSectionHeader class])];
+    
     [_mCollectionView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.playerContentView.mas_bottom);
         make.left.bottom.right.mas_equalTo(0);
@@ -318,8 +332,16 @@ NSInteger const kPlaceholderSectionNumbers = 1;
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section < kPlaceholderSectionNumbers) {
-        XDSEpisodeCell *cell  = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([XDSPlayerBannerAdCell class]) forIndexPath:indexPath];
-        return cell;
+        if (indexPath.section == 0) {
+            XDSVideoSummaryCell *cell  = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([XDSVideoSummaryCell class]) forIndexPath:indexPath];
+            cell.summary = self.movieModel.summary;
+            self.hiddenSummaryButton = cell.hiddenButton;
+            return cell;
+        }else {
+            XDSPlayerBannerAdCell *cell  = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([XDSPlayerBannerAdCell class]) forIndexPath:indexPath];
+            return cell;
+        }
+
     }else {
         XDSEpisodeCell *cell  = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([XDSEpisodeCell class]) forIndexPath:indexPath];
         XDSEpisodeModel *episodeModel = _episodeModelList[indexPath.section - kPlaceholderSectionNumbers][indexPath.row];
@@ -329,17 +351,79 @@ NSInteger const kPlaceholderSectionNumbers = 1;
 
 }
 
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.section < kPlaceholderSectionNumbers) {
+        if (indexPath.section == 0) {
+            NSString *summary = self.movieModel.summary;
+            CGSize size = [summary sizeWithFont:VIDEO_SUMMARY_FONT maxSize:VIDEO_SUMMARY_MAX_SIZE];
+            if (size.height < 60) {
+                CGSize itemSize = CGSizeMake(DEVIECE_SCREEN_WIDTH, VIDEO_SUMMARY_CELL_HEIGHT_EXCEPT_SUMMARY + size.height - VIDEO_SUMMARY_CELL_HIDDEN_BUTTON_HEIGHT);
+                return itemSize;
+            }else {
+                CGSize itemSize = CGSizeMake(DEVIECE_SCREEN_WIDTH, VIDEO_SUMMARY_CELL_HEIGHT_EXCEPT_SUMMARY + 60);
+                if (self.hiddenSummaryButton.selected) {//展开剧情简介
+                    itemSize.height = VIDEO_SUMMARY_CELL_HEIGHT_EXCEPT_SUMMARY + size.height;
+                }
+                return itemSize;
+            }
+
+        }else {
+            return CGSizeMake(DEVIECE_SCREEN_WIDTH, 50);
+
+        }
+
+    }else {
+        XDSEpisodeModel *episodeModel = _episodeModelList[indexPath.section-kPlaceholderSectionNumbers][indexPath.row];
+        NSString *title = episodeModel.title;
+        CGSize size = [title sizeWithFont:EPISODE_CELL_FONT maxSize:EPISODE_CELL_MAX_SIZE];
+        return CGSizeMake(size.width + EPISODE_CELL_HEIGHT_EXCEPT_CONTENT, EPISODE_CELL_HEIGHT);
+    }
+}
+
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
     UIEdgeInsets edgeInset = UIEdgeInsetsZero;
     if (section < kPlaceholderSectionNumbers) {
         edgeInset = UIEdgeInsetsZero;
     }else {
-        edgeInset = UIEdgeInsetsMake(20, 10, 20, 10);
+        edgeInset = UIEdgeInsetsMake(10, 10, 10, 10);
     }
     
     return edgeInset;
 
 }
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section {
+    if (section < kPlaceholderSectionNumbers) {
+        return CGSizeZero;
+    }else {
+        return CGSizeMake(DEVIECE_SCREEN_WIDTH, 25);
+    }
+}
+
+- (UICollectionReusableView *) collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
+{
+    if ([kind isEqualToString:UICollectionElementKindSectionHeader]) {
+        XDSPlayerSectionHeader *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:NSStringFromClass([XDSPlayerSectionHeader class]) forIndexPath:indexPath];
+        if (indexPath.section == kPlaceholderSectionNumbers) {
+            if (self.movieModel.name.length) {
+                headerView.titleLabel.text = [NSString stringWithFormat:@"《%@》- 在线播放 - 如果不能播放先刷新试试", self.movieModel.name];
+            }else {
+                headerView.titleLabel.text = @"在线播放 - 如果不能播放先刷新试试";
+            }
+        }else {
+            if (self.movieModel.name.length) {
+                headerView.titleLabel.text = [NSString stringWithFormat:@"《%@》- @备用 - 在线播放 - 如果不能播放先刷新试试", self.movieModel.name];
+            }else {
+                headerView.titleLabel.text = @"@备用 - 在线播放 - 如果不能播放先刷新试试";
+            }
+        }
+
+        return headerView;
+    }
+    return nil;
+
+}
+
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section < kPlaceholderSectionNumbers) {
@@ -370,10 +454,11 @@ NSInteger const kPlaceholderSectionNumbers = 1;
 - (void)startPlay {
     BOOL hasNoPlayUrl = self.selectedEpisodeModel.player.length < 1 && self.selectedEpisodeModel.player_alter.length < 1 && self.selectedEpisodeModel.video.length < 1;
     
-//    if (self.selectedEpisodeModel.video.length || hasNoPlayUrl) {
+    if (self.selectedEpisodeModel.video.length || hasNoPlayUrl) {
     
-        hasNoPlayUrl = NO;
-    if (hasNoPlayUrl) {
+//        hasNoPlayUrl = NO;
+//    if (hasNoPlayUrl) {
+        self.playerState = self.selectedEpisodeModel.video.length?ZFPlayerStateBuffering:ZFPlayerStateFailed;
         [self.webView removeFromSuperview];
         [self playWithZPPLayer:self.selectedEpisodeModel];
     }else {
@@ -382,8 +467,8 @@ NSInteger const kPlaceholderSectionNumbers = 1;
             [self.playerContentView addSubview:self.webView];
         }
         
-//        NSURL * url = [NSURL URLWithString:self.selectedEpisodeModel.player_alter.length?self.selectedEpisodeModel.player_alter:self.selectedEpisodeModel.player];
-        NSURL * url = [NSURL URLWithString:self.selectedEpisodeModel.player];
+        NSURL * url = [NSURL URLWithString:self.selectedEpisodeModel.player_alter.length?self.selectedEpisodeModel.player_alter:self.selectedEpisodeModel.player];
+//        NSURL * url = [NSURL URLWithString:self.selectedEpisodeModel.player];
         NSURLRequest * request = [NSURLRequest requestWithURL:url];
         [_webView loadRequest:request];
         
@@ -464,10 +549,28 @@ NSInteger const kPlaceholderSectionNumbers = 1;
 
 //监听播放器的播放状态
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
-    id newState = change[NSKeyValueChangeNewKey];
-    id oldState = change[NSKeyValueChangeOldKey];
+    NSNumber *newState = change[NSKeyValueChangeNewKey];
+    NSNumber *oldState = change[NSKeyValueChangeOldKey];
     
-    NSLog(@"old = %@, new = %@", oldState, newState);
+    NSLog(@"old = %@, new = %@ state = %@", oldState, newState, @(self.playerState));
+//    ZFPlayerStateFailed,     // 播放失败
+//    ZFPlayerStateBuffering,  // 缓冲中
+//    ZFPlayerStatePlaying,    // 播放中
+//    ZFPlayerStateStopped,    // 停止播放
+//    ZFPlayerStatePause       // 暂停播放
+    
+    static NSInteger tryTimes = 0;//尝试刷新次数
+    if (newState.integerValue == ZFPlayerStatePlaying) {
+        self.playerState = ZFPlayerStatePlaying;
+        tryTimes = 0;
+    }
+    
+    if (self.playerState == ZFPlayerStateBuffering && newState.integerValue == ZFPlayerStateFailed) {
+        if (tryTimes < 1) {
+            [self fetchDeepPlayerInfo];
+        }
+        tryTimes ++;
+    }
     
     
 }

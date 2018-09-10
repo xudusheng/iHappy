@@ -9,6 +9,7 @@
 #ifndef XDSCategoryHeader_h
 #define XDSCategoryHeader_h
 
+#import "NSString+XDSAddition.h"
 #import "NSString+Tony.h"
 #import "NSString+Helper.h"
 #import "CALayer+Addition.h"

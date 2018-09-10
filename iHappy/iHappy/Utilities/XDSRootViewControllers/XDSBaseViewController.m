@@ -13,7 +13,10 @@
 @end
 
 @implementation XDSBaseViewController
-
+- (void)dealloc
+{
+    NSLog(@"=============%@", NSStringFromClass(self.class));
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     UIBarButtonItem * barButtonItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"ico_back"] style:UIBarButtonItemStyleDone target:self action:@selector(popBack:)];

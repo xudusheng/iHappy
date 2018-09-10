@@ -138,6 +138,11 @@
 		A227A84B2130641300568BCB /* SplashNormal.png in Resources */ = {isa = PBXBuildFile; fileRef = A227A8472130641300568BCB /* SplashNormal.png */; };
 		A227A84C2130641300568BCB /* SplashSmall.png in Resources */ = {isa = PBXBuildFile; fileRef = A227A8482130641300568BCB /* SplashSmall.png */; };
 		A227A84D2130641300568BCB /* SplashX.png in Resources */ = {isa = PBXBuildFile; fileRef = A227A8492130641300568BCB /* SplashX.png */; };
+		A22C12EE2144611800896F00 /* XDSVideoSummaryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A22C12EC2144611800896F00 /* XDSVideoSummaryCell.m */; };
+		A22C12EF2144611800896F00 /* XDSVideoSummaryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A22C12ED2144611800896F00 /* XDSVideoSummaryCell.xib */; };
+		A22C12F4214464BF00896F00 /* NSString+XDSAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = A22C12F3214464BF00896F00 /* NSString+XDSAddition.m */; };
+		A22C12FC2144734E00896F00 /* XDSPlayerSectionHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = A22C12FA2144734E00896F00 /* XDSPlayerSectionHeader.m */; };
+		A22C12FD2144734E00896F00 /* XDSPlayerSectionHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = A22C12FB2144734E00896F00 /* XDSPlayerSectionHeader.xib */; };
 		A24B53CD1EB941BE005D34C6 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A24B53CC1EB941BE005D34C6 /* JavaScriptCore.framework */; };
 		A24FCBE421319AB2001A05DB /* XDSFullPlayerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A24FCBE321319AB2001A05DB /* XDSFullPlayerVC.m */; };
 		A24FCBE721319BF0001A05DB /* UIViewController+XDSMediaBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = A24FCBE621319BF0001A05DB /* UIViewController+XDSMediaBrowser.m */; };
@@ -418,6 +423,14 @@
 		A227A8472130641300568BCB /* SplashNormal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SplashNormal.png; sourceTree = "<group>"; };
 		A227A8482130641300568BCB /* SplashSmall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SplashSmall.png; sourceTree = "<group>"; };
 		A227A8492130641300568BCB /* SplashX.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SplashX.png; sourceTree = "<group>"; };
+		A22C12EB2144611800896F00 /* XDSVideoSummaryCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XDSVideoSummaryCell.h; sourceTree = "<group>"; };
+		A22C12EC2144611800896F00 /* XDSVideoSummaryCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XDSVideoSummaryCell.m; sourceTree = "<group>"; };
+		A22C12ED2144611800896F00 /* XDSVideoSummaryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = XDSVideoSummaryCell.xib; sourceTree = "<group>"; };
+		A22C12F2214464BF00896F00 /* NSString+XDSAddition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+XDSAddition.h"; sourceTree = "<group>"; };
+		A22C12F3214464BF00896F00 /* NSString+XDSAddition.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+XDSAddition.m"; sourceTree = "<group>"; };
+		A22C12F92144734E00896F00 /* XDSPlayerSectionHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XDSPlayerSectionHeader.h; sourceTree = "<group>"; };
+		A22C12FA2144734E00896F00 /* XDSPlayerSectionHeader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XDSPlayerSectionHeader.m; sourceTree = "<group>"; };
+		A22C12FB2144734E00896F00 /* XDSPlayerSectionHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = XDSPlayerSectionHeader.xib; sourceTree = "<group>"; };
 		A24B53CC1EB941BE005D34C6 /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		A24FCBE221319AB2001A05DB /* XDSFullPlayerVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XDSFullPlayerVC.h; sourceTree = "<group>"; };
 		A24FCBE321319AB2001A05DB /* XDSFullPlayerVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XDSFullPlayerVC.m; sourceTree = "<group>"; };
@@ -728,6 +741,12 @@
 			children = (
 				18AED1AF214360570044DE84 /* XDSPlayerBannerAdCell.h */,
 				18AED1B0214360570044DE84 /* XDSPlayerBannerAdCell.m */,
+				A22C12EB2144611800896F00 /* XDSVideoSummaryCell.h */,
+				A22C12EC2144611800896F00 /* XDSVideoSummaryCell.m */,
+				A22C12ED2144611800896F00 /* XDSVideoSummaryCell.xib */,
+				A22C12F92144734E00896F00 /* XDSPlayerSectionHeader.h */,
+				A22C12FA2144734E00896F00 /* XDSPlayerSectionHeader.m */,
+				A22C12FB2144734E00896F00 /* XDSPlayerSectionHeader.xib */,
 			);
 			name = View;
 			path = iHappy/Q2002/movieplayer/View;
@@ -1087,6 +1106,7 @@
 				A0D46B7D1DE0173500637681 /* AppDelegate.m */,
 				18A6FA5B213000A300709EC9 /* XDSRootViewController.h */,
 				18A6FA5C213000A300709EC9 /* XDSRootViewController.m */,
+				A22C12F02144648A00896F00 /* Tools */,
 				FC1A8C2C1EAC1FD900E66FF8 /* menu.json */,
 				18A6FA1B212FCB9200709EC9 /* Manager */,
 				FC0B7C6B1EC751690022E504 /* Bizhi */,
@@ -1119,6 +1139,23 @@
 				A227A8492130641300568BCB /* SplashX.png */,
 			);
 			path = adImage;
+			sourceTree = "<group>";
+		};
+		A22C12F02144648A00896F00 /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				A22C12F12144649400896F00 /* Category */,
+			);
+			path = Tools;
+			sourceTree = "<group>";
+		};
+		A22C12F12144649400896F00 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				A22C12F2214464BF00896F00 /* NSString+XDSAddition.h */,
+				A22C12F3214464BF00896F00 /* NSString+XDSAddition.m */,
+			);
+			path = Category;
 			sourceTree = "<group>";
 		};
 		A29B03F22142D88100876433 /* Model */ = {
@@ -1420,6 +1457,7 @@
 				18A6FA2D212FCB9D00709EC9 /* Localizable_en.string in Resources */,
 				092CAEFF1DE28620008127DA /* IHYMovieDetailInfoView.xib in Resources */,
 				A227A84C2130641300568BCB /* SplashSmall.png in Resources */,
+				A22C12FD2144734E00896F00 /* XDSPlayerSectionHeader.xib in Resources */,
 				18A6FAF72130DF3800709EC9 /* btn_stop@2x.png in Resources */,
 				18A6FAFA2130DF3800709EC9 /* btn-amplification@2x.png in Resources */,
 				A01579F41DE1776C00CD7DDB /* ico_back@3x.png in Resources */,
@@ -1432,6 +1470,7 @@
 				18A6FAF52130DF3800709EC9 /* btn_voice@3x.png in Resources */,
 				18A6FAF42130DF3800709EC9 /* btn_voice@2x.png in Resources */,
 				09F90D7A1DE2D2F600542684 /* IHYNewsMultableImageCell.xib in Resources */,
+				A22C12EF2144611800896F00 /* XDSVideoSummaryCell.xib in Resources */,
 				18A6FAF92130DF3800709EC9 /* btn_voice_disabled@2x.png in Resources */,
 				18A6FAF82130DF3800709EC9 /* btn_voice_disabled@3x.png in Resources */,
 				18A6FAFC2130DF3800709EC9 /* btn_play@2x.png in Resources */,
@@ -1607,6 +1646,7 @@
 				18A6FA892130031500709EC9 /* NLEBNFFastForward.m in Sources */,
 				092CAEFB1DE28620008127DA /* IHYViewControllerModel.m in Sources */,
 				FCAFC6111EAED7DF00B48C83 /* IHPConfigModel.m in Sources */,
+				A22C12EE2144611800896F00 /* XDSVideoSummaryCell.m in Sources */,
 				FC0B7C721EC759880022E504 /* YSERequestFetcher.m in Sources */,
 				09F90D791DE2D2F600542684 /* IHYNewsMultableImageCell.m in Sources */,
 				092CAF021DE28620008127DA /* IHYMovieDetailViewController.m in Sources */,
@@ -1622,6 +1662,7 @@
 				18A6FA8B2130031600709EC9 /* NLEBNFIndexFactoryJSON.m in Sources */,
 				092CAF011DE28620008127DA /* XDSEpisodeCell.m in Sources */,
 				18A6FA962130031600709EC9 /* NLEBNFTokenizerFactory.m in Sources */,
+				A22C12FC2144734E00896F00 /* XDSPlayerSectionHeader.m in Sources */,
 				18A6FAEC2130DF3800709EC9 /* XDSGestureDetectingImageView.m in Sources */,
 				A05EB9071DE02D6700148A5B /* UIColor+Hex.m in Sources */,
 				FC0B7C6E1EC751C90022E504 /* IHPMeituListViewController.m in Sources */,
@@ -1642,6 +1683,7 @@
 				18A6FA4C212FFF1900709EC9 /* mztools.c in Sources */,
 				18A6FAF12130DF3800709EC9 /* XDSMediaBrowserCell.m in Sources */,
 				A05EB9001DE0277E00148A5B /* NSString+Helper.m in Sources */,
+				A22C12F4214464BF00896F00 /* NSString+XDSAddition.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1768,7 +1810,7 @@
 				DEVELOPMENT_TEAM = 8RW49AS53X;
 				GCC_PREFIX_HEADER = iHappy/IPYPrefixHeader.pch;
 				INFOPLIST_FILE = iHappy/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1832,7 +1874,7 @@
 				DEVELOPMENT_TEAM = 8RW49AS53X;
 				GCC_PREFIX_HEADER = iHappy/IPYPrefixHeader.pch;
 				INFOPLIST_FILE = iHappy/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",

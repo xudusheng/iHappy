@@ -39,7 +39,6 @@
 #import "CWFoundation.h"
 #import "UIImageView+WebCache.h"
 
-#import "XDSCategoryHeader.h"
 #import "XDSRootModel.h"
 #import "XDSHttpRequest.h"
 #import "XDSUtilities.h"
