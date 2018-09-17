@@ -39,6 +39,7 @@
     [self.window makeKeyAndVisible];
     [[XDSAdManager sharedManager] showSplashAd];
     [self stareLaunchQueue];
+
     
     return YES;
 }

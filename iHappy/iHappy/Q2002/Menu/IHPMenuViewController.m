@@ -8,6 +8,7 @@
 
 #import "IHPMenuViewController.h"
 #import "AppDelegate.h"
+#import "XDSMainReaderVC.h"
 @interface IHPMenuViewController ()<UITableViewDelegate, UITableViewDataSource>
 @property (strong, nonatomic) UITableView *menuTable;
 @property (copy, nonatomic) NSArray *menuList;
@@ -56,7 +57,15 @@ static NSString *kMenuTableViewCellIdentifier = @"MenuTableViewCell";
     [delegate.mainmeunVC hideMenuViewController];
     
     IHPMenuModel *theMenu = _menuList[indexPath.row];
-    delegate.contentController.menuModel = theMenu;
+    
+    if ([theMenu.menuId isEqualToString:@"kReader"]) {
+        XDSMainReaderVC *bookListVC = [[XDSMainReaderVC alloc] init];
+        UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:bookListVC];
+        delegate.mainmeunVC.contentViewController = nav;
+    }else {
+        delegate.contentController.menuModel = theMenu;
+    }
+    
 }
 
 

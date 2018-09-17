@@ -129,6 +129,9 @@
 		181E5415214F928100E8A704 /* XDSLightView.m in Sources */ = {isa = PBXBuildFile; fileRef = 181E53AB214F928000E8A704 /* XDSLightView.m */; };
 		181E5416214F928100E8A704 /* UIView+YGPulseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 181E53AD214F928000E8A704 /* UIView+YGPulseView.m */; };
 		181E5417214F928100E8A704 /* XDSHaloButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 181E53B3214F928000E8A704 /* XDSHaloButton.m */; };
+		181E541B214FCFC800E8A704 /* XDSMainReaderVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 181E541A214FCFC800E8A704 /* XDSMainReaderVC.m */; };
+		181E5420214FD25D00E8A704 /* XDSBookCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 181E541E214FD25D00E8A704 /* XDSBookCell.m */; };
+		181E5421214FD25D00E8A704 /* XDSBookCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 181E541F214FD25D00E8A704 /* XDSBookCell.xib */; };
 		185347642142098600013F81 /* XDSEpisodeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 185347632142098600013F81 /* XDSEpisodeModel.m */; };
 		18A6FA12212F983E00709EC9 /* IHYHomsSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A6FA10212F983D00709EC9 /* IHYHomsSearchViewController.m */; };
 		18A6FA28212FCB9D00709EC9 /* appConfig.txt in Resources */ = {isa = PBXBuildFile; fileRef = 18A6FA1E212FCB9D00709EC9 /* appConfig.txt */; };
@@ -503,6 +506,11 @@
 		181E53B4214F928000E8A704 /* XDSMenuTopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDSMenuTopView.h; sourceTree = "<group>"; };
 		181E53B5214F928000E8A704 /* XDSMenuBottomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDSMenuBottomView.h; sourceTree = "<group>"; };
 		181E53B6214F928000E8A704 /* XDSLightView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDSLightView.h; sourceTree = "<group>"; };
+		181E5419214FCFC800E8A704 /* XDSMainReaderVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XDSMainReaderVC.h; sourceTree = "<group>"; };
+		181E541A214FCFC800E8A704 /* XDSMainReaderVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XDSMainReaderVC.m; sourceTree = "<group>"; };
+		181E541D214FD25D00E8A704 /* XDSBookCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XDSBookCell.h; sourceTree = "<group>"; };
+		181E541E214FD25D00E8A704 /* XDSBookCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XDSBookCell.m; sourceTree = "<group>"; };
+		181E541F214FD25D00E8A704 /* XDSBookCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = XDSBookCell.xib; sourceTree = "<group>"; };
 		185347622142098600013F81 /* XDSEpisodeModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XDSEpisodeModel.h; sourceTree = "<group>"; };
 		185347632142098600013F81 /* XDSEpisodeModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XDSEpisodeModel.m; sourceTree = "<group>"; };
 		18A6FA0E212F983D00709EC9 /* IHYHomsSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IHYHomsSearchViewController.h; sourceTree = "<group>"; };
@@ -1389,6 +1397,26 @@
 			path = YGPulseView;
 			sourceTree = "<group>";
 		};
+		181E5418214FCFA400E8A704 /* Reader */ = {
+			isa = PBXGroup;
+			children = (
+				181E5419214FCFC800E8A704 /* XDSMainReaderVC.h */,
+				181E541A214FCFC800E8A704 /* XDSMainReaderVC.m */,
+				181E541C214FD23A00E8A704 /* View */,
+			);
+			path = Reader;
+			sourceTree = "<group>";
+		};
+		181E541C214FD23A00E8A704 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				181E541D214FD25D00E8A704 /* XDSBookCell.h */,
+				181E541E214FD25D00E8A704 /* XDSBookCell.m */,
+				181E541F214FD25D00E8A704 /* XDSBookCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		185347602142096E00013F81 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -1769,6 +1797,7 @@
 				A0D46B7D1DE0173500637681 /* AppDelegate.m */,
 				18A6FA5B213000A300709EC9 /* XDSRootViewController.h */,
 				18A6FA5C213000A300709EC9 /* XDSRootViewController.m */,
+				181E5418214FCFA400E8A704 /* Reader */,
 				A22C12F02144648A00896F00 /* Tools */,
 				FC1A8C2C1EAC1FD900E66FF8 /* menu.json */,
 				18A6FA1B212FCB9200709EC9 /* Manager */,
@@ -2119,6 +2148,7 @@
 				181E53E2214F928000E8A704 /* 华文琥珀.ttf in Resources */,
 				A0D46B861DE0173500637681 /* Assets.xcassets in Resources */,
 				181E5403214F928000E8A704 /* About.txt in Resources */,
+				181E5421214FD25D00E8A704 /* XDSBookCell.xib in Resources */,
 				18A6FAFB2130DF3800709EC9 /* btn-amplification@3x.png in Resources */,
 				A05EB9241DE04EF400148A5B /* icon_jiazai@2x.png in Resources */,
 				FC1A8C2D1EAC1FD900E66FF8 /* menu.json in Resources */,
@@ -2359,6 +2389,7 @@
 				181E53FC214F928000E8A704 /* DispatchQueueLogFormatter.m in Sources */,
 				18A6FAF02130DF3800709EC9 /* XDSMediaBrowser.m in Sources */,
 				181E5401214F928000E8A704 /* DDFileLogger.m in Sources */,
+				181E541B214FCFC800E8A704 /* XDSMainReaderVC.m in Sources */,
 				092CAEFC1DE28620008127DA /* IHYMovieInfoModel.m in Sources */,
 				181E53DE214F928000E8A704 /* XDSPhotoBrowser.m in Sources */,
 				181E53C8214F928000E8A704 /* CXMLNode_PrivateExtensions.m in Sources */,
@@ -2449,6 +2480,7 @@
 				18A6FA4C212FFF1900709EC9 /* mztools.c in Sources */,
 				18A6FAF12130DF3800709EC9 /* XDSMediaBrowserCell.m in Sources */,
 				A05EB9001DE0277E00148A5B /* NSString+Helper.m in Sources */,
+				181E5420214FD25D00E8A704 /* XDSBookCell.m in Sources */,
 				A22C12F4214464BF00896F00 /* NSString+XDSAddition.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
