@@ -145,5 +145,12 @@
                            "title": "国际",
                            "url": ""
                            }, ],
+              }, {
+              "title": "离线阅读",
+              "menuId": "kReader",
+              "type": "1",
+              "enable": true,
+              "rooturl": "http://120.76.205.241:8000/news/qihoo?apikey=cz1wjvkzGtuomNDXgLxmdq5aIwgytQvHHe0Dc8OcfHQva6hKQgDoDyBdUAQngGt6&site=qq.com",
+              "subMenus": [],
               }, ]
 }

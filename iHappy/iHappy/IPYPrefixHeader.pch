@@ -29,6 +29,7 @@
 
 #import "XDSComponentsHeader.h"
 #import "IPYHeaderFile.h"
+#import "XDSReaderHeader.h"
 
 
 #ifdef DEBUG

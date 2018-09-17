@@ -34,6 +34,9 @@ pod 'hpple'
 #use_frameworks!
 #pod 'ReactiveCocoa', '~> 4.2.1'
 
+#XDSReader
+pod 'DTCoreText'
+pod 'ZipArchive', '~> 1.4.0'
 end
 
 source 'https://github.com/CocoaPods/Specs.git'
