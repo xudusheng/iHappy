@@ -144,12 +144,18 @@ NSString *const kXDSBookModelRecordEncodeKey = @"record";
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 + (id)getLocalModelWithURL:(NSURL *)url{
+    if (url == nil) {
+        return nil;
+    }
     NSString *key = [url.path lastPathComponent];
     NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey:key];
     if (!data) {
         if ([[key pathExtension].lowercaseString isEqualToString:@"txt"]) {
             XDSBookModel *model = [[XDSBookModel alloc] initWithContent:[XDSReaderUtil encodeWithURL:url]];
             model.resource = url;
+            LPPBookInfoModel *info = [[LPPBookInfoModel alloc] init];
+            info.title = [key substringToIndex:key.length-4];
+            model.bookBasicInfo = info;
             [XDSBookModel updateLocalModel:model url:url];
             return model;
         }else if ([[key pathExtension].lowercaseString isEqualToString:@"epub"]){
@@ -159,7 +165,10 @@ NSString *const kXDSBookModelRecordEncodeKey = @"record";
             [XDSBookModel updateLocalModel:model url:url];
             return model;
         }else{
-            @throw [NSException exceptionWithName:@"FileException" reason:@"文件格式错误" userInfo:nil];
+//            @throw [NSException exceptionWithName:@"FileException" reason:@"文件格式错误" userInfo:nil];
+//            文件格式错误
+            NSLog(@"文件格式错误");
+            return nil;
         }
         
     }

@@ -65,6 +65,11 @@
             </constraints>
             <viewLayoutGuide key="safeArea" id="SEy-5g-ep8"/>
             <size key="customSize" width="167" height="270"/>
+            <connections>
+                <outlet property="mContentLabel" destination="GNG-ZQ-fsq" id="QZa-8n-gM1"/>
+                <outlet property="mImageView" destination="rNe-8u-NI3" id="JVO-eW-3GU"/>
+                <outlet property="mTitleLabel" destination="B6i-Cy-R24" id="X95-4R-jbC"/>
+            </connections>
             <point key="canvasLocation" x="83.5" y="162"/>
         </collectionViewCell>
     </objects>

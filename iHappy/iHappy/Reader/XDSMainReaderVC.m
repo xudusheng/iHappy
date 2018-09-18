@@ -20,7 +20,9 @@
     [self movieListViewControllerDataInit];
     [self createMovieListViewControllerUI];
 }
-
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+}
 
 #pragma mark - UI相关
 - (void)createMovieListViewControllerUI{
@@ -60,6 +62,8 @@
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     XDSBookCell * cell  = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([XDSBookCell class]) forIndexPath:indexPath];
+    XDSBookModel *bookModel = self.bookList[indexPath.row];
+    cell.mTitleLabel.text = bookModel.bookBasicInfo.title;
     cell.backgroundColor = [UIColor groupTableViewBackgroundColor];
     return cell;
 }
@@ -67,10 +71,18 @@
 
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-
-    NSURL *fileURL = [[NSBundle mainBundle] URLForResource:@"妖神记"withExtension:@"txt"];
-    [self showReadPageViewControllerWithFileURL:fileURL];
+    XDSBookModel *bookModel = self.bookList[indexPath.row];
     
+    XDSReadPageViewController *pageView = [[XDSReadPageViewController alloc] init];
+    [[XDSReadManager sharedManager] setResourceURL:bookModel.resource];//文件位置
+    [[XDSReadManager sharedManager] setBookModel:bookModel];
+    [[XDSReadManager sharedManager] setRmDelegate:pageView];
+    [self presentViewController:pageView animated:YES completion:nil];
+    
+//    NSArray *documentPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+//    NSString *documentDir = documentPaths.firstObject;
+//    NSString *path = [NSString stringWithFormat:@"%@/斗气大陆.txt", documentDir];
+//    [self showReadPageViewControllerWithFileURL:path.mj_url];
 }
 #pragma mark - 点击事件处理
 - (void)showReadPageViewControllerWithFileURL:(NSURL *)fileURL{
@@ -97,12 +109,18 @@
     NSFileManager *fileManager = [NSFileManager defaultManager];
     //在这里获取应用程序Documents文件夹里的文件及文件夹列表
     NSArray *documentPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documentDir = [documentPaths objectAtIndex:0];
+    NSString *documentDir = documentPaths.firstObject;
     NSError *error = nil;
     NSArray *fileList = [[NSArray alloc] init];
     //fileList便是包含有该文件夹下所有文件的文件名及文件夹名的数组
     fileList = [fileManager contentsOfDirectoryAtPath:documentDir error:&error];
-    [self.bookList addObjectsFromArray:fileList];
+    
+    [self.bookList removeAllObjects];
+    for (NSString *fileName in fileList) {
+        NSString *path = [NSString stringWithFormat:@"%@/%@", documentDir, fileName];
+        XDSBookModel *bookModel = [XDSBookModel getLocalModelWithURL:path.mj_url];
+        bookModel?[self.bookList addObject:bookModel]:NULL;
+    }
     [self.mCollectionView reloadData];
 }
 
