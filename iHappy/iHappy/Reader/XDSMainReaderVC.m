@@ -32,9 +32,9 @@
     //设置布局方向为垂直流布局
     layout.scrollDirection = UICollectionViewScrollDirectionVertical;
     //设置每个item的大小
-    CGFloat itemMargin = 10;
+    CGFloat itemMargin = 20;
     CGFloat width = (DEVIECE_SCREEN_WIDTH - itemMargin * 4)/3-0.1;
-    layout.itemSize = CGSizeMake(width, width*4/3 + 45);
+    layout.itemSize = CGSizeMake(width, width*16/9 + 45);
     layout.sectionInset = UIEdgeInsetsMake(itemMargin, itemMargin, itemMargin, itemMargin);
     //创建collectionView 通过一个布局策略layout来创建
     self.mCollectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];

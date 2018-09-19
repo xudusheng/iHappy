@@ -204,8 +204,6 @@
 		18A6FAFE2130DF3800709EC9 /* XDSMediaModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A6FAEB2130DF3700709EC9 /* XDSMediaModel.m */; };
 		18A6FB022130E2D300709EC9 /* XDSMediaBrowserVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A6FB012130E2D300709EC9 /* XDSMediaBrowserVC.m */; };
 		18AED1B1214360570044DE84 /* XDSPlayerBannerAdCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18AED1B0214360570044DE84 /* XDSPlayerBannerAdCell.m */; };
-		18E257C6215272A000F21D9E /* 阴轨.txt in Resources */ = {isa = PBXBuildFile; fileRef = 18E257C5215272A000F21D9E /* 阴轨.txt */; };
-		18E257C82152745900F21D9E /* 妖神记.txt in Resources */ = {isa = PBXBuildFile; fileRef = 18E257C72152745900F21D9E /* 妖神记.txt */; };
 		18F8EB502139564100168506 /* XDSNewsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F8EB4F2139564100168506 /* XDSNewsModel.m */; };
 		18F8EB592139626F00168506 /* XDS_CustomMjRefreshHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F8EB562139626F00168506 /* XDS_CustomMjRefreshHeader.m */; };
 		18F8EB5A2139626F00168506 /* XDS_CustomMjRefreshFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F8EB572139626F00168506 /* XDS_CustomMjRefreshFooter.m */; };
@@ -646,8 +644,6 @@
 		18A6FB012130E2D300709EC9 /* XDSMediaBrowserVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XDSMediaBrowserVC.m; sourceTree = "<group>"; };
 		18AED1AF214360570044DE84 /* XDSPlayerBannerAdCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XDSPlayerBannerAdCell.h; sourceTree = "<group>"; };
 		18AED1B0214360570044DE84 /* XDSPlayerBannerAdCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XDSPlayerBannerAdCell.m; sourceTree = "<group>"; };
-		18E257C5215272A000F21D9E /* 阴轨.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "阴轨.txt"; sourceTree = "<group>"; };
-		18E257C72152745900F21D9E /* 妖神记.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "妖神记.txt"; sourceTree = "<group>"; };
 		18F8EB4E2139564100168506 /* XDSNewsModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XDSNewsModel.h; sourceTree = "<group>"; };
 		18F8EB4F2139564100168506 /* XDSNewsModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XDSNewsModel.m; sourceTree = "<group>"; };
 		18F8EB532139626F00168506 /* XDS_CustomMjRefreshFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDS_CustomMjRefreshFooter.h; sourceTree = "<group>"; };
@@ -1044,11 +1040,11 @@
 			isa = PBXGroup;
 			children = (
 				181E52EB214F928000E8A704 /* XDSReadOperation.h */,
-				181E52EC214F928000E8A704 /* XDSReadManager.m */,
-				181E52ED214F928000E8A704 /* XDSReadConfig.m */,
-				181E52EE214F928000E8A704 /* XDSReadConfig.h */,
-				181E52EF214F928000E8A704 /* XDSReadManager.h */,
 				181E52F0214F928000E8A704 /* XDSReadOperation.m */,
+				181E52EF214F928000E8A704 /* XDSReadManager.h */,
+				181E52EC214F928000E8A704 /* XDSReadManager.m */,
+				181E52EE214F928000E8A704 /* XDSReadConfig.h */,
+				181E52ED214F928000E8A704 /* XDSReadConfig.m */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -1085,12 +1081,12 @@
 		181E5302214F928000E8A704 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				181E5308214F928000E8A704 /* XDSMagnifierView.h */,
 				181E5303214F928000E8A704 /* XDSMagnifierView.m */,
-				181E5304214F928000E8A704 /* XDSReadView.h */,
 				181E5305214F928000E8A704 /* UIControl+XDSHyperLink.m */,
 				181E5306214F928000E8A704 /* UIControl+XDSHyperLink.h */,
+				181E5304214F928000E8A704 /* XDSReadView.h */,
 				181E5307214F928000E8A704 /* XDSReadView.m */,
-				181E5308214F928000E8A704 /* XDSMagnifierView.h */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1179,11 +1175,11 @@
 		181E533B214F928000E8A704 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				181E5340214F928000E8A704 /* XDSReadViewController.h */,
 				181E533C214F928000E8A704 /* XDSReadViewController.m */,
 				181E533D214F928000E8A704 /* XDSReadPageViewController.h */,
-				181E533E214F928000E8A704 /* XDSPhotoBrowser.h */,
 				181E533F214F928000E8A704 /* XDSReadPageViewController.m */,
-				181E5340214F928000E8A704 /* XDSReadViewController.h */,
+				181E533E214F928000E8A704 /* XDSPhotoBrowser.h */,
 				181E5341214F928000E8A704 /* XDSPhotoBrowser.m */,
 			);
 			path = ViewController;
@@ -1347,25 +1343,25 @@
 		181E5392214F928000E8A704 /* XDSReadMenu */ = {
 			isa = PBXGroup;
 			children = (
-				181E5393214F928000E8A704 /* XDSReadMenu.m */,
+				181E53AC214F928000E8A704 /* YGPulseView */,
 				181E5394214F928000E8A704 /* Catologue */,
+				181E53B2214F928000E8A704 /* XDSReadViewConst.h */,
+				181E53A8214F928000E8A704 /* XDSReadViewConst.m */,
+				181E53B1214F928000E8A704 /* XDSReadMenu.h */,
+				181E5393214F928000E8A704 /* XDSReadMenu.m */,
+				181E53B0214F928000E8A704 /* XDSReadSettingView.h */,
 				181E53A4214F928000E8A704 /* XDSReadSettingView.m */,
+				181E53AF214F928000E8A704 /* XDSReadRootView.h */,
 				181E53A5214F928000E8A704 /* XDSReadRootView.m */,
+				181E53B4214F928000E8A704 /* XDSMenuTopView.h */,
 				181E53A6214F928000E8A704 /* XDSMenuTopView.m */,
 				181E53A7214F928000E8A704 /* XDSHaloButton.h */,
-				181E53A8214F928000E8A704 /* XDSReadViewConst.m */,
-				181E53A9214F928000E8A704 /* XDSMenuBottomView.m */,
-				181E53AA214F928000E8A704 /* XDSReadMenu.xcassets */,
-				181E53AB214F928000E8A704 /* XDSLightView.m */,
-				181E53AC214F928000E8A704 /* YGPulseView */,
-				181E53AF214F928000E8A704 /* XDSReadRootView.h */,
-				181E53B0214F928000E8A704 /* XDSReadSettingView.h */,
-				181E53B1214F928000E8A704 /* XDSReadMenu.h */,
-				181E53B2214F928000E8A704 /* XDSReadViewConst.h */,
 				181E53B3214F928000E8A704 /* XDSHaloButton.m */,
-				181E53B4214F928000E8A704 /* XDSMenuTopView.h */,
 				181E53B5214F928000E8A704 /* XDSMenuBottomView.h */,
+				181E53A9214F928000E8A704 /* XDSMenuBottomView.m */,
 				181E53B6214F928000E8A704 /* XDSLightView.h */,
+				181E53AB214F928000E8A704 /* XDSLightView.m */,
+				181E53AA214F928000E8A704 /* XDSReadMenu.xcassets */,
 			);
 			path = XDSReadMenu;
 			sourceTree = "<group>";
@@ -1804,8 +1800,6 @@
 				181E5418214FCFA400E8A704 /* Reader */,
 				A22C12F02144648A00896F00 /* Tools */,
 				FC1A8C2C1EAC1FD900E66FF8 /* menu.json */,
-				18E257C72152745900F21D9E /* 妖神记.txt */,
-				18E257C5215272A000F21D9E /* 阴轨.txt */,
 				18A6FA1B212FCB9200709EC9 /* Manager */,
 				FC0B7C6B1EC751690022E504 /* Bizhi */,
 				092CAED51DE2861F008127DA /* Q2002 */,
@@ -2157,7 +2151,6 @@
 				181E5421214FD25D00E8A704 /* XDSBookCell.xib in Resources */,
 				18A6FAFB2130DF3800709EC9 /* btn-amplification@3x.png in Resources */,
 				A05EB9241DE04EF400148A5B /* icon_jiazai@2x.png in Resources */,
-				18E257C6215272A000F21D9E /* 阴轨.txt in Resources */,
 				FC1A8C2D1EAC1FD900E66FF8 /* menu.json in Resources */,
 				18A6FAFD2130DF3800709EC9 /* btn_play@3x.png in Resources */,
 				181E5405214F928100E8A704 /* XDSWIFIFileTransferViewController.xib in Resources */,
@@ -2185,7 +2178,6 @@
 				181E53FD214F928000E8A704 /* README.txt in Resources */,
 				181E53DB214F928000E8A704 /* 十宗罪.epub in Resources */,
 				18A6FAF52130DF3800709EC9 /* btn_voice@3x.png in Resources */,
-				18E257C82152745900F21D9E /* 妖神记.txt in Resources */,
 				18A6FAF42130DF3800709EC9 /* btn_voice@2x.png in Resources */,
 				09F90D7A1DE2D2F600542684 /* IHYNewsMultableImageCell.xib in Resources */,
 				A22C12EF2144611800896F00 /* XDSVideoSummaryCell.xib in Resources */,
