@@ -62,9 +62,13 @@
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     XDSBookCell * cell  = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([XDSBookCell class]) forIndexPath:indexPath];
-    XDSBookModel *bookModel = self.bookList[indexPath.row];
-    cell.mTitleLabel.text = bookModel.bookBasicInfo.title;
     cell.backgroundColor = [UIColor groupTableViewBackgroundColor];
+    
+    XDSBookModel *bookModel = self.bookList[indexPath.row];
+    UIImage *cover = [UIImage imageWithContentsOfFile:bookModel.bookBasicInfo.coverPath];
+    cell.mImageView.image = cover;
+    cell.mTitleLabel.text = bookModel.bookBasicInfo.title;
+
     return cell;
 }
 
