@@ -204,6 +204,8 @@
 		18A6FAFE2130DF3800709EC9 /* XDSMediaModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A6FAEB2130DF3700709EC9 /* XDSMediaModel.m */; };
 		18A6FB022130E2D300709EC9 /* XDSMediaBrowserVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A6FB012130E2D300709EC9 /* XDSMediaBrowserVC.m */; };
 		18AED1B1214360570044DE84 /* XDSPlayerBannerAdCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18AED1B0214360570044DE84 /* XDSPlayerBannerAdCell.m */; };
+		18E257C6215272A000F21D9E /* 阴轨.txt in Resources */ = {isa = PBXBuildFile; fileRef = 18E257C5215272A000F21D9E /* 阴轨.txt */; };
+		18E257C82152745900F21D9E /* 妖神记.txt in Resources */ = {isa = PBXBuildFile; fileRef = 18E257C72152745900F21D9E /* 妖神记.txt */; };
 		18F8EB502139564100168506 /* XDSNewsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F8EB4F2139564100168506 /* XDSNewsModel.m */; };
 		18F8EB592139626F00168506 /* XDS_CustomMjRefreshHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F8EB562139626F00168506 /* XDS_CustomMjRefreshHeader.m */; };
 		18F8EB5A2139626F00168506 /* XDS_CustomMjRefreshFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F8EB572139626F00168506 /* XDS_CustomMjRefreshFooter.m */; };
@@ -644,6 +646,8 @@
 		18A6FB012130E2D300709EC9 /* XDSMediaBrowserVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XDSMediaBrowserVC.m; sourceTree = "<group>"; };
 		18AED1AF214360570044DE84 /* XDSPlayerBannerAdCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XDSPlayerBannerAdCell.h; sourceTree = "<group>"; };
 		18AED1B0214360570044DE84 /* XDSPlayerBannerAdCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XDSPlayerBannerAdCell.m; sourceTree = "<group>"; };
+		18E257C5215272A000F21D9E /* 阴轨.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "阴轨.txt"; sourceTree = "<group>"; };
+		18E257C72152745900F21D9E /* 妖神记.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "妖神记.txt"; sourceTree = "<group>"; };
 		18F8EB4E2139564100168506 /* XDSNewsModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XDSNewsModel.h; sourceTree = "<group>"; };
 		18F8EB4F2139564100168506 /* XDSNewsModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XDSNewsModel.m; sourceTree = "<group>"; };
 		18F8EB532139626F00168506 /* XDS_CustomMjRefreshFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDS_CustomMjRefreshFooter.h; sourceTree = "<group>"; };
@@ -1800,6 +1804,8 @@
 				181E5418214FCFA400E8A704 /* Reader */,
 				A22C12F02144648A00896F00 /* Tools */,
 				FC1A8C2C1EAC1FD900E66FF8 /* menu.json */,
+				18E257C72152745900F21D9E /* 妖神记.txt */,
+				18E257C5215272A000F21D9E /* 阴轨.txt */,
 				18A6FA1B212FCB9200709EC9 /* Manager */,
 				FC0B7C6B1EC751690022E504 /* Bizhi */,
 				092CAED51DE2861F008127DA /* Q2002 */,
@@ -2151,6 +2157,7 @@
 				181E5421214FD25D00E8A704 /* XDSBookCell.xib in Resources */,
 				18A6FAFB2130DF3800709EC9 /* btn-amplification@3x.png in Resources */,
 				A05EB9241DE04EF400148A5B /* icon_jiazai@2x.png in Resources */,
+				18E257C6215272A000F21D9E /* 阴轨.txt in Resources */,
 				FC1A8C2D1EAC1FD900E66FF8 /* menu.json in Resources */,
 				18A6FAFD2130DF3800709EC9 /* btn_play@3x.png in Resources */,
 				181E5405214F928100E8A704 /* XDSWIFIFileTransferViewController.xib in Resources */,
@@ -2178,6 +2185,7 @@
 				181E53FD214F928000E8A704 /* README.txt in Resources */,
 				181E53DB214F928000E8A704 /* 十宗罪.epub in Resources */,
 				18A6FAF52130DF3800709EC9 /* btn_voice@3x.png in Resources */,
+				18E257C82152745900F21D9E /* 妖神记.txt in Resources */,
 				18A6FAF42130DF3800709EC9 /* btn_voice@2x.png in Resources */,
 				09F90D7A1DE2D2F600542684 /* IHYNewsMultableImageCell.xib in Resources */,
 				A22C12EF2144611800896F00 /* XDSVideoSummaryCell.xib in Resources */,

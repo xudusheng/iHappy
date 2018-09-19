@@ -72,7 +72,6 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     XDSBookModel *bookModel = self.bookList[indexPath.row];
-    
     XDSReadPageViewController *pageView = [[XDSReadPageViewController alloc] init];
     [[XDSReadManager sharedManager] setResourceURL:bookModel.resource];//文件位置
     [[XDSReadManager sharedManager] setBookModel:bookModel];
@@ -82,7 +81,13 @@
 //    NSArray *documentPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
 //    NSString *documentDir = documentPaths.firstObject;
 //    NSString *path = [NSString stringWithFormat:@"%@/斗气大陆.txt", documentDir];
-//    [self showReadPageViewControllerWithFileURL:path.mj_url];
+//    [self showReadPageViewControllerWithFileURL:[NSURL fileURLWithPath:path]];
+    
+//    NSURL *fileURL = [[NSBundle mainBundle] URLForResource:@"妖神记"withExtension:@"txt"];
+//    NSURL *fileURL = [[NSBundle mainBundle] URLForResource:@"阴轨" withExtension:@"txt"];
+//    NSString *path = [[NSBundle mainBundle] pathForResource:@"阴轨" ofType:@"txt"];
+//    [self showReadPageViewControllerWithFileURL:[NSURL fileURLWithPath:path]];
+    
 }
 #pragma mark - 点击事件处理
 - (void)showReadPageViewControllerWithFileURL:(NSURL *)fileURL{
@@ -116,12 +121,19 @@
     fileList = [fileManager contentsOfDirectoryAtPath:documentDir error:&error];
     
     [self.bookList removeAllObjects];
-    for (NSString *fileName in fileList) {
-        NSString *path = [NSString stringWithFormat:@"%@/%@", documentDir, fileName];
-        XDSBookModel *bookModel = [XDSBookModel getLocalModelWithURL:path.mj_url];
-        bookModel?[self.bookList addObject:bookModel]:NULL;
-    }
-    [self.mCollectionView reloadData];
+    
+    [XDSUtilities showHud:self.view text:nil];
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        for (NSString *fileName in fileList) {
+            NSString *path = [NSString stringWithFormat:@"%@/%@", documentDir, fileName];
+            XDSBookModel *bookModel = [XDSBookModel getLocalModelWithURL:[NSURL fileURLWithPath:path]];
+            bookModel?[self.bookList addObject:bookModel]:NULL;
+        }
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.mCollectionView reloadData];
+            [XDSUtilities hideHud:self.view];
+        });
+    });
 }
 
 #pragma mark - 内存管理相关
