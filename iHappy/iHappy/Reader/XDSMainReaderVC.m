@@ -124,14 +124,18 @@
     //fileList便是包含有该文件夹下所有文件的文件名及文件夹名的数组
     fileList = [fileManager contentsOfDirectoryAtPath:documentDir error:&error];
     
+    NSLog(@"%@", fileList);
     [self.bookList removeAllObjects];
     
     [XDSUtilities showHud:self.view text:nil];
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
         for (NSString *fileName in fileList) {
             NSString *path = [NSString stringWithFormat:@"%@/%@", documentDir, fileName];
+            NSLog(@"path = %@", path);
             XDSBookModel *bookModel = [XDSBookModel getLocalModelWithURL:[NSURL fileURLWithPath:path]];
+            NSLog(@"path = %@", path);
             bookModel?[self.bookList addObject:bookModel]:NULL;
+            NSLog(@"bookModel = %@", bookModel);
         }
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.mCollectionView reloadData];
