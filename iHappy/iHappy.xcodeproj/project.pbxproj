@@ -98,6 +98,7 @@
 		181E5420214FD25D00E8A704 /* XDSBookCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 181E541E214FD25D00E8A704 /* XDSBookCell.m */; };
 		181E5421214FD25D00E8A704 /* XDSBookCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 181E541F214FD25D00E8A704 /* XDSBookCell.xib */; };
 		185347642142098600013F81 /* XDSEpisodeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 185347632142098600013F81 /* XDSEpisodeModel.m */; };
+		1861C6E0215A1C3D005A03D7 /* logo_book.png in Resources */ = {isa = PBXBuildFile; fileRef = 1861C6DF215A1C3D005A03D7 /* logo_book.png */; };
 		18A6FA12212F983E00709EC9 /* IHYHomsSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A6FA10212F983D00709EC9 /* IHYHomsSearchViewController.m */; };
 		18A6FA28212FCB9D00709EC9 /* appConfig.txt in Resources */ = {isa = PBXBuildFile; fileRef = 18A6FA1E212FCB9D00709EC9 /* appConfig.txt */; };
 		18A6FA29212FCB9D00709EC9 /* XDSConfigManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A6FA21212FCB9D00709EC9 /* XDSConfigManager.m */; };
@@ -169,7 +170,9 @@
 		18A6FAFE2130DF3800709EC9 /* XDSMediaModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A6FAEB2130DF3700709EC9 /* XDSMediaModel.m */; };
 		18A6FB022130E2D300709EC9 /* XDSMediaBrowserVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A6FB012130E2D300709EC9 /* XDSMediaBrowserVC.m */; };
 		18AED1B1214360570044DE84 /* XDSPlayerBannerAdCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18AED1B0214360570044DE84 /* XDSPlayerBannerAdCell.m */; };
-		18BB4F3A2153F9EE00C4A2CD /* wifi.png in Resources */ = {isa = PBXBuildFile; fileRef = 18BB4EC72153F9EE00C4A2CD /* wifi.png */; };
+		18B3DC892154BB6700FFD27E /* XDSReaderWifiView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B3DC872154BB6700FFD27E /* XDSReaderWifiView.m */; };
+		18B3DC8A2154BB6700FFD27E /* XDSReaderWifiView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18B3DC882154BB6700FFD27E /* XDSReaderWifiView.xib */; };
+		18B3DC8D2154BB8600FFD27E /* UIViewController+XDSReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B3DC8B2154BB8600FFD27E /* UIViewController+XDSReader.m */; };
 		18BB4F3B2153F9EE00C4A2CD /* GCDWebDAVServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BB4ECB2153F9EE00C4A2CD /* GCDWebDAVServer.m */; };
 		18BB4F3C2153F9EE00C4A2CD /* GCDWebServerResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BB4ED02153F9EE00C4A2CD /* GCDWebServerResponse.m */; };
 		18BB4F3D2153F9EE00C4A2CD /* GCDWebServerRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BB4ED32153F9EE00C4A2CD /* GCDWebServerRequest.m */; };
@@ -187,40 +190,7 @@
 		18BB4F492153F9EE00C4A2CD /* GCDWebUploader.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 18BB4EED2153F9EE00C4A2CD /* GCDWebUploader.bundle */; };
 		18BB4F4A2153F9EE00C4A2CD /* GCDWebUploader.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BB4EEF2153F9EE00C4A2CD /* GCDWebUploader.m */; };
 		18BB4F4B2153F9EE00C4A2CD /* XDSIPHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BB4EF02153F9EE00C4A2CD /* XDSIPHelper.m */; };
-		18BB4F4C2153F9EE00C4A2CD /* MyHTTPConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BB4EF32153F9EE00C4A2CD /* MyHTTPConnection.m */; };
-		18BB4F4D2153F9EE00C4A2CD /* HTTPErrorResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BB4EFC2153F9EE00C4A2CD /* HTTPErrorResponse.m */; };
-		18BB4F4E2153F9EE00C4A2CD /* HTTPDataResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BB4EFD2153F9EE00C4A2CD /* HTTPDataResponse.m */; };
-		18BB4F4F2153F9EE00C4A2CD /* HTTPDynamicFileResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BB4EFF2153F9EE00C4A2CD /* HTTPDynamicFileResponse.m */; };
-		18BB4F502153F9EE00C4A2CD /* HTTPFileResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BB4F002153F9EE00C4A2CD /* HTTPFileResponse.m */; };
-		18BB4F512153F9EE00C4A2CD /* HTTPAsyncFileResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BB4F012153F9EE00C4A2CD /* HTTPAsyncFileResponse.m */; };
-		18BB4F522153F9EE00C4A2CD /* HTTPRedirectResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BB4F022153F9EE00C4A2CD /* HTTPRedirectResponse.m */; };
-		18BB4F532153F9EE00C4A2CD /* HTTPMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BB4F082153F9EE00C4A2CD /* HTTPMessage.m */; };
-		18BB4F542153F9EE00C4A2CD /* HTTPConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BB4F092153F9EE00C4A2CD /* HTTPConnection.m */; };
-		18BB4F552153F9EE00C4A2CD /* WebSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BB4F0A2153F9EE00C4A2CD /* WebSocket.m */; };
-		18BB4F562153F9EE00C4A2CD /* MultipartMessageHeaderField.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BB4F0F2153F9EE00C4A2CD /* MultipartMessageHeaderField.m */; };
-		18BB4F572153F9EE00C4A2CD /* MultipartFormDataParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BB4F102153F9EE00C4A2CD /* MultipartFormDataParser.m */; };
-		18BB4F582153F9EE00C4A2CD /* MultipartMessageHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BB4F112153F9EE00C4A2CD /* MultipartMessageHeader.m */; };
-		18BB4F592153F9EE00C4A2CD /* HTTPAuthenticationRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BB4F132153F9EE00C4A2CD /* HTTPAuthenticationRequest.m */; };
-		18BB4F5A2153F9EE00C4A2CD /* DDNumber.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BB4F152153F9EE00C4A2CD /* DDNumber.m */; };
-		18BB4F5B2153F9EE00C4A2CD /* DDData.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BB4F162153F9EE00C4A2CD /* DDData.m */; };
-		18BB4F5C2153F9EE00C4A2CD /* DDRange.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BB4F192153F9EE00C4A2CD /* DDRange.m */; };
-		18BB4F5D2153F9EE00C4A2CD /* HTTPServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BB4F1B2153F9EE00C4A2CD /* HTTPServer.m */; };
-		18BB4F5E2153F9EE00C4A2CD /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = 18BB4F1D2153F9EE00C4A2CD /* index.html */; };
-		18BB4F5F2153F9EE00C4A2CD /* upload.html in Resources */ = {isa = PBXBuildFile; fileRef = 18BB4F1E2153F9EE00C4A2CD /* upload.html */; };
-		18BB4F602153F9EE00C4A2CD /* DDTTYLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BB4F202153F9EE00C4A2CD /* DDTTYLogger.m */; };
-		18BB4F612153F9EE00C4A2CD /* DDASLLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BB4F232153F9EE00C4A2CD /* DDASLLogger.m */; };
-		18BB4F622153F9EE00C4A2CD /* ContextFilterLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BB4F282153F9EE00C4A2CD /* ContextFilterLogFormatter.m */; };
-		18BB4F632153F9EE00C4A2CD /* DispatchQueueLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BB4F292153F9EE00C4A2CD /* DispatchQueueLogFormatter.m */; };
-		18BB4F642153F9EE00C4A2CD /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = 18BB4F2A2153F9EE00C4A2CD /* README.txt */; };
-		18BB4F652153F9EE00C4A2CD /* DDLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BB4F2B2153F9EE00C4A2CD /* DDLog.m */; };
-		18BB4F662153F9EE00C4A2CD /* About.txt in Resources */ = {isa = PBXBuildFile; fileRef = 18BB4F2C2153F9EE00C4A2CD /* About.txt */; };
-		18BB4F672153F9EE00C4A2CD /* DDAbstractDatabaseLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BB4F2E2153F9EE00C4A2CD /* DDAbstractDatabaseLogger.m */; };
-		18BB4F682153F9EE00C4A2CD /* DDFileLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BB4F2F2153F9EE00C4A2CD /* DDFileLogger.m */; };
-		18BB4F692153F9EE00C4A2CD /* web.back.zip in Resources */ = {isa = PBXBuildFile; fileRef = 18BB4F312153F9EE00C4A2CD /* web.back.zip */; };
-		18BB4F6A2153F9EE00C4A2CD /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BB4F342153F9EE00C4A2CD /* GCDAsyncSocket.m */; };
-		18BB4F6B2153F9EE00C4A2CD /* About.txt in Resources */ = {isa = PBXBuildFile; fileRef = 18BB4F352153F9EE00C4A2CD /* About.txt */; };
 		18BB4F6C2153F9EE00C4A2CD /* XDSWIFIFileTransferViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BB4F372153F9EE00C4A2CD /* XDSWIFIFileTransferViewController.m */; };
-		18BB4F6D2153F9EE00C4A2CD /* XDSWIFIFileTransferViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18BB4F392153F9EE00C4A2CD /* XDSWIFIFileTransferViewController.xib */; };
 		18F8EB502139564100168506 /* XDSNewsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F8EB4F2139564100168506 /* XDSNewsModel.m */; };
 		18F8EB592139626F00168506 /* XDS_CustomMjRefreshHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F8EB562139626F00168506 /* XDS_CustomMjRefreshHeader.m */; };
 		18F8EB5A2139626F00168506 /* XDS_CustomMjRefreshFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F8EB572139626F00168506 /* XDS_CustomMjRefreshFooter.m */; };
@@ -464,6 +434,7 @@
 		181E541F214FD25D00E8A704 /* XDSBookCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = XDSBookCell.xib; sourceTree = "<group>"; };
 		185347622142098600013F81 /* XDSEpisodeModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XDSEpisodeModel.h; sourceTree = "<group>"; };
 		185347632142098600013F81 /* XDSEpisodeModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XDSEpisodeModel.m; sourceTree = "<group>"; };
+		1861C6DF215A1C3D005A03D7 /* logo_book.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_book.png; sourceTree = "<group>"; };
 		18A6FA0E212F983D00709EC9 /* IHYHomsSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IHYHomsSearchViewController.h; sourceTree = "<group>"; };
 		18A6FA10212F983D00709EC9 /* IHYHomsSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IHYHomsSearchViewController.m; sourceTree = "<group>"; };
 		18A6FA1D212FCB9D00709EC9 /* XDSConfigManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDSConfigManager.h; sourceTree = "<group>"; };
@@ -595,8 +566,12 @@
 		18A6FB012130E2D300709EC9 /* XDSMediaBrowserVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XDSMediaBrowserVC.m; sourceTree = "<group>"; };
 		18AED1AF214360570044DE84 /* XDSPlayerBannerAdCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XDSPlayerBannerAdCell.h; sourceTree = "<group>"; };
 		18AED1B0214360570044DE84 /* XDSPlayerBannerAdCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XDSPlayerBannerAdCell.m; sourceTree = "<group>"; };
+		18B3DC862154BB6600FFD27E /* XDSReaderWifiView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDSReaderWifiView.h; sourceTree = "<group>"; };
+		18B3DC872154BB6700FFD27E /* XDSReaderWifiView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XDSReaderWifiView.m; sourceTree = "<group>"; };
+		18B3DC882154BB6700FFD27E /* XDSReaderWifiView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XDSReaderWifiView.xib; sourceTree = "<group>"; };
+		18B3DC8B2154BB8600FFD27E /* UIViewController+XDSReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+XDSReader.m"; sourceTree = "<group>"; };
+		18B3DC8C2154BB8600FFD27E /* UIViewController+XDSReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+XDSReader.h"; sourceTree = "<group>"; };
 		18BB4E2C2153D7A500C4A2CD /* XDSReaderHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XDSReaderHeader.h; sourceTree = "<group>"; };
-		18BB4EC72153F9EE00C4A2CD /* wifi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wifi.png; sourceTree = "<group>"; };
 		18BB4ECA2153F9EE00C4A2CD /* GCDWebDAVServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDWebDAVServer.h; sourceTree = "<group>"; };
 		18BB4ECB2153F9EE00C4A2CD /* GCDWebDAVServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDWebDAVServer.m; sourceTree = "<group>"; };
 		18BB4ECE2153F9EE00C4A2CD /* GCDWebServerFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDWebServerFunctions.h; sourceTree = "<group>"; };
@@ -632,69 +607,8 @@
 		18BB4EEF2153F9EE00C4A2CD /* GCDWebUploader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDWebUploader.m; sourceTree = "<group>"; };
 		18BB4EF02153F9EE00C4A2CD /* XDSIPHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XDSIPHelper.m; sourceTree = "<group>"; };
 		18BB4EF12153F9EE00C4A2CD /* XDSWIFIFileTransferViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDSWIFIFileTransferViewController.h; sourceTree = "<group>"; };
-		18BB4EF32153F9EE00C4A2CD /* MyHTTPConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyHTTPConnection.m; sourceTree = "<group>"; };
-		18BB4EF52153F9EE00C4A2CD /* HTTPConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTPConnection.h; sourceTree = "<group>"; };
-		18BB4EF62153F9EE00C4A2CD /* HTTPLogging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTPLogging.h; sourceTree = "<group>"; };
-		18BB4EF72153F9EE00C4A2CD /* HTTPMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTPMessage.h; sourceTree = "<group>"; };
-		18BB4EF82153F9EE00C4A2CD /* WebSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebSocket.h; sourceTree = "<group>"; };
-		18BB4EF92153F9EE00C4A2CD /* HTTPAuthenticationRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTPAuthenticationRequest.h; sourceTree = "<group>"; };
-		18BB4EFB2153F9EE00C4A2CD /* HTTPAsyncFileResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTPAsyncFileResponse.h; sourceTree = "<group>"; };
-		18BB4EFC2153F9EE00C4A2CD /* HTTPErrorResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTTPErrorResponse.m; sourceTree = "<group>"; };
-		18BB4EFD2153F9EE00C4A2CD /* HTTPDataResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTTPDataResponse.m; sourceTree = "<group>"; };
-		18BB4EFE2153F9EE00C4A2CD /* HTTPRedirectResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTPRedirectResponse.h; sourceTree = "<group>"; };
-		18BB4EFF2153F9EE00C4A2CD /* HTTPDynamicFileResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTTPDynamicFileResponse.m; sourceTree = "<group>"; };
-		18BB4F002153F9EE00C4A2CD /* HTTPFileResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTTPFileResponse.m; sourceTree = "<group>"; };
-		18BB4F012153F9EE00C4A2CD /* HTTPAsyncFileResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTTPAsyncFileResponse.m; sourceTree = "<group>"; };
-		18BB4F022153F9EE00C4A2CD /* HTTPRedirectResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTTPRedirectResponse.m; sourceTree = "<group>"; };
-		18BB4F032153F9EE00C4A2CD /* HTTPDataResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTPDataResponse.h; sourceTree = "<group>"; };
-		18BB4F042153F9EE00C4A2CD /* HTTPErrorResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTPErrorResponse.h; sourceTree = "<group>"; };
-		18BB4F052153F9EE00C4A2CD /* HTTPFileResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTPFileResponse.h; sourceTree = "<group>"; };
-		18BB4F062153F9EE00C4A2CD /* HTTPDynamicFileResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTPDynamicFileResponse.h; sourceTree = "<group>"; };
-		18BB4F072153F9EE00C4A2CD /* HTTPServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTPServer.h; sourceTree = "<group>"; };
-		18BB4F082153F9EE00C4A2CD /* HTTPMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTTPMessage.m; sourceTree = "<group>"; };
-		18BB4F092153F9EE00C4A2CD /* HTTPConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTTPConnection.m; sourceTree = "<group>"; };
-		18BB4F0A2153F9EE00C4A2CD /* WebSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebSocket.m; sourceTree = "<group>"; };
-		18BB4F0B2153F9EE00C4A2CD /* HTTPResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTPResponse.h; sourceTree = "<group>"; };
-		18BB4F0D2153F9EE00C4A2CD /* MultipartFormDataParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MultipartFormDataParser.h; sourceTree = "<group>"; };
-		18BB4F0E2153F9EE00C4A2CD /* MultipartMessageHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MultipartMessageHeader.h; sourceTree = "<group>"; };
-		18BB4F0F2153F9EE00C4A2CD /* MultipartMessageHeaderField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MultipartMessageHeaderField.m; sourceTree = "<group>"; };
-		18BB4F102153F9EE00C4A2CD /* MultipartFormDataParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MultipartFormDataParser.m; sourceTree = "<group>"; };
-		18BB4F112153F9EE00C4A2CD /* MultipartMessageHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MultipartMessageHeader.m; sourceTree = "<group>"; };
-		18BB4F122153F9EE00C4A2CD /* MultipartMessageHeaderField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MultipartMessageHeaderField.h; sourceTree = "<group>"; };
-		18BB4F132153F9EE00C4A2CD /* HTTPAuthenticationRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTTPAuthenticationRequest.m; sourceTree = "<group>"; };
-		18BB4F152153F9EE00C4A2CD /* DDNumber.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDNumber.m; sourceTree = "<group>"; };
-		18BB4F162153F9EE00C4A2CD /* DDData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDData.m; sourceTree = "<group>"; };
-		18BB4F172153F9EE00C4A2CD /* DDRange.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDRange.h; sourceTree = "<group>"; };
-		18BB4F182153F9EE00C4A2CD /* DDNumber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDNumber.h; sourceTree = "<group>"; };
-		18BB4F192153F9EE00C4A2CD /* DDRange.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDRange.m; sourceTree = "<group>"; };
-		18BB4F1A2153F9EE00C4A2CD /* DDData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDData.h; sourceTree = "<group>"; };
-		18BB4F1B2153F9EE00C4A2CD /* HTTPServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTTPServer.m; sourceTree = "<group>"; };
-		18BB4F1D2153F9EE00C4A2CD /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
-		18BB4F1E2153F9EE00C4A2CD /* upload.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = upload.html; sourceTree = "<group>"; };
-		18BB4F202153F9EE00C4A2CD /* DDTTYLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDTTYLogger.m; sourceTree = "<group>"; };
-		18BB4F212153F9EE00C4A2CD /* DDLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDLog.h; sourceTree = "<group>"; };
-		18BB4F222153F9EE00C4A2CD /* DDAbstractDatabaseLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDAbstractDatabaseLogger.h; sourceTree = "<group>"; };
-		18BB4F232153F9EE00C4A2CD /* DDASLLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDASLLogger.m; sourceTree = "<group>"; };
-		18BB4F242153F9EE00C4A2CD /* DDFileLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDFileLogger.h; sourceTree = "<group>"; };
-		18BB4F262153F9EE00C4A2CD /* ContextFilterLogFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContextFilterLogFormatter.h; sourceTree = "<group>"; };
-		18BB4F272153F9EE00C4A2CD /* DispatchQueueLogFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DispatchQueueLogFormatter.h; sourceTree = "<group>"; };
-		18BB4F282153F9EE00C4A2CD /* ContextFilterLogFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContextFilterLogFormatter.m; sourceTree = "<group>"; };
-		18BB4F292153F9EE00C4A2CD /* DispatchQueueLogFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DispatchQueueLogFormatter.m; sourceTree = "<group>"; };
-		18BB4F2A2153F9EE00C4A2CD /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
-		18BB4F2B2153F9EE00C4A2CD /* DDLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDLog.m; sourceTree = "<group>"; };
-		18BB4F2C2153F9EE00C4A2CD /* About.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = About.txt; sourceTree = "<group>"; };
-		18BB4F2D2153F9EE00C4A2CD /* DDTTYLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDTTYLogger.h; sourceTree = "<group>"; };
-		18BB4F2E2153F9EE00C4A2CD /* DDAbstractDatabaseLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDAbstractDatabaseLogger.m; sourceTree = "<group>"; };
-		18BB4F2F2153F9EE00C4A2CD /* DDFileLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDFileLogger.m; sourceTree = "<group>"; };
-		18BB4F302153F9EE00C4A2CD /* DDASLLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDASLLogger.h; sourceTree = "<group>"; };
-		18BB4F312153F9EE00C4A2CD /* web.back.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = web.back.zip; sourceTree = "<group>"; };
-		18BB4F322153F9EE00C4A2CD /* MyHTTPConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyHTTPConnection.h; sourceTree = "<group>"; };
-		18BB4F342153F9EE00C4A2CD /* GCDAsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDAsyncSocket.m; sourceTree = "<group>"; };
-		18BB4F352153F9EE00C4A2CD /* About.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = About.txt; sourceTree = "<group>"; };
-		18BB4F362153F9EE00C4A2CD /* GCDAsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDAsyncSocket.h; sourceTree = "<group>"; };
 		18BB4F372153F9EE00C4A2CD /* XDSWIFIFileTransferViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XDSWIFIFileTransferViewController.m; sourceTree = "<group>"; };
 		18BB4F382153F9EE00C4A2CD /* XDSIPHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDSIPHelper.h; sourceTree = "<group>"; };
-		18BB4F392153F9EE00C4A2CD /* XDSWIFIFileTransferViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XDSWIFIFileTransferViewController.xib; sourceTree = "<group>"; };
 		18F8EB4E2139564100168506 /* XDSNewsModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XDSNewsModel.h; sourceTree = "<group>"; };
 		18F8EB4F2139564100168506 /* XDSNewsModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XDSNewsModel.m; sourceTree = "<group>"; };
 		18F8EB532139626F00168506 /* XDS_CustomMjRefreshFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDS_CustomMjRefreshFooter.h; sourceTree = "<group>"; };
@@ -1145,16 +1059,18 @@
 		181E530A214F928000E8A704 /* External */ = {
 			isa = PBXGroup;
 			children = (
-				181E530B214F928000E8A704 /* UIImage+ImageEffects.h */,
-				181E530C214F928000E8A704 /* NSString+HTML.h */,
-				181E530D214F928000E8A704 /* GTMNSString+HTML.h */,
-				181E530E214F928000E8A704 /* UIView+XDSHyperLink.h */,
 				181E530F214F928000E8A704 /* TouchXML */,
 				181E532F214F928000E8A704 /* GTMDefines.h */,
+				181E530C214F928000E8A704 /* NSString+HTML.h */,
 				181E5330214F928000E8A704 /* NSString+HTML.m */,
-				181E5331214F928000E8A704 /* UIImage+ImageEffects.m */,
-				181E5332214F928000E8A704 /* UIView+XDSHyperLink.m */,
+				181E530D214F928000E8A704 /* GTMNSString+HTML.h */,
 				181E5333214F928000E8A704 /* GTMNSString+HTML.m */,
+				181E530E214F928000E8A704 /* UIView+XDSHyperLink.h */,
+				181E5332214F928000E8A704 /* UIView+XDSHyperLink.m */,
+				181E5331214F928000E8A704 /* UIImage+ImageEffects.m */,
+				181E530B214F928000E8A704 /* UIImage+ImageEffects.h */,
+				18B3DC8C2154BB8600FFD27E /* UIViewController+XDSReader.h */,
+				18B3DC8B2154BB8600FFD27E /* UIViewController+XDSReader.m */,
 			);
 			path = External;
 			sourceTree = "<group>";
@@ -1583,14 +1499,15 @@
 		18BB4EC62153F9EE00C4A2CD /* WiFiFileTransfer */ = {
 			isa = PBXGroup;
 			children = (
-				18BB4EC72153F9EE00C4A2CD /* wifi.png */,
+				1861C6DF215A1C3D005A03D7 /* logo_book.png */,
 				18BB4EC82153F9EE00C4A2CD /* GCDWebServer */,
 				18BB4EF02153F9EE00C4A2CD /* XDSIPHelper.m */,
-				18BB4EF12153F9EE00C4A2CD /* XDSWIFIFileTransferViewController.h */,
-				18BB4EF22153F9EE00C4A2CD /* SimpleFileUploadServer */,
-				18BB4F372153F9EE00C4A2CD /* XDSWIFIFileTransferViewController.m */,
 				18BB4F382153F9EE00C4A2CD /* XDSIPHelper.h */,
-				18BB4F392153F9EE00C4A2CD /* XDSWIFIFileTransferViewController.xib */,
+				18B3DC862154BB6600FFD27E /* XDSReaderWifiView.h */,
+				18B3DC872154BB6700FFD27E /* XDSReaderWifiView.m */,
+				18B3DC882154BB6700FFD27E /* XDSReaderWifiView.xib */,
+				18BB4EF12153F9EE00C4A2CD /* XDSWIFIFileTransferViewController.h */,
+				18BB4F372153F9EE00C4A2CD /* XDSWIFIFileTransferViewController.m */,
 			);
 			path = WiFiFileTransfer;
 			sourceTree = "<group>";
@@ -1681,137 +1598,6 @@
 				18BB4EEF2153F9EE00C4A2CD /* GCDWebUploader.m */,
 			);
 			path = GCDWebUploader;
-			sourceTree = "<group>";
-		};
-		18BB4EF22153F9EE00C4A2CD /* SimpleFileUploadServer */ = {
-			isa = PBXGroup;
-			children = (
-				18BB4EF32153F9EE00C4A2CD /* MyHTTPConnection.m */,
-				18BB4EF42153F9EE00C4A2CD /* Core */,
-				18BB4F1C2153F9EE00C4A2CD /* web */,
-				18BB4F1F2153F9EE00C4A2CD /* CocoaLumberjack */,
-				18BB4F312153F9EE00C4A2CD /* web.back.zip */,
-				18BB4F322153F9EE00C4A2CD /* MyHTTPConnection.h */,
-				18BB4F332153F9EE00C4A2CD /* CocoaAsyncSocket */,
-			);
-			path = SimpleFileUploadServer;
-			sourceTree = "<group>";
-		};
-		18BB4EF42153F9EE00C4A2CD /* Core */ = {
-			isa = PBXGroup;
-			children = (
-				18BB4EF52153F9EE00C4A2CD /* HTTPConnection.h */,
-				18BB4EF62153F9EE00C4A2CD /* HTTPLogging.h */,
-				18BB4EF72153F9EE00C4A2CD /* HTTPMessage.h */,
-				18BB4EF82153F9EE00C4A2CD /* WebSocket.h */,
-				18BB4EF92153F9EE00C4A2CD /* HTTPAuthenticationRequest.h */,
-				18BB4EFA2153F9EE00C4A2CD /* Responses */,
-				18BB4F072153F9EE00C4A2CD /* HTTPServer.h */,
-				18BB4F082153F9EE00C4A2CD /* HTTPMessage.m */,
-				18BB4F092153F9EE00C4A2CD /* HTTPConnection.m */,
-				18BB4F0A2153F9EE00C4A2CD /* WebSocket.m */,
-				18BB4F0B2153F9EE00C4A2CD /* HTTPResponse.h */,
-				18BB4F0C2153F9EE00C4A2CD /* Mime */,
-				18BB4F132153F9EE00C4A2CD /* HTTPAuthenticationRequest.m */,
-				18BB4F142153F9EE00C4A2CD /* Categories */,
-				18BB4F1B2153F9EE00C4A2CD /* HTTPServer.m */,
-			);
-			path = Core;
-			sourceTree = "<group>";
-		};
-		18BB4EFA2153F9EE00C4A2CD /* Responses */ = {
-			isa = PBXGroup;
-			children = (
-				18BB4EFB2153F9EE00C4A2CD /* HTTPAsyncFileResponse.h */,
-				18BB4EFC2153F9EE00C4A2CD /* HTTPErrorResponse.m */,
-				18BB4EFD2153F9EE00C4A2CD /* HTTPDataResponse.m */,
-				18BB4EFE2153F9EE00C4A2CD /* HTTPRedirectResponse.h */,
-				18BB4EFF2153F9EE00C4A2CD /* HTTPDynamicFileResponse.m */,
-				18BB4F002153F9EE00C4A2CD /* HTTPFileResponse.m */,
-				18BB4F012153F9EE00C4A2CD /* HTTPAsyncFileResponse.m */,
-				18BB4F022153F9EE00C4A2CD /* HTTPRedirectResponse.m */,
-				18BB4F032153F9EE00C4A2CD /* HTTPDataResponse.h */,
-				18BB4F042153F9EE00C4A2CD /* HTTPErrorResponse.h */,
-				18BB4F052153F9EE00C4A2CD /* HTTPFileResponse.h */,
-				18BB4F062153F9EE00C4A2CD /* HTTPDynamicFileResponse.h */,
-			);
-			path = Responses;
-			sourceTree = "<group>";
-		};
-		18BB4F0C2153F9EE00C4A2CD /* Mime */ = {
-			isa = PBXGroup;
-			children = (
-				18BB4F0D2153F9EE00C4A2CD /* MultipartFormDataParser.h */,
-				18BB4F0E2153F9EE00C4A2CD /* MultipartMessageHeader.h */,
-				18BB4F0F2153F9EE00C4A2CD /* MultipartMessageHeaderField.m */,
-				18BB4F102153F9EE00C4A2CD /* MultipartFormDataParser.m */,
-				18BB4F112153F9EE00C4A2CD /* MultipartMessageHeader.m */,
-				18BB4F122153F9EE00C4A2CD /* MultipartMessageHeaderField.h */,
-			);
-			path = Mime;
-			sourceTree = "<group>";
-		};
-		18BB4F142153F9EE00C4A2CD /* Categories */ = {
-			isa = PBXGroup;
-			children = (
-				18BB4F152153F9EE00C4A2CD /* DDNumber.m */,
-				18BB4F162153F9EE00C4A2CD /* DDData.m */,
-				18BB4F172153F9EE00C4A2CD /* DDRange.h */,
-				18BB4F182153F9EE00C4A2CD /* DDNumber.h */,
-				18BB4F192153F9EE00C4A2CD /* DDRange.m */,
-				18BB4F1A2153F9EE00C4A2CD /* DDData.h */,
-			);
-			path = Categories;
-			sourceTree = "<group>";
-		};
-		18BB4F1C2153F9EE00C4A2CD /* web */ = {
-			isa = PBXGroup;
-			children = (
-				18BB4F1D2153F9EE00C4A2CD /* index.html */,
-				18BB4F1E2153F9EE00C4A2CD /* upload.html */,
-			);
-			path = web;
-			sourceTree = "<group>";
-		};
-		18BB4F1F2153F9EE00C4A2CD /* CocoaLumberjack */ = {
-			isa = PBXGroup;
-			children = (
-				18BB4F202153F9EE00C4A2CD /* DDTTYLogger.m */,
-				18BB4F212153F9EE00C4A2CD /* DDLog.h */,
-				18BB4F222153F9EE00C4A2CD /* DDAbstractDatabaseLogger.h */,
-				18BB4F232153F9EE00C4A2CD /* DDASLLogger.m */,
-				18BB4F242153F9EE00C4A2CD /* DDFileLogger.h */,
-				18BB4F252153F9EE00C4A2CD /* Extensions */,
-				18BB4F2B2153F9EE00C4A2CD /* DDLog.m */,
-				18BB4F2C2153F9EE00C4A2CD /* About.txt */,
-				18BB4F2D2153F9EE00C4A2CD /* DDTTYLogger.h */,
-				18BB4F2E2153F9EE00C4A2CD /* DDAbstractDatabaseLogger.m */,
-				18BB4F2F2153F9EE00C4A2CD /* DDFileLogger.m */,
-				18BB4F302153F9EE00C4A2CD /* DDASLLogger.h */,
-			);
-			path = CocoaLumberjack;
-			sourceTree = "<group>";
-		};
-		18BB4F252153F9EE00C4A2CD /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				18BB4F262153F9EE00C4A2CD /* ContextFilterLogFormatter.h */,
-				18BB4F272153F9EE00C4A2CD /* DispatchQueueLogFormatter.h */,
-				18BB4F282153F9EE00C4A2CD /* ContextFilterLogFormatter.m */,
-				18BB4F292153F9EE00C4A2CD /* DispatchQueueLogFormatter.m */,
-				18BB4F2A2153F9EE00C4A2CD /* README.txt */,
-			);
-			path = Extensions;
-			sourceTree = "<group>";
-		};
-		18BB4F332153F9EE00C4A2CD /* CocoaAsyncSocket */ = {
-			isa = PBXGroup;
-			children = (
-				18BB4F342153F9EE00C4A2CD /* GCDAsyncSocket.m */,
-				18BB4F352153F9EE00C4A2CD /* About.txt */,
-				18BB4F362153F9EE00C4A2CD /* GCDAsyncSocket.h */,
-			);
-			path = CocoaAsyncSocket;
 			sourceTree = "<group>";
 		};
 		18F8EB512139626F00168506 /* XDSMJfresh */ = {
@@ -2279,33 +2065,29 @@
 				18A6FA28212FCB9D00709EC9 /* appConfig.txt in Resources */,
 				18A6FAF62130DF3800709EC9 /* img_circular@3x.png in Resources */,
 				092CAF051DE28620008127DA /* IHPMovieCell.xib in Resources */,
-				18BB4F6D2153F9EE00C4A2CD /* XDSWIFIFileTransferViewController.xib in Resources */,
 				181E5407214F928100E8A704 /* XDSNoDataView.xib in Resources */,
 				A05EB9251DE04EF400148A5B /* icon_jiazai@3x.png in Resources */,
 				181E53D8214F928000E8A704 /* mdjyml.txt in Resources */,
 				181E53D7214F928000E8A704 /* zoubianzhongguo.epub in Resources */,
-				18BB4F6B2153F9EE00C4A2CD /* About.txt in Resources */,
 				18A6FAF22130DF3800709EC9 /* btn_stop@3x.png in Resources */,
 				18F8EB5C2139634000168506 /* down.png in Resources */,
 				181E53E2214F928000E8A704 /* 华文琥珀.ttf in Resources */,
+				1861C6E0215A1C3D005A03D7 /* logo_book.png in Resources */,
 				A0D46B861DE0173500637681 /* Assets.xcassets in Resources */,
 				181E5421214FD25D00E8A704 /* XDSBookCell.xib in Resources */,
 				18A6FAFB2130DF3800709EC9 /* btn-amplification@3x.png in Resources */,
-				18BB4F642153F9EE00C4A2CD /* README.txt in Resources */,
 				18BB4F492153F9EE00C4A2CD /* GCDWebUploader.bundle in Resources */,
 				A05EB9241DE04EF400148A5B /* icon_jiazai@2x.png in Resources */,
 				FC1A8C2D1EAC1FD900E66FF8 /* menu.json in Resources */,
+				18B3DC8A2154BB6700FFD27E /* XDSReaderWifiView.xib in Resources */,
 				18A6FAFD2130DF3800709EC9 /* btn_play@3x.png in Resources */,
 				18A6FA862130031500709EC9 /* json.bnf in Resources */,
 				18A6FA2D212FCB9D00709EC9 /* Localizable_en.string in Resources */,
 				092CAEFF1DE28620008127DA /* IHYMovieDetailInfoView.xib in Resources */,
-				18BB4F5E2153F9EE00C4A2CD /* index.html in Resources */,
-				18BB4F5F2153F9EE00C4A2CD /* upload.html in Resources */,
 				181E5414214F928100E8A704 /* XDSReadMenu.xcassets in Resources */,
 				A227A84C2130641300568BCB /* SplashSmall.png in Resources */,
 				181E53D9214F928000E8A704 /* 每天懂一点好玩心理学.epub in Resources */,
 				A22C12FD2144734E00896F00 /* XDSPlayerSectionHeader.xib in Resources */,
-				18BB4F3A2153F9EE00C4A2CD /* wifi.png in Resources */,
 				18A6FAF72130DF3800709EC9 /* btn_stop@2x.png in Resources */,
 				18A6FAFA2130DF3800709EC9 /* btn-amplification@2x.png in Resources */,
 				181E53E0214F928000E8A704 /* 华文行楷.ttf in Resources */,
@@ -2313,13 +2095,11 @@
 				181E53DF214F928000E8A704 /* 华文新魏.ttf in Resources */,
 				18A6FAF32130DF3800709EC9 /* img_circular@2x.png in Resources */,
 				092CAF2F1DE2B20F008127DA /* IHYNewsListCell.xib in Resources */,
-				18BB4F662153F9EE00C4A2CD /* About.txt in Resources */,
 				A227A84D2130641300568BCB /* SplashX.png in Resources */,
 				A01579F31DE1776C00CD7DDB /* ico_back@2x.png in Resources */,
 				A227A84A2130641300568BCB /* SplashLogo.png in Resources */,
 				FCA032421F8DD7DE00600581 /* PYSearch.bundle in Resources */,
 				181E53DB214F928000E8A704 /* 十宗罪.epub in Resources */,
-				18BB4F692153F9EE00C4A2CD /* web.back.zip in Resources */,
 				18A6FAF52130DF3800709EC9 /* btn_voice@3x.png in Resources */,
 				18A6FAF42130DF3800709EC9 /* btn_voice@2x.png in Resources */,
 				09F90D7A1DE2D2F600542684 /* IHYNewsMultableImageCell.xib in Resources */,
@@ -2421,7 +2201,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				FC1A8C3A1EAC296D00E66FF8 /* IHPMenuModel.m in Sources */,
-				18BB4F532153F9EE00C4A2CD /* HTTPMessage.m in Sources */,
 				181E53C1214F928000E8A704 /* XDSMagnifierView.m in Sources */,
 				18BB4F472153F9EE00C4A2CD /* GCDWebServerDataRequest.m in Sources */,
 				185347642142098600013F81 /* XDSEpisodeModel.m in Sources */,
@@ -2442,11 +2221,11 @@
 				FCAFC6181EAEDE1900B48C83 /* IHPMenuViewController.m in Sources */,
 				18F8EB5A2139626F00168506 /* XDS_CustomMjRefreshFooter.m in Sources */,
 				18A6FA952130031600709EC9 /* NLEStack.m in Sources */,
-				18BB4F5A2153F9EE00C4A2CD /* DDNumber.m in Sources */,
 				18BB4F402153F9EE00C4A2CD /* GCDWebServerConnection.m in Sources */,
 				18A6FB022130E2D300709EC9 /* XDSMediaBrowserVC.m in Sources */,
 				18A6FA872130031500709EC9 /* NLEBNFToken.m in Sources */,
 				181E53D2214F928000E8A704 /* NSString+HTML.m in Sources */,
+				18B3DC8D2154BB8600FFD27E /* UIViewController+XDSReader.m in Sources */,
 				181E53B7214F928000E8A704 /* XDSReadManager.m in Sources */,
 				092CAF131DE28D56008127DA /* OCTKeyboardObserverHelper.m in Sources */,
 				092CAF001DE28620008127DA /* IHYMovieInfoHeaderView.m in Sources */,
@@ -2460,12 +2239,8 @@
 				181E540F214F928100E8A704 /* XDSReadSettingView.m in Sources */,
 				181E53BA214F928000E8A704 /* XDSReaderUtil.m in Sources */,
 				181E53BC214F928000E8A704 /* XDSRecordModel.m in Sources */,
-				18BB4F592153F9EE00C4A2CD /* HTTPAuthenticationRequest.m in Sources */,
-				18BB4F572153F9EE00C4A2CD /* MultipartFormDataParser.m in Sources */,
-				18BB4F542153F9EE00C4A2CD /* HTTPConnection.m in Sources */,
 				092CAF0F1DE28D23008127DA /* UIViewController+HideNavigationBar.m in Sources */,
 				A208A6CD2132B39600900DFC /* XDSMeituModel.m in Sources */,
-				18BB4F502153F9EE00C4A2CD /* HTTPFileResponse.m in Sources */,
 				092CAEFD1DE28620008127DA /* IHYMoviePlayButtonModel.m in Sources */,
 				18A6FA8C2130031600709EC9 /* NLEBNFParserState.m in Sources */,
 				FC8B89AA1EBC8073000AD27A /* IHPPlayerViewController.m in Sources */,
@@ -2481,23 +2256,18 @@
 				A05EB9041DE0281D00148A5B /* XDSUtilities.m in Sources */,
 				FCA032441F8DD7DE00600581 /* PYSearchSuggestionViewController.m in Sources */,
 				FC0B7C841EC8B2260022E504 /* INSImageItemCollectionViewCell.m in Sources */,
-				18BB4F652153F9EE00C4A2CD /* DDLog.m in Sources */,
 				18BB4F442153F9EE00C4A2CD /* GCDWebServerStreamedResponse.m in Sources */,
 				A05EB8FF1DE0277E00148A5B /* ForbidTextField.m in Sources */,
 				A05EB8EF1DE0244300148A5B /* ZDProgressHUD.m in Sources */,
 				181E53CF214F928000E8A704 /* CXHTMLDocument.m in Sources */,
 				18A6FA52212FFF7F00709EC9 /* XDSTaskQueue.m in Sources */,
-				18BB4F602153F9EE00C4A2CD /* DDTTYLogger.m in Sources */,
 				A05EB9211DE03CA000148A5B /* XDSHttpRequest.m in Sources */,
 				FCAEADD31EB4D3EA006FB6B5 /* IHPXMLNode.m in Sources */,
-				18BB4F562153F9EE00C4A2CD /* MultipartMessageHeaderField.m in Sources */,
 				FC0B7C781EC75C290022E504 /* YSEClassifyModel.m in Sources */,
-				18BB4F632153F9EE00C4A2CD /* DispatchQueueLogFormatter.m in Sources */,
 				FC0B7C811EC801B50022E504 /* YSEImageModel.m in Sources */,
 				18A6FA36212FFEDD00709EC9 /* XDSBaseManager.m in Sources */,
 				181E5417214F928100E8A704 /* XDSHaloButton.m in Sources */,
 				18BB4F462153F9EE00C4A2CD /* GCDWebServerMultiPartFormRequest.m in Sources */,
-				18BB4F512153F9EE00C4A2CD /* HTTPAsyncFileResponse.m in Sources */,
 				181E53D0214F928000E8A704 /* CXMLElement_CreationExtensions.m in Sources */,
 				18A6FA9C21300D5800709EC9 /* UIAlertController+XDS.m in Sources */,
 				181E53CA214F928000E8A704 /* CXMLElement_ElementTreeExtensions.m in Sources */,
@@ -2509,7 +2279,6 @@
 				18A6FA53212FFF7F00709EC9 /* XDSTask.m in Sources */,
 				18A6FA5D213000A400709EC9 /* XDSRootViewController.m in Sources */,
 				092CAF031DE28620008127DA /* IHYMovieModel.m in Sources */,
-				18BB4F4F2153F9EE00C4A2CD /* HTTPDynamicFileResponse.m in Sources */,
 				181E53BB214F928000E8A704 /* XDSReaderGlobleConst.m in Sources */,
 				181E540A214F928100E8A704 /* XDSCatalogueViewController.m in Sources */,
 				FCA032461F8DD7DE00600581 /* UIColor+PYSearchExtension.m in Sources */,
@@ -2522,7 +2291,6 @@
 				18BB4F3B2153F9EE00C4A2CD /* GCDWebDAVServer.m in Sources */,
 				181E5406214F928100E8A704 /* XDSReadMenu.m in Sources */,
 				A05EB8EB1DE0244300148A5B /* OCAlertView.m in Sources */,
-				18BB4F552153F9EE00C4A2CD /* WebSocket.m in Sources */,
 				181E5416214F928100E8A704 /* UIView+YGPulseView.m in Sources */,
 				181E540C214F928100E8A704 /* XDSNoDataView.m in Sources */,
 				18BB4F3F2153F9EE00C4A2CD /* GCDWebServer.m in Sources */,
@@ -2543,7 +2311,6 @@
 				092CAF061DE28620008127DA /* IHYMovieListViewController.m in Sources */,
 				181E53CE214F928000E8A704 /* CXMLDocument_PrivateExtensions.m in Sources */,
 				18A6FA2C212FCB9D00709EC9 /* XDSLocalizableManager.m in Sources */,
-				18BB4F4C2153F9EE00C4A2CD /* MyHTTPConnection.m in Sources */,
 				A24FCBE421319AB2001A05DB /* XDSFullPlayerVC.m in Sources */,
 				18A6FAF02130DF3800709EC9 /* XDSMediaBrowser.m in Sources */,
 				181E541B214FCFC800E8A704 /* XDSMainReaderVC.m in Sources */,
@@ -2559,28 +2326,21 @@
 				181E5410214F928100E8A704 /* XDSReadRootView.m in Sources */,
 				18A6FA2A212FCB9D00709EC9 /* XDSConfigItem.m in Sources */,
 				A05EB91C1DE03B2500148A5B /* XDSRootTableViewController.m in Sources */,
-				18BB4F5C2153F9EE00C4A2CD /* DDRange.m in Sources */,
 				18A6FA982130031600709EC9 /* NLEBNFIndexNode.m in Sources */,
 				181E53DD214F928000E8A704 /* XDSReadPageViewController.m in Sources */,
-				18BB4F682153F9EE00C4A2CD /* DDFileLogger.m in Sources */,
 				181E53BF214F928000E8A704 /* XDSMarkModel.m in Sources */,
-				18BB4F612153F9EE00C4A2CD /* DDASLLogger.m in Sources */,
 				FCA032471F8DD7DE00600581 /* UIView+PYSearchExtension.m in Sources */,
 				181E5409214F928100E8A704 /* XDSCatalogueTabBarController.m in Sources */,
 				A0D46B7E1DE0173500637681 /* AppDelegate.m in Sources */,
 				FC9667C21EC1C55200DA1A96 /* XDSMasterViewController.m in Sources */,
 				18A6FAEF2130DF3800709EC9 /* XDSPlayerView.m in Sources */,
-				18BB4F582153F9EE00C4A2CD /* MultipartMessageHeader.m in Sources */,
 				18A6FA2B212FCB9D00709EC9 /* XDSUrlItem.m in Sources */,
 				A05EB8EE1DE0244300148A5B /* ZDLoadFailView.m in Sources */,
-				18BB4F522153F9EE00C4A2CD /* HTTPRedirectResponse.m in Sources */,
 				18A6FAFE2130DF3800709EC9 /* XDSMediaModel.m in Sources */,
-				18BB4F5D2153F9EE00C4A2CD /* HTTPServer.m in Sources */,
 				FCA032451F8DD7DE00600581 /* PYSearchViewController.m in Sources */,
 				18A6FA892130031500709EC9 /* NLEBNFFastForward.m in Sources */,
 				092CAEFB1DE28620008127DA /* IHYViewControllerModel.m in Sources */,
 				181E53C6214F928000E8A704 /* CXMLNamespaceNode.m in Sources */,
-				18BB4F672153F9EE00C4A2CD /* DDAbstractDatabaseLogger.m in Sources */,
 				FCAFC6111EAED7DF00B48C83 /* IHPConfigModel.m in Sources */,
 				181E53C9214F928000E8A704 /* CXMLUnsupportedNode.m in Sources */,
 				181E53DC214F928000E8A704 /* XDSReadViewController.m in Sources */,
@@ -2590,7 +2350,6 @@
 				09F90D791DE2D2F600542684 /* IHYNewsMultableImageCell.m in Sources */,
 				181E53D1214F928000E8A704 /* CXMLElement.m in Sources */,
 				181E53BE214F928000E8A704 /* XDSChapterModel.m in Sources */,
-				18BB4F5B2153F9EE00C4A2CD /* DDData.m in Sources */,
 				092CAF021DE28620008127DA /* IHYMovieDetailViewController.m in Sources */,
 				181E53D3214F928000E8A704 /* UIImage+ImageEffects.m in Sources */,
 				A05EB8EC1DE0244300148A5B /* OCControlAlertView.m in Sources */,
@@ -2602,14 +2361,11 @@
 				A05EB91B1DE03B2500148A5B /* XDSRootRequestViewController.m in Sources */,
 				18A6FA8A2130031500709EC9 /* NLEBNFIndexFactory.m in Sources */,
 				18A6FA8F2130031600709EC9 /* NLEBNFTokenizerParams.m in Sources */,
-				18BB4F4D2153F9EE00C4A2CD /* HTTPErrorResponse.m in Sources */,
 				092CAF211DE2B1A7008127DA /* IHYNewsMainViewController.m in Sources */,
-				18BB4F6A2153F9EE00C4A2CD /* GCDAsyncSocket.m in Sources */,
 				18A6FA8B2130031600709EC9 /* NLEBNFIndexFactoryJSON.m in Sources */,
 				181E53C5214F928000E8A704 /* CXMLNode.m in Sources */,
 				181E53C2214F928000E8A704 /* UIControl+XDSHyperLink.m in Sources */,
 				092CAF011DE28620008127DA /* XDSEpisodeCell.m in Sources */,
-				18BB4F4E2153F9EE00C4A2CD /* HTTPDataResponse.m in Sources */,
 				18A6FA962130031600709EC9 /* NLEBNFTokenizerFactory.m in Sources */,
 				A22C12FC2144734E00896F00 /* XDSPlayerSectionHeader.m in Sources */,
 				18A6FAEC2130DF3800709EC9 /* XDSGestureDetectingImageView.m in Sources */,
@@ -2622,12 +2378,12 @@
 				181E53D4214F928000E8A704 /* UIView+XDSHyperLink.m in Sources */,
 				18A6FA922130031600709EC9 /* NLEBNFIndex.m in Sources */,
 				18A6FAEE2130DF3800709EC9 /* XDSZoomingScrollView.m in Sources */,
+				18B3DC892154BB6700FFD27E /* XDSReaderWifiView.m in Sources */,
 				18A6FA4A212FFF1900709EC9 /* zip.c in Sources */,
 				A05EB91A1DE03B2500148A5B /* XDSRootRequestTableViewController.m in Sources */,
 				18AED1B1214360570044DE84 /* XDSPlayerBannerAdCell.m in Sources */,
 				A05EB92B1DE0880000148A5B /* XDSRootModel.m in Sources */,
 				18A6FA932130031600709EC9 /* NLEBNFParseResult.m in Sources */,
-				18BB4F622153F9EE00C4A2CD /* ContextFilterLogFormatter.m in Sources */,
 				18A6FA59212FFFB900709EC9 /* XDSPlaceholdSplashViewController.m in Sources */,
 				FC1A8C3D1EAC298800E66FF8 /* IHPConfigManager.m in Sources */,
 				A24FCBE721319BF0001A05DB /* UIViewController+XDSMediaBrowser.m in Sources */,

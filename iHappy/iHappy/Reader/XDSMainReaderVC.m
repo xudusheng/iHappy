@@ -8,8 +8,9 @@
 
 #import "XDSMainReaderVC.h"
 #import "XDSBookCell.h"
+#import "XDSWIFIFileTransferViewController.h"
 @interface XDSMainReaderVC ()<UICollectionViewDelegate, UICollectionViewDataSource>
-@property (strong, nonatomic) NSMutableArray * bookList;
+@property (strong, nonatomic) NSMutableArray<LPPBookInfoModel*> * bookList;
 @property (strong, nonatomic) UICollectionView * mCollectionView;
 
 @end
@@ -19,9 +20,12 @@
     [super viewDidLoad];
     [self movieListViewControllerDataInit];
     [self createMovieListViewControllerUI];
+    
 }
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    [self loadLocalBooks];
+
 }
 
 #pragma mark - UI相关
@@ -30,11 +34,11 @@
     //创建一个layout布局类
     UICollectionViewFlowLayout * layout = [[UICollectionViewFlowLayout alloc]init];
     //设置布局方向为垂直流布局
-    layout.scrollDirection = UICollectionViewScrollDirectionVertical;
+//    layout.scrollDirection = UICollectionViewScrollDirectionVertical;
     //设置每个item的大小
     CGFloat itemMargin = 20;
     CGFloat width = (DEVIECE_SCREEN_WIDTH - itemMargin * 4)/3-0.1;
-    layout.itemSize = CGSizeMake(width, width*16/9 + 45);
+    layout.itemSize = CGSizeMake(width, width*12/9 + 45);
     layout.sectionInset = UIEdgeInsetsMake(itemMargin, itemMargin, itemMargin, itemMargin);
     //创建collectionView 通过一个布局策略layout来创建
     self.mCollectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
@@ -49,7 +53,10 @@
     [_mCollectionView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.mas_equalTo(0);
     }];
-
+    
+    
+    UIBarButtonItem *barButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"添加书籍" style:UIBarButtonItemStyleDone target:self action:@selector(showWifiView)];
+    self.navigationItem.rightBarButtonItem = barButtonItem;
 }
 
 #pragma mark - 网络请求
@@ -64,10 +71,10 @@
     XDSBookCell * cell  = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([XDSBookCell class]) forIndexPath:indexPath];
     cell.backgroundColor = [UIColor groupTableViewBackgroundColor];
     
-    XDSBookModel *bookModel = self.bookList[indexPath.row];
-    UIImage *cover = [UIImage imageWithContentsOfFile:bookModel.bookBasicInfo.coverPath];
+    LPPBookInfoModel *bookInfoModel = self.bookList[indexPath.row];
+    UIImage *cover = [UIImage imageWithContentsOfFile:bookInfoModel.coverPath];
     cell.mImageView.image = cover;
-    cell.mTitleLabel.text = bookModel.bookBasicInfo.title;
+    cell.mTitleLabel.text = bookInfoModel.title;
 
     return cell;
 }
@@ -75,35 +82,27 @@
 
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-    XDSBookModel *bookModel = self.bookList[indexPath.row];
-    XDSReadPageViewController *pageView = [[XDSReadPageViewController alloc] init];
-    [[XDSReadManager sharedManager] setResourceURL:bookModel.resource];//文件位置
-    [[XDSReadManager sharedManager] setBookModel:bookModel];
-    [[XDSReadManager sharedManager] setRmDelegate:pageView];
-    [self presentViewController:pageView animated:YES completion:nil];
-    
-//    NSArray *documentPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-//    NSString *documentDir = documentPaths.firstObject;
-//    NSString *path = [NSString stringWithFormat:@"%@/斗气大陆.txt", documentDir];
-//    [self showReadPageViewControllerWithFileURL:[NSURL fileURLWithPath:path]];
-    
-//    NSURL *fileURL = [[NSBundle mainBundle] URLForResource:@"妖神记"withExtension:@"txt"];
-//    NSURL *fileURL = [[NSBundle mainBundle] URLForResource:@"阴轨" withExtension:@"txt"];
-//    NSString *path = [[NSBundle mainBundle] pathForResource:@"阴轨" ofType:@"txt"];
-//    [self showReadPageViewControllerWithFileURL:[NSURL fileURLWithPath:path]];
-    
+    LPPBookInfoModel *bookInfoModel = self.bookList[indexPath.row];
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        XDSBookModel *bookModel = [XDSBookModel bookModelWithBaseInfo:bookInfoModel];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            XDSReadPageViewController *pageView = [[XDSReadPageViewController alloc] init];
+            [[XDSReadManager sharedManager] setBookModel:bookModel];
+            [[XDSReadManager sharedManager] setRmDelegate:pageView];
+            [self presentViewController:pageView animated:YES completion:nil];
+        });
+    });
 }
 #pragma mark - 点击事件处理
 - (void)showReadPageViewControllerWithFileURL:(NSURL *)fileURL{
     if (nil == fileURL) {
         return;
     }
-    
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
-        XDSBookModel *bookModel = [XDSBookModel getLocalModelWithURL:fileURL];
+        LPPBookInfoModel *bookInfo = [XDSReadOperation getBookInfoWithFile:fileURL];
+        XDSBookModel *bookModel = [XDSBookModel bookModelWithBaseInfo:bookInfo];
         dispatch_async(dispatch_get_main_queue(), ^{
             XDSReadPageViewController *pageView = [[XDSReadPageViewController alloc] init];
-            [[XDSReadManager sharedManager] setResourceURL:fileURL];//文件位置
             [[XDSReadManager sharedManager] setBookModel:bookModel];
             [[XDSReadManager sharedManager] setRmDelegate:pageView];
             [self presentViewController:pageView animated:YES completion:nil];
@@ -111,7 +110,13 @@
     });
 }
 
-
+- (void)showWifiView {
+    XDSWIFIFileTransferViewController *wifiTransferVC = [XDSWIFIFileTransferViewController newInstance];
+    [self presentViewController:wifiTransferVC
+                       animated: YES
+              inRransparentForm:YES
+                     completion:nil];
+}
 
 #pragma mark - 其他私有方法
 - (void)loadLocalBooks {
@@ -131,11 +136,11 @@
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
         for (NSString *fileName in fileList) {
             NSString *path = [NSString stringWithFormat:@"%@/%@", documentDir, fileName];
-            NSLog(@"path = %@", path);
-            XDSBookModel *bookModel = [XDSBookModel getLocalModelWithURL:[NSURL fileURLWithPath:path]];
-            NSLog(@"path = %@", path);
-            bookModel?[self.bookList addObject:bookModel]:NULL;
-            NSLog(@"bookModel = %@", bookModel);
+            LPPBookInfoModel *bookInfo = [XDSReadOperation getBookInfoWithFile:[NSURL fileURLWithPath:path]];
+            bookInfo?[self.bookList addObject:bookInfo]:NULL;
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.mCollectionView reloadData];
+            });
         }
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.mCollectionView reloadData];
@@ -147,7 +152,6 @@
 #pragma mark - 内存管理相关
 - (void)movieListViewControllerDataInit{
     self.bookList = [[NSMutableArray alloc] initWithCapacity:0];
-    [self loadLocalBooks];
 }
 
 @end
