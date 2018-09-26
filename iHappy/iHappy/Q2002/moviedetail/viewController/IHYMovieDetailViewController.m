@@ -137,7 +137,7 @@
     for (TFHppleElement * dt_dd_element in dt_dd_elements) {
         NSString * content = dt_dd_element.text;
         NSString * title = [dt_dd_element firstChildWithTagName:@"span"].text;
-        NSLog(@"%@ = %@\n", title, content);
+//        NSLog(@"%@ = %@\n", title, content);
         IHYMovieDetailInfoTitleAndContentModel * model = [[IHYMovieDetailInfoTitleAndContentModel alloc] init];
         model.title = title;
         model.content = content;
@@ -147,21 +147,20 @@
     
     TFHppleElement * sumary_element = [hpp searchWithXPathQuery:@"//div[@class=\"tab-jq ctc\"]"].firstObject;
     NSString * sumary = sumary_element.text;
-    NSLog(@"%@", sumary);
+//    NSLog(@"%@", sumary);
     
     CGFloat sumaryHeight = [XDSUtilities heightForString:sumary
                                               limitWidth:DEVIECE_SCREEN_WIDTH - 20
                                                     font:[UIFont systemFontOfSize:13]];
     CGRect headerViewFrame =CGRectZero;
-    NSLog(@"frame = %@", NSStringFromCGRect(_movieInfoHeaderView.frame));
     headerViewFrame.size.width = DEVIECE_SCREEN_WIDTH;
     headerViewFrame.size.height = IHYMovieDetailInfoViewInitialHeight + sumaryHeight;
     headerViewFrame.origin.y = -headerViewFrame.size.height;
     _movieInfoHeaderView.frame = headerViewFrame;
-    NSLog(@"frame = %@", NSStringFromCGRect(_movieInfoHeaderView.frame));
-    NSLog(@"contentInset = %@", NSStringFromUIEdgeInsets(_moviedetailCollectionView.contentInset));
+//    NSLog(@"frame = %@", NSStringFromCGRect(_movieInfoHeaderView.frame));
+//    NSLog(@"contentInset = %@", NSStringFromUIEdgeInsets(_moviedetailCollectionView.contentInset));
     _moviedetailCollectionView.contentInset = UIEdgeInsetsMake(headerViewFrame.size.height, 0, 100, 0);
-    NSLog(@"contentInset = %@", NSStringFromUIEdgeInsets(_moviedetailCollectionView.contentInset));
+//    NSLog(@"contentInset = %@", NSStringFromUIEdgeInsets(_moviedetailCollectionView.contentInset));
     
     [_movieInfoHeaderView movieInfoHeaderWithMovieImage:movieImage
                                                  sumary:sumary
@@ -177,14 +176,14 @@
             TFHppleElement * bofangqi_element = bofangqi_elements[i];
             playerDesc = bofangqi_element.text;
         }
-        NSLog(@"%@", playerDesc);
+//        NSLog(@"%@", playerDesc);
         NSMutableArray * buttonArray = [NSMutableArray arrayWithCapacity:0];
         NSArray * button_li_elements = [show_player_gogo_element childrenWithTagName:@"li"];
         for (TFHppleElement * button_li_element in button_li_elements) {
             TFHppleElement * button_a_element = [button_li_element firstChildWithTagName:@"a"];
             NSString * href = [button_a_element objectForKey:@"href"];
             NSString * buttonTitle = button_a_element.text;
-            NSLog(@"%@ = %@", buttonTitle, href);
+//            NSLog(@"%@ = %@", buttonTitle, href);
             if (!href || !buttonTitle) {
                 continue;
             }

@@ -103,7 +103,6 @@ NSString * const MovieListViewController_movieCellIdentifier = @"IHPMovieCell";
                                             } failed:^(NSString *errorDescription) {
                                                 [weakSelf endRefresh];
                                             }];
-    
 }
 #pragma mark - 代理方法
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{

@@ -9,10 +9,11 @@
 #import "XDSMainReaderVC.h"
 #import "XDSBookCell.h"
 #import "XDSWIFIFileTransferViewController.h"
-@interface XDSMainReaderVC ()<UICollectionViewDelegate, UICollectionViewDataSource>
+@interface XDSMainReaderVC ()<UICollectionViewDelegate, UICollectionViewDataSource, XDSWIFIFileTransferViewControllerDelegate>
 @property (strong, nonatomic) NSMutableArray<LPPBookInfoModel*> * bookList;
 @property (strong, nonatomic) UICollectionView * mCollectionView;
 
+@property (nonatomic,assign) BOOL hasFirstLoadBooks;
 @end
 
 @implementation XDSMainReaderVC
@@ -20,12 +21,16 @@
     [super viewDidLoad];
     [self movieListViewControllerDataInit];
     [self createMovieListViewControllerUI];
-    
 }
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [self loadLocalBooks];
-
+    if (!_hasFirstLoadBooks) {
+        [XDSUtilities showHud:self.view text:nil];
+        [self loadLocalBooks];
+        self.hasFirstLoadBooks = YES;
+    }else {
+        [self sortBooksByModifyTime];
+    }
 }
 
 #pragma mark - UI相关
@@ -70,16 +75,16 @@
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     XDSBookCell * cell  = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([XDSBookCell class]) forIndexPath:indexPath];
     cell.backgroundColor = [UIColor groupTableViewBackgroundColor];
-    
+
     LPPBookInfoModel *bookInfoModel = self.bookList[indexPath.row];
     UIImage *cover = [UIImage imageWithContentsOfFile:bookInfoModel.coverPath];
     cell.mImageView.image = cover;
     cell.mTitleLabel.text = bookInfoModel.title;
-
+    
+    cell.lastReadMark.hidden = !bookInfoModel.isLastRead;
+    
     return cell;
 }
-
-
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     LPPBookInfoModel *bookInfoModel = self.bookList[indexPath.row];
@@ -92,6 +97,11 @@
             [self presentViewController:pageView animated:YES completion:nil];
         });
     });
+}
+
+#pragma mark - XDSWIFIFileTransferViewControllerDelegate
+- (void)didBooksChanged {
+    [self loadLocalBooks];
 }
 #pragma mark - 点击事件处理
 - (void)showReadPageViewControllerWithFileURL:(NSURL *)fileURL{
@@ -112,6 +122,7 @@
 
 - (void)showWifiView {
     XDSWIFIFileTransferViewController *wifiTransferVC = [XDSWIFIFileTransferViewController newInstance];
+    wifiTransferVC.wDelegate = self;
     [self presentViewController:wifiTransferVC
                        animated: YES
               inRransparentForm:YES
@@ -120,6 +131,8 @@
 
 #pragma mark - 其他私有方法
 - (void)loadLocalBooks {
+    [self.bookList removeAllObjects];
+    
     NSFileManager *fileManager = [NSFileManager defaultManager];
     //在这里获取应用程序Documents文件夹里的文件及文件夹列表
     NSArray *documentPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
@@ -129,24 +142,32 @@
     //fileList便是包含有该文件夹下所有文件的文件名及文件夹名的数组
     fileList = [fileManager contentsOfDirectoryAtPath:documentDir error:&error];
     
-    NSLog(@"%@", fileList);
-    [self.bookList removeAllObjects];
-    
-    [XDSUtilities showHud:self.view text:nil];
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
         for (NSString *fileName in fileList) {
             NSString *path = [NSString stringWithFormat:@"%@/%@", documentDir, fileName];
             LPPBookInfoModel *bookInfo = [XDSReadOperation getBookInfoWithFile:[NSURL fileURLWithPath:path]];
             bookInfo?[self.bookList addObject:bookInfo]:NULL;
             dispatch_async(dispatch_get_main_queue(), ^{
-                [self.mCollectionView reloadData];
+                [self.mCollectionView reloadSections:[NSIndexSet indexSetWithIndex:0]];
             });
         }
         dispatch_async(dispatch_get_main_queue(), ^{
-            [self.mCollectionView reloadData];
+            [self sortBooksByModifyTime];
             [XDSUtilities hideHud:self.view];
         });
     });
+
+}
+
+- (void)sortBooksByModifyTime {
+    [self.bookList sortUsingComparator:^NSComparisonResult(LPPBookInfoModel * _Nonnull book_1, LPPBookInfoModel * _Nonnull book_2) {
+        BOOL isBig = book_2.latestModifyTime > book_1.latestModifyTime;
+        if (isBig) {
+            book_1.isLastRead = NO;
+        }
+        return isBig;
+    }];
+    [self.mCollectionView reloadSections:[NSIndexSet indexSetWithIndex:0]];
 }
 
 #pragma mark - 内存管理相关

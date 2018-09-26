@@ -8,27 +8,27 @@
 
 #import "IHPMovieCell.h"
 @interface IHPMovieCell()
-    
-    @property (weak, nonatomic) IBOutlet UIImageView *movieImageView;
-    @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
-    
-    @end
-    
+
+@property (weak, nonatomic) IBOutlet UIImageView *movieImageView;
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+
+@end
+
 @implementation IHPMovieCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
 }
 
-    - (void)cellWithMovieModel:(IHYMovieModel *)movieModel{
-        if (!movieModel) {
-            _movieImageView.image = nil;
-            _titleLabel.text = @"";
-        }else{
-            [_movieImageView sd_setImageWithURL:[NSURL URLWithString:movieModel.image_src] placeholderImage:nil];
-            _titleLabel.text = movieModel.name;
-        }
-        
+- (void)cellWithMovieModel:(IHYMovieModel *)movieModel{
+    if (!movieModel) {
+        _movieImageView.image = nil;
+        _titleLabel.text = @"";
+    }else{
+        [_movieImageView sd_setImageWithURL:[NSURL URLWithString:movieModel.image_src] placeholderImage:nil];
+        _titleLabel.text = movieModel.name;
     }
     
+}
+
 @end

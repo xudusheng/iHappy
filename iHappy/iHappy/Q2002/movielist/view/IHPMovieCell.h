@@ -10,6 +10,6 @@
 #import "IHYMovieModel.h"
 @interface IHPMovieCell : UICollectionViewCell
 
-    - (void)cellWithMovieModel:(IHYMovieModel *)movieModel;
-    
+- (void)cellWithMovieModel:(IHYMovieModel *)movieModel;
+
 @end
