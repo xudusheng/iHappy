@@ -151,6 +151,12 @@
             }
         }
         
+#warning 测试代码，如果documents下面不存在，先拷贝到documents目录下，再从documents目录下读取，避免重复读取
+        if (![txt_fullPath isEqualToString:path]) {
+            return nil;
+        }
+
+        
         LPPBookInfoModel *bookInfoModel = [[LPPBookInfoModel alloc] init];
         bookInfoModel.fullName = fullName;
         bookInfoModel.bookType = LPPEBookTypeTxt;
