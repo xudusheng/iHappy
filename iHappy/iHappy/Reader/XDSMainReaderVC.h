@@ -11,4 +11,6 @@
 
 @interface XDSMainReaderVC : UIViewController
 
++ (instancetype)sharedReaderVC;
+
 @end

@@ -17,7 +17,6 @@
 @interface IHYMainViewController ()<UISearchBarDelegate>
 
 @property (strong, nonatomic) UISearchBar *searchBar;
-@property (strong, nonatomic) UIButton *menuButton;
 
 @end
 
@@ -25,12 +24,12 @@
 
 - (void)viewDidLoad {
     self.menuViewStyle = WMMenuViewStyleLine;
-    
     [super viewDidLoad];
-    
     [self mainViewControllerDataInit];
     [self createMainViewControllerUI];
     [self reloadData];
+    [[XDSAdManager sharedManager] showInterstitialAD];
+
 }
 
 
@@ -41,25 +40,12 @@
     self.navigationController.navigationBar.shadowImage = [UIImage new];
     
     
-    CGFloat marginLeft = 15;
-    CGFloat marginRight = marginLeft;
     CGFloat navHeight = 44;
     CGFloat searchbarHeight = 29;
-    UIView *titleView = [[UIView alloc] initWithFrame:CGRectMake(marginLeft, 0, DEVIECE_SCREEN_WIDTH - marginLeft - marginRight, navHeight)];
-    
-    //    if ([IHPConfigManager shareManager].menus.count > 1) {
-    CGFloat buttonHeight = 35;
-    UIButton *menuButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    menuButton.tintColor = [UIColor lightGrayColor];
-    menuButton.clipsToBounds = NO;
-    menuButton.frame = CGRectMake(0, navHeight/2 - buttonHeight/2, buttonHeight, buttonHeight);
-    [menuButton addTarget:self action:@selector(showMenu) forControlEvents:UIControlEventTouchUpInside];
-    [menuButton setImage:[UIImage imageNamed:@"nav_menu_icon"] forState:UIControlStateNormal];
-    self.menuButton = menuButton;
-    [titleView addSubview:menuButton];
-    //    }
+    UIView *titleView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, DEVIECE_SCREEN_WIDTH - 66, navHeight)];
+
     [self configSearchBar];
-    _searchBar.frame = CGRectMake(CGRectGetMaxX(_menuButton.frame), navHeight/2 - searchbarHeight/2, CGRectGetWidth(titleView.frame) - searchbarHeight, searchbarHeight);
+    _searchBar.frame = CGRectMake(0, navHeight/2 - searchbarHeight/2, CGRectGetWidth(titleView.frame) - searchbarHeight, searchbarHeight);
     
     [titleView addSubview:_searchBar];
     
@@ -186,9 +172,7 @@
 }
 
 - (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar {
-    NSLog(@"前往搜索页");
     [self showSearchVC];
-    
     return NO;
 }
 #pragma mark - 点击事件处理
@@ -202,9 +186,8 @@
 - (void)showSearchVC{
     
     IHYHomsSearchViewController *searchVC = [[IHYHomsSearchViewController alloc] init];
-    //    searchVC.hotSearches = self.hotSearchKeys;
-    searchVC.searchPlaceholder = self.searchBar.placeholder;
-    
+    searchVC.searchPlaceholder = @"输入视频关键字";
+    searchVC.rootUrl = self.menuModel.rooturl;
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:searchVC];
     nav.navigationBar.translucent = NO;
     [self presentViewController:nav animated:NO completion:nil];

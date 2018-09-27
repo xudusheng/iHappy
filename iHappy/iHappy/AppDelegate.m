@@ -12,7 +12,7 @@
 #import "IHPConfigManager.h"
 #import "IHPConfigModel.h"
 #import "IHPMenuViewController.h"
-
+#import "XDSMainReaderVC.h"
 #import "XDSTaskQueue.h"
 #import "XDSMasterViewController.h"
 #import "XDSPlaceholdSplashViewController.h"
@@ -173,10 +173,27 @@ NSString *const kIHPFetchConfigTaskID = @"IHPFetchConfigTask";
     self.leftMenu = [[IHPMenuViewController alloc] init];
     _leftMenu.menus = menus;
     
-    self.contentController = [[IHYMainViewController alloc] init];
-    _contentController.menuModel = menus.firstObject;
-    UINavigationController * nav = [[UINavigationController alloc] initWithRootViewController:_contentController];
-    nav.navigationBar.translucent = NO;
+    IHPMenuModel *theMenu = menus.firstObject;
+    UINavigationController *nav;
+    if ([theMenu.menuId isEqualToString:@"kReader"]) {
+        XDSMainReaderVC *bookListVC = [XDSMainReaderVC sharedReaderVC];
+        if (menus.count == 1) {
+            nav = [[UINavigationController alloc] initWithRootViewController:bookListVC];
+        }else {
+            nav = [[XDSBaseContentNavigationController alloc] initWithRootViewController:bookListVC];
+        }
+//        nav.navigationBar.translucent = NO;
+    }else {
+        IHYMainViewController *contentController = [[IHYMainViewController alloc] init];
+        contentController.menuModel = menus.firstObject;
+        if (menus.count == 1) {
+            nav = [[UINavigationController alloc] initWithRootViewController:contentController];
+        }else {
+            nav = [[XDSBaseContentNavigationController alloc] initWithRootViewController:contentController];
+        }
+        nav.navigationBar.translucent = NO;
+    }
+
     
     self.mainmeunVC = [[XDSSideMenu alloc] initWithContentViewController:nav
                                                   leftMenuViewController:_leftMenu
@@ -196,7 +213,7 @@ NSString *const kIHPFetchConfigTaskID = @"IHPFetchConfigTask";
     self.mainmeunVC.panGestureEnabled = YES;
     self.mainmeunVC.panFromEdge = YES;
     self.mainmeunVC.panMinimumOpenThreshold = 60.0;
-    self.mainmeunVC.bouncesHorizontally = NO;
+//    self.mainmeunVC.bouncesHorizontally = NO;
     
     self.mainmeunVC.delegate = _leftMenu;
     

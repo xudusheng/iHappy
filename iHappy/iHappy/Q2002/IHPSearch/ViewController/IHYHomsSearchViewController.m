@@ -7,10 +7,10 @@
 //
 
 #import "IHYHomsSearchViewController.h"
-#import "IHYMovieListViewController.h"
+#import "XDSHomeSearchResultVC.h"
 @interface IHYHomsSearchViewController ()<PYSearchViewControllerDelegate>
 
-@property (strong, nonatomic) IHYMovieListViewController *resultVC;
+@property (strong, nonatomic) XDSHomeSearchResultVC *resultVC;
 
 @end
 
@@ -89,9 +89,10 @@ didSelectSearchHistoryAtIndex:(NSInteger)index
     
 }
 #pragma mark - setter & getter
-- (UIViewController *)searchResultController {
+- (XDSHomeSearchResultVC *)resultVC {
     if (!_resultVC) {
-        _resultVC = [[IHYMovieListViewController alloc] init];
+        _resultVC = [[XDSHomeSearchResultVC alloc] init];
+        _resultVC.rootUrl = self.rootUrl;
     }
     return _resultVC;
 }

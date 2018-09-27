@@ -9,11 +9,26 @@
 #import "XDSAdManager.h"
 #import "GDTSplashAd.h"
 #import "GDTMobBannerView.h"
+#import "GDTNativeExpressAd.h"
+#import "GDTNativeExpressAdView.h"
+#import "GDTMobInterstitial.h"
 
+#import "AppDelegate.h"
+//demo
 NSString *const kGDTMobSDKAppId = @"1105344611";
 NSString *const kGDTMobSDKSplashAdId = @"9040714184494018";
 NSString *const kGDTMobSDKBannerAdId = @"4090812164690039";
-@interface XDSAdManager () <GDTSplashAdDelegate>
+NSString *const kGDTMobSDKNativeAdId = @"5030722621265924";//原生广告id
+NSString *const kGDTMobSDKInterstitialAdId = @"2030814134092814";//插屏广告id
+
+//iHappy
+//NSString *const kGDTMobSDKAppId = @"1106160564";
+//NSString *const kGDTMobSDKSplashAdId = @"8060437838106665";//开屏广告id
+//NSString *const kGDTMobSDKBannerAdId = @"5040221235552630";//banner广告id
+//NSString *const kGDTMobSDKNativeAdId = @"3020432808501644";//原生广告id
+//NSString *const kGDTMobSDKInterstitialAdId = @"5010535848806666";//插屏广告id
+
+@interface XDSAdManager () <GDTSplashAdDelegate, GDTNativeExpressAdDelegete, GDTMobInterstitialDelegate>
 
 //开屏广告
 @property (nonatomic, strong) GDTSplashAd *splashAd;
@@ -23,7 +38,12 @@ NSString *const kGDTMobSDKBannerAdId = @"4090812164690039";
 //banner广告
 @property (nonatomic, strong) GDTMobBannerView *bannerView;
 
+//原生广告
+@property (nonatomic, strong) GDTNativeExpressAd *nativeExpressAd;
+@property (nonatomic, strong) NSMutableArray *expressAdViews;
 
+//插屏广告
+@property (nonatomic, strong) GDTMobInterstitial *interstitial;
 
 @end
 
@@ -125,4 +145,63 @@ NSString *const kGDTMobSDKBannerAdId = @"4090812164690039";
     self.bannerView = nil;
 }
 
+
+//原生广告
+- (void)loadNativeAdInSize:(CGSize)inSize{
+    [self.expressAdViews removeAllObjects];
+    self.expressAdViews = nil;
+    self.nativeExpressAd = [[GDTNativeExpressAd alloc] initWithAppId:kGDTMobSDKAppId
+                                                         placementId:kGDTMobSDKNativeAdId
+                                                              adSize:inSize];
+    self.nativeExpressAd.delegate = self;
+    [self.nativeExpressAd loadAd:3];
+}
+/**
+ * 拉取广告成功的回调
+ */
+- (void)nativeExpressAdSuccessToLoad:(GDTNativeExpressAd *)nativeExpressAd views:(NSArray<__kindof GDTNativeExpressAdView *> *)views {
+    self.expressAdViews = [NSMutableArray arrayWithArray:views];
+    if (self.expressAdViews.count) {
+        [self.expressAdViews enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            GDTNativeExpressAdView *expressView = (GDTNativeExpressAdView *)obj;
+            expressView.controller = [UIViewController xds_visiableViewController];
+            [expressView render];
+        }];
+    }
+}
+
+- (void)nativeExpressAdRenderFail:(GDTNativeExpressAdView *)nativeExpressAdView{}
+
+- (void)nativeExpressAdFailToLoad:(GDTNativeExpressAd *)nativeExpressAd error:(NSError *)error{}
+
+- (void)nativeExpressAdViewRenderSuccess:(GDTNativeExpressAdView *)nativeExpressAdView{}
+
+- (void)nativeExpressAdViewClicked:(GDTNativeExpressAdView *)nativeExpressAdView{}
+
+- (void)nativeExpressAdViewClosed:(GDTNativeExpressAdView *)nativeExpressAdView{
+    [self.expressAdViews removeObject:nativeExpressAdView];
+}
+
+
+//插屏广告
+- (void)showInterstitialAD{
+    self.interstitial = [[GDTMobInterstitial alloc] initWithAppId:kGDTMobSDKAppId placementId:kGDTMobSDKInterstitialAdId];
+    self.interstitial.delegate = self;
+    [self.interstitial loadAd];
+}
+// 详解:当接收服务器返回的广告数据成功后调用该函数
+- (void)interstitialSuccessToLoadAd:(GDTMobInterstitial *)interstitial{
+    AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    [self.interstitial presentFromRootViewController:delegate.mainmeunVC.contentViewController];
+}
+//// 详解:当接收服务器返回的广告数据失败后调用该函数
+//- (void)interstitialFailToLoadAd:(GDTMobInterstitial *)interstitial error:(NSError *)error{}
+//// 详解: 插屏广告即将展示回调该函数
+//- (void)interstitialWillPresentScreen:(GDTMobInterstitial *)interstitial{}
+//// 详解: 插屏广告展示成功回调该函数
+//- (void)interstitialDidPresentScreen:(GDTMobInterstitial *)interstitial{}
+//// 详解: 插屏广告展示结束回调该函数
+//- (void)interstitialDidDismissScreen:(GDTMobInterstitial *)interstitial{}
+//// 详解: 当点击下载应用时会调用系统程序打开，应用切换到后台
+//- (void)interstitialApplicationWillEnterBackground:(GDTMobInterstitial *)interstitial{}
 @end

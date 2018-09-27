@@ -22,4 +22,12 @@
 //移除banner广告
 - (void)removeBannerAd;
 
+
+
+//原生广告
+- (void)loadNativeAdInSize:(CGSize)inSize;
+
+
+//插屏广告
+- (void)showInterstitialAD;
 @end

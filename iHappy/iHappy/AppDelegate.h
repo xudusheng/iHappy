@@ -18,9 +18,6 @@
 
 @property (nonatomic, strong) XDSSideMenu* mainmeunVC;
 @property (nonatomic, strong) IHPMenuViewController *leftMenu;
-@property (nonatomic, strong) IHYMainViewController * contentController;
-
-
 
 @end
 

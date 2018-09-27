@@ -5,12 +5,13 @@
         "url": "",
         "updateMessage": "发现新版本，更新如下\n1、惺惺惜惺惺；\n2、一月又一月晕；\n3、吾问无为谓无",
     },
-    "menus": [{
+    "menus": [
+              {
               "title": "热门视频",
               "menuId": "kHome",
               "type": "0",
               "rooturl": "http://134.175.54.80/ihappy/video/query.php",
-              "enable": true,
+              "enable": false,
               "subMenus": [{
                            "title": "电影",
                            "url": "1"
@@ -39,7 +40,7 @@
               "menuId": "kPicture",
               "type": "4",
               "rooturl": "http://localhost/iHappy/meizi/query",
-              "enable": true,
+              "enable": false,
               "subMenus": [{
                            "title": "美女",
                            "url": "/wallMV/"
@@ -112,7 +113,7 @@
               "title": "头条新闻",
               "menuId": "kNews",
               "type": "3",
-              "enable": true,
+              "enable": false,
               "rooturl": "http://120.76.205.241:8000/news/qihoo?apikey=cz1wjvkzGtuomNDXgLxmdq5aIwgytQvHHe0Dc8OcfHQva6hKQgDoDyBdUAQngGt6&site=qq.com",
               "subMenus": [{
                            "title": "推荐",
@@ -152,5 +153,5 @@
               "enable": true,
               "rooturl": "http://120.76.205.241:8000/news/qihoo?apikey=cz1wjvkzGtuomNDXgLxmdq5aIwgytQvHHe0Dc8OcfHQva6hKQgDoDyBdUAQngGt6&site=qq.com",
               "subMenus": [],
-              }, ]
+              },]
 }

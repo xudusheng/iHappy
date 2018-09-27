@@ -9,6 +9,7 @@
 #import "XDSMainReaderVC.h"
 #import "XDSBookCell.h"
 #import "XDSWIFIFileTransferViewController.h"
+#import "AppDelegate.h"
 @interface XDSMainReaderVC ()<UICollectionViewDelegate, UICollectionViewDataSource, XDSWIFIFileTransferViewControllerDelegate>
 @property (strong, nonatomic) NSMutableArray<LPPBookInfoModel*> * bookList;
 @property (strong, nonatomic) UICollectionView * mCollectionView;
@@ -17,11 +18,22 @@
 @end
 
 @implementation XDSMainReaderVC
+OCT_SYNTHESIZE_SINGLETON_FOR_CLASS(XDSMainReaderVC)
+
++ (instancetype)sharedReaderVC {
+    return [XDSMainReaderVC sharedXDSMainReaderVC];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self movieListViewControllerDataInit];
     [self createMovieListViewControllerUI];
+    self.title = @"微阅读";
+    [[XDSAdManager sharedManager] showInterstitialAD];
 }
+
+#pragma mark - 点击事件处理
+
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     if (!_hasFirstLoadBooks) {
@@ -32,6 +44,9 @@
         [self sortBooksByModifyTime];
     }
 }
+
+#pragma mark - 点击事件处理
+
 
 #pragma mark - UI相关
 - (void)createMovieListViewControllerUI{

@@ -45,6 +45,7 @@
 #import "IHPRootCollectionCell.h"
 #import "XDSRootControllerHeader.h"
 #import "XDSWebViewController.h"
+#import "XDSBaseContentNavigationController.h"
 
 #import "IHPConfigManager.h"
 #import "IHPConfigManager.h"

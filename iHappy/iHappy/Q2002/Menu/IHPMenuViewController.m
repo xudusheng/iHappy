@@ -59,11 +59,16 @@ static NSString *kMenuTableViewCellIdentifier = @"MenuTableViewCell";
     IHPMenuModel *theMenu = _menuList[indexPath.row];
     
     if ([theMenu.menuId isEqualToString:@"kReader"]) {
-        XDSMainReaderVC *bookListVC = [[XDSMainReaderVC alloc] init];
-        UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:bookListVC];
+        XDSMainReaderVC *bookListVC = [XDSMainReaderVC sharedReaderVC];
+        XDSBaseContentNavigationController *nav = [[XDSBaseContentNavigationController alloc] initWithRootViewController:bookListVC];
         delegate.mainmeunVC.contentViewController = nav;
     }else {
-        delegate.contentController.menuModel = theMenu;
+        IHYMainViewController *contentController = [[IHYMainViewController alloc] init];
+        contentController.menuModel = theMenu;
+        XDSBaseContentNavigationController * nav = [[XDSBaseContentNavigationController alloc] initWithRootViewController:contentController];
+        nav.navigationBar.translucent = NO;
+        delegate.mainmeunVC.contentViewController = nav;
+
     }
     
 }

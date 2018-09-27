@@ -33,6 +33,9 @@
 		09F90D751DE2C06000542684 /* XDSWebProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 09F90D731DE2C06000542684 /* XDSWebProgressView.m */; };
 		09F90D791DE2D2F600542684 /* IHYNewsMultableImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09F90D771DE2D2F600542684 /* IHYNewsMultableImageCell.m */; };
 		09F90D7A1DE2D2F600542684 /* IHYNewsMultableImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09F90D781DE2D2F600542684 /* IHYNewsMultableImageCell.xib */; };
+		1808D3BF215BDD5300F822FD /* XDSBaseContentVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1808D3BE215BDD5300F822FD /* XDSBaseContentVC.m */; };
+		1808D3C2215BDE2B00F822FD /* XDSBaseContentNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1808D3C1215BDE2B00F822FD /* XDSBaseContentNavigationController.m */; };
+		1808D3C5215BE66900F822FD /* XDSHomeSearchResultVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1808D3C4215BE66900F822FD /* XDSHomeSearchResultVC.m */; };
 		181E53B7214F928000E8A704 /* XDSReadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 181E52EC214F928000E8A704 /* XDSReadManager.m */; };
 		181E53B8214F928000E8A704 /* XDSReadConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 181E52ED214F928000E8A704 /* XDSReadConfig.m */; };
 		181E53B9214F928000E8A704 /* XDSReadOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 181E52F0214F928000E8A704 /* XDSReadOperation.m */; };
@@ -313,6 +316,12 @@
 		09F90D761DE2D2F600542684 /* IHYNewsMultableImageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IHYNewsMultableImageCell.h; sourceTree = "<group>"; };
 		09F90D771DE2D2F600542684 /* IHYNewsMultableImageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IHYNewsMultableImageCell.m; sourceTree = "<group>"; };
 		09F90D781DE2D2F600542684 /* IHYNewsMultableImageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IHYNewsMultableImageCell.xib; sourceTree = "<group>"; };
+		1808D3BD215BDD5300F822FD /* XDSBaseContentVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XDSBaseContentVC.h; sourceTree = "<group>"; };
+		1808D3BE215BDD5300F822FD /* XDSBaseContentVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XDSBaseContentVC.m; sourceTree = "<group>"; };
+		1808D3C0215BDE2B00F822FD /* XDSBaseContentNavigationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XDSBaseContentNavigationController.h; sourceTree = "<group>"; };
+		1808D3C1215BDE2B00F822FD /* XDSBaseContentNavigationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XDSBaseContentNavigationController.m; sourceTree = "<group>"; };
+		1808D3C3215BE66900F822FD /* XDSHomeSearchResultVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XDSHomeSearchResultVC.h; sourceTree = "<group>"; };
+		1808D3C4215BE66900F822FD /* XDSHomeSearchResultVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XDSHomeSearchResultVC.m; sourceTree = "<group>"; };
 		181E52EB214F928000E8A704 /* XDSReadOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDSReadOperation.h; sourceTree = "<group>"; };
 		181E52EC214F928000E8A704 /* XDSReadManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XDSReadManager.m; sourceTree = "<group>"; };
 		181E52ED214F928000E8A704 /* XDSReadConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XDSReadConfig.m; sourceTree = "<group>"; };
@@ -1724,6 +1733,10 @@
 				A0D46B7D1DE0173500637681 /* AppDelegate.m */,
 				18A6FA5B213000A300709EC9 /* XDSRootViewController.h */,
 				18A6FA5C213000A300709EC9 /* XDSRootViewController.m */,
+				1808D3BD215BDD5300F822FD /* XDSBaseContentVC.h */,
+				1808D3BE215BDD5300F822FD /* XDSBaseContentVC.m */,
+				1808D3C0215BDE2B00F822FD /* XDSBaseContentNavigationController.h */,
+				1808D3C1215BDE2B00F822FD /* XDSBaseContentNavigationController.m */,
 				181E5418214FCFA400E8A704 /* Reader */,
 				A22C12F02144648A00896F00 /* Tools */,
 				FC1A8C2C1EAC1FD900E66FF8 /* menu.json */,
@@ -1915,6 +1928,8 @@
 			children = (
 				18A6FA0E212F983D00709EC9 /* IHYHomsSearchViewController.h */,
 				18A6FA10212F983D00709EC9 /* IHYHomsSearchViewController.m */,
+				1808D3C3215BE66900F822FD /* XDSHomeSearchResultVC.h */,
+				1808D3C4215BE66900F822FD /* XDSHomeSearchResultVC.m */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -2218,6 +2233,7 @@
 				092CAF071DE28620008127DA /* IHYMoviePlayerViewController.m in Sources */,
 				092CAF041DE28620008127DA /* IHPMovieCell.m in Sources */,
 				18A6FA8D2130031600709EC9 /* NLEBNFSequenceFactory.m in Sources */,
+				1808D3BF215BDD5300F822FD /* XDSBaseContentVC.m in Sources */,
 				FCAFC6181EAEDE1900B48C83 /* IHPMenuViewController.m in Sources */,
 				18F8EB5A2139626F00168506 /* XDS_CustomMjRefreshFooter.m in Sources */,
 				18A6FA952130031600709EC9 /* NLEStack.m in Sources */,
@@ -2271,6 +2287,7 @@
 				181E53D0214F928000E8A704 /* CXMLElement_CreationExtensions.m in Sources */,
 				18A6FA9C21300D5800709EC9 /* UIAlertController+XDS.m in Sources */,
 				181E53CA214F928000E8A704 /* CXMLElement_ElementTreeExtensions.m in Sources */,
+				1808D3C2215BDE2B00F822FD /* XDSBaseContentNavigationController.m in Sources */,
 				FCA032411F8DD7DE00600581 /* NSBundle+PYSearchExtension.m in Sources */,
 				18BB4F3D2153F9EE00C4A2CD /* GCDWebServerRequest.m in Sources */,
 				A05EB9011DE0277E00148A5B /* NSString+Tony.m in Sources */,
@@ -2365,6 +2382,7 @@
 				18A6FA8B2130031600709EC9 /* NLEBNFIndexFactoryJSON.m in Sources */,
 				181E53C5214F928000E8A704 /* CXMLNode.m in Sources */,
 				181E53C2214F928000E8A704 /* UIControl+XDSHyperLink.m in Sources */,
+				1808D3C5215BE66900F822FD /* XDSHomeSearchResultVC.m in Sources */,
 				092CAF011DE28620008127DA /* XDSEpisodeCell.m in Sources */,
 				18A6FA962130031600709EC9 /* NLEBNFTokenizerFactory.m in Sources */,
 				A22C12FC2144734E00896F00 /* XDSPlayerSectionHeader.m in Sources */,
@@ -2566,7 +2584,7 @@
 					"\"hpple\"",
 					"-ObjC",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.onlinecredit.laomoneyUAT;
+				PRODUCT_BUNDLE_IDENTIFIER = com.youmi.ihappy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "17c16fff-a7a2-455f-ab37-595fd31ecfd8";
 				PROVISIONING_PROFILE_SPECIFIER = "XC Wildcard Development";
@@ -2630,7 +2648,7 @@
 					"\"hpple\"",
 					"-ObjC",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.onlinecredit.laomoneyUAT;
+				PRODUCT_BUNDLE_IDENTIFIER = com.youmi.ihappy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "17c16fff-a7a2-455f-ab37-595fd31ecfd8";
 				PROVISIONING_PROFILE_SPECIFIER = "XC Wildcard Development";

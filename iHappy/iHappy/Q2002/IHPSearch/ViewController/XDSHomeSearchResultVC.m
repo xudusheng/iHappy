@@ -1,27 +1,28 @@
 //
-//  IHYMovieListViewController.m
+//  XDSHomeSearchResultVC.m
 //  iHappy
 //
-//  Created by xudosom on 2016/11/19.
-//  Copyright © 2016年 上海优蜜科技有限公司. All rights reserved.
+//  Created by Hmily on 2018/9/27.
+//  Copyright © 2018年 dusheng.xu. All rights reserved.
 //
 
-#import "IHYMovieListViewController.h"
+#import "XDSHomeSearchResultVC.h"
+
 #import "IHYMovieModel.h"
 #import "IHPMovieCell.h"
 
 #import "IHYMovieDetailViewController.h"
 #import "IHPPlayerViewController.h"
-@interface IHYMovieListViewController ()<UICollectionViewDelegate, UICollectionViewDataSource>
+@interface XDSHomeSearchResultVC ()<UICollectionViewDelegate, UICollectionViewDataSource>
 @property (strong, nonatomic) NSMutableArray<IHYMovieModel *> * movieList;
 @property (strong, nonatomic) UICollectionView * movieCollectionView;
 @property (copy, nonatomic) NSString * nextPageUrl;
 @property (nonatomic,assign) NSInteger currentPage;
 @end
 
-@implementation IHYMovieListViewController
+@implementation XDSHomeSearchResultVC
 
-NSString * const MovieListViewController_movieCellIdentifier = @"IHPMovieCell";
+NSString * const XDSHomeSearchResultVC_movieCellIdentifier = @"XDSHomeSearchResultVC_movieCell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -51,35 +52,18 @@ NSString * const MovieListViewController_movieCellIdentifier = @"IHPMovieCell";
     //注册item类型 这里使用系统的类型
     [self.view addSubview:_movieCollectionView];
     
-    [_movieCollectionView registerNib:[UINib nibWithNibName:@"IHPMovieCell" bundle:nil] forCellWithReuseIdentifier:MovieListViewController_movieCellIdentifier];
+    [_movieCollectionView registerNib:[UINib nibWithNibName:@"IHPMovieCell" bundle:nil] forCellWithReuseIdentifier:XDSHomeSearchResultVC_movieCellIdentifier];
     [_movieCollectionView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.mas_equalTo(0);
     }];
-    
-    _movieCollectionView.mj_header = [XDS_CustomMjRefreshHeader headerWithRefreshingTarget:self refreshingAction:@selector(headerRequest)];
-    _movieCollectionView.mj_footer = [XDS_CustomMjRefreshFooter footerWithRefreshingTarget:self refreshingAction:@selector(footerRequest)];
-    [self.movieCollectionView.mj_header beginRefreshing];
 }
 
 #pragma mark - 网络请求
 
-- (void)headerRequest{
-    self.currentPage = 0;
-    [self fetchMovieList:YES];
-    [_movieCollectionView.mj_footer resetNoMoreData];
-}
-- (void)footerRequest{
-    self.currentPage += 1;
-    [self fetchMovieList:NO];
-}
-
-
-- (void)fetchMovieList:(BOOL)isTop{
+- (void)fetchMovieList{
     NSString *url = self.rootUrl;
     NSDictionary *params = @{
-                             @"type":self.type,
-                             @"size":@(REQUEST_PAGE_SIZE),
-                             @"page":@(_currentPage),
+                             @"keyword":self.keyword
                              };
     
     __weak typeof(self)weakSelf = self;
@@ -93,25 +77,19 @@ NSString * const MovieListViewController_movieCellIdentifier = @"IHPMovieCell";
                                             success:^(BOOL success, NSDictionary *successResult) {
                                                 XDSBaseResponseModel *responseModel = [XDSBaseResponseModel mj_objectWithKeyValues:successResult];
                                                 NSArray *movieList = [IHYMovieModel mj_objectArrayWithKeyValuesArray:responseModel.result];
-                                                
-                                                if (movieList.count) {
-                                                    (weakSelf.currentPage == 0) ? [weakSelf.movieList removeAllObjects] : NULL;
-                                                }
+                                                [weakSelf.movieList removeAllObjects];
                                                 [self.movieList addObjectsFromArray:movieList];
                                                 [self.movieCollectionView reloadData];
-                                                [weakSelf endRefresh];
                                             } failed:^(NSString *errorDescription) {
-                                                [weakSelf endRefresh];
                                             }];
 }
-
 #pragma mark - 代理方法
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
     return _movieList.count;
 }
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
-    IHPMovieCell * cell  = [collectionView dequeueReusableCellWithReuseIdentifier:MovieListViewController_movieCellIdentifier forIndexPath:indexPath];
+    IHPMovieCell * cell  = [collectionView dequeueReusableCellWithReuseIdentifier:XDSHomeSearchResultVC_movieCellIdentifier forIndexPath:indexPath];
     cell.backgroundColor = [UIColor groupTableViewBackgroundColor];
     IHYMovieModel * movieModel = _movieList[indexPath.row];
     [cell cellWithMovieModel:movieModel];
@@ -136,16 +114,13 @@ NSString * const MovieListViewController_movieCellIdentifier = @"IHPMovieCell";
 #pragma mark - 点击事件处理
 
 #pragma mark - 其他私有方法
-
-- (void)endRefresh{
-    [_movieCollectionView.mj_header endRefreshing];
-    [_movieCollectionView.mj_footer endRefreshing];
-    if (_movieList.count%REQUEST_PAGE_SIZE > 0) {
-        [self.movieCollectionView.mj_footer endRefreshingWithNoMoreData];
-    }
+- (void)setKeyword:(NSString *)keyword {
+    _keyword = keyword;
+    [self fetchMovieList];
 }
 #pragma mark - 内存管理相关
 - (void)movieListViewControllerDataInit{
     self.movieList = [[NSMutableArray alloc] initWithCapacity:0];
 }
+
 @end
