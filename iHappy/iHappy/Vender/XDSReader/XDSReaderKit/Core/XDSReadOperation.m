@@ -28,7 +28,7 @@
 }
 
 - (NSString *)archiverPath {
-    NSString *archiverPath = self.cw_md5;
+    NSString *archiverPath = self.xds_md5;
     if (![archiverPath hasPrefix:@"/"]) {
         archiverPath = [@"/" stringByAppendingString:archiverPath];
     }

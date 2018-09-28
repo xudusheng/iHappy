@@ -33,6 +33,8 @@
 
 @interface NSString (XDSReader)
 
+- (NSString *)xds_md5;
+
 // Instance Methods
 - (NSString *)stringByConvertingHTMLToPlainText;
 - (NSString *)stringByDecodingHTMLEntities;
