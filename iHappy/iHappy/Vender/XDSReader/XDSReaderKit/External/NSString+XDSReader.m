@@ -27,10 +27,10 @@
 //  THE SOFTWARE.
 //
 
-#import "NSString+HTML.h"
+#import "NSString+XDSReader.h"
 #import "GTMNSString+HTML.h"
 
-@implementation NSString (HTML)
+@implementation NSString (XDSReader)
 
 #pragma mark -
 #pragma mark Class Methods

@@ -63,7 +63,7 @@
 		181E53CF214F928000E8A704 /* CXHTMLDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 181E5329214F928000E8A704 /* CXHTMLDocument.m */; };
 		181E53D0214F928000E8A704 /* CXMLElement_CreationExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 181E532B214F928000E8A704 /* CXMLElement_CreationExtensions.m */; };
 		181E53D1214F928000E8A704 /* CXMLElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 181E532C214F928000E8A704 /* CXMLElement.m */; };
-		181E53D2214F928000E8A704 /* NSString+HTML.m in Sources */ = {isa = PBXBuildFile; fileRef = 181E5330214F928000E8A704 /* NSString+HTML.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		181E53D2214F928000E8A704 /* NSString+XDSReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 181E5330214F928000E8A704 /* NSString+XDSReader.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		181E53D3214F928000E8A704 /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 181E5331214F928000E8A704 /* UIImage+ImageEffects.m */; };
 		181E53D4214F928000E8A704 /* UIView+XDSHyperLink.m in Sources */ = {isa = PBXBuildFile; fileRef = 181E5332214F928000E8A704 /* UIView+XDSHyperLink.m */; };
 		181E53D5214F928000E8A704 /* GTMNSString+HTML.m in Sources */ = {isa = PBXBuildFile; fileRef = 181E5333214F928000E8A704 /* GTMNSString+HTML.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -350,7 +350,7 @@
 		181E5307214F928000E8A704 /* XDSReadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XDSReadView.m; sourceTree = "<group>"; };
 		181E5308214F928000E8A704 /* XDSMagnifierView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDSMagnifierView.h; sourceTree = "<group>"; };
 		181E530B214F928000E8A704 /* UIImage+ImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageEffects.h"; sourceTree = "<group>"; };
-		181E530C214F928000E8A704 /* NSString+HTML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+HTML.h"; sourceTree = "<group>"; };
+		181E530C214F928000E8A704 /* NSString+XDSReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+XDSReader.h"; sourceTree = "<group>"; };
 		181E530D214F928000E8A704 /* GTMNSString+HTML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GTMNSString+HTML.h"; sourceTree = "<group>"; };
 		181E530E214F928000E8A704 /* UIView+XDSHyperLink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+XDSHyperLink.h"; sourceTree = "<group>"; };
 		181E5310214F928000E8A704 /* CXMLDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXMLDocument.m; sourceTree = "<group>"; };
@@ -383,7 +383,7 @@
 		181E532D214F928000E8A704 /* CXMLElement_ElementTreeExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXMLElement_ElementTreeExtensions.h; sourceTree = "<group>"; };
 		181E532E214F928000E8A704 /* CXMLUnsupportedNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXMLUnsupportedNode.h; sourceTree = "<group>"; };
 		181E532F214F928000E8A704 /* GTMDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMDefines.h; sourceTree = "<group>"; };
-		181E5330214F928000E8A704 /* NSString+HTML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+HTML.m"; sourceTree = "<group>"; };
+		181E5330214F928000E8A704 /* NSString+XDSReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+XDSReader.m"; sourceTree = "<group>"; };
 		181E5331214F928000E8A704 /* UIImage+ImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageEffects.m"; sourceTree = "<group>"; };
 		181E5332214F928000E8A704 /* UIView+XDSHyperLink.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+XDSHyperLink.m"; sourceTree = "<group>"; };
 		181E5333214F928000E8A704 /* GTMNSString+HTML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GTMNSString+HTML.m"; sourceTree = "<group>"; };
@@ -1070,8 +1070,8 @@
 			children = (
 				181E530F214F928000E8A704 /* TouchXML */,
 				181E532F214F928000E8A704 /* GTMDefines.h */,
-				181E530C214F928000E8A704 /* NSString+HTML.h */,
-				181E5330214F928000E8A704 /* NSString+HTML.m */,
+				181E530C214F928000E8A704 /* NSString+XDSReader.h */,
+				181E5330214F928000E8A704 /* NSString+XDSReader.m */,
 				181E530D214F928000E8A704 /* GTMNSString+HTML.h */,
 				181E5333214F928000E8A704 /* GTMNSString+HTML.m */,
 				181E530E214F928000E8A704 /* UIView+XDSHyperLink.h */,
@@ -2240,7 +2240,7 @@
 				18BB4F402153F9EE00C4A2CD /* GCDWebServerConnection.m in Sources */,
 				18A6FB022130E2D300709EC9 /* XDSMediaBrowserVC.m in Sources */,
 				18A6FA872130031500709EC9 /* NLEBNFToken.m in Sources */,
-				181E53D2214F928000E8A704 /* NSString+HTML.m in Sources */,
+				181E53D2214F928000E8A704 /* NSString+XDSReader.m in Sources */,
 				18B3DC8D2154BB8600FFD27E /* UIViewController+XDSReader.m in Sources */,
 				181E53B7214F928000E8A704 /* XDSReadManager.m in Sources */,
 				092CAF131DE28D56008127DA /* OCTKeyboardObserverHelper.m in Sources */,
