@@ -52,30 +52,17 @@ static NSString *kMenuTableViewCellIdentifier = @"MenuTableViewCell";
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-
-    AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    [delegate.mainmeunVC hideMenuViewController];
     
     IHPMenuModel *theMenu = _menuList[indexPath.row];
     
-    if ([theMenu.menuId isEqualToString:@"kReader"]) {
-        XDSMainReaderVC *bookListVC = [XDSMainReaderVC sharedReaderVC];
-        XDSBaseContentNavigationController *nav = [[XDSBaseContentNavigationController alloc] initWithRootViewController:bookListVC];
-        delegate.mainmeunVC.contentViewController = nav;
-    }else {
-        IHYMainViewController *contentController = [[IHYMainViewController alloc] init];
-        contentController.menuModel = theMenu;
-        XDSBaseContentNavigationController * nav = [[XDSBaseContentNavigationController alloc] initWithRootViewController:contentController];
-        nav.navigationBar.translucent = NO;
-        delegate.mainmeunVC.contentViewController = nav;
+    AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    [delegate.mainmeunVC hideMenuViewController];
+    delegate.mainmeunVC.contentViewController = theMenu.contentViewController;
 
-    }
-    
 }
 
 
 #pragma mark - XDSSideMenuDelegate
-
 
 #pragma mark - 点击事件处理
 

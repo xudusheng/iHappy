@@ -251,7 +251,6 @@
 		FC1A8C3D1EAC298800E66FF8 /* IHPConfigManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FC1A8C3C1EAC298800E66FF8 /* IHPConfigManager.m */; };
 		FC6676AF1EAAD55D0066C81F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC6676AE1EAAD55D0066C81F /* QuartzCore.framework */; };
 		FC8B89AA1EBC8073000AD27A /* IHPPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC8B89A91EBC8073000AD27A /* IHPPlayerViewController.m */; };
-		FC9667C21EC1C55200DA1A96 /* XDSMasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC9667BF1EC1C55200DA1A96 /* XDSMasterViewController.m */; };
 		FCA032411F8DD7DE00600581 /* NSBundle+PYSearchExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA032341F8DD7DE00600581 /* NSBundle+PYSearchExtension.m */; };
 		FCA032421F8DD7DE00600581 /* PYSearch.bundle in Resources */ = {isa = PBXBuildFile; fileRef = FCA032351F8DD7DE00600581 /* PYSearch.bundle */; };
 		FCA032431F8DD7DE00600581 /* PYSearchConst.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA032381F8DD7DE00600581 /* PYSearchConst.m */; };
@@ -723,8 +722,6 @@
 		FC6676AE1EAAD55D0066C81F /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		FC8B89A81EBC8073000AD27A /* IHPPlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IHPPlayerViewController.h; sourceTree = "<group>"; };
 		FC8B89A91EBC8073000AD27A /* IHPPlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IHPPlayerViewController.m; sourceTree = "<group>"; };
-		FC9667BE1EC1C55200DA1A96 /* XDSMasterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDSMasterViewController.h; sourceTree = "<group>"; };
-		FC9667BF1EC1C55200DA1A96 /* XDSMasterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XDSMasterViewController.m; sourceTree = "<group>"; };
 		FCA032331F8DD7DE00600581 /* NSBundle+PYSearchExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSBundle+PYSearchExtension.h"; sourceTree = "<group>"; };
 		FCA032341F8DD7DE00600581 /* NSBundle+PYSearchExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSBundle+PYSearchExtension.m"; sourceTree = "<group>"; };
 		FCA032351F8DD7DE00600581 /* PYSearch.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = PYSearch.bundle; sourceTree = "<group>"; };
@@ -965,8 +962,6 @@
 			children = (
 				18F8EB512139626F00168506 /* XDSMJfresh */,
 				FC0B7C851EC8B7920022E504 /* View */,
-				FC9667BE1EC1C55200DA1A96 /* XDSMasterViewController.h */,
-				FC9667BF1EC1C55200DA1A96 /* XDSMasterViewController.m */,
 				09F90D6F1DE2C06000542684 /* WebViewController */,
 				18F8EB5D2139655700168506 /* XDSComponentsHeader.h */,
 			);
@@ -2349,7 +2344,6 @@
 				FCA032471F8DD7DE00600581 /* UIView+PYSearchExtension.m in Sources */,
 				181E5409214F928100E8A704 /* XDSCatalogueTabBarController.m in Sources */,
 				A0D46B7E1DE0173500637681 /* AppDelegate.m in Sources */,
-				FC9667C21EC1C55200DA1A96 /* XDSMasterViewController.m in Sources */,
 				18A6FAEF2130DF3800709EC9 /* XDSPlayerView.m in Sources */,
 				18A6FA2B212FCB9D00709EC9 /* XDSUrlItem.m in Sources */,
 				A05EB8EE1DE0244300148A5B /* ZDLoadFailView.m in Sources */,

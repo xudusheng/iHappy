@@ -28,7 +28,6 @@ OCT_SYNTHESIZE_SINGLETON_FOR_CLASS(XDSMainReaderVC)
     [super viewDidLoad];
     [self movieListViewControllerDataInit];
     [self createMovieListViewControllerUI];
-    self.title = @"微阅读";
     [[XDSAdManager sharedManager] showInterstitialAD];
 }
 
@@ -51,6 +50,8 @@ OCT_SYNTHESIZE_SINGLETON_FOR_CLASS(XDSMainReaderVC)
 #pragma mark - UI相关
 - (void)createMovieListViewControllerUI{
     self.view.backgroundColor = [UIColor whiteColor];
+    self.title = @"微阅读";
+
     //创建一个layout布局类
     UICollectionViewFlowLayout * layout = [[UICollectionViewFlowLayout alloc]init];
     //设置布局方向为垂直流布局
@@ -109,7 +110,7 @@ OCT_SYNTHESIZE_SINGLETON_FOR_CLASS(XDSMainReaderVC)
             XDSReadPageViewController *pageView = [[XDSReadPageViewController alloc] init];
             [[XDSReadManager sharedManager] setBookModel:bookModel];
             [[XDSReadManager sharedManager] setRmDelegate:pageView];
-            [self presentViewController:pageView animated:YES completion:nil];
+            [[XDSRootViewController sharedRootViewController].mainViewController presentViewController:pageView animated:YES completion:nil];
         });
     });
 }

@@ -88,7 +88,7 @@ CGFloat const kBiZhiCollectionViewCellsGap = 10.0;
 
 - (void)fetchImageList:(BOOL)isTop{
     
-    NSString *url = @"http://134.175.54.80/ihappy/meizi/query.php";
+    NSString *url = self.rootUrl;
     NSInteger size = 20;
     NSInteger page = self.meituList.count/size;
     NSDictionary *params = @{

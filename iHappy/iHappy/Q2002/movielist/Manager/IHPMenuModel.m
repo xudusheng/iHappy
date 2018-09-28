@@ -8,8 +8,41 @@
 
 #import "IHPMenuModel.h"
 #import "IHPSubMenuModel.h"
+#import "IHYMainViewController.h"
+#import "XDSMainReaderVC.h"
+#import "IHPMeituListViewController.h"
+@interface IHPMenuModel (){
+    UINavigationController *_contentViewController;//这个model下的controller，单例
+}
+@end
+
 @implementation IHPMenuModel
 
+- (UINavigationController *)contentViewController {
+    if (!_contentViewController) {        
+        UIViewController *contentController;
 
+        if ([self.menuId isEqualToString:@"kReader"]) {
+            contentController = [[XDSMainReaderVC alloc] init];
+        }else if ([self.menuId isEqualToString:@"kPicture"]){
+            contentController = [[IHPMeituListViewController alloc] init];
+            ((IHPMeituListViewController *)contentController).rootUrl = self.rooturl;
+        } else {
+            contentController = [[IHYMainViewController alloc] init];
+            ((IHYMainViewController *)contentController).menuModel = self;
+        }
+        
+        contentController.title = self.title;
+        UINavigationController *nav;
+        if ([IHPConfigManager shareManager].menus.count == 1) {
+            nav = [[UINavigationController alloc] initWithRootViewController:contentController];
+        }else {
+            nav = [[XDSBaseContentNavigationController alloc] initWithRootViewController:contentController];
+        }
+        nav.navigationBar.translucent = NO;
+        _contentViewController = nav;
+    }
+    return _contentViewController;
+}
 
 @end

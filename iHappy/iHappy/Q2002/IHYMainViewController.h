@@ -9,6 +9,6 @@
 #import "IHYViewControllerModel.h"
 @interface IHYMainViewController : WMPageController
 
-@property (strong, nonatomic) IHPMenuModel *menuModel;
+@property (weak, nonatomic) IHPMenuModel *menuModel;
 
 @end

@@ -65,7 +65,6 @@ NSString *const kGDTMobSDKInterstitialAdId = @"2030814134092814";//插屏广告i
 
 //开屏广告
 - (void)showSplashAd {
-
     self.splashAd = [[GDTSplashAd alloc] initWithAppId:kGDTMobSDKAppId placementId:kGDTMobSDKSplashAdId];
     self.splashAd.delegate = self;
     self.splashAd.fetchDelay = 5;
@@ -83,7 +82,7 @@ NSString *const kGDTMobSDKInterstitialAdId = @"2030814134092814";//插屏广告i
     logo.center = self.bottomView.center;
     [self.bottomView addSubview:logo];
     
-    UIWindow *fK = [[UIApplication sharedApplication] keyWindow];
+    UIWindow *fK = [[[UIApplication sharedApplication] delegate] window];
     [self.splashAd loadAdAndShowInWindow:fK withBottomView:self.bottomView skipView:nil];
     
     
@@ -191,8 +190,7 @@ NSString *const kGDTMobSDKInterstitialAdId = @"2030814134092814";//插屏广告i
 }
 // 详解:当接收服务器返回的广告数据成功后调用该函数
 - (void)interstitialSuccessToLoadAd:(GDTMobInterstitial *)interstitial{
-    AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    [self.interstitial presentFromRootViewController:delegate.mainmeunVC.contentViewController];
+    [self.interstitial presentFromRootViewController:[XDSRootViewController sharedRootViewController].mainViewController];
 }
 //// 详解:当接收服务器返回的广告数据失败后调用该函数
 //- (void)interstitialFailToLoadAd:(GDTMobInterstitial *)interstitial error:(NSError *)error{}

@@ -13,6 +13,9 @@
 #import "XDSTaskQueue.h"
 #import "IHPMenuViewController.h"
 
+#import "IHYMainViewController.h"
+#import "XDSMainReaderVC.h"
+#import "AppDelegate.h"
 NSString * const XDSEnterMainViewFinishedNotification = @"XDSEnterMainViewFinishedNotification";
 
 @implementation XDSStartupManager
@@ -88,27 +91,57 @@ NSString * const XDSEnterMainViewFinishedNotification = @"XDSEnterMainViewFinish
 }
 
 
-- (void)initMainViewLaunchingOptions:(NSDictionary *)launchOptions
-{
-    NSLog(@"%s", __FUNCTION__);
+- (void)initMainViewLaunchingOptions:(NSDictionary *)launchOptions {
     
-    //demo
-//    BSNLTabBarViewController *tabbar = [[BSNLTabBarViewController alloc]init];
-//    [XDSRootViewController sharedRootViewController].mainViewController = tabbar;
+    NSArray<IHPMenuModel*> *menus = [IHPConfigManager shareManager].menus;
+    
+    IHPMenuViewController *leftMenu = [[IHPMenuViewController alloc] init];
+    leftMenu.menus = menus;
+    
+    IHPMenuModel *theMenu = menus.firstObject;
+    
+    XDSSideMenu *mainmeunVC = [[XDSSideMenu alloc] initWithContentViewController:theMenu.contentViewController
+                                                          leftMenuViewController:leftMenu
+                                                         rightMenuViewController:nil];
+    
+    mainmeunVC.contentViewInLandscapeOffsetCenterX = -480;
+    mainmeunVC.contentViewShadowColor = [UIColor lightGrayColor];
+    mainmeunVC.contentViewShadowOffset = CGSizeMake(0, 0);
+    mainmeunVC.contentViewShadowOpacity = 0.6;
+    mainmeunVC.contentViewShadowRadius = 12;
+    mainmeunVC.contentViewShadowEnabled = NO;
+    mainmeunVC.scaleMenuView = NO;
+    mainmeunVC.scaleContentView = NO;
+    mainmeunVC.parallaxEnabled = NO;
+    mainmeunVC.bouncesHorizontally = NO;
+    
+    mainmeunVC.panGestureEnabled = YES;
+    mainmeunVC.panFromEdge = YES;
+    mainmeunVC.panMinimumOpenThreshold = 60.0;
+    //    mainmeunVC.bouncesHorizontally = NO;    
+    mainmeunVC.delegate = leftMenu;
+    [XDSRootViewController sharedRootViewController].mainViewController = mainmeunVC;
+    
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    appDelegate.leftMenu = leftMenu;
+    appDelegate.mainmeunVC = mainmeunVC;
 }
+
+NSString *const kXDSFetchConfigTaskID = @"XDSFetchConfigTask";
+NSString *const kXDSUpdateLocalizableTaskID = @"XDSUpdateLocalizableTask";
 
 - (void)scheduleLaunchTaskQueue {
     self.launchTaskQueue = [XDSTaskQueue taskQueue];
     
     //Demo
     XDSTask *fetchConfigTask = [XDSTask task];
-    fetchConfigTask.taskId = @"fetchConfigTask";
+    fetchConfigTask.taskId = kXDSFetchConfigTaskID;
     fetchConfigTask.taskContentBlock = ^(XDSTask *task) {
-        [task taskHasFinished];
+        [self fetchConfigData];
     };
     
     XDSTask *updateLocalizableTask = [XDSTask task];
-    updateLocalizableTask.taskId = @"updateLocalizableTask";
+    updateLocalizableTask.taskId = kXDSUpdateLocalizableTaskID;
     updateLocalizableTask.taskContentBlock = ^(XDSTask * task) {
         [task taskHasFinished];
     };
@@ -117,6 +150,8 @@ NSString * const XDSEnterMainViewFinishedNotification = @"XDSEnterMainViewFinish
     [_launchTaskQueue addTask:fetchConfigTask];
     [_launchTaskQueue addTask:updateLocalizableTask];
 
+    [updateLocalizableTask addDependency:fetchConfigTask];
+    
     [_launchTaskQueue goWithFinishedBlock:^(XDSTaskQueue *taskQueue) {
         //enter main page
         [self enterMainViewWithLaunchingOptions:nil];
@@ -124,5 +159,86 @@ NSString * const XDSEnterMainViewFinishedNotification = @"XDSEnterMainViewFinish
     
 }
 
+
+- (void)fetchConfigData{
+    
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"menu" ofType:@"json"];
+    NSData *menuData = [NSData dataWithContentsOfFile:path];
+    NSLog(@"%@", [[NSString alloc] initWithData:menuData encoding:NSUTF8StringEncoding]);
+    
+    IHPConfigManager *manager = [IHPConfigManager shareManager];
+    [manager configManagerWithJsondData:menuData];
+    [self finishTaskWithTaksID:kXDSFetchConfigTaskID];
+
+    return;
+    
+    //    NSString *requesturl = @"http://opno6uar4.bkt.clouddn.com/iHappy/menu_v1.0.3.json";
+    NSString *requesturl = @"http://134.175.54.80/ihappy/menu.json";
+    
+    __weak typeof(self)weakSelf = self;
+    [[[XDSHttpRequest alloc] init] htmlRequestWithHref:requesturl
+                                         hudController:nil
+                                               showHUD:NO
+                                               HUDText:nil
+                                         showFailedHUD:YES
+                                               success:^(BOOL success, NSData * htmlData) {
+                                                   NSLog(@"%@", [[NSString alloc] initWithData:htmlData encoding:NSUTF8StringEncoding]);
+                                                   
+                                                   IHPConfigManager *manager = [IHPConfigManager shareManager];
+                                                   [manager configManagerWithJsondData:htmlData];
+                                                   if (manager.forceUpdate.enable) {
+                                                       if (manager.forceUpdate.isForce) {
+                                                           [XDSUtilities alertViewWithPresentingController:[XDSRootViewController sharedRootViewController]
+                                                                                                     title:nil
+                                                                                                   message:manager.forceUpdate.updateMessage
+                                                                                              buttonTitles:@[@"退出", @"立即更新"]
+                                                                                                     block:^(NSInteger index) {
+                                                                                                         if (index == 0) {
+                                                                                                             exit(0);
+                                                                                                         }else{
+                                                                                                             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:manager.forceUpdate.url]];
+                                                                                                         }
+                                                                                                     }];
+                                                       }else{
+                                                           [XDSUtilities alertViewWithPresentingController:[XDSRootViewController sharedRootViewController]
+                                                                                                     title:nil
+                                                                                                   message:manager.forceUpdate.updateMessage
+                                                                                              buttonTitles:@[@"稍后再说", @"立即更新"]
+                                                                                                     block:^(NSInteger index) {
+                                                                                                         if (index == 0) {
+                                                                                                         }else{
+                                                                                                             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:manager.forceUpdate.url]];
+                                                                                                         }
+                                                                                                         [weakSelf finishTaskWithTaksID:kXDSFetchConfigTaskID];
+                                                                                                     }];
+                                                           
+                                                       }
+                                                       
+                                                   }else{
+                                                       [weakSelf finishTaskWithTaksID:kXDSFetchConfigTaskID];
+                                                   }
+                                                   
+                                               } failed:^(NSString *errorDescription) {
+                                                   errorDescription = errorDescription?errorDescription:kLoadFailed;
+                                                   [XDSUtilities alertViewWithPresentingController:[XDSRootViewController sharedRootViewController]
+                                                                                             title:nil
+                                                                                           message:errorDescription
+                                                                                      buttonTitles:@[@"退出", @"重新连接"]
+                                                                                             block:^(NSInteger index) {
+                                                                                                 if (index == 0) {
+                                                                                                     exit(0);
+                                                                                                 }else{
+                                                                                                     [weakSelf fetchConfigData];
+                                                                                                 }
+                                                                                             }];
+                                                   
+                                               }];
+}
+
+
+- (void)finishTaskWithTaksID:(NSString *)taskID{
+    XDSTask *task = [self.launchTaskQueue taskWithTaskId:taskID];
+    [task taskHasFinished];
+}
 @end
 

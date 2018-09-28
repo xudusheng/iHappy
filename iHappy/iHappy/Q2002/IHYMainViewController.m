@@ -39,17 +39,15 @@
     self.navigationController.navigationBar.translucent = NO;
     self.navigationController.navigationBar.shadowImage = [UIImage new];
     
-    
-    CGFloat navHeight = 44;
-    CGFloat searchbarHeight = 29;
-    UIView *titleView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, DEVIECE_SCREEN_WIDTH - 66, navHeight)];
-
-    [self configSearchBar];
-    _searchBar.frame = CGRectMake(0, navHeight/2 - searchbarHeight/2, CGRectGetWidth(titleView.frame) - searchbarHeight, searchbarHeight);
-    
-    [titleView addSubview:_searchBar];
-    
-    self.navigationItem.titleView = titleView;
+    if ([self.menuModel.menuId isEqualToString:@"kVideo"]) {
+        CGFloat navHeight = 44;
+        CGFloat searchbarHeight = 29;
+        UIView *titleView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, DEVIECE_SCREEN_WIDTH - 66, navHeight)];
+        [self configSearchBar];
+        _searchBar.frame = CGRectMake(0, navHeight/2 - searchbarHeight/2, CGRectGetWidth(titleView.frame) - searchbarHeight, searchbarHeight);
+        [titleView addSubview:_searchBar];
+        self.navigationItem.titleView = titleView;
+    }
 }
 
 - (void)configSearchBar {
@@ -186,7 +184,7 @@
 - (void)showSearchVC{
     
     IHYHomsSearchViewController *searchVC = [[IHYHomsSearchViewController alloc] init];
-    searchVC.searchPlaceholder = @"输入视频关键字";
+    searchVC.searchPlaceholder = @"输入搜索关键字";
     searchVC.rootUrl = self.menuModel.rooturl;
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:searchVC];
     nav.navigationBar.translucent = NO;
