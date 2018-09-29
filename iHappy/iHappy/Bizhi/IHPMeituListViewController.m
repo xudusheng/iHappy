@@ -205,7 +205,7 @@ CGFloat const kBiZhiCollectionViewCellsGap = 10.0;
         XDSMediaModel *videoModel = [[XDSMediaModel alloc] init];
         videoModel.mediaURL = [NSURL URLWithString:mediaModel.image_src];
         videoModel.mediaType = XDSMediaTypeImage;
-//        videoModel.placeholderImage = [UIImage placeholderImage:frame];
+//      videoModel.placeholderImage = [UIImage placeholderImage:frame];
         [mediaModelArray addObject:videoModel];
     }
     

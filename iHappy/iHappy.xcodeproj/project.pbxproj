@@ -9,13 +9,6 @@
 /* Begin PBXBuildFile section */
 		092CAEFA1DE28620008127DA /* IHYMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 092CAED71DE2861F008127DA /* IHYMainViewController.m */; };
 		092CAEFB1DE28620008127DA /* IHYViewControllerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 092CAED91DE28620008127DA /* IHYViewControllerModel.m */; };
-		092CAEFC1DE28620008127DA /* IHYMovieInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 092CAEDD1DE28620008127DA /* IHYMovieInfoModel.m */; };
-		092CAEFD1DE28620008127DA /* IHYMoviePlayButtonModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 092CAEDF1DE28620008127DA /* IHYMoviePlayButtonModel.m */; };
-		092CAEFE1DE28620008127DA /* IHYMovieDetailInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 092CAEE21DE28620008127DA /* IHYMovieDetailInfoView.m */; };
-		092CAEFF1DE28620008127DA /* IHYMovieDetailInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 092CAEE31DE28620008127DA /* IHYMovieDetailInfoView.xib */; };
-		092CAF001DE28620008127DA /* IHYMovieInfoHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 092CAEE51DE28620008127DA /* IHYMovieInfoHeaderView.m */; };
-		092CAF011DE28620008127DA /* XDSEpisodeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 092CAEE71DE28620008127DA /* XDSEpisodeCell.m */; };
-		092CAF021DE28620008127DA /* IHYMovieDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 092CAEEA1DE28620008127DA /* IHYMovieDetailViewController.m */; };
 		092CAF031DE28620008127DA /* IHYMovieModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 092CAEEE1DE28620008127DA /* IHYMovieModel.m */; };
 		092CAF041DE28620008127DA /* IHPMovieCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 092CAEF11DE28620008127DA /* IHPMovieCell.m */; };
 		092CAF051DE28620008127DA /* IHPMovieCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 092CAEF21DE28620008127DA /* IHPMovieCell.xib */; };
@@ -234,6 +227,14 @@
 		A24B53CD1EB941BE005D34C6 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A24B53CC1EB941BE005D34C6 /* JavaScriptCore.framework */; };
 		A24FCBE421319AB2001A05DB /* XDSFullPlayerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A24FCBE321319AB2001A05DB /* XDSFullPlayerVC.m */; };
 		A24FCBE721319BF0001A05DB /* UIViewController+XDSMediaBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = A24FCBE621319BF0001A05DB /* UIViewController+XDSMediaBrowser.m */; };
+		A27BB35C215FE087004C9635 /* XDSHTMLMovieModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A27BB35A215FE087004C9635 /* XDSHTMLMovieModel.m */; };
+		A27BB35F215FE0C8004C9635 /* XDSHTMLMovieListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A27BB35E215FE0C8004C9635 /* XDSHTMLMovieListVC.m */; };
+		A27BB362215FE73A004C9635 /* XDSHTMLPlayerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A27BB360215FE739004C9635 /* XDSHTMLPlayerVC.m */; };
+		A27BB365215FE78D004C9635 /* IHYMoviePlayButtonModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A27BB363215FE78D004C9635 /* IHYMoviePlayButtonModel.m */; };
+		A27BB368215FE7BB004C9635 /* IHYMoviePlayButtonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A27BB367215FE7BB004C9635 /* IHYMoviePlayButtonCell.m */; };
+		A27BB36B215FECB7004C9635 /* XDSEpisodeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A27BB369215FECB7004C9635 /* XDSEpisodeCell.m */; };
+		A27BB36F215FEF01004C9635 /* IHYMovieDetailInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = A27BB36C215FEF00004C9635 /* IHYMovieDetailInfoView.m */; };
+		A27BB370215FEF01004C9635 /* IHYMovieDetailInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A27BB36E215FEF01004C9635 /* IHYMovieDetailInfoView.xib */; };
 		A29B03F52142D88100876433 /* XDSBaseResponseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A29B03F42142D88100876433 /* XDSBaseResponseModel.m */; };
 		E28B84A8A36AAB50D4A6C2B8 /* Pods_iHappy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CB566B05B747CCEC832F7BB /* Pods_iHappy.framework */; };
 		FC0B7C6E1EC751C90022E504 /* IHPMeituListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC0B7C6D1EC751C90022E504 /* IHPMeituListViewController.m */; };
@@ -270,19 +271,6 @@
 		092CAED71DE2861F008127DA /* IHYMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IHYMainViewController.m; sourceTree = "<group>"; };
 		092CAED81DE2861F008127DA /* IHYViewControllerModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IHYViewControllerModel.h; sourceTree = "<group>"; };
 		092CAED91DE28620008127DA /* IHYViewControllerModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IHYViewControllerModel.m; sourceTree = "<group>"; };
-		092CAEDC1DE28620008127DA /* IHYMovieInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IHYMovieInfoModel.h; sourceTree = "<group>"; };
-		092CAEDD1DE28620008127DA /* IHYMovieInfoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IHYMovieInfoModel.m; sourceTree = "<group>"; };
-		092CAEDE1DE28620008127DA /* IHYMoviePlayButtonModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IHYMoviePlayButtonModel.h; sourceTree = "<group>"; };
-		092CAEDF1DE28620008127DA /* IHYMoviePlayButtonModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IHYMoviePlayButtonModel.m; sourceTree = "<group>"; };
-		092CAEE11DE28620008127DA /* IHYMovieDetailInfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IHYMovieDetailInfoView.h; sourceTree = "<group>"; };
-		092CAEE21DE28620008127DA /* IHYMovieDetailInfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IHYMovieDetailInfoView.m; sourceTree = "<group>"; };
-		092CAEE31DE28620008127DA /* IHYMovieDetailInfoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IHYMovieDetailInfoView.xib; sourceTree = "<group>"; };
-		092CAEE41DE28620008127DA /* IHYMovieInfoHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IHYMovieInfoHeaderView.h; sourceTree = "<group>"; };
-		092CAEE51DE28620008127DA /* IHYMovieInfoHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IHYMovieInfoHeaderView.m; sourceTree = "<group>"; };
-		092CAEE61DE28620008127DA /* XDSEpisodeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDSEpisodeCell.h; sourceTree = "<group>"; };
-		092CAEE71DE28620008127DA /* XDSEpisodeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XDSEpisodeCell.m; sourceTree = "<group>"; };
-		092CAEE91DE28620008127DA /* IHYMovieDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IHYMovieDetailViewController.h; sourceTree = "<group>"; };
-		092CAEEA1DE28620008127DA /* IHYMovieDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IHYMovieDetailViewController.m; sourceTree = "<group>"; };
 		092CAEED1DE28620008127DA /* IHYMovieModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IHYMovieModel.h; sourceTree = "<group>"; };
 		092CAEEE1DE28620008127DA /* IHYMovieModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IHYMovieModel.m; sourceTree = "<group>"; };
 		092CAEF01DE28620008127DA /* IHPMovieCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IHPMovieCell.h; sourceTree = "<group>"; };
@@ -690,6 +678,21 @@
 		A24FCBE321319AB2001A05DB /* XDSFullPlayerVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XDSFullPlayerVC.m; sourceTree = "<group>"; };
 		A24FCBE521319BF0001A05DB /* UIViewController+XDSMediaBrowser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+XDSMediaBrowser.h"; sourceTree = "<group>"; };
 		A24FCBE621319BF0001A05DB /* UIViewController+XDSMediaBrowser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+XDSMediaBrowser.m"; sourceTree = "<group>"; };
+		A27BB35A215FE087004C9635 /* XDSHTMLMovieModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XDSHTMLMovieModel.m; sourceTree = "<group>"; };
+		A27BB35B215FE087004C9635 /* XDSHTMLMovieModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDSHTMLMovieModel.h; sourceTree = "<group>"; };
+		A27BB35D215FE0C8004C9635 /* XDSHTMLMovieListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDSHTMLMovieListVC.h; sourceTree = "<group>"; };
+		A27BB35E215FE0C8004C9635 /* XDSHTMLMovieListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XDSHTMLMovieListVC.m; sourceTree = "<group>"; };
+		A27BB360215FE739004C9635 /* XDSHTMLPlayerVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XDSHTMLPlayerVC.m; sourceTree = "<group>"; };
+		A27BB361215FE739004C9635 /* XDSHTMLPlayerVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDSHTMLPlayerVC.h; sourceTree = "<group>"; };
+		A27BB363215FE78D004C9635 /* IHYMoviePlayButtonModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IHYMoviePlayButtonModel.m; sourceTree = "<group>"; };
+		A27BB364215FE78D004C9635 /* IHYMoviePlayButtonModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IHYMoviePlayButtonModel.h; sourceTree = "<group>"; };
+		A27BB366215FE7BB004C9635 /* IHYMoviePlayButtonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IHYMoviePlayButtonCell.h; sourceTree = "<group>"; };
+		A27BB367215FE7BB004C9635 /* IHYMoviePlayButtonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IHYMoviePlayButtonCell.m; sourceTree = "<group>"; };
+		A27BB369215FECB7004C9635 /* XDSEpisodeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XDSEpisodeCell.m; sourceTree = "<group>"; };
+		A27BB36A215FECB7004C9635 /* XDSEpisodeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDSEpisodeCell.h; sourceTree = "<group>"; };
+		A27BB36C215FEF00004C9635 /* IHYMovieDetailInfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IHYMovieDetailInfoView.m; sourceTree = "<group>"; };
+		A27BB36D215FEF01004C9635 /* IHYMovieDetailInfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IHYMovieDetailInfoView.h; sourceTree = "<group>"; };
+		A27BB36E215FEF01004C9635 /* IHYMovieDetailInfoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IHYMovieDetailInfoView.xib; sourceTree = "<group>"; };
 		A29B03F32142D88100876433 /* XDSBaseResponseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDSBaseResponseModel.h; sourceTree = "<group>"; };
 		A29B03F42142D88100876433 /* XDSBaseResponseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XDSBaseResponseModel.m; sourceTree = "<group>"; };
 		DDF28F2EE953D3A78F924489 /* Pods-iHappy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iHappy.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iHappy/Pods-iHappy.debug.xcconfig"; sourceTree = "<group>"; };
@@ -778,54 +781,9 @@
 				FC8B89A41EBC8030000AD27A /* IHPPlayer */,
 				FCAFC6151EAEDE0400B48C83 /* Menu */,
 				092CAEEB1DE28620008127DA /* movielist */,
-				092CAEDA1DE28620008127DA /* moviedetail */,
 				092CAEF61DE28620008127DA /* movieplayer */,
 			);
 			path = Q2002;
-			sourceTree = "<group>";
-		};
-		092CAEDA1DE28620008127DA /* moviedetail */ = {
-			isa = PBXGroup;
-			children = (
-				092CAEDB1DE28620008127DA /* model */,
-				092CAEE01DE28620008127DA /* view */,
-				092CAEE81DE28620008127DA /* viewController */,
-			);
-			path = moviedetail;
-			sourceTree = "<group>";
-		};
-		092CAEDB1DE28620008127DA /* model */ = {
-			isa = PBXGroup;
-			children = (
-				092CAEDC1DE28620008127DA /* IHYMovieInfoModel.h */,
-				092CAEDD1DE28620008127DA /* IHYMovieInfoModel.m */,
-				092CAEDE1DE28620008127DA /* IHYMoviePlayButtonModel.h */,
-				092CAEDF1DE28620008127DA /* IHYMoviePlayButtonModel.m */,
-			);
-			path = model;
-			sourceTree = "<group>";
-		};
-		092CAEE01DE28620008127DA /* view */ = {
-			isa = PBXGroup;
-			children = (
-				092CAEE11DE28620008127DA /* IHYMovieDetailInfoView.h */,
-				092CAEE21DE28620008127DA /* IHYMovieDetailInfoView.m */,
-				092CAEE31DE28620008127DA /* IHYMovieDetailInfoView.xib */,
-				092CAEE41DE28620008127DA /* IHYMovieInfoHeaderView.h */,
-				092CAEE51DE28620008127DA /* IHYMovieInfoHeaderView.m */,
-				092CAEE61DE28620008127DA /* XDSEpisodeCell.h */,
-				092CAEE71DE28620008127DA /* XDSEpisodeCell.m */,
-			);
-			path = view;
-			sourceTree = "<group>";
-		};
-		092CAEE81DE28620008127DA /* viewController */ = {
-			isa = PBXGroup;
-			children = (
-				092CAEE91DE28620008127DA /* IHYMovieDetailViewController.h */,
-				092CAEEA1DE28620008127DA /* IHYMovieDetailViewController.m */,
-			);
-			path = viewController;
 			sourceTree = "<group>";
 		};
 		092CAEEB1DE28620008127DA /* movielist */ = {
@@ -844,6 +802,8 @@
 			children = (
 				092CAEED1DE28620008127DA /* IHYMovieModel.h */,
 				092CAEEE1DE28620008127DA /* IHYMovieModel.m */,
+				A27BB35B215FE087004C9635 /* XDSHTMLMovieModel.h */,
+				A27BB35A215FE087004C9635 /* XDSHTMLMovieModel.m */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -863,6 +823,8 @@
 			children = (
 				092CAEF41DE28620008127DA /* IHYMovieListViewController.h */,
 				092CAEF51DE28620008127DA /* IHYMovieListViewController.m */,
+				A27BB35D215FE0C8004C9635 /* XDSHTMLMovieListVC.h */,
+				A27BB35E215FE0C8004C9635 /* XDSHTMLMovieListVC.m */,
 			);
 			path = viewController;
 			sourceTree = "<group>";
@@ -1246,6 +1208,8 @@
 			children = (
 				185347622142098600013F81 /* XDSEpisodeModel.h */,
 				185347632142098600013F81 /* XDSEpisodeModel.m */,
+				A27BB364215FE78D004C9635 /* IHYMoviePlayButtonModel.h */,
+				A27BB363215FE78D004C9635 /* IHYMoviePlayButtonModel.m */,
 			);
 			name = Model;
 			path = iHappy/Q2002/movieplayer/Model;
@@ -1262,6 +1226,13 @@
 				A22C12F92144734E00896F00 /* XDSPlayerSectionHeader.h */,
 				A22C12FA2144734E00896F00 /* XDSPlayerSectionHeader.m */,
 				A22C12FB2144734E00896F00 /* XDSPlayerSectionHeader.xib */,
+				A27BB366215FE7BB004C9635 /* IHYMoviePlayButtonCell.h */,
+				A27BB367215FE7BB004C9635 /* IHYMoviePlayButtonCell.m */,
+				A27BB36A215FECB7004C9635 /* XDSEpisodeCell.h */,
+				A27BB369215FECB7004C9635 /* XDSEpisodeCell.m */,
+				A27BB36D215FEF01004C9635 /* IHYMovieDetailInfoView.h */,
+				A27BB36C215FEF00004C9635 /* IHYMovieDetailInfoView.m */,
+				A27BB36E215FEF01004C9635 /* IHYMovieDetailInfoView.xib */,
 			);
 			name = View;
 			path = iHappy/Q2002/movieplayer/View;
@@ -1939,6 +1910,8 @@
 			children = (
 				FC8B89A81EBC8073000AD27A /* IHPPlayerViewController.h */,
 				FC8B89A91EBC8073000AD27A /* IHPPlayerViewController.m */,
+				A27BB361215FE739004C9635 /* XDSHTMLPlayerVC.h */,
+				A27BB360215FE739004C9635 /* XDSHTMLPlayerVC.m */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -2088,7 +2061,6 @@
 				18A6FAFD2130DF3800709EC9 /* btn_play@3x.png in Resources */,
 				18A6FA862130031500709EC9 /* json.bnf in Resources */,
 				18A6FA2D212FCB9D00709EC9 /* Localizable_en.string in Resources */,
-				092CAEFF1DE28620008127DA /* IHYMovieDetailInfoView.xib in Resources */,
 				181E5414214F928100E8A704 /* XDSReadMenu.xcassets in Resources */,
 				A227A84C2130641300568BCB /* SplashSmall.png in Resources */,
 				181E53D9214F928000E8A704 /* 每天懂一点好玩心理学.epub in Resources */,
@@ -2114,6 +2086,7 @@
 				181E53D6214F928000E8A704 /* 妖神记.txt in Resources */,
 				18A6FAF82130DF3800709EC9 /* btn_voice_disabled@3x.png in Resources */,
 				18A6FAFC2130DF3800709EC9 /* btn_play@2x.png in Resources */,
+				A27BB370215FEF01004C9635 /* IHYMovieDetailInfoView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2225,6 +2198,7 @@
 				18A6FA8D2130031600709EC9 /* NLEBNFSequenceFactory.m in Sources */,
 				1808D3BF215BDD5300F822FD /* XDSBaseContentVC.m in Sources */,
 				FCAFC6181EAEDE1900B48C83 /* IHPMenuViewController.m in Sources */,
+				A27BB35F215FE0C8004C9635 /* XDSHTMLMovieListVC.m in Sources */,
 				18F8EB5A2139626F00168506 /* XDS_CustomMjRefreshFooter.m in Sources */,
 				18A6FA952130031600709EC9 /* NLEStack.m in Sources */,
 				18BB4F402153F9EE00C4A2CD /* GCDWebServerConnection.m in Sources */,
@@ -2234,7 +2208,6 @@
 				18B3DC8D2154BB8600FFD27E /* UIViewController+XDSReader.m in Sources */,
 				181E53B7214F928000E8A704 /* XDSReadManager.m in Sources */,
 				092CAF131DE28D56008127DA /* OCTKeyboardObserverHelper.m in Sources */,
-				092CAF001DE28620008127DA /* IHYMovieInfoHeaderView.m in Sources */,
 				18BB4F432153F9EE00C4A2CD /* GCDWebServerDataResponse.m in Sources */,
 				181E5412214F928100E8A704 /* XDSReadViewConst.m in Sources */,
 				18A6FA902130031600709EC9 /* NLEBNFTokens.m in Sources */,
@@ -2247,7 +2220,6 @@
 				181E53BC214F928000E8A704 /* XDSRecordModel.m in Sources */,
 				092CAF0F1DE28D23008127DA /* UIViewController+HideNavigationBar.m in Sources */,
 				A208A6CD2132B39600900DFC /* XDSMeituModel.m in Sources */,
-				092CAEFD1DE28620008127DA /* IHYMoviePlayButtonModel.m in Sources */,
 				18A6FA8C2130031600709EC9 /* NLEBNFParserState.m in Sources */,
 				FC8B89AA1EBC8073000AD27A /* IHPPlayerViewController.m in Sources */,
 				181E5415214F928100E8A704 /* XDSLightView.m in Sources */,
@@ -2256,7 +2228,6 @@
 				18BB4F6C2153F9EE00C4A2CD /* XDSWIFIFileTransferViewController.m in Sources */,
 				18A6FA3A212FFF0D00709EC9 /* RegexKitLite.m in Sources */,
 				FC0B7C7B1EC7FD5A0022E504 /* YSECategoryModel.m in Sources */,
-				092CAEFE1DE28620008127DA /* IHYMovieDetailInfoView.m in Sources */,
 				18A6FA32212FCC1700709EC9 /* XDSSettingsManager.m in Sources */,
 				18BB4F3C2153F9EE00C4A2CD /* GCDWebServerResponse.m in Sources */,
 				A05EB9041DE0281D00148A5B /* XDSUtilities.m in Sources */,
@@ -2266,6 +2237,7 @@
 				A05EB8FF1DE0277E00148A5B /* ForbidTextField.m in Sources */,
 				A05EB8EF1DE0244300148A5B /* ZDProgressHUD.m in Sources */,
 				181E53CF214F928000E8A704 /* CXHTMLDocument.m in Sources */,
+				A27BB362215FE73A004C9635 /* XDSHTMLPlayerVC.m in Sources */,
 				18A6FA52212FFF7F00709EC9 /* XDSTaskQueue.m in Sources */,
 				A05EB9211DE03CA000148A5B /* XDSHttpRequest.m in Sources */,
 				FCAEADD31EB4D3EA006FB6B5 /* IHPXMLNode.m in Sources */,
@@ -2286,6 +2258,7 @@
 				18A6FA53212FFF7F00709EC9 /* XDSTask.m in Sources */,
 				18A6FA5D213000A400709EC9 /* XDSRootViewController.m in Sources */,
 				092CAF031DE28620008127DA /* IHYMovieModel.m in Sources */,
+				A27BB35C215FE087004C9635 /* XDSHTMLMovieModel.m in Sources */,
 				181E53BB214F928000E8A704 /* XDSReaderGlobleConst.m in Sources */,
 				181E540A214F928100E8A704 /* XDSCatalogueViewController.m in Sources */,
 				FCA032461F8DD7DE00600581 /* UIColor+PYSearchExtension.m in Sources */,
@@ -2321,7 +2294,6 @@
 				A24FCBE421319AB2001A05DB /* XDSFullPlayerVC.m in Sources */,
 				18A6FAF02130DF3800709EC9 /* XDSMediaBrowser.m in Sources */,
 				181E541B214FCFC800E8A704 /* XDSMainReaderVC.m in Sources */,
-				092CAEFC1DE28620008127DA /* IHYMovieInfoModel.m in Sources */,
 				181E53DE214F928000E8A704 /* XDSPhotoBrowser.m in Sources */,
 				181E53C8214F928000E8A704 /* CXMLNode_PrivateExtensions.m in Sources */,
 				18BB4F452153F9EE00C4A2CD /* GCDWebServerURLEncodedFormRequest.m in Sources */,
@@ -2353,10 +2325,11 @@
 				A22C12EE2144611800896F00 /* XDSVideoSummaryCell.m in Sources */,
 				FC0B7C721EC759880022E504 /* YSERequestFetcher.m in Sources */,
 				18BB4F482153F9EE00C4A2CD /* GCDWebServerFileRequest.m in Sources */,
+				A27BB36F215FEF01004C9635 /* IHYMovieDetailInfoView.m in Sources */,
+				A27BB368215FE7BB004C9635 /* IHYMoviePlayButtonCell.m in Sources */,
 				09F90D791DE2D2F600542684 /* IHYNewsMultableImageCell.m in Sources */,
 				181E53D1214F928000E8A704 /* CXMLElement.m in Sources */,
 				181E53BE214F928000E8A704 /* XDSChapterModel.m in Sources */,
-				092CAF021DE28620008127DA /* IHYMovieDetailViewController.m in Sources */,
 				181E53D3214F928000E8A704 /* UIImage+ImageEffects.m in Sources */,
 				A05EB8EC1DE0244300148A5B /* OCControlAlertView.m in Sources */,
 				09F90D751DE2C06000542684 /* XDSWebProgressView.m in Sources */,
@@ -2371,7 +2344,6 @@
 				181E53C5214F928000E8A704 /* CXMLNode.m in Sources */,
 				181E53C2214F928000E8A704 /* UIControl+XDSHyperLink.m in Sources */,
 				1808D3C5215BE66900F822FD /* XDSHomeSearchResultVC.m in Sources */,
-				092CAF011DE28620008127DA /* XDSEpisodeCell.m in Sources */,
 				18A6FA962130031600709EC9 /* NLEBNFTokenizerFactory.m in Sources */,
 				A22C12FC2144734E00896F00 /* XDSPlayerSectionHeader.m in Sources */,
 				18A6FAEC2130DF3800709EC9 /* XDSGestureDetectingImageView.m in Sources */,
@@ -2384,6 +2356,7 @@
 				181E53D4214F928000E8A704 /* UIView+XDSHyperLink.m in Sources */,
 				18A6FA922130031600709EC9 /* NLEBNFIndex.m in Sources */,
 				18A6FAEE2130DF3800709EC9 /* XDSZoomingScrollView.m in Sources */,
+				A27BB36B215FECB7004C9635 /* XDSEpisodeCell.m in Sources */,
 				18B3DC892154BB6700FFD27E /* XDSReaderWifiView.m in Sources */,
 				18A6FA4A212FFF1900709EC9 /* zip.c in Sources */,
 				A05EB91A1DE03B2500148A5B /* XDSRootRequestTableViewController.m in Sources */,
@@ -2400,6 +2373,7 @@
 				18A6FA4C212FFF1900709EC9 /* mztools.c in Sources */,
 				18A6FAF12130DF3800709EC9 /* XDSMediaBrowserCell.m in Sources */,
 				A05EB9001DE0277E00148A5B /* NSString+Helper.m in Sources */,
+				A27BB365215FE78D004C9635 /* IHYMoviePlayButtonModel.m in Sources */,
 				181E5420214FD25D00E8A704 /* XDSBookCell.m in Sources */,
 				A22C12F4214464BF00896F00 /* NSString+XDSAddition.m in Sources */,
 			);

@@ -25,6 +25,8 @@
 #define DEVICE_TABBAR_HEIGHT 49.f
 #define REQUEST_PAGE_SIZE 20
 
+#define XDS_Q2002_PLAYER_HEIGHT 230
+
 #pragma mark - 第三方库
 #import "JSONModelLib.h"
 #import "Masonry.h"

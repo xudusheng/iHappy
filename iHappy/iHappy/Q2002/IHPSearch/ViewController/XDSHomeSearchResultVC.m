@@ -11,7 +11,6 @@
 #import "IHYMovieModel.h"
 #import "IHPMovieCell.h"
 
-#import "IHYMovieDetailViewController.h"
 #import "IHPPlayerViewController.h"
 @interface XDSHomeSearchResultVC ()<UICollectionViewDelegate, UICollectionViewDataSource>
 @property (strong, nonatomic) NSMutableArray<IHYMovieModel *> * movieList;

@@ -10,9 +10,9 @@
 #import "IHPSubMenuModel.h"
 
 typedef NS_ENUM(NSInteger, IHPMenuType) {
-    IHPMenuTypeQ2002 = 0,
-    IHPMenuTypeQ2002Hot = 1,
-    IHPMenuTypeQ2002New = 2,
+    IHPMenuTypeReader = 0,
+    IHPMenuTypeQ2002 = 1,
+    IHPMenuTypeVideo = 2,
     IHPMenuTypeJuheNews = 3,
     IHPMenuTypeBizhi    = 4,
 };

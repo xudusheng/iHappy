@@ -15,6 +15,7 @@
 #define EPISODE_CELL_FONT [UIFont systemFontOfSize:13]
 #define EPISODE_CELL_MAX_SIZE CGSizeMake(DEVIECE_SCREEN_WIDTH - 20, CGFLOAT_MAX)
 
+
 @interface XDSEpisodeCell : UICollectionViewCell
 
 @property (strong, nonatomic) XDSEpisodeModel *episodeModel;

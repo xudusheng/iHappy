@@ -10,7 +10,6 @@
 #import "IHYMovieModel.h"
 #import "IHPMovieCell.h"
 
-#import "IHYMovieDetailViewController.h"
 #import "IHPPlayerViewController.h"
 @interface IHYMovieListViewController ()<UICollectionViewDelegate, UICollectionViewDataSource>
 @property (strong, nonatomic) NSMutableArray<IHYMovieModel *> * movieList;
@@ -21,7 +20,6 @@
 
 @implementation IHYMovieListViewController
 
-NSString * const MovieListViewController_movieCellIdentifier = @"IHPMovieCell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -51,7 +49,7 @@ NSString * const MovieListViewController_movieCellIdentifier = @"IHPMovieCell";
     //注册item类型 这里使用系统的类型
     [self.view addSubview:_movieCollectionView];
     
-    [_movieCollectionView registerNib:[UINib nibWithNibName:@"IHPMovieCell" bundle:nil] forCellWithReuseIdentifier:MovieListViewController_movieCellIdentifier];
+    [_movieCollectionView registerNib:[UINib nibWithNibName:NSStringFromClass([IHPMovieCell class]) bundle:nil] forCellWithReuseIdentifier:NSStringFromClass([IHPMovieCell class])];
     [_movieCollectionView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.mas_equalTo(0);
     }];
@@ -111,7 +109,7 @@ NSString * const MovieListViewController_movieCellIdentifier = @"IHPMovieCell";
 }
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
-    IHPMovieCell * cell  = [collectionView dequeueReusableCellWithReuseIdentifier:MovieListViewController_movieCellIdentifier forIndexPath:indexPath];
+    IHPMovieCell * cell  = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([IHPMovieCell class]) forIndexPath:indexPath];
     cell.backgroundColor = [UIColor groupTableViewBackgroundColor];
     IHYMovieModel * movieModel = _movieList[indexPath.row];
     [cell cellWithMovieModel:movieModel];

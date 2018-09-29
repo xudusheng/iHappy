@@ -7,7 +7,6 @@
 //
 
 #import "IHPPlayerViewController.h"
-#import "IHYMovieInfoHeaderView.h"
 #import "IHYMoviePlayButtonModel.h"
 #import "XDSEpisodeCell.h"
 #import "XDSPlayerBannerAdCell.h"
@@ -133,7 +132,7 @@ NSInteger const kPlaceholderSectionNumbers = 2;
     [self.navigationController.navigationBar setTranslucent:NO];
     self.view.backgroundColor = [UIColor whiteColor];
     
-    self.playerContentView = [[UIView alloc] initWithFrame: CGRectMake(0, 0, DEVIECE_SCREEN_WIDTH, IHYMovieDetailInfoViewInitialHeight)];
+    self.playerContentView = [[UIView alloc] initWithFrame: CGRectMake(0, 0, DEVIECE_SCREEN_WIDTH, XDS_Q2002_PLAYER_HEIGHT)];
     self.playerContentView.backgroundColor = [UIColor blackColor];
     [self.view addSubview:self.playerContentView];
     
@@ -145,12 +144,7 @@ NSInteger const kPlaceholderSectionNumbers = 2;
     playerModel.placeholderImage = [UIImage imageNamed:@"loading_bgView1"];
     playerModel.fatherView       = self.playerContentView;
     
-    
-    
-    
-    
-    
-    
+
     self.webView = [[UIWebView alloc]initWithFrame:self.playerContentView.bounds];
     self.webView.mediaPlaybackRequiresUserAction = YES;
     self.webView.scalesPageToFit = YES;
@@ -517,7 +511,8 @@ NSInteger const kPlaceholderSectionNumbers = 2;
     }
 }
 
-
+//https://apis.tianxianle.com/dapi.php?id=saF1naKhqaajza2r0dZuY2Cro6OeZtuhpJuhoadpX5imomRraGpsZ5yVb2akqouMqnOEp2ah0JabrGWlZahp
+//http://api.tianxianle.com/jx/sapi.php?id=mKBneZyjnKzSpbKH0bV4mJplp5lo000of9WWpoB6sKecY4CrZpx5n2R1mI7K
 - (ZFPlayerView *)playerView{
     if (!_playerView) {
         _playerView = [[ZFPlayerView alloc] init];

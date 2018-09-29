@@ -31,4 +31,15 @@
     
 }
 
+- (void)cellWithHTMLMovieModel:(XDSHTMLMovieModel *)htmlMovieModel{
+    if (!htmlMovieModel) {
+        _movieImageView.image = nil;
+        _titleLabel.text = @"";
+    }else{
+        [_movieImageView sd_setImageWithURL:[NSURL URLWithString:htmlMovieModel.imageurl] placeholderImage:nil];
+        _titleLabel.text = htmlMovieModel.name;
+    }
+    
+}
+
 @end

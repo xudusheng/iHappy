@@ -8,15 +8,44 @@
     "menus": [{
               "title": "微阅读",
               "menuId": "kReader",
-              "type": "1",
+              "type": "0",
               "enable": true,
               "rooturl": "http://120.76.205.241:8000/news/qihoo?apikey=cz1wjvkzGtuomNDXgLxmdq5aIwgytQvHHe0Dc8OcfHQva6hKQgDoDyBdUAQngGt6&site=qq.com",
               "subMenus": [],
               },
               {
+              "title": "首页",
+              "menuId": "kHome",
+              "type": "1",
+              "rooturl": "http://www.q2002.com",
+              "enable": true,
+              "subMenus": [{
+                           "title": "电影",
+                           "url": "/type/1.html"
+                           }, {
+                           "title": "电视剧",
+                           "url": "/type/2.html"
+                           }, {
+                           "title": "动漫",
+                           "url": "/type/7.html"
+                           }, {
+                           "title": "音乐",
+                           "url": "/type/6.html"
+                           }, {
+                           "title": "综艺",
+                           "url": "/type/4.html"
+                           }, {
+                           "title": "福利",
+                           "url": "/type/3.html"
+                           }, {
+                           "title": "WWE",
+                           "url": "/type/18.html"
+                           }, ],
+              },
+              {
               "title": "热门视频",
               "menuId": "kVideo",
-              "type": "0",
+              "type": "2",
               "rooturl": "http://134.175.54.80/ihappy/video/query.php",
               "enable": true,
               "subMenus": [{
@@ -42,14 +71,6 @@
                            "url": "18"
                            }, ],
               },
-              {
-              "title": "美女壁纸",
-              "menuId": "kPicture",
-              "type": "4",
-              "rooturl": "http://134.175.54.80/ihappy/meizi/query.php",
-              "enable": true,
-              "subMenus": [],
-              }, 
               {
               "title": "头条新闻",
               "menuId": "kNews",
@@ -87,5 +108,13 @@
                            "title": "国际",
                            "url": ""
                            }, ],
+              },
+              {
+              "title": "美女壁纸",
+              "menuId": "kPicture",
+              "type": "4",
+              "rooturl": "http://134.175.54.80/ihappy/meizi/query.php",
+              "enable": true,
+              "subMenus": [],
               }, ]
 }

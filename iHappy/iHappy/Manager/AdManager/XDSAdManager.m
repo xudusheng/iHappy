@@ -214,7 +214,9 @@ NSString *const kGDTMobSDKInterstitialAdId = @"2030814134092814";//插屏广告i
 //// 详解: 插屏广告展示成功回调该函数
 //- (void)interstitialDidPresentScreen:(GDTMobInterstitial *)interstitial{}
 //// 详解: 插屏广告展示结束回调该函数
-//- (void)interstitialDidDismissScreen:(GDTMobInterstitial *)interstitial{}
+- (void)interstitialDidDismissScreen:(GDTMobInterstitial *)interstitial{
+    self.interstitial = nil;
+}
 //// 详解: 当点击下载应用时会调用系统程序打开，应用切换到后台
 //- (void)interstitialApplicationWillEnterBackground:(GDTMobInterstitial *)interstitial{}
 @end

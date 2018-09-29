@@ -12,7 +12,7 @@
 #import "AppDelegate.h"
 #import "IHYNewsListViewController.h"
 #import "IHPMeituListViewController.h"
-
+#import "XDSHTMLMovieListVC.h"
 #import "IHYHomsSearchViewController.h"
 @interface IHYMainViewController ()<UISearchBarDelegate>
 
@@ -27,7 +27,6 @@
     [super viewDidLoad];
     [self mainViewControllerDataInit];
     [self createMainViewControllerUI];
-    [[XDSAdManager sharedManager] showInterstitialAD];
     self.title = self.menuModel.title;
 }
 
@@ -46,6 +45,9 @@
         _searchBar.frame = CGRectMake(0, navHeight/2 - searchbarHeight/2, CGRectGetWidth(titleView.frame) - searchbarHeight, searchbarHeight);
         [titleView addSubview:_searchBar];
         self.navigationItem.titleView = titleView;
+        
+        [[XDSAdManager sharedManager] showInterstitialAD];
+
     }
 }
 
@@ -103,6 +105,11 @@
         bizhiVC.rootUrl = _menuModel.rooturl;
         bizhiVC.firstPageUrl = model.url;
         return bizhiVC;
+        
+    }else if(_menuModel.type == IHPMenuTypeQ2002){
+        XDSHTMLMovieListVC * movieVC = [[XDSHTMLMovieListVC alloc]init];
+        movieVC.firstPageUrl = model.url;
+        return movieVC;
         
     }else{
         IHYMovieListViewController * movieVC = [[IHYMovieListViewController alloc]init];

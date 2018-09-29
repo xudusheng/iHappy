@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "IHYMovieModel.h"
+#import "XDSHTMLMovieModel.h"
 @interface IHPMovieCell : UICollectionViewCell
 
 - (void)cellWithMovieModel:(IHYMovieModel *)movieModel;
 
+- (void)cellWithHTMLMovieModel:(XDSHTMLMovieModel *)htmlMovieModel;
 @end
