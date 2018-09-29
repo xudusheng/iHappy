@@ -28,7 +28,6 @@ NSString * const IHYNewsListViewController_IHYNewsMultableImageCellIdentifier = 
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     [self newsListViewControllerDataInit];
     [self createNewsListViewControllerUI];
 }

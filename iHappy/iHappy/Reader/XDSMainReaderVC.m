@@ -50,7 +50,6 @@ OCT_SYNTHESIZE_SINGLETON_FOR_CLASS(XDSMainReaderVC)
 #pragma mark - UI相关
 - (void)createMovieListViewControllerUI{
     self.view.backgroundColor = [UIColor whiteColor];
-    self.title = @"微阅读";
 
     //创建一个layout布局类
     UICollectionViewFlowLayout * layout = [[UICollectionViewFlowLayout alloc]init];

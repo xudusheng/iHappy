@@ -12,5 +12,6 @@
 
 #import "XDSAdManager.h"
 #import "XDSLocalizableManager.h"
+#import "XDSStartupManager.h"
 
 #endif /* XDSManagerHeader_h */

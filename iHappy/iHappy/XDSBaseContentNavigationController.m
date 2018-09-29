@@ -30,7 +30,6 @@
                                                                      action:@selector(showMenu)];
     barButtonitem.tintColor = [UIColor lightGrayColor];
     rootController.navigationItem.leftBarButtonItem = barButtonitem;
-    rootController.navigationItem.title = @"";
 }
 
 #pragma mark - 点击事件处理

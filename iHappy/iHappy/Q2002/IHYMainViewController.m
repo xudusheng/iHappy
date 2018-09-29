@@ -27,17 +27,16 @@
     [super viewDidLoad];
     [self mainViewControllerDataInit];
     [self createMainViewControllerUI];
-    [self reloadData];
     [[XDSAdManager sharedManager] showInterstitialAD];
-
+    self.title = self.menuModel.title;
 }
 
 
 
 #pragma mark - UI相关
 - (void)createMainViewControllerUI{
-    self.navigationController.navigationBar.translucent = NO;
-    self.navigationController.navigationBar.shadowImage = [UIImage new];
+//    self.navigationController.navigationBar.translucent = NO;
+//    self.navigationController.navigationBar.shadowImage = [UIImage new];
     
     if ([self.menuModel.menuId isEqualToString:@"kVideo"]) {
         CGFloat navHeight = 44;
@@ -192,11 +191,6 @@
     
 }
 #pragma mark - 其他私有方法
-- (void)setMenuModel:(IHPMenuModel *)menuModel{
-    _menuModel = menuModel;
-    self.title = _menuModel.title;
-    [self reloadData];
-}
 
 #pragma mark - 内存管理相关
 - (void)mainViewControllerDataInit{

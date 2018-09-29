@@ -24,7 +24,6 @@
 		092CAF0E1DE28D23008127DA /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 092CAF0A1DE28D23008127DA /* UIView+Extension.m */; };
 		092CAF0F1DE28D23008127DA /* UIViewController+HideNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 092CAF0D1DE28D23008127DA /* UIViewController+HideNavigationBar.m */; };
 		092CAF131DE28D56008127DA /* OCTKeyboardObserverHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 092CAF121DE28D56008127DA /* OCTKeyboardObserverHelper.m */; };
-		092CAF211DE2B1A7008127DA /* IHYNewsMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 092CAF201DE2B1A7008127DA /* IHYNewsMainViewController.m */; };
 		092CAF2E1DE2B20F008127DA /* IHYNewsListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 092CAF291DE2B20F008127DA /* IHYNewsListCell.m */; };
 		092CAF2F1DE2B20F008127DA /* IHYNewsListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 092CAF2A1DE2B20F008127DA /* IHYNewsListCell.xib */; };
 		092CAF301DE2B20F008127DA /* IHYNewsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 092CAF2D1DE2B20F008127DA /* IHYNewsListViewController.m */; };
@@ -299,8 +298,6 @@
 		092CAF0D1DE28D23008127DA /* UIViewController+HideNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+HideNavigationBar.m"; sourceTree = "<group>"; };
 		092CAF111DE28D56008127DA /* OCTKeyboardObserverHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCTKeyboardObserverHelper.h; sourceTree = "<group>"; };
 		092CAF121DE28D56008127DA /* OCTKeyboardObserverHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCTKeyboardObserverHelper.m; sourceTree = "<group>"; };
-		092CAF1F1DE2B1A7008127DA /* IHYNewsMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IHYNewsMainViewController.h; sourceTree = "<group>"; };
-		092CAF201DE2B1A7008127DA /* IHYNewsMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IHYNewsMainViewController.m; sourceTree = "<group>"; };
 		092CAF281DE2B20F008127DA /* IHYNewsListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IHYNewsListCell.h; sourceTree = "<group>"; };
 		092CAF291DE2B20F008127DA /* IHYNewsListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IHYNewsListCell.m; sourceTree = "<group>"; };
 		092CAF2A1DE2B20F008127DA /* IHYNewsListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IHYNewsListCell.xib; sourceTree = "<group>"; };
@@ -1675,8 +1672,6 @@
 		A05EB90F1DE039D200148A5B /* iNews */ = {
 			isa = PBXGroup;
 			children = (
-				092CAF1F1DE2B1A7008127DA /* IHYNewsMainViewController.h */,
-				092CAF201DE2B1A7008127DA /* IHYNewsMainViewController.m */,
 				092CAF251DE2B20F008127DA /* Newslist */,
 			);
 			path = iNews;
@@ -2372,7 +2367,6 @@
 				A05EB91B1DE03B2500148A5B /* XDSRootRequestViewController.m in Sources */,
 				18A6FA8A2130031500709EC9 /* NLEBNFIndexFactory.m in Sources */,
 				18A6FA8F2130031600709EC9 /* NLEBNFTokenizerParams.m in Sources */,
-				092CAF211DE2B1A7008127DA /* IHYNewsMainViewController.m in Sources */,
 				18A6FA8B2130031600709EC9 /* NLEBNFIndexFactoryJSON.m in Sources */,
 				181E53C5214F928000E8A704 /* CXMLNode.m in Sources */,
 				181E53C2214F928000E8A704 /* UIControl+XDSHyperLink.m in Sources */,

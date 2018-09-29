@@ -16,7 +16,7 @@
 #import "IHYMainViewController.h"
 #import "XDSMainReaderVC.h"
 #import "AppDelegate.h"
-NSString * const XDSEnterMainViewFinishedNotification = @"XDSEnterMainViewFinishedNotification";
+NSString * const kXDSEnterMainViewFinishedNotification = @"XDSEnterMainViewFinishedNotification";
 
 @implementation XDSStartupManager
 + (instancetype)sharedManager
@@ -70,7 +70,7 @@ NSString * const XDSEnterMainViewFinishedNotification = @"XDSEnterMainViewFinish
         [[XDSPlaceholdSplashManager sharedManager] removePlaceholderSplashView];
         
         self.launchTaskQueueFinished = YES;
-        [[NSNotificationCenter defaultCenter] postNotificationName:XDSEnterMainViewFinishedNotification object:nil];
+        [[NSNotificationCenter defaultCenter] postNotificationName:kXDSEnterMainViewFinishedNotification object:nil];
     }
     
     

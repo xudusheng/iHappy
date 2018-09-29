@@ -27,7 +27,8 @@
         }else if ([self.menuId isEqualToString:@"kPicture"]){
             contentController = [[IHPMeituListViewController alloc] init];
             ((IHPMeituListViewController *)contentController).rootUrl = self.rooturl;
-        } else {
+            contentController.title = self.title;
+        }else {
             contentController = [[IHYMainViewController alloc] init];
             ((IHYMainViewController *)contentController).menuModel = self;
         }

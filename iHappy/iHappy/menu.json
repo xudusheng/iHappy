@@ -6,7 +6,7 @@
         "updateMessage": "发现新版本，更新如下\n1、惺惺惜惺惺；\n2、一月又一月晕；\n3、吾问无为谓无",
     },
     "menus": [{
-              "title": "离线阅读",
+              "title": "微阅读",
               "menuId": "kReader",
               "type": "1",
               "enable": true,
@@ -43,7 +43,7 @@
                            }, ],
               },
               {
-              "title": "手机壁纸",
+              "title": "美女壁纸",
               "menuId": "kPicture",
               "type": "4",
               "rooturl": "http://134.175.54.80/ihappy/meizi/query.php",

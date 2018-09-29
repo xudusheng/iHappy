@@ -54,6 +54,8 @@ NSString *const kGDTMobSDKInterstitialAdId = @"2030814134092814";//插屏广告i
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         sharedInstance = [[[self instanceClass] alloc] init];
+        [sharedInstance addNotificationsObservers];
+        
     });
     return sharedInstance;
 }
@@ -61,6 +63,27 @@ NSString *const kGDTMobSDKInterstitialAdId = @"2030814134092814";//插屏广告i
     [[NSNotificationCenter defaultCenter] removeObserver:self
                                                     name:UIApplicationWillEnterForegroundNotification
                                                   object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:kXDSEnterMainViewFinishedNotification
+                                                  object:nil];
+}
+
+- (void)addNotificationsObservers {
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:UIApplicationWillEnterForegroundNotification
+                                                  object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(handleAppDidBecomeActiveNotification)
+                                                 name:UIApplicationWillEnterForegroundNotification
+                                               object:nil];
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:kXDSEnterMainViewFinishedNotification
+                                                  object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(showSplashAd)
+                                                 name:kXDSEnterMainViewFinishedNotification
+                                               object:nil];
 }
 
 //开屏广告
@@ -82,17 +105,9 @@ NSString *const kGDTMobSDKInterstitialAdId = @"2030814134092814";//插屏广告i
     logo.center = self.bottomView.center;
     [self.bottomView addSubview:logo];
     
-    UIWindow *fK = [[[UIApplication sharedApplication] delegate] window];
+    UIWindow *fK = [UIApplication sharedApplication].keyWindow;
     [self.splashAd loadAdAndShowInWindow:fK withBottomView:self.bottomView skipView:nil];
     
-    
-    [[NSNotificationCenter defaultCenter] removeObserver:self
-                                                    name:UIApplicationWillEnterForegroundNotification
-                                                  object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(handleAppDidBecomeActiveNotification)
-                                                 name:UIApplicationWillEnterForegroundNotification
-                                               object:nil];
     self.showAdWhenEnterForground = NO;
 }
 

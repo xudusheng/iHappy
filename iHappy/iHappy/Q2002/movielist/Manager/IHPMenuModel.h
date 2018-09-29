@@ -24,7 +24,7 @@ typedef NS_ENUM(NSInteger, IHPMenuType) {
 @property (assign, nonatomic) IHPMenuType type;//模块类型
 @property (copy, nonatomic) NSString *rooturl;//基础URL
 @property (assign, nonatomic) BOOL enable;//模块是否可用，可用则显示，不可以则不显示，苹果审核期间《关闭》需要提交授权文件的模块。
-@property (copy, nonatomic) NSArray<IHPSubMenuModel> * subMenus;
+@property (copy, nonatomic) NSArray<IHPSubMenuModel> *subMenus;
 
 
 @property (strong, nonatomic, readonly) UINavigationController *contentViewController;//这个model下的controller，单例

@@ -8,6 +8,9 @@
 
 #import "XDSBaseManager.h"
 #import "XDSTaskQueue.h"
+
+UIKIT_EXTERN NSString * const kXDSEnterMainViewFinishedNotification;
+
 @interface XDSStartupManager : XDSBaseManager
 
 @property (nonatomic, strong) NSDictionary * launchOptions;
