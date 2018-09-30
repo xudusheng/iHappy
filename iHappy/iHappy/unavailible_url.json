@@ -1,0 +1,22 @@
+{
+    "unavailible_url_list": [
+        {
+            "title": "首页",
+            "menuId": "kHome",
+            "unavailible_url_list": [
+                "http://www.q2002.com/show/46361.html",
+                "http://www.q2002.com/show/46325.html",
+                "http://www.q2002.com/show/46304.html"
+            ]
+        },
+        {
+            "title": "热门视频",
+            "menuId": "kVideo",
+            "unavailible_url_list": [
+                "http://www.q2002.com/show/46361.html",
+                "http://www.q2002.com/show/46325.html",
+                "http://www.q2002.com/show/46304.html"
+            ]
+        }
+    ]
+}

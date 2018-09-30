@@ -22,9 +22,9 @@
     if (!_contentViewController) {        
         UIViewController *contentController;
 
-        if ([self.menuId isEqualToString:@"kReader"]) {
+        if (self.type == IHPMenuTypeReader) {
             contentController = [[XDSMainReaderVC alloc] init];
-        }else if ([self.menuId isEqualToString:@"kPicture"]){
+        }else if (self.type == IHPMenuTypeBizhi){
             contentController = [[IHPMeituListViewController alloc] init];
             ((IHPMeituListViewController *)contentController).rootUrl = self.rooturl;
             contentController.title = self.title;

@@ -14,6 +14,7 @@
 @interface IHYMovieListViewController ()<UICollectionViewDelegate, UICollectionViewDataSource>
 @property (strong, nonatomic) NSMutableArray<IHYMovieModel *> * movieList;
 @property (strong, nonatomic) UICollectionView * movieCollectionView;
+
 @property (copy, nonatomic) NSString * nextPageUrl;
 @property (nonatomic,assign) NSInteger currentPage;
 @end
@@ -73,9 +74,9 @@
 
 
 - (void)fetchMovieList:(BOOL)isTop{
-    NSString *url = self.rootUrl;
+    NSString *url = _menuModel.rooturl;
     NSDictionary *params = @{
-                             @"type":self.type,
+                             @"type":_subMenuModel.url,
                              @"size":@(REQUEST_PAGE_SIZE),
                              @"page":@(_currentPage),
                              };
@@ -95,7 +96,17 @@
                                                 if (movieList.count) {
                                                     (weakSelf.currentPage == 0) ? [weakSelf.movieList removeAllObjects] : NULL;
                                                 }
-                                                [self.movieList addObjectsFromArray:movieList];
+                                                
+                                                //过滤需要禁止显示的url
+                                                for (IHYMovieModel *movieModel in movieList) {
+                                                    NSString *fullHref = [self.menuModel.rooturl stringByAppendingString:movieModel.href];
+                                                    if ([weakSelf.menuModel.unavailible_url_list containsObject:movieModel.href] || [weakSelf.menuModel.unavailible_url_list containsObject:fullHref]) {
+                                                    }else {
+                                                        [self.movieList addObject:movieModel];
+                                                    }
+                                                }
+                                                
+                                                
                                                 [self.movieCollectionView reloadData];
                                                 [weakSelf endRefresh];
                                             } failed:^(NSString *errorDescription) {

@@ -37,7 +37,7 @@
 //    self.navigationController.navigationBar.translucent = NO;
 //    self.navigationController.navigationBar.shadowImage = [UIImage new];
     
-    if ([self.menuModel.menuId isEqualToString:@"kVideo"]) {
+    if (self.menuModel.type == IHPMenuTypeVideo) {
         CGFloat navHeight = 44;
         CGFloat searchbarHeight = 29;
         UIView *titleView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, DEVIECE_SCREEN_WIDTH - 66, navHeight)];
@@ -45,10 +45,13 @@
         _searchBar.frame = CGRectMake(0, navHeight/2 - searchbarHeight/2, CGRectGetWidth(titleView.frame) - searchbarHeight, searchbarHeight);
         [titleView addSubview:_searchBar];
         self.navigationItem.titleView = titleView;
-        
-        [[XDSAdManager sharedManager] showInterstitialAD];
-
     }
+    
+    if (self.menuModel.type == IHPMenuTypeVideo ||
+        self.menuModel.type == IHPMenuTypeQ2002) {
+        [[XDSAdManager sharedManager] showInterstitialAD];
+    }
+    
 }
 
 - (void)configSearchBar {
@@ -94,7 +97,7 @@
 }
 
 - (UIViewController *)pageController:(WMPageController *)pageController viewControllerAtIndex:(NSInteger)index {
-    IHPSubMenuModel * model = _menuModel.subMenus[index];
+    IHPSubMenuModel *model = _menuModel.subMenus[index];
     if (_menuModel.type == IHPMenuTypeJuheNews) {
         IHYNewsListViewController * newsVC = [[IHYNewsListViewController alloc]init];
         newsVC.rootUrl = _menuModel.rooturl;
@@ -108,13 +111,14 @@
         
     }else if(_menuModel.type == IHPMenuTypeQ2002){
         XDSHTMLMovieListVC * movieVC = [[XDSHTMLMovieListVC alloc]init];
-        movieVC.firstPageUrl = model.url;
+        movieVC.menuModel = _menuModel;
+        movieVC.subMenuModel = model;
         return movieVC;
         
     }else{
         IHYMovieListViewController * movieVC = [[IHYMovieListViewController alloc]init];
-        movieVC.rootUrl = _menuModel.rooturl;
-        movieVC.type = model.url;
+        movieVC.menuModel = _menuModel;
+        movieVC.subMenuModel = model;
         return movieVC;
     }
 }

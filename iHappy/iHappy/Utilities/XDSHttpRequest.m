@@ -117,7 +117,9 @@ NSString *const key = @"huidaibao";
     }
 
     htmlHref = [htmlHref stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    AFHTTPSessionManager * manager = [AFHTTPSessionManager manager];
+    NSURLSessionConfiguration *config = [NSURLSessionConfiguration ephemeralSessionConfiguration];
+    AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithSessionConfiguration:config];
+    
     manager.requestSerializer = [AFHTTPRequestSerializer serializer];
     [manager.requestSerializer setValue:@"text/html" forHTTPHeaderField:@"Content-Type"];
     

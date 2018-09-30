@@ -9,13 +9,16 @@
 
 #import <Foundation/Foundation.h>
 #import "IHPConfigModel.h"
-@class IHPMenuModel;
+#import "IHYHiddenModel.h"
 
-@interface IHPConfigManager : JSONModel
+@interface IHPConfigManager : NSObject
 
 + (instancetype)shareManager;
 
 @property (nonatomic, readonly) IHPForceUpdateModel *forceUpdate;
 @property (nonatomic, readonly) NSArray<IHPMenuModel *> *menus;
+
 - (void)configManagerWithJsondData:(NSData *)configData;
+- (void)configHiddenModelWithJsondData:(NSData *)hiddenModelData;
+
 @end

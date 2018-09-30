@@ -18,10 +18,9 @@
 #import "XDSEpisodeCell.h"
 
 #import "AppDelegate.h"
-//#import "IHYMoviePlayerViewController.h"
-//#import "ZFPlayer.h"
+#import "ZFPlayer.h"
 
-#import "XDSPlayerView.h"
+#import "IHYMovieModel.h"
 @interface XDSHTMLPlayerVC ()
 <
 UICollectionViewDelegate,
@@ -32,14 +31,17 @@ UIWebViewDelegate
 @property (strong, nonatomic) NSMutableArray<NSDictionary *> * movieButtonList;
 @property (strong, nonatomic) UICollectionView * moviedetailCollectionView;
 
-//@property (strong, nonatomic) ZFPlayerView *playerView;
-@property (strong, nonatomic) XDSPlayerView *playerView;
+@property (strong, nonatomic) ZFPlayerView *playerView;
 @property (strong, nonatomic) UIView *playerContentView;
 
 @property (strong, nonatomic) UIWebView * webView;
 @property (nonatomic,assign)BOOL didWebViewLoadOK;
 
 @property (strong, nonatomic) IHYMoviePlayButtonModel *selectedMovieModel;
+
+@property (strong, nonatomic)IHYMovieModel *movieModel;
+
+@property (weak, nonatomic) UIButton *hiddenSummaryButton;//隐藏与展开简介按钮
 
 @end
 
@@ -50,7 +52,7 @@ NSInteger const kHTMLPlaceholderSectionNumbers = 2;
 @implementation XDSHTMLPlayerVC
 - (void)dealloc{
     NSLog(@"%@ ==> dealloc", [self class]);
-    [self.playerView destroyPlayer];
+
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -134,7 +136,7 @@ NSInteger const kHTMLPlaceholderSectionNumbers = 2;
     self.playerContentView.backgroundColor = [UIColor blackColor];
     [self.view addSubview:self.playerContentView];
     
-    self.playerView = [[XDSPlayerView alloc] initWithFrame:self.playerContentView.bounds];
+//    self.playerView = [[XDSPlayerView alloc] initWithFrame:self.playerContentView.bounds];
     self.webView = [[UIWebView alloc]initWithFrame:self.playerContentView.bounds];
     self.webView.mediaPlaybackRequiresUserAction = YES;
     self.webView.scalesPageToFit = YES;
@@ -179,7 +181,7 @@ NSInteger const kHTMLPlaceholderSectionNumbers = 2;
 - (void)fetchMovieInfo{
 
     __weak typeof(self)weakSelf = self;
-    [[[XDSHttpRequest alloc] init] htmlRequestWithHref:_movieModel.href
+    [[[XDSHttpRequest alloc] init] htmlRequestWithHref:_htmlMovieModel.href
                                          hudController:self
                                                showHUD:YES
                                                HUDText:nil
@@ -228,8 +230,8 @@ NSInteger const kHTMLPlaceholderSectionNumbers = 2;
     if (indexPath.section < kHTMLPlaceholderSectionNumbers) {
         if (indexPath.section == 0) {
             XDSVideoSummaryCell *cell  = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([XDSVideoSummaryCell class]) forIndexPath:indexPath];
-//            cell.summary = self.movieModel.summary;
-//            self.hiddenSummaryButton = cell.hiddenButton;
+            cell.summary = self.movieModel.summary;
+            self.hiddenSummaryButton = cell.hiddenButton;
             return cell;
         }else {
             XDSPlayerBannerAdCell *cell  = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([XDSPlayerBannerAdCell class]) forIndexPath:indexPath];
@@ -258,14 +260,14 @@ NSInteger const kHTMLPlaceholderSectionNumbers = 2;
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section < kHTMLPlaceholderSectionNumbers) {
         if (indexPath.section == 0) {
-            NSString *summary = @"xxxxxxxxxxxxxxxxxxxxxxxxx";
+            NSString *summary = self.movieModel.summary;
             CGSize size = [summary sizeWithFont:VIDEO_SUMMARY_FONT maxSize:VIDEO_SUMMARY_MAX_SIZE];
             if (size.height < 60) {
                 CGSize itemSize = CGSizeMake(DEVIECE_SCREEN_WIDTH, VIDEO_SUMMARY_CELL_HEIGHT_EXCEPT_SUMMARY + size.height - VIDEO_SUMMARY_CELL_HIDDEN_BUTTON_HEIGHT);
                 return itemSize;
             }else {
                 CGSize itemSize = CGSizeMake(DEVIECE_SCREEN_WIDTH, VIDEO_SUMMARY_CELL_HEIGHT_EXCEPT_SUMMARY + 60);
-                if (YES) {//展开剧情简介
+                if (self.hiddenSummaryButton) {//展开剧情简介
                     itemSize.height = VIDEO_SUMMARY_CELL_HEIGHT_EXCEPT_SUMMARY + size.height;
                 }
                 return itemSize;
@@ -310,14 +312,14 @@ NSInteger const kHTMLPlaceholderSectionNumbers = 2;
     if ([kind isEqualToString:UICollectionElementKindSectionHeader]) {
         XDSPlayerSectionHeader *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:NSStringFromClass([XDSPlayerSectionHeader class]) forIndexPath:indexPath];
         if (indexPath.section == kHTMLPlaceholderSectionNumbers) {
-            if (self.movieModel.name.length) {
-                headerView.titleLabel.text = [NSString stringWithFormat:@"《%@》- 在线播放 - 如果不能播放先刷新试试", self.movieModel.name];
+            if (self.htmlMovieModel.name.length) {
+                headerView.titleLabel.text = [NSString stringWithFormat:@"《%@》- 在线播放 - 如果不能播放先刷新试试", self.htmlMovieModel.name];
             }else {
                 headerView.titleLabel.text = @"在线播放 - 如果不能播放先刷新试试";
             }
         }else {
-            if (self.movieModel.name.length) {
-                headerView.titleLabel.text = [NSString stringWithFormat:@"《%@》- @备用 - 在线播放 - 如果不能播放先刷新试试", self.movieModel.name];
+            if (self.htmlMovieModel.name.length) {
+                headerView.titleLabel.text = [NSString stringWithFormat:@"《%@》- @备用 - 在线播放 - 如果不能播放先刷新试试", self.htmlMovieModel.name];
             }else {
                 headerView.titleLabel.text = @"@备用 - 在线播放 - 如果不能播放先刷新试试";
             }
@@ -360,13 +362,15 @@ NSInteger const kHTMLPlaceholderSectionNumbers = 2;
 #pragma mark - 其他私有方法
 //TODO:解析视频信息与选集
 - (void)detailHtmlData:(NSData *)htmlData{
+    self.movieModel = [[IHYMovieModel alloc] init];
+    
     TFHpple * hpp = [[TFHpple alloc] initWithHTMLData:htmlData];
-
     NSArray * img_lazy_elments = [hpp searchWithXPathQuery:@"//img[@class=\"lazy\"]"];
     NSString * movieImage = @"";
     if (img_lazy_elments.count > 0) {
         TFHppleElement * img_lazy_elment = img_lazy_elments.firstObject;
         movieImage = [img_lazy_elment objectForKey:@"src"];
+        self.movieModel.image_src = movieImage;
     }
 
     NSArray * dt_dd_elements = [hpp searchWithXPathQuery:@"//dl//dt|//dd"];
@@ -384,8 +388,8 @@ NSInteger const kHTMLPlaceholderSectionNumbers = 2;
 
     TFHppleElement * sumary_element = [hpp searchWithXPathQuery:@"//div[@class=\"tab-jq ctc\"]"].firstObject;
     NSString * sumary = sumary_element.text;
-    NSLog(@"%@", sumary);
-
+    self.movieModel.summary = sumary;
+    
     NSArray * show_player_gogo_elements = [hpp searchWithXPathQuery:@"//div[@class=\"show_player_gogo\"]//ul"];
     NSArray * bofangqi_elements = [hpp searchWithXPathQuery:@"//li[@class=\"on bofangqi\"]"];
     NSMutableArray * bofangqi = [NSMutableArray arrayWithCapacity:0];
@@ -428,7 +432,6 @@ NSInteger const kHTMLPlaceholderSectionNumbers = 2;
     if (bofangqi.count > 0) {
         [_movieButtonList removeAllObjects];
         [_movieButtonList addObjectsFromArray:bofangqi];
-        [_moviedetailCollectionView reloadData];
     }
 
 
@@ -440,7 +443,7 @@ NSInteger const kHTMLPlaceholderSectionNumbers = 2;
             self.selectedMovieModel = buttonModel;
         }
     }
-
+    
 }
 
 //TODO:解析播放器代码
@@ -469,7 +472,7 @@ NSInteger const kHTMLPlaceholderSectionNumbers = 2;
 - (void)stripVideoSrc:(NSData *)data playerUrl:(NSString *)playerUrl{
     TFHpple * hpp = [[TFHpple alloc] initWithHTMLData:data];
     TFHppleElement * video = [hpp searchWithXPathQuery:@"//video"].firstObject;
-//    TFHppleElement * iframe = [hpp searchWithXPathQuery:@"//iframe"].firstObject;
+    //    TFHppleElement * iframe = [hpp searchWithXPathQuery:@"//iframe"].firstObject;
     
     BOOL playerWebView = YES;
     NSString *videoUrl = @"";
@@ -479,92 +482,88 @@ NSInteger const kHTMLPlaceholderSectionNumbers = 2;
             playerWebView = NO;
         }
     }
-
     
-//    //======================纯webView显示====================
-//    if (!self.webView.superview) {
-//        [self.playerContentView addSubview:self.webView];
-//    }
-//    NSURL * url = [NSURL URLWithString:playerUrl];
-//    NSURLRequest * request = [NSURLRequest requestWithURL:url];
-//    [_webView loadRequest:request];
+    
+    //    //======================纯webView显示====================
+    //    if (!self.webView.superview) {
+    //        [self.playerContentView addSubview:self.webView];
+    //    }
+    //    NSURL * url = [NSURL URLWithString:playerUrl];
+    //    NSURLRequest * request = [NSURLRequest requestWithURL:url];
+    //    [_webView loadRequest:request];
     //====================== player + webView显示 ====================
-        if (playerWebView) {
-            [self.playerView removeFromSuperview];
-            if (!self.webView.superview) {
-                [self.playerContentView addSubview:self.webView];
-            }
-            NSURL * url = [NSURL URLWithString:playerUrl];
-            NSURLRequest * request = [NSURLRequest requestWithURL:url];
-            [_webView loadRequest:request];
-        }else{
-            [self.webView removeFromSuperview];
-            if (![self.playerView superview]) {
-                [self.playerContentView addSubview:self.playerView];
-            }
-    
-            [self playWithXDSPlayer:videoUrl];
+    if (playerWebView) {
+        [self.playerView removeFromSuperview];
+        if (!self.webView.superview) {
+            [self.playerContentView addSubview:self.webView];
         }
+        NSURL * url = [NSURL URLWithString:playerUrl];
+        NSURLRequest * request = [NSURLRequest requestWithURL:url];
+        [_webView loadRequest:request];
+    }else{
+        [self.webView removeFromSuperview];
+        if (![self.playerView superview]) {
+            [self.playerContentView addSubview:self.playerView];
+        }
+        
+        [self playWithZPPLayer:videoUrl];
+    }
 
-    self.title = [NSString stringWithFormat:@"%@-%@", self.movieModel.name, self.selectedMovieModel.title];
-    [self.moviedetailCollectionView cw_scrollToTopAnimated:YES];
-    [self.moviedetailCollectionView reloadData];
+    self.title = [NSString stringWithFormat:@"%@-%@", self.htmlMovieModel.name, self.selectedMovieModel.title];
 }
 
-- (void)playWithXDSPlayer:(NSString *)videoSrc {
-    XDSMediaModel *mediaModel = [[XDSMediaModel alloc] init];
-    mediaModel.mediaURL = [NSURL URLWithString:videoSrc];
-    mediaModel.mediaType = XDSMediaTypeVideo;
-    self.playerView.mediaModel = mediaModel;
-}
 
-//- (void)playWithZPPLayer:(NSString *)videoSrc{
-//
-//    NSURL *videoURL = [NSURL URLWithString:videoSrc];
-//    ZFPlayerModel *playerModel = [[ZFPlayerModel alloc] init];
-//    playerModel.title            = self.selectedMovieModel.title;
-//    playerModel.videoURL         = videoURL;
+- (void)playWithZPPLayer:(NSString *)videoSrc{
+
+    NSURL *videoURL = [NSURL URLWithString:videoSrc];
+    ZFPlayerModel *playerModel = [[ZFPlayerModel alloc] init];
+    playerModel.title            = self.selectedMovieModel.title;
+    playerModel.videoURL         = videoURL;
 //    playerModel.placeholderImage = [UIImage imageNamed:@"loading_bgView1"];
-//    playerModel.fatherView       = self.playerContentView;
-//
-//    [self.playerView playerControlView:nil playerModel:playerModel];
-//}
+    playerModel.fatherView       = self.playerContentView;
+
+    [self.playerView playerControlView:nil playerModel:playerModel];
+    
+    [self.playerView autoPlayTheVideo];
+}
 
 - (void)setSelectedMovieModel:(IHYMoviePlayButtonModel *)selectedMovieModel{
     _selectedMovieModel = selectedMovieModel;
-//    [self.playerView resetPlayer];
+    [self.playerView resetPlayer];
     [self fetchMoviePlayer];
+    [_moviedetailCollectionView reloadData];
 }
 
 
-//- (ZFPlayerView *)playerView{
-//    if (!_playerView) {
-//        _playerView = [[ZFPlayerView alloc] init];
-//
-//        /*****************************************************************************************
-//         *   // 指定控制层(可自定义)
-//         *   // ZFPlayerControlView *controlView = [[ZFPlayerControlView alloc] init];
-//         *   // 设置控制层和播放模型
-//         *   // 控制层传nil，默认使用ZFPlayerControlView(如自定义可传自定义的控制层)
-//         *   // 等效于 [_playerView playerModel:self.playerModel];
-//         ******************************************************************************************/
-////        [_playerView playerControlView:nil playerModel:playerModel];
-//
-//        // 设置代理
-//        //    playerView.delegate = self;
-//
-//        //（可选设置）可以设置视频的填充模式，内部设置默认（ZFPlayerLayerGravityResizeAspect：等比例填充，直到一个维度到达区域边界）
-//        // _playerView.playerLayerGravity = ZFPlayerLayerGravityResize;
-//
-//        // 打开下载功能（默认没有这个功能）
-//        _playerView.hasDownload    = YES;
-//
-//        // 打开预览图
-//        _playerView.hasPreviewView = YES;
-//    }
-//    return _playerView;
-//
-//}
+- (ZFPlayerView *)playerView{
+    if (!_playerView) {
+        _playerView = [[ZFPlayerView alloc] init];
+
+        /*****************************************************************************************
+         *   // 指定控制层(可自定义)
+         *   // ZFPlayerControlView *controlView = [[ZFPlayerControlView alloc] init];
+         *   // 设置控制层和播放模型
+         *   // 控制层传nil，默认使用ZFPlayerControlView(如自定义可传自定义的控制层)
+         *   // 等效于 [_playerView playerModel:self.playerModel];
+         ******************************************************************************************/
+//        [_playerView playerControlView:nil playerModel:playerModel];
+
+        // 设置代理
+        //    playerView.delegate = self;
+
+        //（可选设置）可以设置视频的填充模式，内部设置默认（ZFPlayerLayerGravityResizeAspect：等比例填充，直到一个维度到达区域边界）
+        // _playerView.playerLayerGravity = ZFPlayerLayerGravityResize;
+
+        // 打开下载功能（默认没有这个功能）
+        _playerView.hasDownload    = YES;
+
+        // 打开预览图
+        _playerView.hasPreviewView = YES;
+        
+    }
+    return _playerView;
+
+}
 #pragma mark - 内存管理相关
 - (void)movieDetailViewControllerDataInit{
     self.movieButtonList = [[NSMutableArray alloc] init];

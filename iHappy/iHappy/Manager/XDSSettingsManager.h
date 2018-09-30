@@ -26,4 +26,5 @@
 - (void)setGlobalSettings NS_REQUIRES_SUPER;
 - (void)setOnlyOnceWhenLaunchTaskQueueFinished NS_REQUIRES_SUPER;
 
+
 @end

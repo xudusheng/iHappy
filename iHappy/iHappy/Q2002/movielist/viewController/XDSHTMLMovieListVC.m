@@ -14,7 +14,9 @@
 @interface XDSHTMLMovieListVC ()<UICollectionViewDelegate, UICollectionViewDataSource>
 @property (strong, nonatomic) NSMutableArray<XDSHTMLMovieModel *> * movieList;
 @property (strong, nonatomic) UICollectionView * movieCollectionView;
-@property (copy, nonatomic) NSString * nextPageUrl;
+
+@property (copy, nonatomic) NSString *firstPageUrl;
+@property (copy, nonatomic) NSString *nextPageUrl;
 
 @end
 
@@ -89,7 +91,7 @@ NSString * const MovieListViewController_movieCellIdentifier = @"IHPMovieCell";
 
     XDSHTMLMovieModel *movieModel = _movieList[indexPath.row];
     XDSHTMLPlayerVC *movieDetailVC = [[XDSHTMLPlayerVC alloc] init];
-    movieDetailVC.movieModel = movieModel;
+    movieDetailVC.htmlMovieModel = movieModel;
     [self.navigationController pushViewController:movieDetailVC animated:YES];
     
 }
@@ -157,7 +159,6 @@ NSString * const MovieListViewController_movieCellIdentifier = @"IHPMovieCell";
         TFHppleElement * span_lzbz =  [a_link_hover firstChildWithClassName:@"lzbz"];
         TFHppleElement * p_name = [span_lzbz firstChildWithClassName:@"name"];//名称
         TFHppleElement * p_actor =  [span_lzbz childrenWithClassName:@"actor"].lastObject;//更新时间
-        
         TFHppleElement * p_other =  [a_link_hover firstChildWithClassName:@"other"];//其他描述
         
         NSString * name = p_name.text;
@@ -166,7 +167,17 @@ NSString * const MovieListViewController_movieCellIdentifier = @"IHPMovieCell";
         NSString * update = p_actor.text;
         NSString * other = p_other.text;
         
-        XDSHTMLMovieModel * model = [[XDSHTMLMovieModel alloc] init];
+        
+        NSLog(@"%@", href);
+
+        
+        //过滤需要禁止显示的url
+        NSString *fullHref = [self.menuModel.rooturl stringByAppendingString:href];
+        if ([self.menuModel.unavailible_url_list containsObject:fullHref] || [self.menuModel.unavailible_url_list containsObject:href]) {
+            continue;
+        }
+
+        XDSHTMLMovieModel *model = [[XDSHTMLMovieModel alloc] init];
         model.name = name;
         model.href = href;
         model.imageurl = imageurl;
@@ -185,8 +196,9 @@ NSString * const MovieListViewController_movieCellIdentifier = @"IHPMovieCell";
     }
 }
 
-- (void)setFirstPageUrl:(NSString *)firstPageUrl {
-    _firstPageUrl = firstPageUrl;
+- (void)setSubMenuModel:(IHPSubMenuModel *)subMenuModel {
+    _subMenuModel = subMenuModel;
+    self.firstPageUrl = subMenuModel.url;
     [self fetchMovieListTop];
 }
 #pragma mark - 内存管理相关

@@ -3,118 +3,157 @@
         "enable": false,
         "isForce": false,
         "url": "",
-        "updateMessage": "发现新版本，更新如下\n1、惺惺惜惺惺；\n2、一月又一月晕；\n3、吾问无为谓无",
+        "updateMessage": "发现新版本，更新如下\n1、惺惺惜惺惺；\n2、一月又一月晕；\n3、吾问无为谓无"
     },
-    "menus": [{
-              "title": "微阅读",
-              "menuId": "kReader",
-              "type": "0",
-              "enable": true,
-              "rooturl": "http://120.76.205.241:8000/news/qihoo?apikey=cz1wjvkzGtuomNDXgLxmdq5aIwgytQvHHe0Dc8OcfHQva6hKQgDoDyBdUAQngGt6&site=qq.com",
-              "subMenus": [],
-              },
-              {
-              "title": "首页",
-              "menuId": "kHome",
-              "type": "1",
-              "rooturl": "http://www.q2002.com",
-              "enable": true,
-              "subMenus": [{
-                           "title": "电影",
-                           "url": "/type/1.html"
-                           }, {
-                           "title": "电视剧",
-                           "url": "/type/2.html"
-                           }, {
-                           "title": "动漫",
-                           "url": "/type/7.html"
-                           }, {
-                           "title": "音乐",
-                           "url": "/type/6.html"
-                           }, {
-                           "title": "综艺",
-                           "url": "/type/4.html"
-                           }, {
-                           "title": "福利",
-                           "url": "/type/3.html"
-                           }, {
-                           "title": "WWE",
-                           "url": "/type/18.html"
-                           }, ],
-              },
-              {
-              "title": "热门视频",
-              "menuId": "kVideo",
-              "type": "2",
-              "rooturl": "http://134.175.54.80/ihappy/video/query.php",
-              "enable": true,
-              "subMenus": [{
-                           "title": "电影",
-                           "url": "1"
-                           }, {
-                           "title": "电视剧",
-                           "url": "2"
-                           }, {
-                           "title": "动漫",
-                           "url": "7"
-                           }, {
-                           "title": "音乐",
-                           "url": "6"
-                           }, {
-                           "title": "综艺",
-                           "url": "4"
-                           }, {
-                           "title": "福利",
-                           "url": "3"
-                           }, {
-                           "title": "WWE",
-                           "url": "18"
-                           }, ],
-              },
-              {
-              "title": "头条新闻",
-              "menuId": "kNews",
-              "type": "3",
-              "enable": true,
-              "rooturl": "http://120.76.205.241:8000/news/qihoo?apikey=cz1wjvkzGtuomNDXgLxmdq5aIwgytQvHHe0Dc8OcfHQva6hKQgDoDyBdUAQngGt6&site=qq.com",
-              "subMenus": [{
-                           "title": "推荐",
-                           "url": ""
-                           }, {
-                           "title": "头条",
-                           "url": ""
-                           }, {
-                           "title": "娱乐",
-                           "url": ""
-                           }, {
-                           "title": "科技",
-                           "url": ""
-                           }, {
-                           "title": "财经",
-                           "url": ""
-                           }, {
-                           "title": "体育",
-                           "url": ""
-                           }, {
-                           "title": "房产",
-                           "url": ""
-                           }, {
-                           "title": "图片",
-                           "url": ""
-                           }, {
-                           "title": "时尚",
-                           "url": ""
-                           },  {
-                           "title": "国际",
-                           "url": ""
-                           }, ],
-              },
-              {
-              "title": "美女壁纸",
-              "menuId": "kPicture",
-              "type": "4",
-              "rooturl": "http://134.175.54.80/ihappy/meizi/query.php",
-              "enable": true,
-              "subMenus": [],
-              }, ]
+    "menus": [
+        {
+            "title": "微阅读",
+            "menuId": "kReader",
+            "type": "0",
+            "enable": true,
+            "rooturl": "http://120.76.205.241:8000/news/qihoo?apikey=cz1wjvkzGtuomNDXgLxmdq5aIwgytQvHHe0Dc8OcfHQva6hKQgDoDyBdUAQngGt6&site=qq.com",
+            "subMenus": [],
+        },
+        {
+            "title": "首页",
+            "menuId": "kHome",
+            "type": "1",
+            "rooturl": "http://www.q2002.com",
+            "enable": true,
+            "subMenus": [
+                {
+                    "title": "电影",
+                    "url": "/type/1.html"
+                },
+                {
+                    "title": "电视剧",
+                    "url": "/type/2.html"
+                },
+                {
+                    "title": "动漫",
+                    "url": "/type/7.html"
+                },
+                {
+                    "title": "音乐",
+                    "url": "/type/6.html"
+                },
+                {
+                    "title": "综艺",
+                    "url": "/type/4.html"
+                },
+                {
+                    "title": "福利",
+                    "url": "/type/3.html"
+                },
+                {
+                    "title": "WWE",
+                    "url": "/type/18.html"
+                }
+            ],
+            "unavailible_url_list": [
+                "http://www.q2002.com/show/46361.html",
+                "http://www.q2002.com/show/46325.html",
+                "http://www.q2002.com/show/46304.html"
+            ]
+        },
+        {
+            "title": "热门视频",
+            "menuId": "kVideo",
+            "type": "2",
+            "rooturl": "http://134.175.54.80/ihappy/video/query.php",
+            "enable": true,
+            "subMenus": [
+                {
+                    "title": "电影",
+                    "url": "1"
+                },
+                {
+                    "title": "电视剧",
+                    "url": "2"
+                },
+                {
+                    "title": "动漫",
+                    "url": "7"
+                },
+                {
+                    "title": "音乐",
+                    "url": "6"
+                },
+                {
+                    "title": "综艺",
+                    "url": "4"
+                },
+                {
+                    "title": "福利",
+                    "url": "3"
+                },
+                {
+                    "title": "WWE",
+                    "url": "18"
+                }
+            ],
+            "unavailible_url_list": [
+                "http://www.q2002.com/show/46361.html",
+                "http://www.q2002.com/show/46325.html",
+                "http://www.q2002.com/show/46304.html"
+            ]
+        },
+        {
+            "title": "头条新闻",
+            "menuId": "kNews",
+            "type": "3",
+            "enable": true,
+            "rooturl": "http://120.76.205.241:8000/news/qihoo?apikey=cz1wjvkzGtuomNDXgLxmdq5aIwgytQvHHe0Dc8OcfHQva6hKQgDoDyBdUAQngGt6&site=qq.com",
+            "subMenus": [
+                {
+                    "title": "推荐",
+                    "url": ""
+                },
+                {
+                    "title": "头条",
+                    "url": ""
+                },
+                {
+                    "title": "娱乐",
+                    "url": ""
+                },
+                {
+                    "title": "科技",
+                    "url": ""
+                },
+                {
+                    "title": "财经",
+                    "url": ""
+                },
+                {
+                    "title": "体育",
+                    "url": ""
+                },
+                {
+                    "title": "房产",
+                    "url": ""
+                },
+                {
+                    "title": "图片",
+                    "url": ""
+                },
+                {
+                    "title": "时尚",
+                    "url": ""
+                },
+                {
+                    "title": "国际",
+                    "url": ""
+                }
+            ],
+        },
+        {
+            "title": "美女壁纸",
+            "menuId": "kPicture",
+            "type": "4",
+            "rooturl": "http://134.175.54.80/ihappy/meizi/query.php",
+            "enable": true,
+            "subMenus": [],
+        }
+    ]
 }

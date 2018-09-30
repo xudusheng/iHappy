@@ -128,6 +128,7 @@ NSString * const kXDSEnterMainViewFinishedNotification = @"XDSEnterMainViewFinis
 }
 
 NSString *const kXDSFetchConfigTaskID = @"XDSFetchConfigTask";
+NSString *const kXDSFetchUnavailibleUrlListTaskID = @"XDSFetchUnavailibleUrlListTaskID";
 NSString *const kXDSUpdateLocalizableTaskID = @"XDSUpdateLocalizableTask";
 
 - (void)scheduleLaunchTaskQueue {
@@ -139,6 +140,12 @@ NSString *const kXDSUpdateLocalizableTaskID = @"XDSUpdateLocalizableTask";
     fetchConfigTask.taskContentBlock = ^(XDSTask *task) {
         [self fetchConfigData];
     };
+
+    XDSTask *fetchUnavailibleUrlListTask = [XDSTask task];
+    fetchUnavailibleUrlListTask.taskId = kXDSFetchUnavailibleUrlListTaskID;
+    fetchUnavailibleUrlListTask.taskContentBlock = ^(XDSTask *task) {
+        [self fetchUnavailibleUrlList];
+    };
     
     XDSTask *updateLocalizableTask = [XDSTask task];
     updateLocalizableTask.taskId = kXDSUpdateLocalizableTaskID;
@@ -148,9 +155,11 @@ NSString *const kXDSUpdateLocalizableTaskID = @"XDSUpdateLocalizableTask";
 
     
     [_launchTaskQueue addTask:fetchConfigTask];
+    [_launchTaskQueue addTask:fetchUnavailibleUrlListTask];
     [_launchTaskQueue addTask:updateLocalizableTask];
 
-    [updateLocalizableTask addDependency:fetchConfigTask];
+    [fetchUnavailibleUrlListTask addDependency:fetchConfigTask];
+    [updateLocalizableTask addDependency:fetchUnavailibleUrlListTask];
     
     [_launchTaskQueue goWithFinishedBlock:^(XDSTaskQueue *taskQueue) {
         //enter main page
@@ -162,17 +171,16 @@ NSString *const kXDSUpdateLocalizableTaskID = @"XDSUpdateLocalizableTask";
 
 - (void)fetchConfigData{
     
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"menu" ofType:@"json"];
-    NSData *menuData = [NSData dataWithContentsOfFile:path];
-    NSLog(@"%@", [[NSString alloc] initWithData:menuData encoding:NSUTF8StringEncoding]);
+//    NSString *path = [[NSBundle mainBundle] pathForResource:@"menu" ofType:@"json"];
+//    NSData *menuData = [NSData dataWithContentsOfFile:path];
+//    NSLog(@"%@", [[NSString alloc] initWithData:menuData encoding:NSUTF8StringEncoding]);
+//
+//    IHPConfigManager *manager = [IHPConfigManager shareManager];
+//    [manager configManagerWithJsondData:menuData];
+//    [self finishTaskWithTaksID:kXDSFetchConfigTaskID];
+//
+//    return;
     
-    IHPConfigManager *manager = [IHPConfigManager shareManager];
-    [manager configManagerWithJsondData:menuData];
-    [self finishTaskWithTaksID:kXDSFetchConfigTaskID];
-
-    return;
-    
-    //    NSString *requesturl = @"http://opno6uar4.bkt.clouddn.com/iHappy/menu_v1.0.3.json";
     NSString *requesturl = @"http://134.175.54.80/ihappy/menu.json";
     
     __weak typeof(self)weakSelf = self;
@@ -234,6 +242,52 @@ NSString *const kXDSUpdateLocalizableTaskID = @"XDSUpdateLocalizableTask";
                                                    
                                                }];
 }
+
+- (void)fetchUnavailibleUrlList {
+    
+//    NSString *path = [[NSBundle mainBundle] pathForResource:@"unavailible_url" ofType:@"json"];
+//    NSData *hiddenModelData = [NSData dataWithContentsOfFile:path];
+//    NSLog(@"%@", [[NSString alloc] initWithData:hiddenModelData encoding:NSUTF8StringEncoding]);
+//
+//    IHPConfigManager *manager = [IHPConfigManager shareManager];
+//    [manager configHiddenModelWithJsondData:hiddenModelData];
+//    [self finishTaskWithTaksID:kXDSFetchUnavailibleUrlListTaskID];
+//
+//    return;
+    
+    NSString *requesturl = @"http://134.175.54.80/ihappy/unavailible_url.json";
+    
+    __weak typeof(self)weakSelf = self;
+    [[[XDSHttpRequest alloc] init] htmlRequestWithHref:requesturl
+                                         hudController:nil
+                                               showHUD:NO
+                                               HUDText:nil
+                                         showFailedHUD:YES
+                                               success:^(BOOL success, NSData * htmlData) {
+                                                   NSLog(@"%@", [[NSString alloc] initWithData:htmlData encoding:NSUTF8StringEncoding]);
+                                                   
+                                                   IHPConfigManager *manager = [IHPConfigManager shareManager];
+                                                   [manager configHiddenModelWithJsondData:htmlData];
+                                                   [weakSelf finishTaskWithTaksID:kXDSFetchUnavailibleUrlListTaskID];
+
+                                                   
+                                               } failed:^(NSString *errorDescription) {
+                                                   errorDescription = errorDescription?errorDescription:kLoadFailed;
+                                                   [XDSUtilities alertViewWithPresentingController:[XDSRootViewController sharedRootViewController]
+                                                                                             title:nil
+                                                                                           message:errorDescription
+                                                                                      buttonTitles:@[@"退出", @"重新连接"]
+                                                                                             block:^(NSInteger index) {
+                                                                                                 if (index == 0) {
+                                                                                                     exit(0);
+                                                                                                 }else{
+                                                                                                     [weakSelf fetchUnavailibleUrlList];
+                                                                                                 }
+                                                                                             }];
+                                                   
+                                               }];
+}
+
 
 
 - (void)finishTaskWithTaksID:(NSString *)taskID{

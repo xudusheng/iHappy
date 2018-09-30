@@ -18,18 +18,6 @@
     dispatch_once(&onceToken, ^{
         manager = [[IHPConfigManager alloc] init];
     });
-    
-//    if (nil == manager.configModel) {
-//        NSString *path = [[NSBundle mainBundle] pathForResource:@"menu" ofType:@"json"];
-//        NSData *data = [NSData dataWithContentsOfFile:path];
-//        NSError* err = nil;
-//        IHPConfigModel *configModel = [[IHPConfigModel alloc] initWithData:data error:&err];
-//        if (!err) {
-//            [manager setConfigModel:configModel];
-//        }else{
-//            NSLog(@"error = %@", err);
-//        }
-//    }
     return manager;
 }
 
@@ -41,7 +29,6 @@
     }else{
         NSLog(@"error = %@", err);
     }
-
 }
 
 - (IHPForceUpdateModel *)forceUpdate{
@@ -61,5 +48,21 @@
     _configModel = configModel;
 }
 
+
+- (void)configHiddenModelWithJsondData:(NSData *)hiddenModelData {
+    NSError* err = nil;
+    IHYHiddenModel *hiddenModel = [[IHYHiddenModel alloc] initWithData:hiddenModelData error:&err];
+    if (!err) {
+        for (IHPMenuModel *menuModel in self.menus) {
+            for (IHYHiddenItemModel *hiddenItem in hiddenModel.unavailible_url_list) {
+                if ([menuModel.menuId isEqualToString:hiddenItem.menuId]) {
+                    menuModel.unavailible_url_list = hiddenItem.unavailible_url_list;
+                }
+            }
+        }
+    }else{
+        NSLog(@"error = %@", err);
+    }
+}
 
 @end

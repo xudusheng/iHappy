@@ -94,6 +94,9 @@
 		181E5421214FD25D00E8A704 /* XDSBookCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 181E541F214FD25D00E8A704 /* XDSBookCell.xib */; };
 		185347642142098600013F81 /* XDSEpisodeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 185347632142098600013F81 /* XDSEpisodeModel.m */; };
 		1861C6E0215A1C3D005A03D7 /* logo_book.png in Resources */ = {isa = PBXBuildFile; fileRef = 1861C6DF215A1C3D005A03D7 /* logo_book.png */; };
+		1885EDC421605A91004C4FD7 /* unavailible_url.json in Resources */ = {isa = PBXBuildFile; fileRef = 1885EDC321605A90004C4FD7 /* unavailible_url.json */; };
+		1885EDC721607030004C4FD7 /* IHYHiddenModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1885EDC621607030004C4FD7 /* IHYHiddenModel.m */; };
+		1885EDCA2160709D004C4FD7 /* IHYHiddenItemModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1885EDC92160709D004C4FD7 /* IHYHiddenItemModel.m */; };
 		18A6FA12212F983E00709EC9 /* IHYHomsSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A6FA10212F983D00709EC9 /* IHYHomsSearchViewController.m */; };
 		18A6FA28212FCB9D00709EC9 /* appConfig.txt in Resources */ = {isa = PBXBuildFile; fileRef = 18A6FA1E212FCB9D00709EC9 /* appConfig.txt */; };
 		18A6FA29212FCB9D00709EC9 /* XDSConfigManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A6FA21212FCB9D00709EC9 /* XDSConfigManager.m */; };
@@ -428,6 +431,11 @@
 		185347622142098600013F81 /* XDSEpisodeModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XDSEpisodeModel.h; sourceTree = "<group>"; };
 		185347632142098600013F81 /* XDSEpisodeModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XDSEpisodeModel.m; sourceTree = "<group>"; };
 		1861C6DF215A1C3D005A03D7 /* logo_book.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_book.png; sourceTree = "<group>"; };
+		1885EDC321605A90004C4FD7 /* unavailible_url.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = unavailible_url.json; sourceTree = "<group>"; };
+		1885EDC521607030004C4FD7 /* IHYHiddenModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IHYHiddenModel.h; sourceTree = "<group>"; };
+		1885EDC621607030004C4FD7 /* IHYHiddenModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IHYHiddenModel.m; sourceTree = "<group>"; };
+		1885EDC82160709D004C4FD7 /* IHYHiddenItemModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IHYHiddenItemModel.h; sourceTree = "<group>"; };
+		1885EDC92160709D004C4FD7 /* IHYHiddenItemModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IHYHiddenItemModel.m; sourceTree = "<group>"; };
 		18A6FA0E212F983D00709EC9 /* IHYHomsSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IHYHomsSearchViewController.h; sourceTree = "<group>"; };
 		18A6FA10212F983D00709EC9 /* IHYHomsSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IHYHomsSearchViewController.m; sourceTree = "<group>"; };
 		18A6FA1D212FCB9D00709EC9 /* XDSConfigManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDSConfigManager.h; sourceTree = "<group>"; };
@@ -1264,13 +1272,13 @@
 		18A6FA1C212FCB9D00709EC9 /* ConfigManager */ = {
 			isa = PBXGroup;
 			children = (
-				18A6FA1D212FCB9D00709EC9 /* XDSConfigManager.h */,
 				18A6FA1E212FCB9D00709EC9 /* appConfig.txt */,
 				18A6FA1F212FCB9D00709EC9 /* XDSUrlItem.h */,
-				18A6FA20212FCB9D00709EC9 /* XDSConfigItem.h */,
-				18A6FA21212FCB9D00709EC9 /* XDSConfigManager.m */,
-				18A6FA22212FCB9D00709EC9 /* XDSConfigItem.m */,
 				18A6FA23212FCB9D00709EC9 /* XDSUrlItem.m */,
+				18A6FA20212FCB9D00709EC9 /* XDSConfigItem.h */,
+				18A6FA22212FCB9D00709EC9 /* XDSConfigItem.m */,
+				18A6FA1D212FCB9D00709EC9 /* XDSConfigManager.h */,
+				18A6FA21212FCB9D00709EC9 /* XDSConfigManager.m */,
 			);
 			path = ConfigManager;
 			sourceTree = "<group>";
@@ -1701,6 +1709,7 @@
 				181E5418214FCFA400E8A704 /* Reader */,
 				A22C12F02144648A00896F00 /* Tools */,
 				FC1A8C2C1EAC1FD900E66FF8 /* menu.json */,
+				1885EDC321605A90004C4FD7 /* unavailible_url.json */,
 				18A6FA1B212FCB9200709EC9 /* Manager */,
 				FC0B7C6B1EC751690022E504 /* Bizhi */,
 				092CAED51DE2861F008127DA /* Q2002 */,
@@ -1855,6 +1864,10 @@
 				FC1A8C361EAC255900E66FF8 /* IHPSubMenuModel.m */,
 				FCAFC6121EAEDB8700B48C83 /* IHPForceUpdateModel.h */,
 				FCAFC6131EAEDB8700B48C83 /* IHPForceUpdateModel.m */,
+				1885EDC521607030004C4FD7 /* IHYHiddenModel.h */,
+				1885EDC621607030004C4FD7 /* IHYHiddenModel.m */,
+				1885EDC82160709D004C4FD7 /* IHYHiddenItemModel.h */,
+				1885EDC92160709D004C4FD7 /* IHYHiddenItemModel.m */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -2039,6 +2052,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1885EDC421605A91004C4FD7 /* unavailible_url.json in Resources */,
 				A227A84B2130641300568BCB /* SplashNormal.png in Resources */,
 				18A6FA28212FCB9D00709EC9 /* appConfig.txt in Resources */,
 				18A6FAF62130DF3800709EC9 /* img_circular@3x.png in Resources */,
@@ -2191,6 +2205,7 @@
 				092CAEFA1DE28620008127DA /* IHYMainViewController.m in Sources */,
 				18A6FA5A212FFFB900709EC9 /* XDSPlaceholdSplashManager.m in Sources */,
 				18F8EB592139626F00168506 /* XDS_CustomMjRefreshHeader.m in Sources */,
+				1885EDCA2160709D004C4FD7 /* IHYHiddenItemModel.m in Sources */,
 				18A6FAED2130DF3800709EC9 /* XDSMediaBrowserViewLayout.m in Sources */,
 				FC0B7C7E1EC7FF840022E504 /* YSEColorModel.m in Sources */,
 				092CAF071DE28620008127DA /* IHYMoviePlayerViewController.m in Sources */,
@@ -2330,6 +2345,7 @@
 				09F90D791DE2D2F600542684 /* IHYNewsMultableImageCell.m in Sources */,
 				181E53D1214F928000E8A704 /* CXMLElement.m in Sources */,
 				181E53BE214F928000E8A704 /* XDSChapterModel.m in Sources */,
+				1885EDC721607030004C4FD7 /* IHYHiddenModel.m in Sources */,
 				181E53D3214F928000E8A704 /* UIImage+ImageEffects.m in Sources */,
 				A05EB8EC1DE0244300148A5B /* OCControlAlertView.m in Sources */,
 				09F90D751DE2C06000542684 /* XDSWebProgressView.m in Sources */,

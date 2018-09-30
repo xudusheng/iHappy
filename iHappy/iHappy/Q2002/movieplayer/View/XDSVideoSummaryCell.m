@@ -35,11 +35,11 @@
     }else {
         self.hiddenButtonHeight.constant = VIDEO_SUMMARY_CELL_HIDDEN_BUTTON_HEIGHT;
         self.hidden = NO;
-//        if (self.hiddenButton.selected) {
-//            self.summaryLabel.numberOfLines = 0;
-//        }else {
-//            self.summaryLabel.numberOfLines = 3;
-//        }
+        if (self.hiddenButton.selected) {
+            self.summaryLabel.numberOfLines = 0;
+        }else {
+            self.summaryLabel.numberOfLines = 3;
+        }
     }    
 }
 - (IBAction)hiddenButtonClick:(UIButton *)hiddenButton {

@@ -10,7 +10,7 @@
 #import "XDSHTMLMovieModel.h"
 @interface XDSHTMLPlayerVC : XDSBaseViewController
 
-@property (strong, nonatomic)XDSHTMLMovieModel * movieModel;
+@property (strong, nonatomic)XDSHTMLMovieModel * htmlMovieModel;
 
 @end
 

@@ -10,9 +10,9 @@
 #import "IHPForceUpdateModel.h"
 #import "IHPMenuModel.h"
 @protocol IHPMenuModel;
-
 @interface IHPConfigModel : JSONModel
 
 @property (strong, nonatomic) IHPForceUpdateModel *forceUpdate;
 @property (strong, nonatomic) NSArray<IHPMenuModel> *menus;
+
 @end
