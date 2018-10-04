@@ -96,7 +96,7 @@ NSString *const key = @"huidaibao";
                     success:(void(^)(BOOL success, NSData * htmlString))success
                      failed:(void(^)(NSString * errorDescription))failed{
     
-    if (htmlHref && ! [htmlHref hasPrefix:@"http"]) {
+    if (htmlHref && ![htmlHref hasPrefix:@"http"]) {
         NSString * rootHref = @"http://www.q2002.com";
         if (![htmlHref hasPrefix:@"/"]) {
             rootHref = [rootHref stringByAppendingString:@"/"];
@@ -118,6 +118,8 @@ NSString *const key = @"huidaibao";
 
     htmlHref = [htmlHref stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     NSURLSessionConfiguration *config = [NSURLSessionConfiguration ephemeralSessionConfiguration];
+    config.timeoutIntervalForRequest = 15.0;
+    
     AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithSessionConfiguration:config];
     
     manager.requestSerializer = [AFHTTPRequestSerializer serializer];
@@ -158,11 +160,7 @@ NSString *const key = @"huidaibao";
                                    failed(errorDetail);
                                    
                                }];
-    
     [_sessionDataTask resume];
-    
-    
-    
 }
 
 - (void)showFailedHUD:(BOOL)showFailedHUD Failed:(NSString *)failed rootView:(UIView *)rootView{

@@ -148,12 +148,25 @@ OCT_SYNTHESIZE_SINGLETON_FOR_CLASS(XDSMainReaderVC)
 - (void)loadLocalBooks {
     [self.bookList removeAllObjects];
     
+    //本地文件-同步执行
+    NSArray *fileList = @[@"每天懂一点好玩心理学.epub", @"zoubianzhongguo.epub", @"特种神医.txt"];
+    for (NSString *fileName in fileList) {
+        
+        //注意，url初始化方法与从documents读取文件的url初始化方法的区别
+        NSURL *fileURL = [[NSBundle mainBundle] URLForResource:fileName withExtension:nil];
+        
+        LPPBookInfoModel *bookInfo = [XDSReadOperation getBookInfoWithFile:fileURL];
+        bookInfo?[self.bookList addObject:bookInfo]:NULL;
+        [self.mCollectionView reloadData];
+    }
+    
+    
     NSFileManager *fileManager = [NSFileManager defaultManager];
     //在这里获取应用程序Documents文件夹里的文件及文件夹列表
     NSArray *documentPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentDir = documentPaths.firstObject;
     NSError *error = nil;
-    NSArray *fileList = [[NSArray alloc] init];
+    fileList = [[NSArray alloc] init];
     //fileList便是包含有该文件夹下所有文件的文件名及文件夹名的数组
     fileList = [fileManager contentsOfDirectoryAtPath:documentDir error:&error];
     

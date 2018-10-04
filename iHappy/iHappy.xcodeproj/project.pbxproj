@@ -218,7 +218,6 @@
 		A0D46B7E1DE0173500637681 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A0D46B7D1DE0173500637681 /* AppDelegate.m */; };
 		A0D46B861DE0173500637681 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A0D46B851DE0173500637681 /* Assets.xcassets */; };
 		A208A6CD2132B39600900DFC /* XDSMeituModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A208A6CC2132B39600900DFC /* XDSMeituModel.m */; };
-		A227A84A2130641300568BCB /* SplashLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = A227A8462130641300568BCB /* SplashLogo.png */; };
 		A227A84B2130641300568BCB /* SplashNormal.png in Resources */ = {isa = PBXBuildFile; fileRef = A227A8472130641300568BCB /* SplashNormal.png */; };
 		A227A84C2130641300568BCB /* SplashSmall.png in Resources */ = {isa = PBXBuildFile; fileRef = A227A8482130641300568BCB /* SplashSmall.png */; };
 		A227A84D2130641300568BCB /* SplashX.png in Resources */ = {isa = PBXBuildFile; fileRef = A227A8492130641300568BCB /* SplashX.png */; };
@@ -230,6 +229,10 @@
 		A24B53CD1EB941BE005D34C6 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A24B53CC1EB941BE005D34C6 /* JavaScriptCore.framework */; };
 		A24FCBE421319AB2001A05DB /* XDSFullPlayerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A24FCBE321319AB2001A05DB /* XDSFullPlayerVC.m */; };
 		A24FCBE721319BF0001A05DB /* UIViewController+XDSMediaBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = A24FCBE621319BF0001A05DB /* UIViewController+XDSMediaBrowser.m */; };
+		A2755B8A2166444700006989 /* logo_launch.png in Resources */ = {isa = PBXBuildFile; fileRef = A2755B892166444700006989 /* logo_launch.png */; };
+		A2755B8C216646B600006989 /* launch_414x736@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A2755B8B216646B600006989 /* launch_414x736@2x.png */; };
+		A2755B8F21665B5300006989 /* XDSHTMLVideoSearchVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A2755B8D21665B5300006989 /* XDSHTMLVideoSearchVC.m */; };
+		A2755B922166663000006989 /* 特种神医.txt in Resources */ = {isa = PBXBuildFile; fileRef = A2755B912166663000006989 /* 特种神医.txt */; };
 		A27BB35C215FE087004C9635 /* XDSHTMLMovieModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A27BB35A215FE087004C9635 /* XDSHTMLMovieModel.m */; };
 		A27BB35F215FE0C8004C9635 /* XDSHTMLMovieListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A27BB35E215FE0C8004C9635 /* XDSHTMLMovieListVC.m */; };
 		A27BB362215FE73A004C9635 /* XDSHTMLPlayerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A27BB360215FE739004C9635 /* XDSHTMLPlayerVC.m */; };
@@ -669,7 +672,6 @@
 		A0D46B8A1DE0173500637681 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A208A6CB2132B39600900DFC /* XDSMeituModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XDSMeituModel.h; sourceTree = "<group>"; };
 		A208A6CC2132B39600900DFC /* XDSMeituModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XDSMeituModel.m; sourceTree = "<group>"; };
-		A227A8462130641300568BCB /* SplashLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SplashLogo.png; sourceTree = "<group>"; };
 		A227A8472130641300568BCB /* SplashNormal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SplashNormal.png; sourceTree = "<group>"; };
 		A227A8482130641300568BCB /* SplashSmall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SplashSmall.png; sourceTree = "<group>"; };
 		A227A8492130641300568BCB /* SplashX.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SplashX.png; sourceTree = "<group>"; };
@@ -686,6 +688,13 @@
 		A24FCBE321319AB2001A05DB /* XDSFullPlayerVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XDSFullPlayerVC.m; sourceTree = "<group>"; };
 		A24FCBE521319BF0001A05DB /* UIViewController+XDSMediaBrowser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+XDSMediaBrowser.h"; sourceTree = "<group>"; };
 		A24FCBE621319BF0001A05DB /* UIViewController+XDSMediaBrowser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+XDSMediaBrowser.m"; sourceTree = "<group>"; };
+		A2755B892166444700006989 /* logo_launch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_launch.png; sourceTree = "<group>"; };
+		A2755B8B216646B600006989 /* launch_414x736@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "launch_414x736@2x.png"; sourceTree = "<group>"; };
+		A2755B8D21665B5300006989 /* XDSHTMLVideoSearchVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XDSHTMLVideoSearchVC.m; sourceTree = "<group>"; };
+		A2755B8E21665B5300006989 /* XDSHTMLVideoSearchVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDSHTMLVideoSearchVC.h; sourceTree = "<group>"; };
+		A2755B912166663000006989 /* 特种神医.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "特种神医.txt"; sourceTree = "<group>"; };
+		A2755B932166665700006989 /* zoubianzhongguo.epub */ = {isa = PBXFileReference; lastKnownFileType = file; name = zoubianzhongguo.epub; path = ../../../../XDSReader/XDSReader/XDSReader/XDSReaderKit/Resource/zoubianzhongguo.epub; sourceTree = "<group>"; };
+		A2755B942166665700006989 /* 每天懂一点好玩心理学.epub */ = {isa = PBXFileReference; lastKnownFileType = file; name = "每天懂一点好玩心理学.epub"; path = "../../../../XDSReader/XDSReader/XDSReader/XDSReaderKit/Resource/每天懂一点好玩心理学.epub"; sourceTree = "<group>"; };
 		A27BB35A215FE087004C9635 /* XDSHTMLMovieModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XDSHTMLMovieModel.m; sourceTree = "<group>"; };
 		A27BB35B215FE087004C9635 /* XDSHTMLMovieModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDSHTMLMovieModel.h; sourceTree = "<group>"; };
 		A27BB35D215FE0C8004C9635 /* XDSHTMLMovieListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDSHTMLMovieListVC.h; sourceTree = "<group>"; };
@@ -1718,6 +1727,7 @@
 				A29B03F22142D88100876433 /* Model */,
 				A0D46B851DE0173500637681 /* Assets.xcassets */,
 				A0D46B8A1DE0173500637681 /* Info.plist */,
+				A2755B90216665AD00006989 /* Resource */,
 				A0D46B791DE0173500637681 /* Supporting Files */,
 			);
 			path = iHappy;
@@ -1735,7 +1745,8 @@
 		A227A8452130641300568BCB /* adImage */ = {
 			isa = PBXGroup;
 			children = (
-				A227A8462130641300568BCB /* SplashLogo.png */,
+				A2755B8B216646B600006989 /* launch_414x736@2x.png */,
+				A2755B892166444700006989 /* logo_launch.png */,
 				A227A8472130641300568BCB /* SplashNormal.png */,
 				A227A8482130641300568BCB /* SplashSmall.png */,
 				A227A8492130641300568BCB /* SplashX.png */,
@@ -1758,6 +1769,16 @@
 				A22C12F3214464BF00896F00 /* NSString+XDSAddition.m */,
 			);
 			path = Category;
+			sourceTree = "<group>";
+		};
+		A2755B90216665AD00006989 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				A2755B912166663000006989 /* 特种神医.txt */,
+				A2755B942166665700006989 /* 每天懂一点好玩心理学.epub */,
+				A2755B932166665700006989 /* zoubianzhongguo.epub */,
+			);
+			path = Resource;
 			sourceTree = "<group>";
 		};
 		A29B03F22142D88100876433 /* Model */ = {
@@ -1900,6 +1921,8 @@
 		FC2F6EA31EBCC03900A5AF3D /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				A2755B8E21665B5300006989 /* XDSHTMLVideoSearchVC.h */,
+				A2755B8D21665B5300006989 /* XDSHTMLVideoSearchVC.m */,
 				18A6FA0E212F983D00709EC9 /* IHYHomsSearchViewController.h */,
 				18A6FA10212F983D00709EC9 /* IHYHomsSearchViewController.m */,
 				1808D3C3215BE66900F822FD /* XDSHomeSearchResultVC.h */,
@@ -2081,19 +2104,21 @@
 				A22C12FD2144734E00896F00 /* XDSPlayerSectionHeader.xib in Resources */,
 				18A6FAF72130DF3800709EC9 /* btn_stop@2x.png in Resources */,
 				18A6FAFA2130DF3800709EC9 /* btn-amplification@2x.png in Resources */,
+				A2755B8A2166444700006989 /* logo_launch.png in Resources */,
 				181E53E0214F928000E8A704 /* 华文行楷.ttf in Resources */,
 				A01579F41DE1776C00CD7DDB /* ico_back@3x.png in Resources */,
 				181E53DF214F928000E8A704 /* 华文新魏.ttf in Resources */,
 				18A6FAF32130DF3800709EC9 /* img_circular@2x.png in Resources */,
 				092CAF2F1DE2B20F008127DA /* IHYNewsListCell.xib in Resources */,
+				A2755B8C216646B600006989 /* launch_414x736@2x.png in Resources */,
 				A227A84D2130641300568BCB /* SplashX.png in Resources */,
 				A01579F31DE1776C00CD7DDB /* ico_back@2x.png in Resources */,
-				A227A84A2130641300568BCB /* SplashLogo.png in Resources */,
 				FCA032421F8DD7DE00600581 /* PYSearch.bundle in Resources */,
 				181E53DB214F928000E8A704 /* 十宗罪.epub in Resources */,
 				18A6FAF52130DF3800709EC9 /* btn_voice@3x.png in Resources */,
 				18A6FAF42130DF3800709EC9 /* btn_voice@2x.png in Resources */,
 				09F90D7A1DE2D2F600542684 /* IHYNewsMultableImageCell.xib in Resources */,
+				A2755B922166663000006989 /* 特种神医.txt in Resources */,
 				A22C12EF2144611800896F00 /* XDSVideoSummaryCell.xib in Resources */,
 				181E53E1214F928000E8A704 /* 华文彩云.ttf in Resources */,
 				18A6FAF92130DF3800709EC9 /* btn_voice_disabled@2x.png in Resources */,
@@ -2334,6 +2359,7 @@
 				18A6FA892130031500709EC9 /* NLEBNFFastForward.m in Sources */,
 				092CAEFB1DE28620008127DA /* IHYViewControllerModel.m in Sources */,
 				181E53C6214F928000E8A704 /* CXMLNamespaceNode.m in Sources */,
+				A2755B8F21665B5300006989 /* XDSHTMLVideoSearchVC.m in Sources */,
 				FCAFC6111EAED7DF00B48C83 /* IHPConfigModel.m in Sources */,
 				181E53C9214F928000E8A704 /* CXMLUnsupportedNode.m in Sources */,
 				181E53DC214F928000E8A704 /* XDSReadViewController.m in Sources */,
@@ -2566,7 +2592,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "17c16fff-a7a2-455f-ab37-595fd31ecfd8";
 				PROVISIONING_PROFILE_SPECIFIER = "XC Wildcard Development";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -2630,7 +2656,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "17c16fff-a7a2-455f-ab37-595fd31ecfd8";
 				PROVISIONING_PROFILE_SPECIFIER = "XC Wildcard Development";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

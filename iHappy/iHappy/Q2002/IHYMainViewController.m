@@ -14,6 +14,7 @@
 #import "IHPMeituListViewController.h"
 #import "XDSHTMLMovieListVC.h"
 #import "IHYHomsSearchViewController.h"
+#import "XDSHTMLVideoSearchVC.h"
 @interface IHYMainViewController ()<UISearchBarDelegate>
 
 @property (strong, nonatomic) UISearchBar *searchBar;
@@ -37,7 +38,8 @@
 //    self.navigationController.navigationBar.translucent = NO;
 //    self.navigationController.navigationBar.shadowImage = [UIImage new];
     
-    if (self.menuModel.type == IHPMenuTypeVideo) {
+    if (self.menuModel.type == IHPMenuTypeVideo ||
+        self.menuModel.type == IHPMenuTypeQ2002){
         CGFloat navHeight = 44;
         CGFloat searchbarHeight = 29;
         UIView *titleView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, DEVIECE_SCREEN_WIDTH - 66, navHeight)];
@@ -45,11 +47,10 @@
         _searchBar.frame = CGRectMake(0, navHeight/2 - searchbarHeight/2, CGRectGetWidth(titleView.frame) - searchbarHeight, searchbarHeight);
         [titleView addSubview:_searchBar];
         self.navigationItem.titleView = titleView;
-    }
-    
-    if (self.menuModel.type == IHPMenuTypeVideo ||
-        self.menuModel.type == IHPMenuTypeQ2002) {
+        
+        
         [[XDSAdManager sharedManager] showInterstitialAD];
+
     }
     
 }
@@ -192,13 +193,21 @@
 
 //TODO:搜索
 - (void)showSearchVC{
-    
-    IHYHomsSearchViewController *searchVC = [[IHYHomsSearchViewController alloc] init];
-    searchVC.searchPlaceholder = @"输入搜索关键字";
-    searchVC.rootUrl = self.menuModel.rooturl;
-    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:searchVC];
-    nav.navigationBar.translucent = NO;
-    [self presentViewController:nav animated:NO completion:nil];
+    if (self.menuModel.type == IHPMenuTypeVideo) {
+        IHYHomsSearchViewController *searchVC = [[IHYHomsSearchViewController alloc] init];
+        searchVC.searchPlaceholder = @"输入搜索关键字";
+        searchVC.rootUrl = self.menuModel.rooturl;
+        UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:searchVC];
+        nav.navigationBar.translucent = NO;
+        [self presentViewController:nav animated:NO completion:nil];
+    }else if (self.menuModel.type == IHPMenuTypeQ2002) {
+        XDSHTMLVideoSearchVC *searchVC = [[XDSHTMLVideoSearchVC alloc] init];
+        searchVC.menuModel = self.menuModel;
+        UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:searchVC];
+        nav.navigationBar.translucent = NO;
+        [self presentViewController:nav animated:NO completion:nil];
+    }
+
     
 }
 #pragma mark - 其他私有方法

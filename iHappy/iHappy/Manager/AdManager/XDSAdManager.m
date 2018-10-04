@@ -91,19 +91,39 @@ NSString *const kGDTMobSDKInterstitialAdId = @"2030814134092814";//插屏广告i
     self.splashAd = [[GDTSplashAd alloc] initWithAppId:kGDTMobSDKAppId placementId:kGDTMobSDKSplashAdId];
     self.splashAd.delegate = self;
     self.splashAd.fetchDelay = 5;
-    UIImage *splashImage = [UIImage imageNamed:@"SplashNormal"];
-    if (IS_IPHONEX) {
-        splashImage = [UIImage imageNamed:@"SplashX"];
-    } else if ([UIScreen mainScreen].bounds.size.height == 480) {
-        splashImage = [UIImage imageNamed:@"SplashSmall"];
+//    if (IS_IPHONEX) {
+//        splashImage = [UIImage imageNamed:@"SplashX"];
+//    } else if ([UIScreen mainScreen].bounds.size.height == 480) {
+//        splashImage = [UIImage imageNamed:@"SplashSmall"];
+//    }
+    
+    NSString *currentImageName = nil;
+    
+    CGSize viewSize = CGSizeMake(DEVIECE_SCREEN_WIDTH, DEVIECE_SCREEN_HEIGHT);
+    NSArray *imageDicts = [[[NSBundle mainBundle] infoDictionary] valueForKey:@"UILaunchImages"];
+    
+    NSString* viewOrientation = @"Portrait";
+    
+    for (NSDictionary * dic in imageDicts) {
+        CGSize imageSize = CGSizeFromString(dic[@"UILaunchImageSize"]);
+        NSString *orientation = dic[@"UILaunchImageOrientation"];
+        if(CGSizeEqualToSize(viewSize, imageSize) && [orientation isEqualToString:viewOrientation]){
+            currentImageName = dic[@"UILaunchImageName"];
+        }
     }
+        
+    currentImageName = currentImageName.length?currentImageName:@"logo_launch";
+    UIImage *splashImage = [UIImage imageNamed:currentImageName];
+
     self.splashAd.backgroundImage = splashImage;
-    self.bottomView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height * 0.25)];
+    self.bottomView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, 55*3)];
     self.bottomView.backgroundColor = [UIColor whiteColor];
-    UIImageView *logo = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"SplashLogo"]];
-    logo.frame = CGRectMake(0, 0, 311, 47);
-    logo.center = self.bottomView.center;
-    [self.bottomView addSubview:logo];
+    UIImage *logo = [UIImage imageNamed:@"logo_launch"];
+    UIImageView *logoImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 375, 55)];
+    logoImageView.contentMode = UIViewContentModeScaleAspectFit;
+    logoImageView.image = logo;
+    logoImageView.center = self.bottomView.center;
+    [self.bottomView addSubview:logoImageView];
     
     UIWindow *fK = [UIApplication sharedApplication].keyWindow;
     [self.splashAd loadAdAndShowInWindow:fK withBottomView:self.bottomView skipView:nil];

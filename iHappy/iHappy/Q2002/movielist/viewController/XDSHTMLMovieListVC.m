@@ -118,6 +118,7 @@ NSString * const MovieListViewController_movieCellIdentifier = @"IHPMovieCell";
 #pragma mark - 其他私有方法
 
 - (void)endRefresh{
+    [XDSUtilities hideHud:self.view];
     [_movieCollectionView.mj_header endRefreshing];
     [_movieCollectionView.mj_footer endRefreshing];
     if (!self.nextPageUrl.length) {
@@ -163,10 +164,14 @@ NSString * const MovieListViewController_movieCellIdentifier = @"IHPMovieCell";
         
         NSString * name = p_name.text;
         NSString * href = [a_link_hover objectForKey:@"href"];
-        NSString * imageurl = [image_lazy objectForKey:@"src"];
         NSString * update = p_actor.text;
         NSString * other = p_other.text;
         
+        NSString * imageurl = [image_lazy objectForKey:@"src"];
+
+        if (imageurl && [imageurl hasPrefix:@"//"]) {
+            imageurl = [@"http:" stringByAppendingString:imageurl];
+        }
         
         NSLog(@"%@", href);
 
@@ -199,6 +204,8 @@ NSString * const MovieListViewController_movieCellIdentifier = @"IHPMovieCell";
 - (void)setSubMenuModel:(IHPSubMenuModel *)subMenuModel {
     _subMenuModel = subMenuModel;
     self.firstPageUrl = subMenuModel.url;
+    
+    [XDSUtilities showHud:self.view text:nil];
     [self fetchMovieListTop];
 }
 #pragma mark - 内存管理相关

@@ -92,7 +92,7 @@ static UIStatusBarStyle splashVCStatusBarStyle = UIStatusBarStyleDefault;
 
 #endif
 
--(NSString *)getCurrentLaunchImageName
+- (NSString *)getCurrentLaunchImageName
 {
     NSString *currentImageName = nil;
     

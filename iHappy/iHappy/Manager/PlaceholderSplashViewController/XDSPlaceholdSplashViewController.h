@@ -11,7 +11,7 @@
 
 @property (nonatomic, assign) BOOL isCustomView;
 
--(NSString *)getCurrentLaunchImageName;
+- (NSString *)getCurrentLaunchImageName;
 #if TARGET_OS_IOS
 +(NSString *)getCurrentLaunchImageNameWithImageSize:(CGSize)size orientation:(UIInterfaceOrientation)orientation;
 +(void)setSplashVCStatusBarStyle:(UIStatusBarStyle)style;

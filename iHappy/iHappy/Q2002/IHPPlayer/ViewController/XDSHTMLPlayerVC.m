@@ -229,12 +229,12 @@ NSInteger const kHTMLPlaceholderSectionNumbers = 2;
     
     if (indexPath.section < kHTMLPlaceholderSectionNumbers) {
         if (indexPath.section == 0) {
+            XDSPlayerBannerAdCell *cell  = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([XDSPlayerBannerAdCell class]) forIndexPath:indexPath];
+            return cell;
+        }else {
             XDSVideoSummaryCell *cell  = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([XDSVideoSummaryCell class]) forIndexPath:indexPath];
             cell.summary = self.movieModel.summary;
             self.hiddenSummaryButton = cell.hiddenButton;
-            return cell;
-        }else {
-            XDSPlayerBannerAdCell *cell  = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([XDSPlayerBannerAdCell class]) forIndexPath:indexPath];
             return cell;
         }
         
@@ -260,6 +260,9 @@ NSInteger const kHTMLPlaceholderSectionNumbers = 2;
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section < kHTMLPlaceholderSectionNumbers) {
         if (indexPath.section == 0) {
+            return CGSizeMake(DEVIECE_SCREEN_WIDTH, 50);
+            
+        }else {
             NSString *summary = self.movieModel.summary;
             CGSize size = [summary sizeWithFont:VIDEO_SUMMARY_FONT maxSize:VIDEO_SUMMARY_MAX_SIZE];
             if (size.height < 60) {
@@ -272,10 +275,6 @@ NSInteger const kHTMLPlaceholderSectionNumbers = 2;
                 }
                 return itemSize;
             }
-            
-        }else {
-            return CGSizeMake(DEVIECE_SCREEN_WIDTH, 50);
-            
         }
         
     }else {
@@ -291,6 +290,7 @@ NSInteger const kHTMLPlaceholderSectionNumbers = 2;
     UIEdgeInsets edgeInset = UIEdgeInsetsZero;
     if (section < kHTMLPlaceholderSectionNumbers) {
         edgeInset = UIEdgeInsetsZero;
+
     }else {
         edgeInset = UIEdgeInsetsMake(10, 10, 10, 10);
     }
@@ -532,6 +532,8 @@ NSInteger const kHTMLPlaceholderSectionNumbers = 2;
     [self.playerView resetPlayer];
     [self fetchMoviePlayer];
     [_moviedetailCollectionView reloadData];
+    
+    [_moviedetailCollectionView setContentOffset:CGPointZero];
 }
 
 

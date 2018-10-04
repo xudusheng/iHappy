@@ -258,10 +258,10 @@
 #pragma mark - HUD
 + (void)showHud:(UIView*)rootView text:(NSString*)text {
     ZDProgressHUD *HUD = [ZDProgressHUD showHUDAddedTo:rootView animated:YES];
-    HUD.backgroundColor = [UIColor colorWithRed:0.1f green:0.1f blue:0.1f alpha:0.5f];
-//    HUD.backgroundColor = kClearColor;
+//    HUD.backgroundColor = [UIColor colorWithRed:0.1f green:0.1f blue:0.1f alpha:0.5f];
+    HUD.backgroundColor = [UIColor clearColor];
     HUD.detailsLabelText = text;
-    HUD.color = [UIColor colorWithRed:239.0f/255.0f green:239.0f/255.0f blue:239.0f/255.0f alpha:1.0f];
+    HUD.color = [UIColor colorWithRed:239.0f/255.0f green:239.0f/255.0f blue:239.0f/255.0f alpha:0.1];
 //    HUD.color = kClearColor;
 }
 +(void)hideHud:(UIView*)rootView{
