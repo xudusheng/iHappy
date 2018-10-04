@@ -572,7 +572,6 @@ NSInteger const kPlaceholderSectionNumbers = 2;
 #pragma mark - 内存管理相关
 - (void)movieDetailViewControllerDataInit{
     self.episodeModelList = [[NSMutableArray alloc] init];
-    
 }
 
 @end
