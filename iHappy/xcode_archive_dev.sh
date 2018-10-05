@@ -44,6 +44,6 @@ CODE_SIGN_IDENTITY="$CODE_SIGN_IDENTITY" PROVISIONING_PROFILE="$PROVISIONING_PRO
 #发布到fim.im
 ###################################
 
-#firApiToken="a29be0d51c2bfb85b53d1f6cf67fb2e5"
-#fir publish "${IPA_PATH}/${SCHEME_NAME}.ipa" -T "$firApiToken"
-#osascript -e 'display notification "Release To Fir.im" with title "Upload Complete!"'
+firApiToken="a29be0d51c2bfb85b53d1f6cf67fb2e5"
+fir publish "${IPA_PATH}/${SCHEME_NAME}.ipa" -T "$firApiToken"
+osascript -e 'display notification "Release To Fir.im" with title "Upload Complete!"'
