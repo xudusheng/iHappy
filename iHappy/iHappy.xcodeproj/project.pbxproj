@@ -305,6 +305,7 @@
 		09F90D771DE2D2F600542684 /* IHYNewsMultableImageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IHYNewsMultableImageCell.m; sourceTree = "<group>"; };
 		09F90D781DE2D2F600542684 /* IHYNewsMultableImageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IHYNewsMultableImageCell.xib; sourceTree = "<group>"; };
 		1807902221673E35007079F5 /* 特种神医.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "特种神医.txt"; sourceTree = "<group>"; };
+		1807902421676FE2007079F5 /* iHappy.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iHappy.entitlements; sourceTree = "<group>"; };
 		1808D3BD215BDD5300F822FD /* XDSBaseContentVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XDSBaseContentVC.h; sourceTree = "<group>"; };
 		1808D3BE215BDD5300F822FD /* XDSBaseContentVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XDSBaseContentVC.m; sourceTree = "<group>"; };
 		1808D3C0215BDE2B00F822FD /* XDSBaseContentNavigationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XDSBaseContentNavigationController.h; sourceTree = "<group>"; };
@@ -1483,8 +1484,8 @@
 			children = (
 				1861C6DF215A1C3D005A03D7 /* logo_book.png */,
 				18BB4EC82153F9EE00C4A2CD /* GCDWebServer */,
-				18BB4EF02153F9EE00C4A2CD /* XDSIPHelper.m */,
 				18BB4F382153F9EE00C4A2CD /* XDSIPHelper.h */,
+				18BB4EF02153F9EE00C4A2CD /* XDSIPHelper.m */,
 				18B3DC862154BB6600FFD27E /* XDSReaderWifiView.h */,
 				18B3DC872154BB6700FFD27E /* XDSReaderWifiView.m */,
 				18B3DC882154BB6700FFD27E /* XDSReaderWifiView.xib */,
@@ -1697,6 +1698,7 @@
 		A0D46B781DE0173500637681 /* iHappy */ = {
 			isa = PBXGroup;
 			children = (
+				1807902421676FE2007079F5 /* iHappy.entitlements */,
 				09F90D6E1DE2BF2A00542684 /* Components */,
 				A05EB8F51DE0277E00148A5B /* Category */,
 				A05EB8C61DE0244300148A5B /* Utilities */,
@@ -2039,6 +2041,11 @@
 						CreatedOnToolsVersion = 8.1;
 						DevelopmentTeam = 85W725W7AQ;
 						ProvisioningStyle = Manual;
+						SystemCapabilities = {
+							com.apple.AccessWiFi = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -2526,6 +2533,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = iHappy/iHappy.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer: dosom xu (RPYJA8EBQM)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: dosom xu (RPYJA8EBQM)";
 				CODE_SIGN_STYLE = Manual;
@@ -2590,6 +2598,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = iHappy/iHappy.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer: dosom xu (RPYJA8EBQM)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: dosom xu (RPYJA8EBQM)";
 				CODE_SIGN_STYLE = Manual;
