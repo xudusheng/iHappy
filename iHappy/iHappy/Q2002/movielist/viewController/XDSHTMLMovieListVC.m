@@ -58,16 +58,16 @@ NSString * const MovieListViewController_movieCellIdentifier = @"IHPMovieCell";
         make.edges.mas_equalTo(0);
     }];
     
-    _movieCollectionView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(fetchMovieListTop)];
-    _movieCollectionView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreData)];
+    _movieCollectionView.mj_header = [XDS_CustomMjRefreshHeader headerWithRefreshingTarget:self refreshingAction:@selector(headerRequest)];
+    _movieCollectionView.mj_footer = [XDS_CustomMjRefreshFooter footerWithRefreshingTarget:self refreshingAction:@selector(footerRequest)];
 }
 
 #pragma mark - 网络请求
-- (void)fetchMovieListTop{
+- (void)headerRequest{
     [self fetchMovieList:YES];
     [_movieCollectionView.mj_footer resetNoMoreData];
 }
-- (void)loadMoreData{
+- (void)footerRequest{
     if (_nextPageUrl.length) {
         [self fetchMovieList:NO];
     }
@@ -206,7 +206,7 @@ NSString * const MovieListViewController_movieCellIdentifier = @"IHPMovieCell";
     self.firstPageUrl = subMenuModel.url;
     
     [XDSUtilities showHud:self.view text:nil];
-    [self fetchMovieListTop];
+    [self headerRequest];
 }
 #pragma mark - 内存管理相关
 - (void)movieListViewControllerDataInit{

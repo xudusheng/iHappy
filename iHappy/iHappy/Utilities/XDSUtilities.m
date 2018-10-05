@@ -261,8 +261,8 @@
 //    HUD.backgroundColor = [UIColor colorWithRed:0.1f green:0.1f blue:0.1f alpha:0.5f];
     HUD.backgroundColor = [UIColor clearColor];
     HUD.detailsLabelText = text;
-    HUD.color = [UIColor colorWithRed:239.0f/255.0f green:239.0f/255.0f blue:239.0f/255.0f alpha:0.1];
-//    HUD.color = kClearColor;
+//    HUD.color = [UIColor colorWithRed:239.0f/255.0f green:239.0f/255.0f blue:239.0f/255.0f alpha:0.1];
+    HUD.color = [UIColor clearColor];
 }
 +(void)hideHud:(UIView*)rootView{
     ZDProgressHUD * hud = [ZDProgressHUD HUDForView:rootView];

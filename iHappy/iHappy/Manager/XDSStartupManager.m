@@ -152,14 +152,18 @@ NSString *const kXDSUpdateLocalizableTaskID = @"XDSUpdateLocalizableTask";
     updateLocalizableTask.taskContentBlock = ^(XDSTask * task) {
         [task taskHasFinished];
     };
-
-    
     [_launchTaskQueue addTask:fetchConfigTask];
-    [_launchTaskQueue addTask:fetchUnavailibleUrlListTask];
     [_launchTaskQueue addTask:updateLocalizableTask];
 
+    
+#if DEBUG
+    [updateLocalizableTask addDependency:fetchConfigTask];
+
+#else
+    [_launchTaskQueue addTask:fetchUnavailibleUrlListTask];
     [fetchUnavailibleUrlListTask addDependency:fetchConfigTask];
     [updateLocalizableTask addDependency:fetchUnavailibleUrlListTask];
+#endif
     
     [_launchTaskQueue goWithFinishedBlock:^(XDSTaskQueue *taskQueue) {
         //enter main page
