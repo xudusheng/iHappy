@@ -25,6 +25,7 @@
 		09F90D751DE2C06000542684 /* XDSWebProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 09F90D731DE2C06000542684 /* XDSWebProgressView.m */; };
 		09F90D791DE2D2F600542684 /* IHYNewsMultableImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09F90D771DE2D2F600542684 /* IHYNewsMultableImageCell.m */; };
 		09F90D7A1DE2D2F600542684 /* IHYNewsMultableImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09F90D781DE2D2F600542684 /* IHYNewsMultableImageCell.xib */; };
+		1807902321673E36007079F5 /* 特种神医.txt in Resources */ = {isa = PBXBuildFile; fileRef = 1807902221673E35007079F5 /* 特种神医.txt */; };
 		1808D3BF215BDD5300F822FD /* XDSBaseContentVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1808D3BE215BDD5300F822FD /* XDSBaseContentVC.m */; };
 		1808D3C2215BDE2B00F822FD /* XDSBaseContentNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1808D3C1215BDE2B00F822FD /* XDSBaseContentNavigationController.m */; };
 		1808D3C5215BE66900F822FD /* XDSHomeSearchResultVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1808D3C4215BE66900F822FD /* XDSHomeSearchResultVC.m */; };
@@ -61,9 +62,7 @@
 		181E53D5214F928000E8A704 /* GTMNSString+HTML.m in Sources */ = {isa = PBXBuildFile; fileRef = 181E5333214F928000E8A704 /* GTMNSString+HTML.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		181E53D6214F928000E8A704 /* 妖神记.txt in Resources */ = {isa = PBXBuildFile; fileRef = 181E5335214F928000E8A704 /* 妖神记.txt */; };
 		181E53D7214F928000E8A704 /* zoubianzhongguo.epub in Resources */ = {isa = PBXBuildFile; fileRef = 181E5336214F928000E8A704 /* zoubianzhongguo.epub */; };
-		181E53D8214F928000E8A704 /* mdjyml.txt in Resources */ = {isa = PBXBuildFile; fileRef = 181E5337214F928000E8A704 /* mdjyml.txt */; };
 		181E53D9214F928000E8A704 /* 每天懂一点好玩心理学.epub in Resources */ = {isa = PBXBuildFile; fileRef = 181E5338214F928000E8A704 /* 每天懂一点好玩心理学.epub */; };
-		181E53DB214F928000E8A704 /* 十宗罪.epub in Resources */ = {isa = PBXBuildFile; fileRef = 181E533A214F928000E8A704 /* 十宗罪.epub */; };
 		181E53DC214F928000E8A704 /* XDSReadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 181E533C214F928000E8A704 /* XDSReadViewController.m */; };
 		181E53DD214F928000E8A704 /* XDSReadPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 181E533F214F928000E8A704 /* XDSReadPageViewController.m */; };
 		181E53DE214F928000E8A704 /* XDSPhotoBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = 181E5341214F928000E8A704 /* XDSPhotoBrowser.m */; };
@@ -232,7 +231,6 @@
 		A2755B8A2166444700006989 /* logo_launch.png in Resources */ = {isa = PBXBuildFile; fileRef = A2755B892166444700006989 /* logo_launch.png */; };
 		A2755B8C216646B600006989 /* launch_414x736@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A2755B8B216646B600006989 /* launch_414x736@2x.png */; };
 		A2755B8F21665B5300006989 /* XDSHTMLVideoSearchVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A2755B8D21665B5300006989 /* XDSHTMLVideoSearchVC.m */; };
-		A2755B922166663000006989 /* 特种神医.txt in Resources */ = {isa = PBXBuildFile; fileRef = A2755B912166663000006989 /* 特种神医.txt */; };
 		A27BB35C215FE087004C9635 /* XDSHTMLMovieModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A27BB35A215FE087004C9635 /* XDSHTMLMovieModel.m */; };
 		A27BB35F215FE0C8004C9635 /* XDSHTMLMovieListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A27BB35E215FE0C8004C9635 /* XDSHTMLMovieListVC.m */; };
 		A27BB362215FE73A004C9635 /* XDSHTMLPlayerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A27BB360215FE739004C9635 /* XDSHTMLPlayerVC.m */; };
@@ -306,6 +304,7 @@
 		09F90D761DE2D2F600542684 /* IHYNewsMultableImageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IHYNewsMultableImageCell.h; sourceTree = "<group>"; };
 		09F90D771DE2D2F600542684 /* IHYNewsMultableImageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IHYNewsMultableImageCell.m; sourceTree = "<group>"; };
 		09F90D781DE2D2F600542684 /* IHYNewsMultableImageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IHYNewsMultableImageCell.xib; sourceTree = "<group>"; };
+		1807902221673E35007079F5 /* 特种神医.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "特种神医.txt"; sourceTree = "<group>"; };
 		1808D3BD215BDD5300F822FD /* XDSBaseContentVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XDSBaseContentVC.h; sourceTree = "<group>"; };
 		1808D3BE215BDD5300F822FD /* XDSBaseContentVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XDSBaseContentVC.m; sourceTree = "<group>"; };
 		1808D3C0215BDE2B00F822FD /* XDSBaseContentNavigationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XDSBaseContentNavigationController.h; sourceTree = "<group>"; };
@@ -379,9 +378,7 @@
 		181E5333214F928000E8A704 /* GTMNSString+HTML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GTMNSString+HTML.m"; sourceTree = "<group>"; };
 		181E5335214F928000E8A704 /* 妖神记.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "妖神记.txt"; sourceTree = "<group>"; };
 		181E5336214F928000E8A704 /* zoubianzhongguo.epub */ = {isa = PBXFileReference; lastKnownFileType = file; path = zoubianzhongguo.epub; sourceTree = "<group>"; };
-		181E5337214F928000E8A704 /* mdjyml.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = mdjyml.txt; sourceTree = "<group>"; };
 		181E5338214F928000E8A704 /* 每天懂一点好玩心理学.epub */ = {isa = PBXFileReference; lastKnownFileType = file; path = "每天懂一点好玩心理学.epub"; sourceTree = "<group>"; };
-		181E533A214F928000E8A704 /* 十宗罪.epub */ = {isa = PBXFileReference; lastKnownFileType = file; path = "十宗罪.epub"; sourceTree = "<group>"; };
 		181E533C214F928000E8A704 /* XDSReadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XDSReadViewController.m; sourceTree = "<group>"; };
 		181E533D214F928000E8A704 /* XDSReadPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDSReadPageViewController.h; sourceTree = "<group>"; };
 		181E533E214F928000E8A704 /* XDSPhotoBrowser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDSPhotoBrowser.h; sourceTree = "<group>"; };
@@ -692,9 +689,6 @@
 		A2755B8B216646B600006989 /* launch_414x736@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "launch_414x736@2x.png"; sourceTree = "<group>"; };
 		A2755B8D21665B5300006989 /* XDSHTMLVideoSearchVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XDSHTMLVideoSearchVC.m; sourceTree = "<group>"; };
 		A2755B8E21665B5300006989 /* XDSHTMLVideoSearchVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDSHTMLVideoSearchVC.h; sourceTree = "<group>"; };
-		A2755B912166663000006989 /* 特种神医.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "特种神医.txt"; sourceTree = "<group>"; };
-		A2755B932166665700006989 /* zoubianzhongguo.epub */ = {isa = PBXFileReference; lastKnownFileType = file; name = zoubianzhongguo.epub; path = ../../../../XDSReader/XDSReader/XDSReader/XDSReaderKit/Resource/zoubianzhongguo.epub; sourceTree = "<group>"; };
-		A2755B942166665700006989 /* 每天懂一点好玩心理学.epub */ = {isa = PBXFileReference; lastKnownFileType = file; name = "每天懂一点好玩心理学.epub"; path = "../../../../XDSReader/XDSReader/XDSReader/XDSReaderKit/Resource/每天懂一点好玩心理学.epub"; sourceTree = "<group>"; };
 		A27BB35A215FE087004C9635 /* XDSHTMLMovieModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XDSHTMLMovieModel.m; sourceTree = "<group>"; };
 		A27BB35B215FE087004C9635 /* XDSHTMLMovieModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDSHTMLMovieModel.h; sourceTree = "<group>"; };
 		A27BB35D215FE0C8004C9635 /* XDSHTMLMovieListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDSHTMLMovieListVC.h; sourceTree = "<group>"; };
@@ -1110,11 +1104,10 @@
 		181E5334214F928000E8A704 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				1807902221673E35007079F5 /* 特种神医.txt */,
 				181E5335214F928000E8A704 /* 妖神记.txt */,
 				181E5336214F928000E8A704 /* zoubianzhongguo.epub */,
-				181E5337214F928000E8A704 /* mdjyml.txt */,
 				181E5338214F928000E8A704 /* 每天懂一点好玩心理学.epub */,
-				181E533A214F928000E8A704 /* 十宗罪.epub */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -1774,9 +1767,6 @@
 		A2755B90216665AD00006989 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
-				A2755B912166663000006989 /* 特种神医.txt */,
-				A2755B942166665700006989 /* 每天懂一点好玩心理学.epub */,
-				A2755B932166665700006989 /* zoubianzhongguo.epub */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -2047,7 +2037,7 @@
 				TargetAttributes = {
 					A0D46B751DE0173500637681 = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = 8RW49AS53X;
+						DevelopmentTeam = 85W725W7AQ;
 						ProvisioningStyle = Manual;
 					};
 				};
@@ -2078,11 +2068,11 @@
 				1885EDC421605A91004C4FD7 /* unavailible_url.json in Resources */,
 				A227A84B2130641300568BCB /* SplashNormal.png in Resources */,
 				18A6FA28212FCB9D00709EC9 /* appConfig.txt in Resources */,
+				1807902321673E36007079F5 /* 特种神医.txt in Resources */,
 				18A6FAF62130DF3800709EC9 /* img_circular@3x.png in Resources */,
 				092CAF051DE28620008127DA /* IHPMovieCell.xib in Resources */,
 				181E5407214F928100E8A704 /* XDSNoDataView.xib in Resources */,
 				A05EB9251DE04EF400148A5B /* icon_jiazai@3x.png in Resources */,
-				181E53D8214F928000E8A704 /* mdjyml.txt in Resources */,
 				181E53D7214F928000E8A704 /* zoubianzhongguo.epub in Resources */,
 				18A6FAF22130DF3800709EC9 /* btn_stop@3x.png in Resources */,
 				18F8EB5C2139634000168506 /* down.png in Resources */,
@@ -2114,11 +2104,9 @@
 				A227A84D2130641300568BCB /* SplashX.png in Resources */,
 				A01579F31DE1776C00CD7DDB /* ico_back@2x.png in Resources */,
 				FCA032421F8DD7DE00600581 /* PYSearch.bundle in Resources */,
-				181E53DB214F928000E8A704 /* 十宗罪.epub in Resources */,
 				18A6FAF52130DF3800709EC9 /* btn_voice@3x.png in Resources */,
 				18A6FAF42130DF3800709EC9 /* btn_voice@2x.png in Resources */,
 				09F90D7A1DE2D2F600542684 /* IHYNewsMultableImageCell.xib in Resources */,
-				A2755B922166663000006989 /* 特种神医.txt in Resources */,
 				A22C12EF2144611800896F00 /* XDSVideoSummaryCell.xib in Resources */,
 				181E53E1214F928000E8A704 /* 华文彩云.ttf in Resources */,
 				18A6FAF92130DF3800709EC9 /* btn_voice_disabled@2x.png in Resources */,
@@ -2538,10 +2526,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: dosom xu (85W725W7AQ)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: dosom xu (85W725W7AQ)";
 				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = 8RW49AS53X;
+				DEVELOPMENT_TEAM = 85W725W7AQ;
 				GCC_PREFIX_HEADER = iHappy/IPYPrefixHeader.pch;
 				INFOPLIST_FILE = iHappy/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -2591,7 +2579,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.youmi.ihappy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "17c16fff-a7a2-455f-ab37-595fd31ecfd8";
-				PROVISIONING_PROFILE_SPECIFIER = "XC Wildcard Development";
+				PROVISIONING_PROFILE_SPECIFIER = 85W725W7AQ.com.youmi.ihappy;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -2602,10 +2590,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: dosom xu (85W725W7AQ)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: dosom xu (85W725W7AQ)";
 				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = 8RW49AS53X;
+				DEVELOPMENT_TEAM = 85W725W7AQ;
 				GCC_PREFIX_HEADER = iHappy/IPYPrefixHeader.pch;
 				INFOPLIST_FILE = iHappy/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -2655,7 +2643,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.youmi.ihappy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "17c16fff-a7a2-455f-ab37-595fd31ecfd8";
-				PROVISIONING_PROFILE_SPECIFIER = "XC Wildcard Development";
+				PROVISIONING_PROFILE_SPECIFIER = 85W725W7AQ.com.youmi.ihappy;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

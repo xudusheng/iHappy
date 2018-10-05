@@ -15,18 +15,26 @@
 
 #import "AppDelegate.h"
 //demo
-NSString *const kGDTMobSDKAppId = @"1105344611";
-NSString *const kGDTMobSDKSplashAdId = @"9040714184494018";
-NSString *const kGDTMobSDKBannerAdId = @"4090812164690039";
-NSString *const kGDTMobSDKNativeAdId = @"5030722621265924";//原生广告id
-NSString *const kGDTMobSDKInterstitialAdId = @"2030814134092814";//插屏广告id
+//NSString *const kGDTMobSDKAppId = @"1105344611";
+//NSString *const kGDTMobSDKSplashAdId = @"9040714184494018";
+//NSString *const kGDTMobSDKBannerAdId = @"4090812164690039";
+//NSString *const kGDTMobSDKNativeAdId = @"5030722621265924";//原生广告id
+//NSString *const kGDTMobSDKInterstitialAdId = @"2030814134092814";//插屏广告id
 
-//iHappy
-//NSString *const kGDTMobSDKAppId = @"1106160564";
-//NSString *const kGDTMobSDKSplashAdId = @"8060437838106665";//开屏广告id
-//NSString *const kGDTMobSDKBannerAdId = @"5040221235552630";//banner广告id
-//NSString *const kGDTMobSDKNativeAdId = @"3020432808501644";//原生广告id
-//NSString *const kGDTMobSDKInterstitialAdId = @"5010535848806666";//插屏广告id
+//com.youmi.ihappy
+NSString *const kGDTMobSDKAppId = @"1106160564";
+NSString *const kGDTMobSDKSplashAdId = @"8060437838106665";//开屏广告id
+NSString *const kGDTMobSDKBannerAdId = @"5040221235552630";//banner广告id
+NSString *const kGDTMobSDKNativeAdId = @"3020432808501644";//原生广告id
+NSString *const kGDTMobSDKInterstitialAdId = @"5010535848806666";//插屏广告id
+
+
+//com.onlinecredit.laomoneyUAT
+//NSString *const kGDTMobSDKAppId = @"1107811445";
+//NSString *const kGDTMobSDKSplashAdId = @"6080544112424254";
+//NSString *const kGDTMobSDKBannerAdId = @"6070346162629225";
+//NSString *const kGDTMobSDKNativeAdId = @"2030749182423129";//原生广告id
+//NSString *const kGDTMobSDKInterstitialAdId = @"3010544152029233";//插屏广告id
 
 @interface XDSAdManager () <GDTSplashAdDelegate, GDTNativeExpressAdDelegete, GDTMobInterstitialDelegate>
 
@@ -145,6 +153,9 @@ NSString *const kGDTMobSDKInterstitialAdId = @"2030814134092814";//插屏广告i
     //取消本类中的performSelector:方法
     [[self class] cancelPreviousPerformRequestsWithTarget:self];
     [self performSelector:@selector(canShowAd) withObject:nil afterDelay:30];
+    if (self.interstitial && self.interstitial.isReady) {
+        [self.interstitial presentFromRootViewController:[XDSRootViewController sharedRootViewController].mainViewController];
+    }
 }
 
 - (void)canShowAd {
@@ -168,7 +179,7 @@ NSString *const kGDTMobSDKInterstitialAdId = @"2030814134092814";//插屏广告i
         _bannerView.interval = 20;//刷新间隔
         _bannerView.isAnimationOn = NO;//是否添加动画
         _bannerView.showCloseBtn = NO;//是否添加隐藏按钮
-        _bannerView.isGpsOn = NO;//是否添加GPS
+        _bannerView.isGpsOn = YES;//是否添加GPS
 //        _bannerView.delegate = self;
     }
     return _bannerView;
@@ -225,7 +236,9 @@ NSString *const kGDTMobSDKInterstitialAdId = @"2030814134092814";//插屏广告i
 }
 // 详解:当接收服务器返回的广告数据成功后调用该函数
 - (void)interstitialSuccessToLoadAd:(GDTMobInterstitial *)interstitial{
-    [self.interstitial presentFromRootViewController:[XDSRootViewController sharedRootViewController].mainViewController];
+    if (self.splashAd == nil) {
+        [self.interstitial presentFromRootViewController:[XDSRootViewController sharedRootViewController].mainViewController];
+    }
 }
 //// 详解:当接收服务器返回的广告数据失败后调用该函数
 //- (void)interstitialFailToLoadAd:(GDTMobInterstitial *)interstitial error:(NSError *)error{}
