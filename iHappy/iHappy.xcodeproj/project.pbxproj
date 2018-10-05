@@ -2526,8 +2526,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: dosom xu (85W725W7AQ)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: dosom xu (85W725W7AQ)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: dosom xu (RPYJA8EBQM)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: dosom xu (RPYJA8EBQM)";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 85W725W7AQ;
 				GCC_PREFIX_HEADER = iHappy/IPYPrefixHeader.pch;
@@ -2579,7 +2579,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.youmi.ihappy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "17c16fff-a7a2-455f-ab37-595fd31ecfd8";
-				PROVISIONING_PROFILE_SPECIFIER = 85W725W7AQ.com.youmi.ihappy;
+				PROVISIONING_PROFILE_SPECIFIER = development.com.youmi.ihappy;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -2590,8 +2590,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: dosom xu (85W725W7AQ)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: dosom xu (85W725W7AQ)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: dosom xu (RPYJA8EBQM)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: dosom xu (RPYJA8EBQM)";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 85W725W7AQ;
 				GCC_PREFIX_HEADER = iHappy/IPYPrefixHeader.pch;
@@ -2643,7 +2643,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.youmi.ihappy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "17c16fff-a7a2-455f-ab37-595fd31ecfd8";
-				PROVISIONING_PROFILE_SPECIFIER = 85W725W7AQ.com.youmi.ihappy;
+				PROVISIONING_PROFILE_SPECIFIER = development.com.youmi.ihappy;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
