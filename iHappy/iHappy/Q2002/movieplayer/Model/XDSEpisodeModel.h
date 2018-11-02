@@ -20,6 +20,7 @@
 @property (nonatomic,assign) NSInteger sort;//剧集顺序
 @property (nonatomic,assign) NSInteger section;
 
+
 @end
 
 

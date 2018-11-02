@@ -60,7 +60,7 @@
             "title": "热门视频",
             "menuId": "kVideo",
             "type": "2",
-            "rooturl": "http://134.175.54.80/ihappy/video/query.php",
+            "rooturl": "http://172.16.8.81:8091/video/list",
             "enable": true,
             "subMenus": [
                 {

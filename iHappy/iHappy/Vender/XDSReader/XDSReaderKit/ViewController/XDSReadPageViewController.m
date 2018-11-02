@@ -27,6 +27,7 @@ XDSReadManagerDelegate
 
 @property (nonatomic,strong) UIPageViewController *pageViewController;
 @property (strong, nonatomic) XDSReadMenu *readMenuView;//菜单
+@property (strong, nonatomic) UITapGestureRecognizer *tapGesture;
 
 @end
 
@@ -61,12 +62,14 @@ XDSReadManagerDelegate
                                   direction:UIPageViewControllerNavigationDirectionForward
                                    animated:YES
                                  completion:nil];
-    [self.view addGestureRecognizer:({
+    
+    self.tapGesture = ({
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showToolMenu)];
         tap.delegate = self;
         tap;
-    })];
+    });
     
+    [self.view addGestureRecognizer:self.tapGesture];
 
 }
 
@@ -131,6 +134,17 @@ XDSReadManagerDelegate
 //TODO: UIGestureRecognizerDelegate
 //解决TabView与Tap手势冲突
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch {
+
+//    NSLog(@"%s", __FUNCTION__);
+//
+//#warning 待优化
+//    XDSChapterModel *chapterModel = CURRENT_BOOK_MODEL.chapters[_chapter];
+//    NSLog(@"chapterModel = %@ = %ld", chapterModel, chapterModel.selectRange.length);
+//
+//    if (chapterModel.selectRange.length != 0) {
+//        return NO;
+//    }
+    
     if ([touch.view isKindOfClass:[DTAttributedTextContentView class]] ||
         [touch.view isKindOfClass:[DTAttributedTextView class]] ||
         [touch.view isKindOfClass:[XDSReadView class]]) {
@@ -143,10 +157,7 @@ XDSReadManagerDelegate
 - (nullable UIViewController *)pageViewController:(UIPageViewController *)pageViewController
                viewControllerBeforeViewController:(UIViewController *)viewController{
 
-    NSLog(@"444444444444444444444===%zd count", pageViewController.viewControllers.count);
-    if (!_isAnnimationFinished) {
-        return nil;
-    }
+    NSLog(@"444444444444444444444===%lud count", pageViewController.viewControllers.count);
     _pageChange = _page;
     _chapterChange = _chapter;
     
@@ -161,7 +172,6 @@ XDSReadManagerDelegate
     }
     _pageChange--;
     
-    _isAnnimationFinished = NO;
     return [[XDSReadManager sharedManager] readViewWithChapter:&_chapterChange
                                                           page:&_pageChange
                                                        pageUrl:nil];
@@ -169,9 +179,7 @@ XDSReadManagerDelegate
 - (nullable UIViewController *)pageViewController:(UIPageViewController *)pageViewController
                 viewControllerAfterViewController:(UIViewController *)viewController{
     NSLog(@"333333333333333333333333===%zd count", pageViewController.viewControllers.count);
-    if (!_isAnnimationFinished) {
-        return nil;
-    }
+
     _pageChange = _page;
     _chapterChange = _chapter;
     if (_pageChange == CURRENT_BOOK_MODEL.chapters.lastObject.pageCount-1 && _chapterChange == CURRENT_BOOK_MODEL.chapters.count-1) {
@@ -186,7 +194,6 @@ XDSReadManagerDelegate
         _pageChange++;
     }
     
-    _isAnnimationFinished = NO;
     return [[XDSReadManager sharedManager] readViewWithChapter:&_chapterChange
                                                           page:&_pageChange
                                                        pageUrl:nil];
@@ -204,7 +211,6 @@ XDSReadManagerDelegate
    previousViewControllers:(NSArray *)previousViewControllers
        transitionCompleted:(BOOL)completed{
     NSLog(@"1111111111111111111 == %ld == %ld", finished, completed);
-    _isAnnimationFinished = finished;
     if (!completed) {
         XDSReadViewController *readView = previousViewControllers.firstObject;
         _page = readView.pageNum;
@@ -233,7 +239,6 @@ XDSReadManagerDelegate
 }
 //MARK: - ABOUT MEMERY
 - (void)readPageViewControllerDataInit{
-    _isAnnimationFinished = YES;
 }
 
 

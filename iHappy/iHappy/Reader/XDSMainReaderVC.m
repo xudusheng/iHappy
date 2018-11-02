@@ -149,7 +149,7 @@ OCT_SYNTHESIZE_SINGLETON_FOR_CLASS(XDSMainReaderVC)
     [self.bookList removeAllObjects];
     
     //本地文件-同步执行
-    NSArray *fileList = @[@"每天懂一点好玩心理学.epub", @"zoubianzhongguo.epub", @"特种神医.txt"];
+    NSArray *fileList = @[@"生活小科普.txt"];
     for (NSString *fileName in fileList) {
         
         //注意，url初始化方法与从documents读取文件的url初始化方法的区别

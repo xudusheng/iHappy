@@ -10,4 +10,11 @@
 
 @implementation XDSBaseResponseModel
 
++ (NSDictionary *)mj_replacedKeyFromPropertyName {
+    return @{
+             @"errormessage":@"msg",
+             @"error_code":@"code",
+             @"result":@"data",
+             };
+}
 @end

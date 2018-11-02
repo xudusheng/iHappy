@@ -141,11 +141,11 @@ NSString *const kXDSUpdateLocalizableTaskID = @"XDSUpdateLocalizableTask";
         [self fetchConfigData];
     };
 
-    XDSTask *fetchUnavailibleUrlListTask = [XDSTask task];
-    fetchUnavailibleUrlListTask.taskId = kXDSFetchUnavailibleUrlListTaskID;
-    fetchUnavailibleUrlListTask.taskContentBlock = ^(XDSTask *task) {
-        [self fetchUnavailibleUrlList];
-    };
+//    XDSTask *fetchUnavailibleUrlListTask = [XDSTask task];
+//    fetchUnavailibleUrlListTask.taskId = kXDSFetchUnavailibleUrlListTaskID;
+//    fetchUnavailibleUrlListTask.taskContentBlock = ^(XDSTask *task) {
+//        [self fetchUnavailibleUrlList];
+//    };
     
     XDSTask *updateLocalizableTask = [XDSTask task];
     updateLocalizableTask.taskId = kXDSUpdateLocalizableTaskID;
@@ -157,12 +157,12 @@ NSString *const kXDSUpdateLocalizableTaskID = @"XDSUpdateLocalizableTask";
 
     
 #if DEBUG
-    [updateLocalizableTask addDependency:fetchConfigTask];
+//    [updateLocalizableTask addDependency:fetchConfigTask];
 
 #else
-    [_launchTaskQueue addTask:fetchUnavailibleUrlListTask];
-    [fetchUnavailibleUrlListTask addDependency:fetchConfigTask];
-    [updateLocalizableTask addDependency:fetchUnavailibleUrlListTask];
+//    [_launchTaskQueue addTask:fetchUnavailibleUrlListTask];
+//    [fetchUnavailibleUrlListTask addDependency:fetchConfigTask];
+//    [updateLocalizableTask addDependency:fetchUnavailibleUrlListTask];
 #endif
     
     [_launchTaskQueue goWithFinishedBlock:^(XDSTaskQueue *taskQueue) {
@@ -175,76 +175,76 @@ NSString *const kXDSUpdateLocalizableTaskID = @"XDSUpdateLocalizableTask";
 
 - (void)fetchConfigData{
     
-//    NSString *path = [[NSBundle mainBundle] pathForResource:@"menu" ofType:@"json"];
-//    NSData *menuData = [NSData dataWithContentsOfFile:path];
-//    NSLog(@"%@", [[NSString alloc] initWithData:menuData encoding:NSUTF8StringEncoding]);
-//
-//    IHPConfigManager *manager = [IHPConfigManager shareManager];
-//    [manager configManagerWithJsondData:menuData];
-//    [self finishTaskWithTaksID:kXDSFetchConfigTaskID];
-//
-//    return;
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"menu" ofType:@"json"];
+    NSData *menuData = [NSData dataWithContentsOfFile:path];
+    NSLog(@"%@", [[NSString alloc] initWithData:menuData encoding:NSUTF8StringEncoding]);
+
+    IHPConfigManager *manager = [IHPConfigManager shareManager];
+    [manager configManagerWithJsondData:menuData];
+    [self finishTaskWithTaksID:kXDSFetchConfigTaskID];
+
+    return;
     
-    NSString *requesturl = @"http://134.175.54.80/ihappy/menu.json";
-    
-    __weak typeof(self)weakSelf = self;
-    [[[XDSHttpRequest alloc] init] htmlRequestWithHref:requesturl
-                                         hudController:nil
-                                               showHUD:NO
-                                               HUDText:nil
-                                         showFailedHUD:YES
-                                               success:^(BOOL success, NSData * htmlData) {
-                                                   NSLog(@"%@", [[NSString alloc] initWithData:htmlData encoding:NSUTF8StringEncoding]);
-                                                   
-                                                   IHPConfigManager *manager = [IHPConfigManager shareManager];
-                                                   [manager configManagerWithJsondData:htmlData];
-                                                   if (manager.forceUpdate.enable) {
-                                                       if (manager.forceUpdate.isForce) {
-                                                           [XDSUtilities alertViewWithPresentingController:[XDSRootViewController sharedRootViewController]
-                                                                                                     title:nil
-                                                                                                   message:manager.forceUpdate.updateMessage
-                                                                                              buttonTitles:@[@"退出", @"立即更新"]
-                                                                                                     block:^(NSInteger index) {
-                                                                                                         if (index == 0) {
-                                                                                                             exit(0);
-                                                                                                         }else{
-                                                                                                             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:manager.forceUpdate.url]];
-                                                                                                         }
-                                                                                                     }];
-                                                       }else{
-                                                           [XDSUtilities alertViewWithPresentingController:[XDSRootViewController sharedRootViewController]
-                                                                                                     title:nil
-                                                                                                   message:manager.forceUpdate.updateMessage
-                                                                                              buttonTitles:@[@"稍后再说", @"立即更新"]
-                                                                                                     block:^(NSInteger index) {
-                                                                                                         if (index == 0) {
-                                                                                                         }else{
-                                                                                                             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:manager.forceUpdate.url]];
-                                                                                                         }
-                                                                                                         [weakSelf finishTaskWithTaksID:kXDSFetchConfigTaskID];
-                                                                                                     }];
-                                                           
-                                                       }
-                                                       
-                                                   }else{
-                                                       [weakSelf finishTaskWithTaksID:kXDSFetchConfigTaskID];
-                                                   }
-                                                   
-                                               } failed:^(NSString *errorDescription) {
-                                                   errorDescription = errorDescription?errorDescription:kLoadFailed;
-                                                   [XDSUtilities alertViewWithPresentingController:[XDSRootViewController sharedRootViewController]
-                                                                                             title:nil
-                                                                                           message:errorDescription
-                                                                                      buttonTitles:@[@"退出", @"重新连接"]
-                                                                                             block:^(NSInteger index) {
-                                                                                                 if (index == 0) {
-                                                                                                     exit(0);
-                                                                                                 }else{
-                                                                                                     [weakSelf fetchConfigData];
-                                                                                                 }
-                                                                                             }];
-                                                   
-                                               }];
+//    NSString *requesturl = @"http://134.175.54.80/ihappy/menu.json";
+//
+//    __weak typeof(self)weakSelf = self;
+//    [[[XDSHttpRequest alloc] init] htmlRequestWithHref:requesturl
+//                                         hudController:nil
+//                                               showHUD:NO
+//                                               HUDText:nil
+//                                         showFailedHUD:YES
+//                                               success:^(BOOL success, NSData * htmlData) {
+//                                                   NSLog(@"%@", [[NSString alloc] initWithData:htmlData encoding:NSUTF8StringEncoding]);
+//
+//                                                   IHPConfigManager *manager = [IHPConfigManager shareManager];
+//                                                   [manager configManagerWithJsondData:htmlData];
+//                                                   if (manager.forceUpdate.enable) {
+//                                                       if (manager.forceUpdate.isForce) {
+//                                                           [XDSUtilities alertViewWithPresentingController:[XDSRootViewController sharedRootViewController]
+//                                                                                                     title:nil
+//                                                                                                   message:manager.forceUpdate.updateMessage
+//                                                                                              buttonTitles:@[@"退出", @"立即更新"]
+//                                                                                                     block:^(NSInteger index) {
+//                                                                                                         if (index == 0) {
+//                                                                                                             exit(0);
+//                                                                                                         }else{
+//                                                                                                             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:manager.forceUpdate.url]];
+//                                                                                                         }
+//                                                                                                     }];
+//                                                       }else{
+//                                                           [XDSUtilities alertViewWithPresentingController:[XDSRootViewController sharedRootViewController]
+//                                                                                                     title:nil
+//                                                                                                   message:manager.forceUpdate.updateMessage
+//                                                                                              buttonTitles:@[@"稍后再说", @"立即更新"]
+//                                                                                                     block:^(NSInteger index) {
+//                                                                                                         if (index == 0) {
+//                                                                                                         }else{
+//                                                                                                             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:manager.forceUpdate.url]];
+//                                                                                                         }
+//                                                                                                         [weakSelf finishTaskWithTaksID:kXDSFetchConfigTaskID];
+//                                                                                                     }];
+//
+//                                                       }
+//
+//                                                   }else{
+//                                                       [weakSelf finishTaskWithTaksID:kXDSFetchConfigTaskID];
+//                                                   }
+//
+//                                               } failed:^(NSString *errorDescription) {
+//                                                   errorDescription = errorDescription?errorDescription:kLoadFailed;
+//                                                   [XDSUtilities alertViewWithPresentingController:[XDSRootViewController sharedRootViewController]
+//                                                                                             title:nil
+//                                                                                           message:errorDescription
+//                                                                                      buttonTitles:@[@"退出", @"重新连接"]
+//                                                                                             block:^(NSInteger index) {
+//                                                                                                 if (index == 0) {
+//                                                                                                     exit(0);
+//                                                                                                 }else{
+//                                                                                                     [weakSelf fetchConfigData];
+//                                                                                                 }
+//                                                                                             }];
+//
+//                                               }];
 }
 
 - (void)fetchUnavailibleUrlList {

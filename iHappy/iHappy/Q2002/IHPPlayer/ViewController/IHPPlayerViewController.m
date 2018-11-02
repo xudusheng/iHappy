@@ -191,7 +191,7 @@ NSInteger const kPlaceholderSectionNumbers = 2;
 
 #pragma mark - 网络请求
 - (void)fetchEpisodeList{
-    NSString *url = @"http://134.175.54.80/ihappy/video/query.php";
+    NSString *url = @"http://172.16.8.81:8091/episode/query";
     NSString *md5key = self.movieModel.md5key?self.movieModel.md5key:@"";
     NSDictionary *params = @{
                              @"md5key":md5key
@@ -201,18 +201,42 @@ NSInteger const kPlaceholderSectionNumbers = 2;
     [[[XDSHttpRequest alloc] init] GETWithURLString:url
                                            reqParam:params
                                       hudController:self
-                                            showHUD:NO
+                                            showHUD:YES
                                             HUDText:nil
                                       showFailedHUD:YES
                                             success:^(BOOL success, NSDictionary *successResult) {
                                                 XDSBaseResponseModel *responseModel = [XDSBaseResponseModel mj_objectWithKeyValues:successResult];
-                                                for (NSArray *episodeList in responseModel.result) {
-                                                    NSArray *episodeModelList = [XDSEpisodeModel mj_objectArrayWithKeyValuesArray:episodeList];
-                                                    episodeModelList = [episodeModelList sortedArrayUsingComparator:^NSComparisonResult(XDSEpisodeModel* _Nonnull obj1, XDSEpisodeModel* _Nonnull obj2) {
+                                                
+                                                NSArray<XDSEpisodeModel*> *episodeModelList = [XDSEpisodeModel mj_objectArrayWithKeyValuesArray:responseModel.result];
+
+                                                NSMutableArray *episodeGroups = [NSMutableArray arrayWithCapacity:0];
+                                                NSMutableArray *firstGroup = [NSMutableArray arrayWithCapacity:0];
+                                                for (XDSEpisodeModel *episodeModel in episodeModelList) {
+                                                    if (episodeModel.section == 0) {
+                                                        [firstGroup addObject:episodeModel];
+                                                    }
+                                                }
+                                                if (firstGroup.count > 0) {
+                                                    firstGroup = [firstGroup sortedArrayUsingComparator:^NSComparisonResult(XDSEpisodeModel* _Nonnull obj1, XDSEpisodeModel* _Nonnull obj2) {
                                                         return obj1.sort > obj2.sort;
                                                     }];
-                                                    [weakSelf.episodeModelList addObject:episodeModelList];
+                                                    [episodeGroups addObject:firstGroup];
                                                 }
+                                                
+                                                NSMutableArray *secondGroup = [NSMutableArray arrayWithCapacity:0];
+                                                for (XDSEpisodeModel *episodeModel in episodeModelList) {
+                                                    if (episodeModel.section == 1) {
+                                                        [secondGroup addObject:episodeModel];
+                                                    }
+                                                }
+                                                if (secondGroup.count > 0) {
+                                                    secondGroup = [secondGroup sortedArrayUsingComparator:^NSComparisonResult(XDSEpisodeModel* _Nonnull obj1, XDSEpisodeModel* _Nonnull obj2) {
+                                                        return obj1.sort > obj2.sort;
+                                                    }];
+                                                    [episodeGroups addObject:secondGroup];
+                                                }
+                                                
+                                                weakSelf.episodeModelList = episodeGroups;
                                                 if (weakSelf.episodeModelList.count && [weakSelf.episodeModelList.firstObject count]) {
                                                     weakSelf.selectedEpisodeModel = weakSelf.episodeModelList[0][0];
                                                 }
@@ -461,10 +485,16 @@ NSInteger const kPlaceholderSectionNumbers = 2;
             [self.playerContentView addSubview:self.webView];
         }
         
-        NSURL * url = [NSURL URLWithString:self.selectedEpisodeModel.player_alter.length?self.selectedEpisodeModel.player_alter:self.selectedEpisodeModel.player];
-//        NSURL * url = [NSURL URLWithString:self.selectedEpisodeModel.player];
-        NSURLRequest * request = [NSURLRequest requestWithURL:url];
-        [_webView loadRequest:request];
+//        NSURL * url = [NSURL URLWithString:self.selectedEpisodeModel.player_alter.length?self.selectedEpisodeModel.player_alter:self.selectedEpisodeModel.player];
+//        NSURL * url = [NSURL URLWithString:@"http://app.baiyug.cn:2019/vip/apis.php?url=https://v.qq.com/x/cover/0w0zgqo2jmpenhf.html"];
+//        NSURLRequest * request = [NSURLRequest requestWithURL:url];
+//        [_webView loadRequest:request];
+
+        NSString *source = @"http://app.baiyug.cn:2019/vip/apis.php?url=https://v.qq.com/x/cover/0w0zgqo2jmpenhf.html";
+        NSString *path = [[NSBundle mainBundle] pathForResource:@"player.html" ofType:nil];
+        NSString *html = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
+        html = [html stringByReplacingOccurrencesOfString:@"${sourceUrl}" withString:source];
+        [_webView loadHTMLString:html baseURL:nil];
         
     }
 }
@@ -479,7 +509,6 @@ NSInteger const kPlaceholderSectionNumbers = 2;
 //}
 
 - (void)playWithZPPLayer:(XDSEpisodeModel *)episodeModel{
-    
     NSURL *videoURL = [NSURL URLWithString:episodeModel.video];
     ZFPlayerModel *playerModel = [[ZFPlayerModel alloc] init];
     playerModel.title            = episodeModel.title;
@@ -496,19 +525,19 @@ NSInteger const kPlaceholderSectionNumbers = 2;
     //    [self.playerView resetPlayer];
     //    [self fetchMoviePlayer];
     
-    self.title = [NSString stringWithFormat:@"%@-%@", self.movieModel.name, self.selectedEpisodeModel.title];
-    [self.mCollectionView cw_scrollToTopAnimated:YES];
-    [self.mCollectionView reloadData];
-    
-    if (_selectedEpisodeModel.player.length) {
-        if (_selectedEpisodeModel.player_alter.length || _selectedEpisodeModel.video.length) {
-            [self startPlay];
-        }else {
-            [self fetchDeepPlayerInfo];
-        }
-    }else {
-        [self fetchPlayerInfo];
-    }
+//    self.title = [NSString stringWithFormat:@"%@-%@", self.movieModel.name, self.selectedEpisodeModel.title];
+//    [self.mCollectionView cw_scrollToTopAnimated:YES];
+//    [self.mCollectionView reloadData];
+//
+//    if (_selectedEpisodeModel.player.length) {
+//        if (_selectedEpisodeModel.player_alter.length || _selectedEpisodeModel.video.length) {
+//            [self startPlay];
+//        }else {
+//            [self fetchDeepPlayerInfo];
+//        }
+//    }else {
+//        [self fetchPlayerInfo];
+//    }
 }
 
 //https://apis.tianxianle.com/dapi.php?id=saF1naKhqaajza2r0dZuY2Cro6OeZtuhpJuhoadpX5imomRraGpsZ5yVb2akqouMqnOEp2ah0JabrGWlZahp

@@ -63,7 +63,7 @@
 #pragma mark - 网络请求
 
 - (void)headerRequest{
-    self.currentPage = 0;
+    self.currentPage = 1;
     [self fetchMovieList:YES];
     [_movieCollectionView.mj_footer resetNoMoreData];
 }
@@ -77,8 +77,8 @@
     NSString *url = _menuModel.rooturl;
     NSDictionary *params = @{
                              @"type":_subMenuModel.url,
-                             @"size":@(REQUEST_PAGE_SIZE),
-                             @"page":@(_currentPage),
+                             @"page_size":@(REQUEST_PAGE_SIZE),
+                             @"page_no":@(_currentPage),
                              };
     
     __weak typeof(self)weakSelf = self;
@@ -94,18 +94,19 @@
                                                 NSArray *movieList = [IHYMovieModel mj_objectArrayWithKeyValuesArray:responseModel.result];
                                                 
                                                 if (movieList.count) {
-                                                    (weakSelf.currentPage == 0) ? [weakSelf.movieList removeAllObjects] : NULL;
+                                                    (weakSelf.currentPage == 1) ? [weakSelf.movieList removeAllObjects] : NULL;
                                                 }
                                                 
-                                                //过滤需要禁止显示的url
-                                                for (IHYMovieModel *movieModel in movieList) {
-                                                    NSString *fullHref = [self.menuModel.rooturl stringByAppendingString:movieModel.href];
-                                                    if ([weakSelf.menuModel.unavailible_url_list containsObject:movieModel.href] || [weakSelf.menuModel.unavailible_url_list containsObject:fullHref]) {
-                                                    }else {
-                                                        [self.movieList addObject:movieModel];
-                                                    }
-                                                }
+//                                                //过滤需要禁止显示的url
+//                                                for (IHYMovieModel *movieModel in movieList) {
+//                                                    NSString *fullHref = [self.menuModel.rooturl stringByAppendingString:movieModel.href];
+//                                                    if ([weakSelf.menuModel.unavailible_url_list containsObject:movieModel.href] || [weakSelf.menuModel.unavailible_url_list containsObject:fullHref]) {
+//                                                    }else {
+//                                                        [self.movieList addObject:movieModel];
+//                                                    }
+//                                                }
                                                 
+                                                [self.movieList addObjectsFromArray:movieList];
                                                 
                                                 [self.movieCollectionView reloadData];
                                                 [weakSelf endRefresh];
