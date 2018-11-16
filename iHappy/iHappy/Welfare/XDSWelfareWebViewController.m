@@ -100,7 +100,9 @@
     NSString *urlString = [[request URL] absoluteString];
     NSLog(@"urlString = %@", urlString);
     
-    self.contentUrl = urlString;
+    if (navigationType == UIWebViewNavigationTypeLinkClicked) {
+        self.contentUrl = urlString;
+    }
 
     
     //在向服务端发送请求状态栏显示网络活动标志：
@@ -149,8 +151,10 @@
     if (self.contentUrl.length < 1) {
         return;
     }
-    XDSWebViewController *webVC = [[XDSWebViewController alloc] init];
     NSString *url =  [@"http://app.baiyug.cn:2019/vip/?url=" stringByAppendingString:self.contentUrl];
+//    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url]];
+    
+    XDSWebViewController *webVC = [[XDSWebViewController alloc] init];
     webVC.requestURL = url;
     [self.navigationController pushViewController:webVC animated:YES];
 }
