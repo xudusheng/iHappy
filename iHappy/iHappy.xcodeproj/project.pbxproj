@@ -89,6 +89,9 @@
 		181E5421214FD25D00E8A704 /* XDSBookCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 181E541F214FD25D00E8A704 /* XDSBookCell.xib */; };
 		1825BD1A2186937D0071D2DC /* XDSNoteHTMLVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1825BD182186937C0071D2DC /* XDSNoteHTMLVC.m */; };
 		1825BD202186AAF40071D2DC /* 生活小科普.txt in Resources */ = {isa = PBXBuildFile; fileRef = 1825BD1F2186AAF40071D2DC /* 生活小科普.txt */; };
+		182D55EE219EE8B900101A82 /* XDSWelfareVCTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 182D55EC219EE8B900101A82 /* XDSWelfareVCTableViewController.m */; };
+		182D55EF219EE8B900101A82 /* XDSWelfareVCTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 182D55ED219EE8B900101A82 /* XDSWelfareVCTableViewController.xib */; };
+		182D55F2219EFDF200101A82 /* XDSWelfareWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 182D55F1219EFDF200101A82 /* XDSWelfareWebViewController.m */; };
 		185347642142098600013F81 /* XDSEpisodeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 185347632142098600013F81 /* XDSEpisodeModel.m */; };
 		1861C6E0215A1C3D005A03D7 /* logo_book.png in Resources */ = {isa = PBXBuildFile; fileRef = 1861C6DF215A1C3D005A03D7 /* logo_book.png */; };
 		1885EDC421605A91004C4FD7 /* unavailible_url.json in Resources */ = {isa = PBXBuildFile; fileRef = 1885EDC321605A90004C4FD7 /* unavailible_url.json */; };
@@ -427,6 +430,11 @@
 		1825BD182186937C0071D2DC /* XDSNoteHTMLVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XDSNoteHTMLVC.m; sourceTree = "<group>"; };
 		1825BD192186937C0071D2DC /* XDSNoteHTMLVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDSNoteHTMLVC.h; sourceTree = "<group>"; };
 		1825BD1F2186AAF40071D2DC /* 生活小科普.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "生活小科普.txt"; sourceTree = "<group>"; };
+		182D55EB219EE8B900101A82 /* XDSWelfareVCTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XDSWelfareVCTableViewController.h; sourceTree = "<group>"; };
+		182D55EC219EE8B900101A82 /* XDSWelfareVCTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XDSWelfareVCTableViewController.m; sourceTree = "<group>"; };
+		182D55ED219EE8B900101A82 /* XDSWelfareVCTableViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = XDSWelfareVCTableViewController.xib; sourceTree = "<group>"; };
+		182D55F0219EFDF200101A82 /* XDSWelfareWebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XDSWelfareWebViewController.h; sourceTree = "<group>"; };
+		182D55F1219EFDF200101A82 /* XDSWelfareWebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XDSWelfareWebViewController.m; sourceTree = "<group>"; };
 		185347622142098600013F81 /* XDSEpisodeModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XDSEpisodeModel.h; sourceTree = "<group>"; };
 		185347632142098600013F81 /* XDSEpisodeModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XDSEpisodeModel.m; sourceTree = "<group>"; };
 		1861C6DF215A1C3D005A03D7 /* logo_book.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_book.png; sourceTree = "<group>"; };
@@ -1212,6 +1220,18 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		182D55E2219EE61A00101A82 /* Welfare */ = {
+			isa = PBXGroup;
+			children = (
+				182D55EB219EE8B900101A82 /* XDSWelfareVCTableViewController.h */,
+				182D55EC219EE8B900101A82 /* XDSWelfareVCTableViewController.m */,
+				182D55ED219EE8B900101A82 /* XDSWelfareVCTableViewController.xib */,
+				182D55F0219EFDF200101A82 /* XDSWelfareWebViewController.h */,
+				182D55F1219EFDF200101A82 /* XDSWelfareWebViewController.m */,
+			);
+			path = Welfare;
+			sourceTree = "<group>";
+		};
 		185347602142096E00013F81 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -1712,6 +1732,7 @@
 				A22C12F02144648A00896F00 /* Tools */,
 				FC1A8C2C1EAC1FD900E66FF8 /* menu.json */,
 				1885EDC321605A90004C4FD7 /* unavailible_url.json */,
+				182D55E2219EE61A00101A82 /* Welfare */,
 				18A6FA1B212FCB9200709EC9 /* Manager */,
 				FC0B7C6B1EC751690022E504 /* Bizhi */,
 				092CAED51DE2861F008127DA /* Q2002 */,
@@ -2072,6 +2093,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1885EDC421605A91004C4FD7 /* unavailible_url.json in Resources */,
+				182D55EF219EE8B900101A82 /* XDSWelfareVCTableViewController.xib in Resources */,
 				A227A84B2130641300568BCB /* SplashNormal.png in Resources */,
 				18A6FA28212FCB9D00709EC9 /* appConfig.txt in Resources */,
 				18A6FAF62130DF3800709EC9 /* img_circular@3x.png in Resources */,
@@ -2218,6 +2240,7 @@
 				18A6FA992130031600709EC9 /* NLEBNFParserFactory.m in Sources */,
 				181E53CB214F928000E8A704 /* CXMLNode_CreationExtensions.m in Sources */,
 				18A6FA972130031600709EC9 /* NLEBNFSymbol.m in Sources */,
+				182D55EE219EE8B900101A82 /* XDSWelfareVCTableViewController.m in Sources */,
 				18A6FA882130031500709EC9 /* NLEPropertyParser.m in Sources */,
 				092CAEFA1DE28620008127DA /* IHYMainViewController.m in Sources */,
 				18A6FA5A212FFFB900709EC9 /* XDSPlaceholdSplashManager.m in Sources */,
@@ -2238,6 +2261,7 @@
 				18A6FA872130031500709EC9 /* NLEBNFToken.m in Sources */,
 				181E53D2214F928000E8A704 /* NSString+XDSReader.m in Sources */,
 				18B3DC8D2154BB8600FFD27E /* UIViewController+XDSReader.m in Sources */,
+				182D55F2219EFDF200101A82 /* XDSWelfareWebViewController.m in Sources */,
 				181E53B7214F928000E8A704 /* XDSReadManager.m in Sources */,
 				092CAF131DE28D56008127DA /* OCTKeyboardObserverHelper.m in Sources */,
 				18BB4F432153F9EE00C4A2CD /* GCDWebServerDataResponse.m in Sources */,

@@ -11,6 +11,9 @@
 #import "IHYMainViewController.h"
 #import "XDSMainReaderVC.h"
 #import "IHPMeituListViewController.h"
+
+#import "XDSWelfareVCTableViewController.h"//小微福利
+
 @interface IHPMenuModel (){
     UINavigationController *_contentViewController;//这个model下的controller，单例
 }
@@ -27,6 +30,9 @@
         }else if (self.type == IHPMenuTypeBizhi){
             contentController = [[IHPMeituListViewController alloc] init];
             ((IHPMeituListViewController *)contentController).rootUrl = self.rooturl;
+            contentController.title = self.title;
+        }else if(self.type == IHPMenuTypeWelfare){
+            contentController = [[XDSWelfareVCTableViewController alloc] init];
             contentController.title = self.title;
         }else {
             contentController = [[IHYMainViewController alloc] init];
