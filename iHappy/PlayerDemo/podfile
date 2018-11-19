@@ -1,0 +1,14 @@
+source 'https://github.com/CocoaPods/Specs.git'
+platform :ios, '8.0'
+inhibit_all_warnings!
+
+
+target 'PlayerDemo' do
+
+#    pod 'ZFPlayer', '~> 3.2.1'
+
+#pod 'ZFPlayer/Core', '~> 3.2.1'
+#pod 'ZFPlayer/ControlView', '~> 3.2.1'
+#pod 'ZFPlayer/AVPlayer', '~> 3.2.1'
+
+end

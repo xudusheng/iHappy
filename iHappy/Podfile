@@ -1,6 +1,8 @@
 
+source 'https://github.com/CocoaPods/Specs.git'
 
 platform :ios, '8.0'
+use_frameworks!
 inhibit_all_warnings!
 
 
@@ -20,7 +22,13 @@ pod 'YYModel', '~> 1.0.4'
 pod 'JSONModel'
 pod 'MJExtension'
 pod 'WMPageController'
-pod 'ZFPlayer', '~> 3.0'
+
+pod 'ZFPlayer/Core', '~> 3.2.1'
+#pod 'ZFPlayer/ControlView', '~> 3.2.1'
+#pod 'ZFPlayer/AVPlayer', '~> 3.2.1'
+#pod 'ZFPlayer/ijkplayer', '~> 3.2.1'
+#pod 'ZFPlayer/KSYMediaPlayer', '~> 3.2.1'
+#pod 'ZFPlayer', '~> 3.1.8'
 
 #AOP面向切面思想
 pod 'AspectsV1.4.2', '~> 1.4.2'
@@ -40,9 +48,6 @@ pod 'DTCoreText'
 pod 'ZipArchive', '~> 1.4.0'
 end
 
-source 'https://github.com/CocoaPods/Specs.git'
-use_frameworks!
-inhibit_all_warnings!
 
 #post_install do |installer|
 #    installer.pods_project.targets.each do |target|

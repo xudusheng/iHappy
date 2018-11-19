@@ -18,7 +18,7 @@
 #import "XDSEpisodeCell.h"
 
 #import "AppDelegate.h"
-#import "ZFPlayer.h"
+#import <ZFPlayer/ZFPlayer.h>
 
 #import "IHYMovieModel.h"
 @interface XDSHTMLPlayerVC ()

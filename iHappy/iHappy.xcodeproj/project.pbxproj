@@ -2190,7 +2190,6 @@
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/WMPageController/WMPageController.framework",
 				"${BUILT_PRODUCTS_DIR}/YYModel/YYModel.framework",
-				"${BUILT_PRODUCTS_DIR}/ZFPlayer/ZFPlayer.framework",
 				"${BUILT_PRODUCTS_DIR}/ZipArchive/ZipArchive.framework",
 				"${BUILT_PRODUCTS_DIR}/hpple/hpple.framework",
 			);
@@ -2215,7 +2214,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/WMPageController.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YYModel.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ZFPlayer.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ZipArchive.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/hpple.framework",
 			);
@@ -2571,6 +2569,8 @@
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-framework",
+					"\"ZFPlayer\"",
+					"-framework",
 					"\"AFNetworking\"",
 					"-framework",
 					"\"AspectsV1_4_2\"",
@@ -2611,6 +2611,7 @@
 				PROVISIONING_PROFILE = "17c16fff-a7a2-455f-ab37-595fd31ecfd8";
 				PROVISIONING_PROFILE_SPECIFIER = development.com.youmi.ihappy;
 				TARGETED_DEVICE_FAMILY = 1;
+				USER_HEADER_SEARCH_PATHS = "${SRCROOT}/** $(PODS_ROOT)/**";
 			};
 			name = Debug;
 		};
@@ -2636,6 +2637,8 @@
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-framework",
+					"\"ZFPlayer\"",
+					"-framework",
 					"\"AFNetworking\"",
 					"-framework",
 					"\"AspectsV1_4_2\"",
@@ -2676,6 +2679,7 @@
 				PROVISIONING_PROFILE = "17c16fff-a7a2-455f-ab37-595fd31ecfd8";
 				PROVISIONING_PROFILE_SPECIFIER = development.com.youmi.ihappy;
 				TARGETED_DEVICE_FAMILY = 1;
+				USER_HEADER_SEARCH_PATHS = "${SRCROOT}/** $(PODS_ROOT)/**";
 			};
 			name = Release;
 		};
