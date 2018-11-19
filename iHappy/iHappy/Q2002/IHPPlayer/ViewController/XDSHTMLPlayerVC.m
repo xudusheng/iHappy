@@ -44,10 +44,11 @@ UIWebViewDelegate
 @property (weak, nonatomic) UIButton *hiddenSummaryButton;//隐藏与展开简介按钮
 
 @end
+NSInteger const kHTMLPlayerSection = 0;
+NSInteger const kHTMLAdSection = 1;
+NSInteger const kHTMLSummarySection = 2;
 
-
-
-NSInteger const kHTMLPlaceholderSectionNumbers = 2;
+NSInteger const kHTMLPlaceholderSectionNumbers = 3;
 
 @implementation XDSHTMLPlayerVC
 - (void)dealloc{
@@ -62,63 +63,7 @@ NSInteger const kHTMLPlaceholderSectionNumbers = 2;
     
     [self movieDetailViewControllerDataInit];
     [self createMovieDetailViewControllerUI];
-
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(orientChange:)
-                                                 name:UIDeviceOrientationDidChangeNotification
-                                               object:nil];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(begainFullScreen:) name:@"UIMoviePlayerControllerDidEnterFullscreenNotification" object:nil];// 播放器即将播放通知
-
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(endFullScreen:) name:@"UIMoviePlayerControllerDidExitFullscreenNotification" object:nil];// 播放器即将退出通知
-
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(begainFullScreen:) name:UIWindowDidBecomeVisibleNotification object:nil];//进入全屏
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(endFullScreen:) name:UIWindowDidBecomeHiddenNotification object:nil];//退出全屏
-
 }
-#pragma - mark  进入全屏
--(void)begainFullScreen:(NSNotification *)noti {
-    if(!self.didWebViewLoadOK) {
-        return;
-    }
-    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    appDelegate.allowRotation = YES;
-
-    [[UIDevice currentDevice] setValue:@"UIInterfaceOrientationLandscapeLeft" forKey:@"orientation"];
-
-    //强制zhuan'p：
-    if ([[UIDevice currentDevice] respondsToSelector:@selector(setOrientation:)]) {
-        SEL selector = NSSelectorFromString(@"setOrientation:");
-        NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:[UIDevice instanceMethodSignatureForSelector:selector]];
-        [invocation setSelector:selector];
-        [invocation setTarget:[UIDevice currentDevice]];
-        int val = UIInterfaceOrientationLandscapeLeft;
-        [invocation setArgument:&val atIndex:2];
-        [invocation invoke];
-    }
-}
-
-
-#pragma - mark 退出全屏
--(void)endFullScreen:(NSNotification *)noti {
-    if(!self.didWebViewLoadOK) {
-        return;
-    }
-    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    appDelegate.allowRotation = NO;
-
-    //强制归正：
-    if ([[UIDevice currentDevice] respondsToSelector:@selector(setOrientation:)]) {
-        SEL selector = NSSelectorFromString(@"setOrientation:");
-        NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:[UIDevice instanceMethodSignatureForSelector:selector]];
-        [invocation setSelector:selector];
-        [invocation setTarget:[UIDevice currentDevice]];
-        int val =UIInterfaceOrientationPortrait;
-        [invocation setArgument:&val atIndex:2];
-        [invocation invoke];
-    }
-}
-
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
 }
@@ -134,7 +79,7 @@ NSInteger const kHTMLPlaceholderSectionNumbers = 2;
 
     self.playerContentView = [[UIView alloc] initWithFrame: CGRectMake(0, 0, DEVIECE_SCREEN_WIDTH, XDS_Q2002_PLAYER_HEIGHT)];
     self.playerContentView.backgroundColor = [UIColor blackColor];
-    [self.view addSubview:self.playerContentView];
+//    [self.view addSubview:self.playerContentView];
     
 //    self.playerView = [[XDSPlayerView alloc] initWithFrame:self.playerContentView.bounds];
     self.webView = [[UIWebView alloc]initWithFrame:self.playerContentView.bounds];
@@ -161,16 +106,16 @@ NSInteger const kHTMLPlaceholderSectionNumbers = 2;
     //注册item类型 这里使用系统的类型
     [self.view addSubview:_moviedetailCollectionView];
 
+    [_moviedetailCollectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:NSStringFromClass([UICollectionViewCell class])];
     [_moviedetailCollectionView registerClass:[IHYMoviePlayButtonCell class] forCellWithReuseIdentifier:NSStringFromClass([IHYMoviePlayButtonCell class])];
     [_moviedetailCollectionView registerClass:[XDSPlayerBannerAdCell class] forCellWithReuseIdentifier:NSStringFromClass([XDSPlayerBannerAdCell class])];
     [_moviedetailCollectionView registerNib:[UINib nibWithNibName:NSStringFromClass([XDSVideoSummaryCell class]) bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:NSStringFromClass([XDSVideoSummaryCell class])];
     [_moviedetailCollectionView registerNib:[UINib nibWithNibName:NSStringFromClass([XDSPlayerSectionHeader class]) bundle:[NSBundle mainBundle]] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:NSStringFromClass([XDSPlayerSectionHeader class])];
 
     [_moviedetailCollectionView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.playerContentView.mas_bottom);
-        make.left.bottom.right.mas_equalTo(0);
+//        make.top.equalTo(self.playerContentView.mas_bottom);
+        make.top.left.bottom.right.mas_equalTo(0);
     }];
-
 
 
     [self fetchMovieInfo];
@@ -228,7 +173,13 @@ NSInteger const kHTMLPlaceholderSectionNumbers = 2;
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     
     if (indexPath.section < kHTMLPlaceholderSectionNumbers) {
-        if (indexPath.section == 0) {
+        if (indexPath.section == kHTMLPlayerSection) {
+            UICollectionViewCell *cell  = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([UICollectionViewCell class]) forIndexPath:indexPath];
+            if (![cell.contentView.subviews containsObject:self.playerContentView]) {
+                [cell.contentView addSubview:self.playerContentView];
+            }
+            return cell;
+        }else if (indexPath.section == kHTMLAdSection) {
             XDSPlayerBannerAdCell *cell  = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([XDSPlayerBannerAdCell class]) forIndexPath:indexPath];
             return cell;
         }else {
@@ -259,24 +210,27 @@ NSInteger const kHTMLPlaceholderSectionNumbers = 2;
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section < kHTMLPlaceholderSectionNumbers) {
-        if (indexPath.section == 0) {
+        if (indexPath.section == kHTMLPlayerSection) {
+          return self.playerContentView.frame.size;
+            
+        }else if (indexPath.section == kHTMLAdSection) {
             return CGSizeMake(DEVIECE_SCREEN_WIDTH, 50);
             
         }else {
             NSString *summary = self.movieModel.summary;
             CGSize size = [summary sizeWithFont:VIDEO_SUMMARY_FONT maxSize:VIDEO_SUMMARY_MAX_SIZE];
             if (size.height < 60) {
-                CGSize itemSize = CGSizeMake(DEVIECE_SCREEN_WIDTH, VIDEO_SUMMARY_CELL_HEIGHT_EXCEPT_SUMMARY + size.height - VIDEO_SUMMARY_CELL_HIDDEN_BUTTON_HEIGHT);
+                CGSize itemSize = CGSizeMake(DEVIECE_SCREEN_WIDTH, VIDEO_SUMMARY_CELL_HEIGHT_EXCEPT_SUMMARY + size.height);
                 return itemSize;
             }else {
                 CGSize itemSize = CGSizeMake(DEVIECE_SCREEN_WIDTH, VIDEO_SUMMARY_CELL_HEIGHT_EXCEPT_SUMMARY + 60);
-                if (self.hiddenSummaryButton) {//展开剧情简介
+                if (self.hiddenSummaryButton.selected) {//展开剧情简介
                     itemSize.height = VIDEO_SUMMARY_CELL_HEIGHT_EXCEPT_SUMMARY + size.height;
                 }
                 return itemSize;
             }
         }
-        
+
     }else {
         NSDictionary * buttonList_section = _movieButtonList[indexPath.section-kHTMLPlaceholderSectionNumbers];
         IHYMoviePlayButtonModel *episodeModel = buttonList_section[@"buttonList"][indexPath.row];
