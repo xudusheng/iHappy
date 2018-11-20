@@ -28,8 +28,8 @@ UIWebViewDelegate
 @property (strong, nonatomic) NSMutableArray<NSArray<XDSEpisodeModel*> *> *episodeModelList;
 @property (strong, nonatomic) UICollectionView *mCollectionView;
 
-@property (strong, nonatomic) ZFPlayerView *playerView;
-@property (nonatomic,assign)ZFPlayerState playerState;
+//@property (strong, nonatomic) ZFPlayerView *playerView;
+//@property (nonatomic,assign)ZFPlayerState playerState;
 
 //@property (strong, nonatomic) XDSPlayerView *playerView;
 @property (strong, nonatomic) UIView *playerContentView;
@@ -136,13 +136,13 @@ NSInteger const kPlaceholderSectionNumbers = 2;
     self.playerContentView.backgroundColor = [UIColor blackColor];
     [self.view addSubview:self.playerContentView];
     
-    //    self.playerView = [[XDSPlayerView alloc] initWithFrame:self.playerContentView.bounds];
-    NSURL *videoURL = [NSURL URLWithString:@""];
-    ZFPlayerModel *playerModel = [[ZFPlayerModel alloc] init];
-    playerModel.title            = self.selectedEpisodeModel.title;
-    playerModel.videoURL         = videoURL;
-    playerModel.placeholderImage = [UIImage imageNamed:@"loading_bgView1"];
-    playerModel.fatherView       = self.playerContentView;
+//    //    self.playerView = [[XDSPlayerView alloc] initWithFrame:self.playerContentView.bounds];
+//    NSURL *videoURL = [NSURL URLWithString:@""];
+//    ZFPlayerModel *playerModel = [[ZFPlayerModel alloc] init];
+//    playerModel.title            = self.selectedEpisodeModel.title;
+//    playerModel.videoURL         = videoURL;
+//    playerModel.placeholderImage = [UIImage imageNamed:@"loading_bgView1"];
+//    playerModel.fatherView       = self.playerContentView;
     
 
     self.webView = [[UIWebView alloc]initWithFrame:self.playerContentView.bounds];
@@ -476,7 +476,7 @@ NSInteger const kPlaceholderSectionNumbers = 2;
     
 //        hasNoPlayUrl = NO;
 //    if (hasNoPlayUrl) {
-        self.playerState = self.selectedEpisodeModel.video.length?ZFPlayerStateBuffering:ZFPlayerStateFailed;
+//        self.playerState = self.selectedEpisodeModel.video.length?ZFPlayerStateBuffering:ZFPlayerStateFailed;
         [self.webView removeFromSuperview];
         [self playWithZPPLayer:self.selectedEpisodeModel];
     }else {
@@ -509,15 +509,15 @@ NSInteger const kPlaceholderSectionNumbers = 2;
 //}
 
 - (void)playWithZPPLayer:(XDSEpisodeModel *)episodeModel{
-    NSURL *videoURL = [NSURL URLWithString:episodeModel.video];
-    ZFPlayerModel *playerModel = [[ZFPlayerModel alloc] init];
-    playerModel.title            = episodeModel.title;
-    playerModel.videoURL         = videoURL;
-    playerModel.placeholderImage = [UIImage imageNamed:@"loading_bgView1"];
-    playerModel.fatherView       = self.playerContentView;
-    [self.playerView playerControlView:nil playerModel:playerModel];
-    [self.playerView resetToPlayNewVideo:playerModel];
-    [self.playerView autoPlayTheVideo];
+//    NSURL *videoURL = [NSURL URLWithString:episodeModel.video];
+//    ZFPlayerModel *playerModel = [[ZFPlayerModel alloc] init];
+//    playerModel.title            = episodeModel.title;
+//    playerModel.videoURL         = videoURL;
+//    playerModel.placeholderImage = [UIImage imageNamed:@"loading_bgView1"];
+//    playerModel.fatherView       = self.playerContentView;
+//    [self.playerView playerControlView:nil playerModel:playerModel];
+//    [self.playerView resetToPlayNewVideo:playerModel];
+//    [self.playerView autoPlayTheVideo];
 }
 
 - (void)setSelectedEpisodeModel:(XDSEpisodeModel *)selectedEpisodeModel {
@@ -542,59 +542,59 @@ NSInteger const kPlaceholderSectionNumbers = 2;
 
 //https://apis.tianxianle.com/dapi.php?id=saF1naKhqaajza2r0dZuY2Cro6OeZtuhpJuhoadpX5imomRraGpsZ5yVb2akqouMqnOEp2ah0JabrGWlZahp
 //http://api.tianxianle.com/jx/sapi.php?id=mKBneZyjnKzSpbKH0bV4mJplp5lo000of9WWpoB6sKecY4CrZpx5n2R1mI7K
-- (ZFPlayerView *)playerView{
-    if (!_playerView) {
-        _playerView = [[ZFPlayerView alloc] init];
-        
-        /*****************************************************************************************
-         *   // 指定控制层(可自定义)
-         *    ZFPlayerControlView *controlView = [[ZFPlayerControlView alloc] init];
-         *   // 设置控制层和播放模型
-         *   // 控制层传nil，默认使用ZFPlayerControlView(如自定义可传自定义的控制层)
-         *   // 等效于 [_playerView playerModel:self.playerModel];
-         ******************************************************************************************/
-        //        [_playerView playerControlView:nil playerModel:playerModel];
-        
-        // 设置代理
-        //    playerView.delegate = self;
-        
-        //（可选设置）可以设置视频的填充模式，内部设置默认（ZFPlayerLayerGravityResizeAspect：等比例填充，直到一个维度到达区域边界）
-        // _playerView.playerLayerGravity = ZFPlayerLayerGravityResize;
-        
-        // 打开下载功能（默认没有这个功能）
-        _playerView.hasDownload    = YES;
-        
-        // 打开预览图
-        _playerView.hasPreviewView = YES;
-    }
-    return _playerView;
-    
+- (ZFPlayerView *)playerView {
+//    if (!_playerView) {
+//        _playerView = [[ZFPlayerView alloc] init];
+//
+//        /*****************************************************************************************
+//         *   // 指定控制层(可自定义)
+//         *    ZFPlayerControlView *controlView = [[ZFPlayerControlView alloc] init];
+//         *   // 设置控制层和播放模型
+//         *   // 控制层传nil，默认使用ZFPlayerControlView(如自定义可传自定义的控制层)
+//         *   // 等效于 [_playerView playerModel:self.playerModel];
+//         ******************************************************************************************/
+//        //        [_playerView playerControlView:nil playerModel:playerModel];
+//
+//        // 设置代理
+//        //    playerView.delegate = self;
+//
+//        //（可选设置）可以设置视频的填充模式，内部设置默认（ZFPlayerLayerGravityResizeAspect：等比例填充，直到一个维度到达区域边界）
+//        // _playerView.playerLayerGravity = ZFPlayerLayerGravityResize;
+//
+//        // 打开下载功能（默认没有这个功能）
+//        _playerView.hasDownload    = YES;
+//
+//        // 打开预览图
+//        _playerView.hasPreviewView = YES;
+//    }
+//    return _playerView;
+    return nil;
 }
 
 //监听播放器的播放状态
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
     NSNumber *newState = change[NSKeyValueChangeNewKey];
     NSNumber *oldState = change[NSKeyValueChangeOldKey];
-    
-    NSLog(@"old = %@, new = %@ state = %@", oldState, newState, @(self.playerState));
-//    ZFPlayerStateFailed,     // 播放失败
-//    ZFPlayerStateBuffering,  // 缓冲中
-//    ZFPlayerStatePlaying,    // 播放中
-//    ZFPlayerStateStopped,    // 停止播放
-//    ZFPlayerStatePause       // 暂停播放
-    
-    static NSInteger tryTimes = 0;//尝试刷新次数
-    if (newState.integerValue == ZFPlayerStatePlaying) {
-        self.playerState = ZFPlayerStatePlaying;
-        tryTimes = 0;
-    }
-    
-    if (self.playerState == ZFPlayerStateBuffering && newState.integerValue == ZFPlayerStateFailed) {
-        if (tryTimes < 1) {
-            [self fetchDeepPlayerInfo];
-        }
-        tryTimes ++;
-    }
+//
+//    NSLog(@"old = %@, new = %@ state = %@", oldState, newState, @(self.playerState));
+////    ZFPlayerStateFailed,     // 播放失败
+////    ZFPlayerStateBuffering,  // 缓冲中
+////    ZFPlayerStatePlaying,    // 播放中
+////    ZFPlayerStateStopped,    // 停止播放
+////    ZFPlayerStatePause       // 暂停播放
+//
+//    static NSInteger tryTimes = 0;//尝试刷新次数
+//    if (newState.integerValue == ZFPlayerStatePlaying) {
+//        self.playerState = ZFPlayerStatePlaying;
+//        tryTimes = 0;
+//    }
+//
+//    if (self.playerState == ZFPlayerStateBuffering && newState.integerValue == ZFPlayerStateFailed) {
+//        if (tryTimes < 1) {
+//            [self fetchDeepPlayerInfo];
+//        }
+//        tryTimes ++;
+//    }
     
     
 }

@@ -23,12 +23,6 @@ pod 'JSONModel'
 pod 'MJExtension'
 pod 'WMPageController'
 
-pod 'ZFPlayer/Core', '~> 3.2.1'
-#pod 'ZFPlayer/ControlView', '~> 3.2.1'
-#pod 'ZFPlayer/AVPlayer', '~> 3.2.1'
-#pod 'ZFPlayer/ijkplayer', '~> 3.2.1'
-#pod 'ZFPlayer/KSYMediaPlayer', '~> 3.2.1'
-#pod 'ZFPlayer', '~> 3.1.8'
 
 #AOP面向切面思想
 pod 'AspectsV1.4.2', '~> 1.4.2'

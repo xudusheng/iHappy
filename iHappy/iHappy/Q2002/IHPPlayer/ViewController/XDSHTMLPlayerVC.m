@@ -18,9 +18,17 @@
 #import "XDSEpisodeCell.h"
 
 #import "AppDelegate.h"
-#import <ZFPlayer/ZFPlayer.h>
-
 #import "IHYMovieModel.h"
+
+
+#import "ZFUtilities.h"
+#import "ZFPlayerControlView.h"
+#import "ZFAVPlayerManager.h"
+#import "UIImageView+ZFCache.h"
+
+
+#import "XDSZFPlayerCell.h"
+
 @interface XDSHTMLPlayerVC ()
 <
 UICollectionViewDelegate,
@@ -31,15 +39,11 @@ UIWebViewDelegate
 @property (strong, nonatomic) NSMutableArray<NSDictionary *> * movieButtonList;
 @property (strong, nonatomic) UICollectionView * moviedetailCollectionView;
 
-@property (strong, nonatomic) ZFPlayerView *playerView;
-@property (strong, nonatomic) UIView *playerContentView;
-
-@property (strong, nonatomic) UIWebView * webView;
-@property (nonatomic,assign)BOOL didWebViewLoadOK;
+@property (nonatomic,strong) XDSZFPlayerCell *playerContainer;
 
 @property (strong, nonatomic) IHYMoviePlayButtonModel *selectedMovieModel;
 
-@property (strong, nonatomic)IHYMovieModel *movieModel;
+@property (strong, nonatomic) IHYMovieModel *movieModel;
 
 @property (weak, nonatomic) UIButton *hiddenSummaryButton;//隐藏与展开简介按钮
 
@@ -77,17 +81,6 @@ NSInteger const kHTMLPlaceholderSectionNumbers = 3;
     [self.navigationController.navigationBar setTranslucent:NO];
     self.view.backgroundColor = [UIColor whiteColor];
 
-    self.playerContentView = [[UIView alloc] initWithFrame: CGRectMake(0, 0, DEVIECE_SCREEN_WIDTH, XDS_Q2002_PLAYER_HEIGHT)];
-    self.playerContentView.backgroundColor = [UIColor blackColor];
-//    [self.view addSubview:self.playerContentView];
-    
-//    self.playerView = [[XDSPlayerView alloc] initWithFrame:self.playerContentView.bounds];
-    self.webView = [[UIWebView alloc]initWithFrame:self.playerContentView.bounds];
-    self.webView.mediaPlaybackRequiresUserAction = YES;
-    self.webView.scalesPageToFit = YES;
-    self.webView.delegate = self;
-    self.webView.backgroundColor = [UIColor blackColor];
-    
     //创建一个layout布局类
     UICollectionViewFlowLayout * layout = [[UICollectionViewFlowLayout alloc]init];
     //设置布局方向为垂直流布局
@@ -106,7 +99,7 @@ NSInteger const kHTMLPlaceholderSectionNumbers = 3;
     //注册item类型 这里使用系统的类型
     [self.view addSubview:_moviedetailCollectionView];
 
-    [_moviedetailCollectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:NSStringFromClass([UICollectionViewCell class])];
+    [_moviedetailCollectionView registerClass:[XDSZFPlayerCell class] forCellWithReuseIdentifier:NSStringFromClass([XDSZFPlayerCell class])];
     [_moviedetailCollectionView registerClass:[IHYMoviePlayButtonCell class] forCellWithReuseIdentifier:NSStringFromClass([IHYMoviePlayButtonCell class])];
     [_moviedetailCollectionView registerClass:[XDSPlayerBannerAdCell class] forCellWithReuseIdentifier:NSStringFromClass([XDSPlayerBannerAdCell class])];
     [_moviedetailCollectionView registerNib:[UINib nibWithNibName:NSStringFromClass([XDSVideoSummaryCell class]) bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:NSStringFromClass([XDSVideoSummaryCell class])];
@@ -174,10 +167,8 @@ NSInteger const kHTMLPlaceholderSectionNumbers = 3;
     
     if (indexPath.section < kHTMLPlaceholderSectionNumbers) {
         if (indexPath.section == kHTMLPlayerSection) {
-            UICollectionViewCell *cell  = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([UICollectionViewCell class]) forIndexPath:indexPath];
-            if (![cell.contentView.subviews containsObject:self.playerContentView]) {
-                [cell.contentView addSubview:self.playerContentView];
-            }
+            XDSZFPlayerCell *cell  = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([XDSZFPlayerCell class]) forIndexPath:indexPath];
+            self.playerContainer = cell;
             return cell;
         }else if (indexPath.section == kHTMLAdSection) {
             XDSPlayerBannerAdCell *cell  = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([XDSPlayerBannerAdCell class]) forIndexPath:indexPath];
@@ -211,7 +202,7 @@ NSInteger const kHTMLPlaceholderSectionNumbers = 3;
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section < kHTMLPlaceholderSectionNumbers) {
         if (indexPath.section == kHTMLPlayerSection) {
-          return self.playerContentView.frame.size;
+          return XDS_PLAYER_SIZE;
             
         }else if (indexPath.section == kHTMLAdSection) {
             return CGSizeMake(DEVIECE_SCREEN_WIDTH, 50);
@@ -294,16 +285,6 @@ NSInteger const kHTMLPlaceholderSectionNumbers = 3;
     NSArray * buttonList = buttonList_section[@"buttonList"];
     IHYMoviePlayButtonModel * buttonModel = buttonList[indexPath.row];
     self.selectedMovieModel = buttonModel;
-}
-
-
-
--(void)webViewDidFinishLoad:(UIWebView *)webView{
-    self.didWebViewLoadOK = YES;
-}
-
--(void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error{
-    self.didWebViewLoadOK = NO;
 }
 
 #pragma mark - 事件处理
@@ -437,89 +418,25 @@ NSInteger const kHTMLPlaceholderSectionNumbers = 3;
         }
     }
     
+    XDSPlayerSourceModel *model = [[XDSPlayerSourceModel alloc] init];
+    model.isWebUrl = playerWebView;
+    model.videoUrl = playerWebView?playerUrl:videoUrl;
+    model.title = [NSString stringWithFormat:@"%@-%@", self.htmlMovieModel.name, self.selectedMovieModel.title];
+    [self.playerContainer setPlayerSourceModel:model];
     
-    //    //======================纯webView显示====================
-    //    if (!self.webView.superview) {
-    //        [self.playerContentView addSubview:self.webView];
-    //    }
-    //    NSURL * url = [NSURL URLWithString:playerUrl];
-    //    NSURLRequest * request = [NSURLRequest requestWithURL:url];
-    //    [_webView loadRequest:request];
-    //====================== player + webView显示 ====================
-    if (playerWebView) {
-        [self.playerView removeFromSuperview];
-        if (!self.webView.superview) {
-            [self.playerContentView addSubview:self.webView];
-        }
-        NSURL * url = [NSURL URLWithString:playerUrl];
-        NSURLRequest * request = [NSURLRequest requestWithURL:url];
-        [_webView loadRequest:request];
-    }else{
-        [self.webView removeFromSuperview];
-        if (![self.playerView superview]) {
-            [self.playerContentView addSubview:self.playerView];
-        }
-        
-        [self playWithZPPLayer:videoUrl];
-    }
-
-    self.title = [NSString stringWithFormat:@"%@-%@", self.htmlMovieModel.name, self.selectedMovieModel.title];
+    self.title = model.title;
 }
 
-
-- (void)playWithZPPLayer:(NSString *)videoSrc{
-
-    NSURL *videoURL = [NSURL URLWithString:videoSrc];
-    ZFPlayerModel *playerModel = [[ZFPlayerModel alloc] init];
-    playerModel.title            = self.selectedMovieModel.title;
-    playerModel.videoURL         = videoURL;
-//    playerModel.placeholderImage = [UIImage imageNamed:@"loading_bgView1"];
-    playerModel.fatherView       = self.playerContentView;
-
-    [self.playerView playerControlView:nil playerModel:playerModel];
-    
-    [self.playerView autoPlayTheVideo];
-}
 
 - (void)setSelectedMovieModel:(IHYMoviePlayButtonModel *)selectedMovieModel{
     _selectedMovieModel = selectedMovieModel;
-    [self.playerView resetPlayer];
+
     [self fetchMoviePlayer];
     [_moviedetailCollectionView reloadData];
     
     [_moviedetailCollectionView setContentOffset:CGPointZero];
 }
 
-
-- (ZFPlayerView *)playerView{
-    if (!_playerView) {
-        _playerView = [[ZFPlayerView alloc] init];
-
-        /*****************************************************************************************
-         *   // 指定控制层(可自定义)
-         *   // ZFPlayerControlView *controlView = [[ZFPlayerControlView alloc] init];
-         *   // 设置控制层和播放模型
-         *   // 控制层传nil，默认使用ZFPlayerControlView(如自定义可传自定义的控制层)
-         *   // 等效于 [_playerView playerModel:self.playerModel];
-         ******************************************************************************************/
-//        [_playerView playerControlView:nil playerModel:playerModel];
-
-        // 设置代理
-        //    playerView.delegate = self;
-
-        //（可选设置）可以设置视频的填充模式，内部设置默认（ZFPlayerLayerGravityResizeAspect：等比例填充，直到一个维度到达区域边界）
-        // _playerView.playerLayerGravity = ZFPlayerLayerGravityResize;
-
-        // 打开下载功能（默认没有这个功能）
-        _playerView.hasDownload    = YES;
-
-        // 打开预览图
-        _playerView.hasPreviewView = YES;
-        
-    }
-    return _playerView;
-
-}
 #pragma mark - 内存管理相关
 - (void)movieDetailViewControllerDataInit{
     self.movieButtonList = [[NSMutableArray alloc] init];
