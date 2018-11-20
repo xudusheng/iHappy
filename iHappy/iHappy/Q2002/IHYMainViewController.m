@@ -220,9 +220,9 @@
 
 //// New Autorotation support.
 ////是否自动旋转,返回YES可以自动旋转
-//- (BOOL)shouldAutorotate NS_AVAILABLE_IOS(6_0) __TVOS_PROHIBITED {
-//    return YES;
-//}
+- (BOOL)shouldAutorotate {
+    return YES;
+}
 ////返回支持的方向
 //#if __IPHONE_OS_VERSION_MAX_ALLOWED < __IPHONE_9_0
 //- (NSUInteger)supportedInterfaceOrientations

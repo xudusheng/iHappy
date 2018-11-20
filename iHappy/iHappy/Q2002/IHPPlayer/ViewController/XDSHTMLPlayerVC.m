@@ -14,6 +14,7 @@
 #import "XDSPlayerBannerAdCell.h"
 #import "XDSVideoSummaryCell.h"
 #import "XDSPlayerSectionHeader.h"
+#import "XDSPlayerDisclaimerView.h"
 
 #import "XDSEpisodeCell.h"
 
@@ -76,6 +77,13 @@ NSInteger const kHTMLPlaceholderSectionNumbers = 3;
     [super viewWillDisappear:animated];
 
 }
+
+- (void)willMoveToParentViewController:(UIViewController *)parent {
+    if (!parent) {
+        self.moviedetailCollectionView.delegate = nil;
+        [self.playerContainer.player stopCurrentPlayingCell];
+    }
+}
 #pragma mark - UI相关
 - (void)createMovieDetailViewControllerUI{
     [self.navigationController.navigationBar setTranslucent:NO];
@@ -105,6 +113,8 @@ NSInteger const kHTMLPlaceholderSectionNumbers = 3;
     [_moviedetailCollectionView registerNib:[UINib nibWithNibName:NSStringFromClass([XDSVideoSummaryCell class]) bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:NSStringFromClass([XDSVideoSummaryCell class])];
     [_moviedetailCollectionView registerNib:[UINib nibWithNibName:NSStringFromClass([XDSPlayerSectionHeader class]) bundle:[NSBundle mainBundle]] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:NSStringFromClass([XDSPlayerSectionHeader class])];
 
+    [_moviedetailCollectionView registerClass:[XDSPlayerDisclaimerView class] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:NSStringFromClass([XDSPlayerDisclaimerView class])];
+
     [_moviedetailCollectionView mas_makeConstraints:^(MASConstraintMaker *make) {
 //        make.top.equalTo(self.playerContentView.mas_bottom);
         make.top.left.bottom.right.mas_equalTo(0);
@@ -132,6 +142,7 @@ NSInteger const kHTMLPlaceholderSectionNumbers = 3;
                                                }];
 
 }
+
 
 #pragma mark - 网络请求
 //TODO: 请求播放页面
@@ -252,7 +263,15 @@ NSInteger const kHTMLPlaceholderSectionNumbers = 3;
     }
 }
 
-- (UICollectionReusableView *) collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForFooterInSection:(NSInteger)section {
+    if (section < kHTMLPlaceholderSectionNumbers) {
+        return CGSizeZero;
+    }else {
+        return CGSizeMake(DEVIECE_SCREEN_WIDTH, 200);
+    }
+}
+
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
 {
     if ([kind isEqualToString:UICollectionElementKindSectionHeader]) {
         XDSPlayerSectionHeader *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:NSStringFromClass([XDSPlayerSectionHeader class]) forIndexPath:indexPath];
@@ -271,7 +290,11 @@ NSInteger const kHTMLPlaceholderSectionNumbers = 3;
         }
         
         return headerView;
+    }else if ([kind isEqualToString:UICollectionElementKindSectionFooter]) {
+        XDSPlayerDisclaimerView *footerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:NSStringFromClass([XDSPlayerDisclaimerView class]) forIndexPath:indexPath];
+        return footerView;
     }
+
     return nil;
     
 }
@@ -440,7 +463,55 @@ NSInteger const kHTMLPlaceholderSectionNumbers = 3;
 #pragma mark - 内存管理相关
 - (void)movieDetailViewControllerDataInit{
     self.movieButtonList = [[NSMutableArray alloc] init];
-
 }
 
+
+#pragma mark - 屏幕旋转
+- (BOOL)shouldAutorotate {
+    return self.playerContainer.player.shouldAutorotate;
+}
+
+- (UIInterfaceOrientationMask)supportedInterfaceOrientations {
+    if (self.playerContainer.player.isFullScreen && self.playerContainer.player.orientationObserver.fullScreenMode == ZFFullScreenModeLandscape) {
+        return UIInterfaceOrientationMaskLandscape;
+    }
+    return UIInterfaceOrientationMaskPortrait;
+}
+
+- (UIStatusBarStyle)preferredStatusBarStyle {
+    if (self.playerContainer.player.isFullScreen) {
+        return UIStatusBarStyleLightContent;
+    }
+    return UIStatusBarStyleDefault;
+}
+
+- (BOOL)prefersStatusBarHidden {
+    return self.playerContainer.player.isStatusBarHidden;
+}
+
+- (UIStatusBarAnimation)preferredStatusBarUpdateAnimation {
+    return UIStatusBarAnimationSlide;
+}
+
+
+#pragma mark - UIScrollViewDelegate
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+    [scrollView zf_scrollViewDidEndDecelerating];
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+    [scrollView zf_scrollViewDidEndDraggingWillDecelerate:decelerate];
+}
+
+- (void)scrollViewDidScrollToTop:(UIScrollView *)scrollView {
+    [scrollView zf_scrollViewDidScrollToTop];
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    [scrollView zf_scrollViewDidScroll];
+}
+
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+    [scrollView zf_scrollViewWillBeginDragging];
+}
 @end

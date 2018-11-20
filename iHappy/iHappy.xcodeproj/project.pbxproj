@@ -55,7 +55,7 @@
 		1819E44421A3EADF00F67F56 /* ZFPortraitControlView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1819E42921A3EADE00F67F56 /* ZFPortraitControlView.m */; };
 		1819E44521A3EADF00F67F56 /* UIImageView+ZFCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 1819E42A21A3EADE00F67F56 /* UIImageView+ZFCache.m */; };
 		1819E44821A3F5E300F67F56 /* XDSPlayerSourceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1819E44721A3F5E300F67F56 /* XDSPlayerSourceModel.m */; };
-		1819E44B21A4119900F67F56 /* XDSPlayerVVV.m in Sources */ = {isa = PBXBuildFile; fileRef = 1819E44A21A4119900F67F56 /* XDSPlayerVVV.m */; };
+		1819E44B21A4119900F67F56 /* XDSPlayerDisclaimerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1819E44A21A4119900F67F56 /* XDSPlayerDisclaimerView.m */; };
 		181E53B7214F928000E8A704 /* XDSReadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 181E52EC214F928000E8A704 /* XDSReadManager.m */; };
 		181E53B8214F928000E8A704 /* XDSReadConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 181E52ED214F928000E8A704 /* XDSReadConfig.m */; };
 		181E53B9214F928000E8A704 /* XDSReadOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 181E52F0214F928000E8A704 /* XDSReadOperation.m */; };
@@ -396,8 +396,8 @@
 		1819E42C21A3EADE00F67F56 /* ZFLandScapeControlView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFLandScapeControlView.h; sourceTree = "<group>"; };
 		1819E44621A3F5E300F67F56 /* XDSPlayerSourceModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XDSPlayerSourceModel.h; sourceTree = "<group>"; };
 		1819E44721A3F5E300F67F56 /* XDSPlayerSourceModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XDSPlayerSourceModel.m; sourceTree = "<group>"; };
-		1819E44921A4119900F67F56 /* XDSPlayerVVV.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XDSPlayerVVV.h; sourceTree = "<group>"; };
-		1819E44A21A4119900F67F56 /* XDSPlayerVVV.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XDSPlayerVVV.m; sourceTree = "<group>"; };
+		1819E44921A4119900F67F56 /* XDSPlayerDisclaimerView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XDSPlayerDisclaimerView.h; sourceTree = "<group>"; };
+		1819E44A21A4119900F67F56 /* XDSPlayerDisclaimerView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XDSPlayerDisclaimerView.m; sourceTree = "<group>"; };
 		181E52EB214F928000E8A704 /* XDSReadOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDSReadOperation.h; sourceTree = "<group>"; };
 		181E52EC214F928000E8A704 /* XDSReadManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XDSReadManager.m; sourceTree = "<group>"; };
 		181E52ED214F928000E8A704 /* XDSReadConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XDSReadConfig.m; sourceTree = "<group>"; };
@@ -1055,30 +1055,30 @@
 		1819E3F721A3EADE00F67F56 /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				1819E3F821A3EADE00F67F56 /* ZFPlayerNotification.h */,
-				1819E3F921A3EADE00F67F56 /* ZFPlayerGestureControl.m */,
-				1819E3FA21A3EADE00F67F56 /* ZFPlayerController.m */,
-				1819E3FB21A3EADE00F67F56 /* ZFFloatView.h */,
-				1819E3FC21A3EADE00F67F56 /* ZFKVOController.h */,
-				1819E3FD21A3EADE00F67F56 /* ZFOrientationObserver.m */,
-				1819E3FE21A3EADE00F67F56 /* ZFPlayerView.h */,
-				1819E3FF21A3EADE00F67F56 /* ZFPlayerLogManager.m */,
-				1819E40021A3EADE00F67F56 /* ZFPlayerMediaPlayback.h */,
-				1819E40121A3EADE00F67F56 /* ZFReachabilityManager.h */,
-				1819E40221A3EADE00F67F56 /* UIScrollView+ZFPlayer.m */,
 				1819E40321A3EADE00F67F56 /* ZFPlayer.h */,
-				1819E40421A3EADE00F67F56 /* ZFPlayerGestureControl.h */,
-				1819E40521A3EADE00F67F56 /* ZFPlayerNotification.m */,
+				1819E40D21A3EADE00F67F56 /* UIScrollView+ZFPlayer.h */,
+				1819E40221A3EADE00F67F56 /* UIScrollView+ZFPlayer.m */,
+				1819E40F21A3EADE00F67F56 /* UIViewController+ZFPlayerRotation.m */,
+				1819E40821A3EADE00F67F56 /* ZFPlayerController.h */,
+				1819E3FA21A3EADE00F67F56 /* ZFPlayerController.m */,
+				1819E3FE21A3EADE00F67F56 /* ZFPlayerView.h */,
+				1819E40921A3EADE00F67F56 /* ZFPlayerView.m */,
+				1819E3FB21A3EADE00F67F56 /* ZFFloatView.h */,
 				1819E40621A3EADE00F67F56 /* ZFFloatView.m */,
 				1819E40721A3EADE00F67F56 /* ZFPlayerMediaControl.h */,
-				1819E40821A3EADE00F67F56 /* ZFPlayerController.h */,
-				1819E40921A3EADE00F67F56 /* ZFPlayerView.m */,
-				1819E40A21A3EADE00F67F56 /* ZFPlayerLogManager.h */,
+				1819E40021A3EADE00F67F56 /* ZFPlayerMediaPlayback.h */,
+				1819E40421A3EADE00F67F56 /* ZFPlayerGestureControl.h */,
+				1819E3F921A3EADE00F67F56 /* ZFPlayerGestureControl.m */,
 				1819E40B21A3EADE00F67F56 /* ZFOrientationObserver.h */,
+				1819E3FD21A3EADE00F67F56 /* ZFOrientationObserver.m */,
+				1819E40A21A3EADE00F67F56 /* ZFPlayerLogManager.h */,
+				1819E3FF21A3EADE00F67F56 /* ZFPlayerLogManager.m */,
+				1819E3FC21A3EADE00F67F56 /* ZFKVOController.h */,
 				1819E40C21A3EADE00F67F56 /* ZFKVOController.m */,
-				1819E40D21A3EADE00F67F56 /* UIScrollView+ZFPlayer.h */,
+				1819E3F821A3EADE00F67F56 /* ZFPlayerNotification.h */,
+				1819E40521A3EADE00F67F56 /* ZFPlayerNotification.m */,
+				1819E40121A3EADE00F67F56 /* ZFReachabilityManager.h */,
 				1819E40E21A3EADE00F67F56 /* ZFReachabilityManager.m */,
-				1819E40F21A3EADE00F67F56 /* UIViewController+ZFPlayerRotation.m */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -1433,8 +1433,8 @@
 				A27BB36E215FEF01004C9635 /* IHYMovieDetailInfoView.xib */,
 				1819E37421A3E51000F67F56 /* XDSZFPlayerCell.h */,
 				1819E37521A3E51000F67F56 /* XDSZFPlayerCell.m */,
-				1819E44921A4119900F67F56 /* XDSPlayerVVV.h */,
-				1819E44A21A4119900F67F56 /* XDSPlayerVVV.m */,
+				1819E44921A4119900F67F56 /* XDSPlayerDisclaimerView.h */,
+				1819E44A21A4119900F67F56 /* XDSPlayerDisclaimerView.m */,
 			);
 			name = View;
 			path = iHappy/Q2002/movieplayer/View;
@@ -2412,7 +2412,7 @@
 				181E53C4214F928000E8A704 /* CXMLDocument.m in Sources */,
 				092CAF301DE2B20F008127DA /* IHYNewsListViewController.m in Sources */,
 				18A6FA992130031600709EC9 /* NLEBNFParserFactory.m in Sources */,
-				1819E44B21A4119900F67F56 /* XDSPlayerVVV.m in Sources */,
+				1819E44B21A4119900F67F56 /* XDSPlayerDisclaimerView.m in Sources */,
 				181E53CB214F928000E8A704 /* CXMLNode_CreationExtensions.m in Sources */,
 				18A6FA972130031600709EC9 /* NLEBNFSymbol.m in Sources */,
 				182D55EE219EE8B900101A82 /* XDSWelfareVCTableViewController.m in Sources */,

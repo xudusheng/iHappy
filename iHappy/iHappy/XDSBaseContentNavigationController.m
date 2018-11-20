@@ -8,7 +8,7 @@
 
 #import "XDSBaseContentNavigationController.h"
 #import "AppDelegate.h"
-@interface XDSBaseContentNavigationController ()
+@interface XDSBaseContentNavigationController ()<UIGestureRecognizerDelegate>
 
 @end
 
@@ -30,8 +30,15 @@
                                                                      action:@selector(showMenu)];
     barButtonitem.tintColor = [UIColor lightGrayColor];
     rootController.navigationItem.leftBarButtonItem = barButtonitem;
+    
+//    self.interactivePopGestureRecognizer.delegate = self;
+//    self.interactivePopGestureRecognizer.enabled = YES;
 }
 
+
+//-(BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer{
+//    return YES;
+//}
 #pragma mark - 点击事件处理
 //TODO:菜单
 - (void)showMenu{
@@ -39,5 +46,7 @@
     [delegate.mainmeunVC presentLeftMenuViewController];
 }
 
-
+-(BOOL)shouldAutorotate{
+    return self.topViewController.shouldAutorotate;
+}
 @end
