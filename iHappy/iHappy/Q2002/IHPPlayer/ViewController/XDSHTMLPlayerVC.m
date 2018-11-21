@@ -58,7 +58,8 @@ NSInteger const kHTMLPlaceholderSectionNumbers = 3;
 @implementation XDSHTMLPlayerVC
 - (void)dealloc{
     NSLog(@"%@ ==> dealloc", [self class]);
-
+    self.moviedetailCollectionView.delegate = nil;
+    [self.playerContainer.player stopCurrentPlayingCell];
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -98,7 +99,7 @@ NSInteger const kHTMLPlaceholderSectionNumbers = 3;
     layout.minimumInteritemSpacing = 10;
 
     //创建collectionView 通过一个布局策略layout来创建
-    self.moviedetailCollectionView = [[UICollectionView alloc]initWithFrame:CGRectZero collectionViewLayout:layout];
+    self.moviedetailCollectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
     _moviedetailCollectionView.backgroundColor = [UIColor whiteColor];
 
     //代理设置
