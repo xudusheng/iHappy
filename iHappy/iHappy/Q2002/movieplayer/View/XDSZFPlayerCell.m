@@ -77,6 +77,7 @@ static NSString *kXDSPlayerCover = @"https://upload-images.jianshu.io/upload_ima
     /// 播放完成
     self.player.playerDidToEnd = ^(id  _Nonnull asset) {
         @strongify(self)
+        NSLog(@"======结束播放");
     };
     
     self.player.playerReadyToPlay = ^(id<ZFPlayerMediaPlayback>  _Nonnull asset, NSURL * _Nonnull assetURL) {

@@ -92,8 +92,10 @@ NSString * const MovieListViewController_movieCellIdentifier = @"IHPMovieCell";
     XDSHTMLMovieModel *movieModel = _movieList[indexPath.row];
     XDSHTMLPlayerVC *movieDetailVC = [[XDSHTMLPlayerVC alloc] init];
     movieDetailVC.htmlMovieModel = movieModel;
-    [self.navigationController pushViewController:movieDetailVC animated:YES];
+//    [self.navigationController pushViewController:movieDetailVC animated:YES];
     
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:movieDetailVC];
+    [self.navigationController presentViewController:nav animated:YES completion:nil];
 }
 #pragma mark - 点击事件处理
 - (void)fetchMovieList:(BOOL)isTop{

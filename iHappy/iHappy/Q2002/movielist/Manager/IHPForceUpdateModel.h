@@ -14,5 +14,6 @@
 @property (assign, nonatomic) BOOL isForce;//是否强制升级
 @property (copy, nonatomic) NSString *updateMessage;//升级信息
 @property (copy, nonatomic) NSString *url;//升级下载地址
+@property (nonatomic,copy) NSString *version;//版本号
 
 @end

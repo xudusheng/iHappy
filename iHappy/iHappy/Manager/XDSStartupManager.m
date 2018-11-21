@@ -175,17 +175,17 @@ NSString *const kXDSUpdateLocalizableTaskID = @"XDSUpdateLocalizableTask";
 
 - (void)fetchConfigData{
     
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"menu" ofType:@"json"];
-    NSData *menuData = [NSData dataWithContentsOfFile:path];
-    NSLog(@"%@", [[NSString alloc] initWithData:menuData encoding:NSUTF8StringEncoding]);
-
-    IHPConfigManager *manager = [IHPConfigManager shareManager];
-    [manager configManagerWithJsondData:menuData];
-    [self finishTaskWithTaksID:kXDSFetchConfigTaskID];
-
-    return;
+//    NSString *path = [[NSBundle mainBundle] pathForResource:@"menu" ofType:@"json"];
+//    NSData *menuData = [NSData dataWithContentsOfFile:path];
+//    NSLog(@"%@", [[NSString alloc] initWithData:menuData encoding:NSUTF8StringEncoding]);
+//
+//    IHPConfigManager *manager = [IHPConfigManager shareManager];
+//    [manager configManagerWithJsondData:menuData];
+//    [self finishTaskWithTaksID:kXDSFetchConfigTaskID];
+//
+//    return;
     
-    NSString *requesturl = @"http://134.175.54.80/ihappy/menu.json";
+    NSString *requesturl = @"http://134.175.54.80/ihappy/menu_v1.0.1.json";
 
     __weak typeof(self)weakSelf = self;
     [[[XDSHttpRequest alloc] init] htmlRequestWithHref:requesturl
@@ -198,7 +198,11 @@ NSString *const kXDSUpdateLocalizableTaskID = @"XDSUpdateLocalizableTask";
 
                                                    IHPConfigManager *manager = [IHPConfigManager shareManager];
                                                    [manager configManagerWithJsondData:htmlData];
-                                                   if (manager.forceUpdate.enable) {
+                                                   
+                                                   NSString *appVersion = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
+                                                   if ([manager.forceUpdate.version compare:appVersion] == NSOrderedDescending &&
+                                                       manager.forceUpdate.enable) {
+                                                       
                                                        if (manager.forceUpdate.isForce) {
                                                            [XDSUtilities alertViewWithPresentingController:[XDSRootViewController sharedRootViewController]
                                                                                                      title:nil

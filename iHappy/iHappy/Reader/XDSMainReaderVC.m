@@ -151,13 +151,12 @@ OCT_SYNTHESIZE_SINGLETON_FOR_CLASS(XDSMainReaderVC)
     //本地文件-同步执行
     NSArray *fileList = @[@"生活小科普.txt"];
     for (NSString *fileName in fileList) {
-        
         //注意，url初始化方法与从documents读取文件的url初始化方法的区别
-        NSURL *fileURL = [[NSBundle mainBundle] URLForResource:fileName withExtension:nil];
-        
-        LPPBookInfoModel *bookInfo = [XDSReadOperation getBookInfoWithFile:fileURL];
-        bookInfo?[self.bookList addObject:bookInfo]:NULL;
-        [self.mCollectionView reloadData];
+        NSURL *fileURL = [[NSBundle mainBundle] URLForResource:fileName withExtension:nil];        
+        [XDSReadOperation getBookInfoWithFile:fileURL];
+        //        LPPBookInfoModel *bookInfo = [XDSReadOperation getBookInfoWithFile:fileURL];
+        //        bookInfo?[self.bookList addObject:bookInfo]:NULL;
+        //        [self.mCollectionView reloadData];
     }
     
     

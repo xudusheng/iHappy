@@ -24,8 +24,8 @@
     [self.view addSubview:self.webView];
     [self loadResources];
     
-    UIBarButtonItem *leftBar = [[UIBarButtonItem alloc] initWithTitle:@"分享" style:UIBarButtonItemStylePlain target:self action:@selector(shareAction)];
-    self.navigationItem.leftBarButtonItem = leftBar;
+//    UIBarButtonItem *leftBar = [[UIBarButtonItem alloc] initWithTitle:@"分享" style:UIBarButtonItemStylePlain target:self action:@selector(shareAction)];
+//    self.navigationItem.leftBarButtonItem = leftBar;
     
     UIBarButtonItem *rightBar = [[UIBarButtonItem alloc] initWithTitle:@"取消" style:UIBarButtonItemStylePlain target:self action:@selector(dismiss)];
     self.navigationItem.rightBarButtonItem = rightBar;
@@ -74,14 +74,36 @@
         }
     }
     
-    NSString *title = CURRENT_BOOK_MODEL.bookBasicInfo.title;
+    LPPBookInfoModel *bookBasicInfo = CURRENT_BOOK_MODEL.bookBasicInfo;
+    NSString *title = bookBasicInfo.title;
     title = title.length?title:@"";
-    NSString *creator = CURRENT_BOOK_MODEL.bookBasicInfo.creator;
+    NSString *creator = bookBasicInfo.creator;
     creator = creator.length?creator:@"";
+    
+    NSString *publisher = @"";
+    NSString *owner = @"";
+    NSString *protect = @"";
+    NSString *publishDate = @"";
+    if (creator.length > 0) {
+        publisher = [NSString stringWithFormat:@"%@. 《%@》", creator, title];
+        owner = @". 小微阅读.";
+        protect = @"此材料收版权保护";
+        publishDate = bookBasicInfo.date;
+    }
     
     noteString = [noteString stringByReplacingOccurrencesOfString:@"<--booktitle-->" withString:title];
     noteString = [noteString stringByReplacingOccurrencesOfString:@"<--author-->" withString:creator];
     noteString = [noteString stringByReplacingOccurrencesOfString:@"<--note-->" withString:longNote];
+    
+    noteString = [noteString stringByReplacingOccurrencesOfString:@"${publisher}" withString:publisher];
+    noteString = [noteString stringByReplacingOccurrencesOfString:@"${owner}" withString:owner];
+    noteString = [noteString stringByReplacingOccurrencesOfString:@"${protect}" withString:protect];
+    noteString = [noteString stringByReplacingOccurrencesOfString:@"${publishDate}" withString:publishDate];
+
+//    ${publisher}
+//    <span style="border-bottom:1px dashed #ccc;" t="5" times="">${publishDate}</span>
+//    . 小微阅读. <br>
+//    ${protect}
     
     self.noteString = noteString;
     [self.webView loadHTMLString:noteString baseURL:nil];
@@ -105,7 +127,7 @@
 
 - (void)shareAction
 {
-    NSString *textToShare = [CURRENT_BOOK_MODEL.bookBasicInfo.title stringByAppendingString:@" 的笔记"];
+    NSString *textToShare = [NSString stringWithFormat:@"《%@》的笔记", CURRENT_BOOK_MODEL.bookBasicInfo.title];
     NSURL *urlToShare = [NSURL URLWithString:@"https://www.baidu.com"];
     NSArray *activityItems = @[textToShare, urlToShare];
     [self shareWithContentArray:activityItems];
