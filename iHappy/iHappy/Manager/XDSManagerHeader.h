@@ -11,6 +11,7 @@
 #define XDSManagerHeader_h
 
 #import "XDSAdManager.h"
+#import "BaiduAdManager.h"
 #import "XDSLocalizableManager.h"
 #import "XDSStartupManager.h"
 

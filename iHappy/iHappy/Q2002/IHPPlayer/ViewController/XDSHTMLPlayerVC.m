@@ -37,6 +37,7 @@ UICollectionViewDataSource,
 UICollectionViewDelegateFlowLayout,
 UIWebViewDelegate
 >
+
 @property (strong, nonatomic) NSMutableArray<NSDictionary *> * movieButtonList;
 @property (strong, nonatomic) UICollectionView * moviedetailCollectionView;
 
@@ -50,10 +51,11 @@ UIWebViewDelegate
 
 @end
 NSInteger const kHTMLPlayerSection = 0;
-NSInteger const kHTMLAdSection = 1;
-NSInteger const kHTMLSummarySection = 2;
+NSInteger const kHTMLSummarySection = 1;
+//NSInteger const kHTMLAdSection = 1;
+//NSInteger const kHTMLSummarySection = 2;
 
-NSInteger const kHTMLPlaceholderSectionNumbers = 3;
+NSInteger const kHTMLPlaceholderSectionNumbers = 2;
 
 @implementation XDSHTMLPlayerVC
 - (void)dealloc{
@@ -182,9 +184,9 @@ NSInteger const kHTMLPlaceholderSectionNumbers = 3;
             XDSZFPlayerCell *cell  = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([XDSZFPlayerCell class]) forIndexPath:indexPath];
             self.playerContainer = cell;
             return cell;
-        }else if (indexPath.section == kHTMLAdSection) {
-            XDSPlayerBannerAdCell *cell  = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([XDSPlayerBannerAdCell class]) forIndexPath:indexPath];
-            return cell;
+//        }else if (indexPath.section == kHTMLAdSection) {
+//            XDSPlayerBannerAdCell *cell  = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([XDSPlayerBannerAdCell class]) forIndexPath:indexPath];
+//            return cell;
         }else {
             XDSVideoSummaryCell *cell  = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([XDSVideoSummaryCell class]) forIndexPath:indexPath];
             cell.summary = self.movieModel.summary;
@@ -216,9 +218,8 @@ NSInteger const kHTMLPlaceholderSectionNumbers = 3;
         if (indexPath.section == kHTMLPlayerSection) {
           return XDS_PLAYER_SIZE;
             
-        }else if (indexPath.section == kHTMLAdSection) {
-            return CGSizeMake(DEVIECE_SCREEN_WIDTH, 50);
-            
+//        }else if (indexPath.section == kHTMLAdSection) {
+//            return XDS_PLAYER_BANNER_AD_CELL_SIZE;
         }else {
             NSString *summary = self.movieModel.summary;
             CGSize size = [summary sizeWithFont:VIDEO_SUMMARY_FONT maxSize:VIDEO_SUMMARY_MAX_SIZE];

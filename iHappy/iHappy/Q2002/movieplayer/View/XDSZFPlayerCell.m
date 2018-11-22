@@ -17,6 +17,10 @@ static NSString *kXDSPlayerCover = @"https://upload-images.jianshu.io/upload_ima
 
 
 @interface XDSZFPlayerCell () <UIWebViewDelegate>
+@property (nonatomic, strong) UIView *adContainer;
+
+@property (nonatomic, strong) UIButton *playBtn;//播放按钮
+
 @property (nonatomic, strong) UIImageView *containerView;
 @property (nonatomic, strong) ZFPlayerControlView *controlView;
 @property (nonatomic, strong) UIView *zfContainerView;
@@ -57,8 +61,8 @@ static NSString *kXDSPlayerCover = @"https://upload-images.jianshu.io/upload_ima
     self.player.containerView = self.containerView;
     self.player.controlView = self.controlView;
     
-    self.player.shouldAutoPlay = YES;
-    self.player.WWANAutoPlay = YES;
+    self.player.shouldAutoPlay = NO;
+    self.player.WWANAutoPlay = NO;
     
     // 1.0是完全消失的时候
     self.player.playerDisapperaPercent = 1.0;
@@ -124,10 +128,25 @@ static NSString *kXDSPlayerCover = @"https://upload-images.jianshu.io/upload_ima
         [self.webView removeFromSuperview];
         if (![self.zfContainerView superview]) {
             [self.contentView addSubview:self.zfContainerView];
+
+            [self.zfContainerView addSubview:self.playBtn];
+            self.playBtn.center = CGPointMake(CGRectGetWidth(self.zfContainerView.frame)/2, CGRectGetHeight(self.zfContainerView.frame)/2);
         }
-        
-        [self playWithZFPlayer];
     }
+    
+    if ([self.contentView.subviews containsObject:self.adContainer]) {
+        self.adContainer = [[UIView alloc] initWithFrame:CGRectMake(0, 0, XDS_PLAYER_SIZE.width, XDS_PLAYER_SIZE.height)];
+        [self.adContainer removeFromSuperview];
+        [self.contentView addSubview:self.adContainer];
+        [[BaiduAdManager sharedManager] loadPrerollAdInView:self.adContainer];
+    }
+}
+
+//TODO: 点击播放按钮
+- (void)playClick:(UIButton *)sender {
+    [self playWithZFPlayer];
+    [self.playBtn removeFromSuperview];
+    self.playBtn = nil;
 }
 #pragma mark - private method 其他私有方法
 - (void)playWithZFPlayer {
@@ -159,6 +178,16 @@ static NSString *kXDSPlayerCover = @"https://upload-images.jianshu.io/upload_ima
         _controlView.fastViewAnimated = YES;
     }
     return _controlView;
+}
+
+- (UIButton *)playBtn {
+    if (!_playBtn) {
+        _playBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        _playBtn.frame = CGRectMake(0, 0, 44, 44);
+        [_playBtn setImage:[UIImage imageNamed:@"btn_play_new"] forState:UIControlStateNormal];
+        [_playBtn addTarget:self action:@selector(playClick:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _playBtn;
 }
 #pragma mark - memery 内存管理相关
 

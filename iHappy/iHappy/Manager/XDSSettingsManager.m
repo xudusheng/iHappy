@@ -8,6 +8,8 @@
 
 #import "XDSSettingsManager.h"
 #import "XDSConfigItem.h"
+
+#import <BaiduMobAdSDK/BaiduMobAdSetting.h>
 @implementation XDSSettingsManager
 + (instancetype)sharedManager
 {
@@ -59,7 +61,9 @@
 
 
 #pragma mark - Global Settings
-- (void)setGlobalSettings {}
+- (void)setGlobalSettings {
+    [BaiduMobAdSetting sharedInstance].supportHttps = NO;
+}
 - (void)setOnlyOnceWhenLaunchTaskQueueFinished {}
 
 @end
