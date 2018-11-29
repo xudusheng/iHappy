@@ -288,6 +288,7 @@
 		A2DBD4C521A6D78B0094A1D9 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2DBD4C421A6D78B0094A1D9 /* AVFoundation.framework */; };
 		A2DBD4C821A6ECDB0094A1D9 /* btn_play_new@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A2DBD4C621A6ECDA0094A1D9 /* btn_play_new@2x.png */; };
 		A2DBD4C921A6ECDB0094A1D9 /* btn_play_new@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = A2DBD4C721A6ECDA0094A1D9 /* btn_play_new@3x.png */; };
+		A2DFC71521B040F400DE696E /* 妹子自拍_美女自拍图片.txt in Resources */ = {isa = PBXBuildFile; fileRef = A2DFC71421B040F300DE696E /* 妹子自拍_美女自拍图片.txt */; };
 		E28B84A8A36AAB50D4A6C2B8 /* Pods_iHappy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CB566B05B747CCEC832F7BB /* Pods_iHappy.framework */; };
 		FC0B7C6E1EC751C90022E504 /* IHPMeituListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC0B7C6D1EC751C90022E504 /* IHPMeituListViewController.m */; };
 		FC0B7C721EC759880022E504 /* YSERequestFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = FC0B7C711EC759880022E504 /* YSERequestFetcher.m */; };
@@ -838,6 +839,7 @@
 		A2DBD4C421A6D78B0094A1D9 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		A2DBD4C621A6ECDA0094A1D9 /* btn_play_new@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_play_new@2x.png"; sourceTree = "<group>"; };
 		A2DBD4C721A6ECDA0094A1D9 /* btn_play_new@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_play_new@3x.png"; sourceTree = "<group>"; };
+		A2DFC71421B040F300DE696E /* 妹子自拍_美女自拍图片.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "妹子自拍_美女自拍图片.txt"; sourceTree = "<group>"; };
 		DDF28F2EE953D3A78F924489 /* Pods-iHappy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iHappy.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iHappy/Pods-iHappy.debug.xcconfig"; sourceTree = "<group>"; };
 		FC0B7C6C1EC751C90022E504 /* IHPMeituListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IHPMeituListViewController.h; sourceTree = "<group>"; };
 		FC0B7C6D1EC751C90022E504 /* IHPMeituListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IHPMeituListViewController.m; sourceTree = "<group>"; };
@@ -2087,6 +2089,7 @@
 		FC0B7C6B1EC751690022E504 /* Bizhi */ = {
 			isa = PBXGroup;
 			children = (
+				A2DFC71421B040F300DE696E /* 妹子自拍_美女自拍图片.txt */,
 				FC0B7C6F1EC7597E0022E504 /* Control */,
 				FC0B7C731EC75C190022E504 /* Model */,
 				FC0B7C741EC75C190022E504 /* View */,
@@ -2380,6 +2383,7 @@
 				18A6FA2D212FCB9D00709EC9 /* Localizable_en.string in Resources */,
 				181E5414214F928100E8A704 /* XDSReadMenu.xcassets in Resources */,
 				A227A84C2130641300568BCB /* SplashSmall.png in Resources */,
+				A2DFC71521B040F400DE696E /* 妹子自拍_美女自拍图片.txt in Resources */,
 				A22C12FD2144734E00896F00 /* XDSPlayerSectionHeader.xib in Resources */,
 				18A6FAF72130DF3800709EC9 /* btn_stop@2x.png in Resources */,
 				18A6FAFA2130DF3800709EC9 /* btn-amplification@2x.png in Resources */,
