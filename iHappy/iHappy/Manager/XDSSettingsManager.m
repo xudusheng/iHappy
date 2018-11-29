@@ -49,9 +49,9 @@
     //    //在WebView内点击视频全屏播放,退出后导致状态栏被隐
     //    //监听网页播放器进入和退出全屏的通知
     //    //监听UIWindow显示
-    //    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(beginFullScreen) name:UIWindowDidBecomeVisibleNotification object:nil];
+    //    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(beginFullScreen) name:UIWindowDidBecomeVisibleNotification object:nil];
     //监听UIWindow隐藏
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(endFullScreen) name:UIWindowDidBecomeHiddenNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(endFullScreen) name:UIWindowDidBecomeHiddenNotification object:nil];
 }
 
 -(void)endFullScreen{

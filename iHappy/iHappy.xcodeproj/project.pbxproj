@@ -220,6 +220,8 @@
 		18BB4F4A2153F9EE00C4A2CD /* GCDWebUploader.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BB4EEF2153F9EE00C4A2CD /* GCDWebUploader.m */; };
 		18BB4F4B2153F9EE00C4A2CD /* XDSIPHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BB4EF02153F9EE00C4A2CD /* XDSIPHelper.m */; };
 		18BB4F6C2153F9EE00C4A2CD /* XDSWIFIFileTransferViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BB4F372153F9EE00C4A2CD /* XDSWIFIFileTransferViewController.m */; };
+		18DEE8B621AF81F80016BE61 /* UIImageView+XDSAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DEE8B421AF81F80016BE61 /* UIImageView+XDSAddition.m */; };
+		18DEE8B921AF82530016BE61 /* UIButton+XDSAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DEE8B821AF82530016BE61 /* UIButton+XDSAddition.m */; };
 		18F8EB502139564100168506 /* XDSNewsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F8EB4F2139564100168506 /* XDSNewsModel.m */; };
 		18F8EB592139626F00168506 /* XDS_CustomMjRefreshHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F8EB562139626F00168506 /* XDS_CustomMjRefreshHeader.m */; };
 		18F8EB5A2139626F00168506 /* XDS_CustomMjRefreshFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F8EB572139626F00168506 /* XDS_CustomMjRefreshFooter.m */; };
@@ -721,6 +723,10 @@
 		18BB4EF12153F9EE00C4A2CD /* XDSWIFIFileTransferViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDSWIFIFileTransferViewController.h; sourceTree = "<group>"; };
 		18BB4F372153F9EE00C4A2CD /* XDSWIFIFileTransferViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XDSWIFIFileTransferViewController.m; sourceTree = "<group>"; };
 		18BB4F382153F9EE00C4A2CD /* XDSIPHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDSIPHelper.h; sourceTree = "<group>"; };
+		18DEE8B421AF81F80016BE61 /* UIImageView+XDSAddition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+XDSAddition.m"; sourceTree = "<group>"; };
+		18DEE8B521AF81F80016BE61 /* UIImageView+XDSAddition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+XDSAddition.h"; sourceTree = "<group>"; };
+		18DEE8B721AF82520016BE61 /* UIButton+XDSAddition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+XDSAddition.h"; sourceTree = "<group>"; };
+		18DEE8B821AF82530016BE61 /* UIButton+XDSAddition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+XDSAddition.m"; sourceTree = "<group>"; };
 		18F8EB4E2139564100168506 /* XDSNewsModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XDSNewsModel.h; sourceTree = "<group>"; };
 		18F8EB4F2139564100168506 /* XDSNewsModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XDSNewsModel.m; sourceTree = "<group>"; };
 		18F8EB532139626F00168506 /* XDS_CustomMjRefreshFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDS_CustomMjRefreshFooter.h; sourceTree = "<group>"; };
@@ -996,6 +1002,10 @@
 		092CAF081DE28D23008127DA /* UIView */ = {
 			isa = PBXGroup;
 			children = (
+				18DEE8B521AF81F80016BE61 /* UIImageView+XDSAddition.h */,
+				18DEE8B421AF81F80016BE61 /* UIImageView+XDSAddition.m */,
+				18DEE8B721AF82520016BE61 /* UIButton+XDSAddition.h */,
+				18DEE8B821AF82530016BE61 /* UIButton+XDSAddition.m */,
 				092CAF091DE28D23008127DA /* UIView+Extension.h */,
 				092CAF0A1DE28D23008127DA /* UIView+Extension.m */,
 			);
@@ -2597,6 +2607,7 @@
 				181E5416214F928100E8A704 /* UIView+YGPulseView.m in Sources */,
 				1819E42E21A3EADF00F67F56 /* ZFPlayerController.m in Sources */,
 				181E540C214F928100E8A704 /* XDSNoDataView.m in Sources */,
+				18DEE8B921AF82530016BE61 /* UIButton+XDSAddition.m in Sources */,
 				18BB4F3F2153F9EE00C4A2CD /* GCDWebServer.m in Sources */,
 				1819E42F21A3EADF00F67F56 /* ZFOrientationObserver.m in Sources */,
 				FCAFC6141EAEDB8700B48C83 /* IHPForceUpdateModel.m in Sources */,
@@ -2705,6 +2716,7 @@
 				18A6FA932130031600709EC9 /* NLEBNFParseResult.m in Sources */,
 				18A6FA59212FFFB900709EC9 /* XDSPlaceholdSplashViewController.m in Sources */,
 				FC1A8C3D1EAC298800E66FF8 /* IHPConfigManager.m in Sources */,
+				18DEE8B621AF81F80016BE61 /* UIImageView+XDSAddition.m in Sources */,
 				A24FCBE721319BF0001A05DB /* UIViewController+XDSMediaBrowser.m in Sources */,
 				18A6FA29212FCB9D00709EC9 /* XDSConfigManager.m in Sources */,
 				092CAF2E1DE2B20F008127DA /* IHYNewsListCell.m in Sources */,

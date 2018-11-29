@@ -11,19 +11,19 @@
 #import <BaiduMobAdSDK/BaiduMobAdView.h>
 #import <BaiduMobAdSDK/BaiduMobAdPreroll.h>
 
-NSString *const kBaiduMobSDKAppId = @"e0caf3b2";
-NSString *const kBaiduMobSDKSplashAdId = @"5968641";//开屏广告id
-NSString *const kBaiduMobSDKNativeAdId = @"5968637";//视频贴片广告id
-//NSString *const kBaiduMobSDKBannerAdId = @"5968061";//banner广告id
-NSString *const kBaiduMobSDKInterstitialAdId = @"5968638";//插屏广告id
+//NSString *const kBaiduMobSDKAppId = @"e0caf3b2";
+//NSString *const kBaiduMobSDKSplashAdId = @"5968641";//开屏广告id
+//NSString *const kBaiduMobSDKNativeAdId = @"5968637";//视频贴片广告id
+////NSString *const kBaiduMobSDKBannerAdId = @"5968061";//banner广告id
+//NSString *const kBaiduMobSDKInterstitialAdId = @"5968638";//插屏广告id
 
 
 //测试
-//NSString *const kBaiduMobSDKAppId = @"ccb60059";
-//NSString *const kBaiduMobSDKSplashAdId = @"5968641";//开屏广告id
-//NSString *const kBaiduMobSDKNativeAdId = @"2058633";//视频贴片广告id
-////NSString *const kBaiduMobSDKBannerAdId = @"5968061";//banner广告id
-//NSString *const kBaiduMobSDKInterstitialAdId = @"5968638";//插屏广告id
+NSString *const kBaiduMobSDKAppId = @"ccb60059";
+NSString *const kBaiduMobSDKSplashAdId = @"5968641";//开屏广告id
+NSString *const kBaiduMobSDKNativeAdId = @"2058633";//视频贴片广告id
+//NSString *const kBaiduMobSDKBannerAdId = @"5968061";//banner广告id
+NSString *const kBaiduMobSDKInterstitialAdId = @"5968638";//插屏广告id
 
 @interface BaiduAdManager ()<BaiduMobAdViewDelegate, BaiduMobAdPrerollDelegate>
 

@@ -186,7 +186,7 @@ NSString *const kXDSUpdateLocalizableTaskID = @"XDSUpdateLocalizableTask";
 //    return;
     
 //    NSString *requesturl = @"http://134.175.54.80/ihappy/menu.json";
-    NSString *requesturl = @"http://129.204.47.207/ihappy/menu.json";
+    NSString *requesturl = @"http://129.204.47.207/ihappy/config/menu_1.0.3.json";
 
     __weak typeof(self)weakSelf = self;
     [[[XDSHttpRequest alloc] init] htmlRequestWithHref:requesturl
@@ -230,7 +230,6 @@ NSString *const kXDSUpdateLocalizableTaskID = @"XDSUpdateLocalizableTask";
                                                                                                      }];
 
                                                        }
-
                                                    }else{
                                                        [weakSelf finishTaskWithTaksID:kXDSFetchConfigTaskID];
                                                    }
@@ -265,7 +264,7 @@ NSString *const kXDSUpdateLocalizableTaskID = @"XDSUpdateLocalizableTask";
 //    return;
     
 //    NSString *requesturl = @"http://134.175.54.80/ihappy/unavailible_url.json";
-    NSString *requesturl = @"http://129.204.47.207/ihappy/unavailible_url.json";
+    NSString *requesturl = @"http://129.204.47.207/ihappy/config/unavailible_url.json";
 
     __weak typeof(self)weakSelf = self;
     [[[XDSHttpRequest alloc] init] htmlRequestWithHref:requesturl

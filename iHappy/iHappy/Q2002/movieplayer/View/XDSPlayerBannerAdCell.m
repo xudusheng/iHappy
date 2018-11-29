@@ -13,19 +13,16 @@
 @implementation XDSPlayerBannerAdCell
 - (instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
-//        UIView *bannerView = (UIView *)[[XDSAdManager sharedManager] bannerView];
-//        [self.contentView addSubview:bannerView];
+        UIView *bannerView = (UIView *)[[XDSAdManager sharedManager] bannerView];
+        [self.contentView addSubview:bannerView];
 
-        [[BaiduAdManager sharedManager] startAdViewInView:self.contentView adUnitTag:kBannerSize_20_3];
+//        [[BaiduAdManager sharedManager] startAdViewInView:self.contentView adUnitTag:kBannerSize_20_3];
     }
     return self;
 }
 
 - (void)layoutSubviews {
-//    [[XDSAdManager sharedManager] bannerView].frame = self.contentView.bounds;
-    
-//    [[BaiduAdManager sharedManager] startAdViewInView:self.contentView adUnitTag:kBannerSize_20_3];
-
+    [[XDSAdManager sharedManager] bannerView].frame = self.contentView.bounds;
 }
 
 - (UICollectionViewLayoutAttributes *)preferredLayoutAttributesFittingAttributes:(UICollectionViewLayoutAttributes *)layoutAttributes {
@@ -34,7 +31,7 @@
 
 
 - (void)dealloc {
-//    [[XDSAdManager sharedManager] removeBannerAd];
+    NSLog(@"dealloc = %@", NSStringFromClass(self.class));
 }
 
 

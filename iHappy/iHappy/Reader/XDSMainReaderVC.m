@@ -28,7 +28,7 @@ OCT_SYNTHESIZE_SINGLETON_FOR_CLASS(XDSMainReaderVC)
     [super viewDidLoad];
     [self movieListViewControllerDataInit];
     [self createMovieListViewControllerUI];
-    [[XDSAdManager sharedManager] showInterstitialAD];
+//    [[XDSAdManager sharedManager] showInterstitialAD];
 }
 
 #pragma mark - 点击事件处理

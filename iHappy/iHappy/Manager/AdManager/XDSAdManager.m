@@ -22,11 +22,11 @@
 //NSString *const kGDTMobSDKInterstitialAdId = @"2030814134092814";//插屏广告id
 
 //com.youmi.ihappy
-NSString *const kGDTMobSDKAppId = @"1106160564";
-NSString *const kGDTMobSDKSplashAdId = @"8060437838106665";//开屏广告id
-NSString *const kGDTMobSDKBannerAdId = @"5040221235552630";//banner广告id
+NSString *const kGDTMobSDKAppId = @"1107811445";
+NSString *const kGDTMobSDKSplashAdId = @"6080544112424254";//开屏广告id
+NSString *const kGDTMobSDKBannerAdId = @"6070346162629225";//banner广告id
 NSString *const kGDTMobSDKNativeAdId = @"3020432808501644";//原生广告id
-NSString *const kGDTMobSDKInterstitialAdId = @"5010535848806666";//插屏广告id
+NSString *const kGDTMobSDKInterstitialAdId = @"3010544152029233";//插屏广告id
 
 
 //com.onlinecredit.laomoneyUAT
@@ -99,14 +99,7 @@ NSString *const kGDTMobSDKInterstitialAdId = @"5010535848806666";//插屏广告i
     self.splashAd = [[GDTSplashAd alloc] initWithAppId:kGDTMobSDKAppId placementId:kGDTMobSDKSplashAdId];
     self.splashAd.delegate = self;
     self.splashAd.fetchDelay = 5;
-//    if (IS_IPHONEX) {
-//        splashImage = [UIImage imageNamed:@"SplashX"];
-//    } else if ([UIScreen mainScreen].bounds.size.height == 480) {
-//        splashImage = [UIImage imageNamed:@"SplashSmall"];
-//    }
-    
     NSString *currentImageName = nil;
-    
     CGSize viewSize = CGSizeMake(DEVIECE_SCREEN_WIDTH, DEVIECE_SCREEN_HEIGHT);
     NSArray *imageDicts = [[[NSBundle mainBundle] infoDictionary] valueForKey:@"UILaunchImages"];
     
@@ -176,7 +169,7 @@ NSString *const kGDTMobSDKInterstitialAdId = @"5010535848806666";//插屏广告i
         CGRect rect = {0, 0, DEVIECE_SCREEN_WIDTH, GDTMOB_AD_SUGGEST_SIZE_320x50.height};
         _bannerView = [[GDTMobBannerView alloc] initWithFrame:rect appId:kGDTMobSDKAppId placementId:kGDTMobSDKBannerAdId];
         _bannerView.currentViewController = currentViewController;
-        _bannerView.interval = 20;//刷新间隔
+        _bannerView.interval = 30;//刷新间隔
         _bannerView.isAnimationOn = NO;//是否添加动画
         _bannerView.showCloseBtn = NO;//是否添加隐藏按钮
         _bannerView.isGpsOn = YES;//是否添加GPS

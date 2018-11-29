@@ -41,7 +41,7 @@ UIWebViewDelegate
 @property (strong, nonatomic) NSMutableArray<NSDictionary *> * movieButtonList;
 @property (strong, nonatomic) UICollectionView * moviedetailCollectionView;
 
-@property (nonatomic,strong) XDSZFPlayerCell *playerContainer;
+@property (nonatomic, weak) XDSZFPlayerCell *playerContainer;
 
 @property (strong, nonatomic) IHYMoviePlayButtonModel *selectedMovieModel;
 
@@ -51,17 +51,18 @@ UIWebViewDelegate
 
 @end
 NSInteger const kHTMLPlayerSection = 0;
-NSInteger const kHTMLSummarySection = 1;
-//NSInteger const kHTMLAdSection = 1;
-//NSInteger const kHTMLSummarySection = 2;
+NSInteger const kHTMLAdSection = 1;
+NSInteger const kHTMLSummarySection = 2;
 
-NSInteger const kHTMLPlaceholderSectionNumbers = 2;
+NSInteger const kHTMLPlaceholderSectionNumbers = 3;
 
 @implementation XDSHTMLPlayerVC
 - (void)dealloc{
     NSLog(@"%@ ==> dealloc", [self class]);
-    self.moviedetailCollectionView.delegate = nil;
     [self.playerContainer.player stopCurrentPlayingCell];
+    self.moviedetailCollectionView.delegate = nil;
+    self.moviedetailCollectionView = nil;
+    [[XDSAdManager sharedManager] removeBannerAd];
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -184,9 +185,9 @@ NSInteger const kHTMLPlaceholderSectionNumbers = 2;
             XDSZFPlayerCell *cell  = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([XDSZFPlayerCell class]) forIndexPath:indexPath];
             self.playerContainer = cell;
             return cell;
-//        }else if (indexPath.section == kHTMLAdSection) {
-//            XDSPlayerBannerAdCell *cell  = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([XDSPlayerBannerAdCell class]) forIndexPath:indexPath];
-//            return cell;
+        }else if (indexPath.section == kHTMLAdSection) {
+            XDSPlayerBannerAdCell *cell  = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([XDSPlayerBannerAdCell class]) forIndexPath:indexPath];
+            return cell;
         }else {
             XDSVideoSummaryCell *cell  = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([XDSVideoSummaryCell class]) forIndexPath:indexPath];
             cell.summary = self.movieModel.summary;
@@ -218,10 +219,14 @@ NSInteger const kHTMLPlaceholderSectionNumbers = 2;
         if (indexPath.section == kHTMLPlayerSection) {
           return XDS_PLAYER_SIZE;
             
-//        }else if (indexPath.section == kHTMLAdSection) {
-//            return XDS_PLAYER_BANNER_AD_CELL_SIZE;
+        }else if (indexPath.section == kHTMLAdSection) {
+            return XDS_PLAYER_BANNER_AD_CELL_SIZE;
         }else {
             NSString *summary = self.movieModel.summary;
+            if (summary.length < 1) {
+                CGSize itemSize = CGSizeMake(DEVIECE_SCREEN_WIDTH, 0.5);
+                return itemSize;
+            }
             CGSize size = [summary sizeWithFont:VIDEO_SUMMARY_FONT maxSize:VIDEO_SUMMARY_MAX_SIZE];
             if (size.height < 60) {
                 CGSize itemSize = CGSizeMake(DEVIECE_SCREEN_WIDTH, VIDEO_SUMMARY_CELL_HEIGHT_EXCEPT_SUMMARY + size.height);

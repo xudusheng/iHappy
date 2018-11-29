@@ -24,7 +24,7 @@
 }
 
 
-- (void)setSummary:(NSString *)summary {
+- (void)posetSummary:(NSString *)summary {
     _summary = summary;
     self.summaryLabel.text = summary;
     
