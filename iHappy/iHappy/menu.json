@@ -8,22 +8,6 @@
     },
     "menus": [
         {
-            "title": "美女壁纸",
-            "menuId": "kPicture",
-            "type": "4",
-            "rooturl": "http://134.175.54.80/ihappy/meizi/query.php",
-            "enable": true,
-            "subMenus": []
-        },
-        {
-            "title": "微阅读",
-            "menuId": "kReader",
-            "type": "0",
-            "enable": true,
-            "rooturl": "http://120.76.205.241:8000/news/qihoo?apikey=cz1wjvkzGtuomNDXgLxmdq5aIwgytQvHHe0Dc8OcfHQva6hKQgDoDyBdUAQngGt6&site=qq.com",
-            "subMenus": []
-        },
-        {
             "title": "小微福利",
             "menuId": "kHome",
             "type": "1",
@@ -51,6 +35,14 @@
                     "url": "/type/4.html"
                 }
             ]
+        },
+        {
+            "title": "美女壁纸",
+            "menuId": "kPicture",
+            "type": "4",
+            "rooturl": "http://134.175.54.80/ihappy/meizi/query.php",
+            "enable": true,
+            "subMenus": []
         },
         {
             "title": "头条新闻",
@@ -100,6 +92,14 @@
                     "url": ""
                 }
             ]
+        },
+        {
+            "title": "微阅读",
+            "menuId": "kReader",
+            "type": "0",
+            "enable": true,
+            "rooturl": "http://120.76.205.241:8000/news/qihoo?apikey=cz1wjvkzGtuomNDXgLxmdq5aIwgytQvHHe0Dc8OcfHQva6hKQgDoDyBdUAQngGt6&site=qq.com",
+            "subMenus": []
         },
         {
             "title": "学习福利",
