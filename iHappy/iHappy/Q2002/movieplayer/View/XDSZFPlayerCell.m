@@ -26,7 +26,7 @@ static NSString *kXDSPlayerCover = @"https://upload-images.jianshu.io/upload_ima
 @property (nonatomic, strong) UIView *zfContainerView;
 
 
-@property (strong, nonatomic) UIWebView * webView;
+@property (strong, nonatomic) UIWebView *webView;
 @property (nonatomic,assign)BOOL didWebViewLoadOK;
 @end
 
@@ -112,9 +112,6 @@ static NSString *kXDSPlayerCover = @"https://upload-images.jianshu.io/upload_ima
 }
 #pragma mark - event response 事件响应处理
 - (void)setPlayerSourceModel:(XDSPlayerSourceModel *)playerSourceModel {
-    if (!self.player) {
-        [self configPlayer];
-    }
     _playerSourceModel = playerSourceModel;
     if (_playerSourceModel.isWebUrl) {
         [self.zfContainerView removeFromSuperview];
@@ -126,6 +123,9 @@ static NSString *kXDSPlayerCover = @"https://upload-images.jianshu.io/upload_ima
         [_webView loadRequest:request];
     }else{
         [self.webView removeFromSuperview];
+        if (!self.player) {
+            [self configPlayer];
+        }
         if (![self.zfContainerView superview]) {
             [self.contentView addSubview:self.zfContainerView];
 
@@ -188,6 +188,11 @@ static NSString *kXDSPlayerCover = @"https://upload-images.jianshu.io/upload_ima
         [_playBtn addTarget:self action:@selector(playClick:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _playBtn;
+}
+
+
+- (void)dealloc {
+    NSLog(@"==================%@ dealloc", NSStringFromClass(self.class));
 }
 #pragma mark - memery 内存管理相关
 
