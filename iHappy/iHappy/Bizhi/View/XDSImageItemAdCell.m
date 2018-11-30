@@ -22,8 +22,8 @@
 }
 
 - (void)p_loadCell {
-    CGFloat width = CGRectGetWidth(self.contentView.bounds) - 10;
-    CGFloat height = width *(1200.f/800.f);
+    CGFloat width = CGRectGetWidth(self.contentView.bounds) - 10*2;
+    CGFloat height = width*XDS_NATIVE_EXPRESS_AD_RETIO_HEIGHT_WIDTH;
     [[XDSAdManager sharedManager] loadNativeExpressAdInView:self.contentView adSize:CGSizeMake(width, height)];
 }
 

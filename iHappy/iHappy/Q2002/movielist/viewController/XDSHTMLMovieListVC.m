@@ -9,6 +9,7 @@
 #import "XDSHTMLMovieListVC.h"
 #import "XDSHTMLMovieModel.h"
 #import "IHPMovieCell.h"
+#import "XDSImageItemAdCell.h"
 
 #import "XDSHTMLPlayerVC.h"
 @interface XDSHTMLMovieListVC ()<UICollectionViewDelegate, UICollectionViewDataSource>
@@ -54,6 +55,9 @@ NSString * const MovieListViewController_movieCellIdentifier = @"IHPMovieCell";
     
     [_movieCollectionView registerNib:[UINib nibWithNibName:NSStringFromClass([IHPMovieCell class]) bundle:nil]
            forCellWithReuseIdentifier:NSStringFromClass([IHPMovieCell class])];
+    [_movieCollectionView registerClass:[XDSImageItemAdCell class]
+             forCellWithReuseIdentifier:NSStringFromClass([XDSImageItemAdCell class])];
+    
     [_movieCollectionView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.mas_equalTo(0);
     }];
@@ -78,17 +82,24 @@ NSString * const MovieListViewController_movieCellIdentifier = @"IHPMovieCell";
 }
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
-    IHPMovieCell *cell  = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([IHPMovieCell class]) forIndexPath:indexPath];
-    cell.backgroundColor = [UIColor groupTableViewBackgroundColor];
     XDSHTMLMovieModel *movieModel = _movieList[indexPath.row];
-    [cell cellWithHTMLMovieModel:movieModel];
-    return cell;
+    
+    if (movieModel.href.length > 0) {
+        IHPMovieCell *cell  = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([IHPMovieCell class]) forIndexPath:indexPath];
+        cell.backgroundColor = [UIColor groupTableViewBackgroundColor];
+        XDSHTMLMovieModel *movieModel = _movieList[indexPath.row];
+        [cell cellWithHTMLMovieModel:movieModel];
+        return cell;
+    }else {
+        XDSImageItemAdCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([XDSImageItemAdCell class]) forIndexPath:indexPath];
+        [cell p_loadCell];
+        return cell;
+    }
 }
 
 
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-
     XDSHTMLMovieModel *movieModel = _movieList[indexPath.row];
     XDSHTMLPlayerVC *movieDetailVC = [[XDSHTMLPlayerVC alloc] init];
     movieDetailVC.htmlMovieModel = movieModel;
@@ -191,6 +202,12 @@ NSString * const MovieListViewController_movieCellIdentifier = @"IHPMovieCell";
         model.update = update;
         model.other = other;
         [newMovies addObject:model];
+        
+        
+        if ((newMovies.count + _movieList.count)%25 == 0) {
+            XDSHTMLMovieModel *model = [[XDSHTMLMovieModel alloc] init];
+            [newMovies addObject:model];
+        }
     }
     if (newMovies.count > 0) {
         if (needClearOldData) {

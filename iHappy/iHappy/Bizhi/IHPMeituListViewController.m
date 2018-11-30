@@ -16,22 +16,18 @@
 #import "YBImageBrowser.h"
 #import "YBAdBrowserCellData.h"
 
-#import "XDSMediaBrowserVC.h"
-
+#import "CHTCollectionViewWaterfallLayout.h"
 @interface IHPMeituListViewController ()<
 UICollectionViewDelegate,
 UICollectionViewDataSource,
-UICollectionViewDelegateFlowLayout,
+CHTCollectionViewDelegateWaterfallLayout,
 YBImageBrowserDataSource,
 YBImageBrowserDelegate
 >
 @property (strong, nonatomic) NSMutableArray<XDSMeituModel *> * meituList;
 @property (strong, nonatomic) UICollectionView * collectionView;
 @property (copy, nonatomic) NSString * nextPageUrl;
-
 @property (copy, nonatomic) NSArray* imageUrlList;
-
-@property (strong, nonatomic) XDSMediaBrowserVC *mediaBrowserVC;
 
 @end
 
@@ -51,12 +47,16 @@ CGFloat const kBiZhiCollectionViewCellsGap = 10.0;
 
     self.view.backgroundColor = [UIColor brownColor];
 
-    UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
-    flowLayout.minimumLineSpacing = kBiZhiCollectionViewMinimumLineSpacing;//纵向间距
-    flowLayout.minimumInteritemSpacing = kBiZhiCollectionViewMinimumInteritemSpacing;//横向内边距
+//    UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
+    CHTCollectionViewWaterfallLayout *flowLayout = [[CHTCollectionViewWaterfallLayout alloc] init];
+    flowLayout.sectionInset = UIEdgeInsetsMake(10, 10, 10, 10);
+
+//    flowLayout.minimumLineSpacing = kBiZhiCollectionViewMinimumLineSpacing;//纵向间距
+//    flowLayout.minimumInteritemSpacing = kBiZhiCollectionViewMinimumInteritemSpacing;//横向内边距
     
     self.collectionView = ({
         UICollectionView *collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:flowLayout];
+        collectionView.collectionViewLayout = flowLayout;
         collectionView.translatesAutoresizingMaskIntoConstraints = false;
         collectionView.delegate = self;
         collectionView.dataSource = self;
@@ -88,7 +88,21 @@ CGFloat const kBiZhiCollectionViewCellsGap = 10.0;
 
 }
 
-#pragma mark - 网络请求
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [self updateLayoutForOrientation:[UIApplication sharedApplication].statusBarOrientation];
+}
+
+- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
+    [super willAnimateRotationToInterfaceOrientation:toInterfaceOrientation duration:duration];
+    [self updateLayoutForOrientation:toInterfaceOrientation];
+}
+
+- (void)updateLayoutForOrientation:(UIInterfaceOrientation)orientation {
+    CHTCollectionViewWaterfallLayout *layout =
+    (CHTCollectionViewWaterfallLayout *)self.collectionView.collectionViewLayout;
+    layout.columnCount = UIInterfaceOrientationIsPortrait(orientation) ? 2 : 3;
+}
 #pragma mark - 网络请求
 - (void)headerRequest{
     [_collectionView.mj_footer resetNoMoreData];
@@ -135,7 +149,7 @@ CGFloat const kBiZhiCollectionViewCellsGap = 10.0;
 
 - (void)loadLocalData:(BOOL)isTop {
     
-    NSInteger page_size = 1000;
+    NSInteger page_size = 10;
     NSInteger page_no = isTop?0:(self.meituList.count/page_size);
     
     isTop?[self.meituList removeAllObjects]:NULL;
@@ -145,7 +159,16 @@ CGFloat const kBiZhiCollectionViewCellsGap = 10.0;
         XDSMeituModel *model = [[XDSMeituModel alloc] init];
         model.image_src = imgUrl;
         [self.meituList addObject:model];
+        
+        if (self.meituList.count%23 == 0) {
+            //广告占位
+            XDSMeituModel *model = [[XDSMeituModel alloc] init];
+            [self.meituList addObject:model];
+        }
     }
+    
+
+
 
     [self.collectionView.mj_header endRefreshing];
     [self.collectionView.mj_footer endRefreshing];
@@ -156,24 +179,24 @@ CGFloat const kBiZhiCollectionViewCellsGap = 10.0;
 
 - (void)fetchDetailImageListWithMd5key:(NSString *)md5key{
     
-    NSString *url = @"http://134.175.54.80/ihappy/meizi/querydetail.php";
-    NSDictionary *params = @{
-                             @"md5key":md5key?md5key:@"",
-                             };
-    __weak typeof(self)weakSelf = self;
-    [[[XDSHttpRequest alloc] init] GETWithURLString:url
-                                           reqParam:params
-                                      hudController:self
-                                            showHUD:NO
-                                            HUDText:nil
-                                      showFailedHUD:YES
-                                            success:^(BOOL success, NSDictionary *successResult) {
-                                                XDSDetaimImageResponseModel *responseModel = [XDSDetaimImageResponseModel mj_objectWithKeyValues:successResult];
-                                                NSArray *imageArray = responseModel.imageList;
-                                                if (imageArray.count) {
-                                                    [weakSelf showMediaBrowserView:imageArray];
-                                                }
-                                            } failed:nil];
+//    NSString *url = @"http://134.175.54.80/ihappy/meizi/querydetail.php";
+//    NSDictionary *params = @{
+//                             @"md5key":md5key?md5key:@"",
+//                             };
+//    __weak typeof(self)weakSelf = self;
+//    [[[XDSHttpRequest alloc] init] GETWithURLString:url
+//                                           reqParam:params
+//                                      hudController:self
+//                                            showHUD:NO
+//                                            HUDText:nil
+//                                      showFailedHUD:YES
+//                                            success:^(BOOL success, NSDictionary *successResult) {
+//                                                XDSDetaimImageResponseModel *responseModel = [XDSDetaimImageResponseModel mj_objectWithKeyValues:successResult];
+//                                                NSArray *imageArray = responseModel.imageList;
+//                                                if (imageArray.count) {
+//                                                    [weakSelf showMediaBrowserView:imageArray];
+//                                                }
+//                                            } failed:nil];
 
 }
 
@@ -202,10 +225,23 @@ CGFloat const kBiZhiCollectionViewCellsGap = 10.0;
 }
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     XDSMeituModel *model = _meituList[indexPath.row];
+    
+    if (model.image_src.length > 0) {
         INSImageItemCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kImageItemCollectionViewCellIdentifier forIndexPath:indexPath];
-        cell.imageModel = model;
+        NSURL *url = [NSURL URLWithString:model.image_src];
+        [cell.bgImageView sd_setImageWithURL:url placeholderImage:nil completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
+            if (!CGSizeEqualToSize(model.imageSize, image.size)) {
+                model.imageSize = image.size;
+                [collectionView reloadItemsAtIndexPaths:@[indexPath]];
+            }
+        }];
+        return cell;
+    }else {
+        XDSImageItemAdCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([XDSImageItemAdCell class]) forIndexPath:indexPath];
         [cell p_loadCell];
         return cell;
+    }
+
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
@@ -215,18 +251,24 @@ CGFloat const kBiZhiCollectionViewCellsGap = 10.0;
     if (model.md5key.length > 0) {
         [self fetchDetailImageListWithMd5key:model.md5key];
     }else if (model.image_src.length > 0) {
-//        XDSDetailImageModel *imageModel = [[XDSDetailImageModel alloc] init];
-//        imageModel.image_src = model.image_src;
-//        [self showMediaBrowserView:@[imageModel]];
         [self showBrowserForSimpleCaseWithIndex:indexPath.row];
     }
 
 }
 
 //TODO:UICollectionViewDelegateFlowLayout
-- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+    
     CGFloat cellWidth  = (DEVIECE_SCREEN_WIDTH - 3*kBiZhiCollectionViewCellsGap)/2;
-    CGFloat cellHeight = cellWidth+25;
+    CGFloat cellHeight = cellWidth;
+    
+    XDSMeituModel *model = _meituList[indexPath.row];
+    CGSize imageSize = model.imageSize;
+    if (imageSize.height > 1) {
+        cellHeight = (imageSize.height/imageSize.width)*(cellWidth - 2*kImageItemCollectionViewCellGap) + 2*kImageItemCollectionViewCellGap;
+    } else {
+        cellHeight = XDS_NATIVE_EXPRESS_AD_RETIO_HEIGHT_WIDTH*(cellWidth - 2*kImageItemCollectionViewCellGap) + 2*kImageItemCollectionViewCellGap;
+    }
     return CGSizeMake(cellWidth, cellHeight);
 }
 
@@ -234,7 +276,6 @@ CGFloat const kBiZhiCollectionViewCellsGap = 10.0;
     return UIEdgeInsetsMake(kBiZhiCollectionViewCellsGap, kBiZhiCollectionViewCellsGap, 0, kBiZhiCollectionViewCellsGap);
 }
 
-#pragma mark - <YBImageBrowserDataSource>
 
 - (NSUInteger)yb_numberOfCellForImageBrowserView:(YBImageBrowserView *)imageBrowserView {
     return self.meituList.count;
@@ -242,56 +283,55 @@ CGFloat const kBiZhiCollectionViewCellsGap = 10.0;
 
 - (id<YBImageBrowserCellDataProtocol>)yb_imageBrowserView:(YBImageBrowserView *)imageBrowserView dataForCellAtIndex:(NSUInteger)index {
     XDSMeituModel *model = self.meituList[index];
-    if (model.image_src.length > 1) {
-        YBImageBrowseCellData *data = [YBImageBrowseCellData new];
-        data.url = [NSURL URLWithString:model.image_src];
-        data.sourceObject = [self sourceObjAtIdx:index];
-        return data;
-    }else {
-        YBAdBrowserCellData *adCellData = [[YBAdBrowserCellData alloc] init];
-        return adCellData;
-    }
+    YBImageBrowseCellData *data = [YBImageBrowseCellData new];
+    data.url = [NSURL URLWithString:model.image_src];
+    data.sourceObject = [self sourceObjAtIdx:index];
+    return data;
+    
 }
-
 #pragma mark - 点击事件处理
-//TODO: showPhotoBrowser
-- (void)showMediaBrowserView:(NSArray <XDSDetailImageModel*> *)imageArray {
-    NSMutableArray *mediaModelArray = [NSMutableArray arrayWithCapacity:0];
-    for (XDSDetailImageModel *mediaModel in imageArray) {
-        XDSMediaModel *videoModel = [[XDSMediaModel alloc] init];
-        videoModel.mediaURL = [NSURL URLWithString:mediaModel.image_src];
-        videoModel.mediaType = XDSMediaTypeImage;
-//      videoModel.placeholderImage = [UIImage placeholderImage:frame];
-        [mediaModelArray addObject:videoModel];
-    }
-    
-    
-    XDSMediaBrowserVC *mediaBrowserVC = [[XDSMediaBrowserVC alloc] init];
-    mediaBrowserVC.mediaModelArray = mediaModelArray;
-    self.mediaBrowserVC = mediaBrowserVC;
-    [self presentViewController:mediaBrowserVC animated:YES completion:nil];
-}
-
-
-
-#pragma mark - Show 'YBImageBrowser'
 - (void)showBrowserForSimpleCaseWithIndex:(NSInteger)index {
-    NSMutableArray *browserDataArr = [NSMutableArray array];
+    NSArray *visibleCells = self.collectionView.visibleCells;
 
+    visibleCells = [visibleCells sortedArrayUsingComparator:^NSComparisonResult(UICollectionViewCell *cell1, UICollectionViewCell *cell2) {
+        NSIndexPath *indexPath1 = [self.collectionView indexPathForCell:cell1];
+        NSIndexPath *indexPath2 = [self.collectionView indexPathForCell:cell2];
+        return indexPath1.row > indexPath2.row;
+    }];
 
-    for (XDSMeituModel *meituMode in self.meituList) {
-        YBImageBrowseCellData *data = [YBImageBrowseCellData new];
-        data.url = [NSURL URLWithString:meituMode.image_src];
-        data.sourceObject = [self sourceObjAtIdx:index];
-        [browserDataArr addObject:data];
+    UICollectionViewCell *cell = visibleCells.firstObject;
+    NSIndexPath *firstIndexPath = [self.collectionView indexPathForCell:cell];
+    NSArray *visibleMeituList = [self.meituList subarrayWithRange:NSMakeRange(firstIndexPath.row, visibleCells.count)];
+
+    
+    NSMutableArray *browserDataArr = [NSMutableArray arrayWithCapacity:0];
+    NSInteger currentIndex = 0;
+    for (int i = 0; i < visibleMeituList.count; i ++) {
+        XDSMeituModel *meituModel = visibleMeituList[i];
+        if (meituModel.image_src.length > 0) {
+            YBImageBrowseCellData *data = [YBImageBrowseCellData new];
+            data.url = [NSURL URLWithString:meituModel.image_src];
+            data.sourceObject = [self sourceObjAtIdx:firstIndexPath.row + i];
+            [browserDataArr addObject:data];
+        }else {
+            //广告在图片之前显示，退一位
+            if (currentIndex == 0 && i > currentIndex) {
+                currentIndex -= 1;
+            }
+        }
+        
+        if (firstIndexPath.row + i == index) {
+            currentIndex += i;
+        }
     }
 
     YBAdBrowserCellData *adCellData = [[YBAdBrowserCellData alloc] init];
     [browserDataArr addObject:adCellData];
     YBImageBrowser *browser = [YBImageBrowser new];
     browser.dataSourceArray = browserDataArr;
-    browser.currentIndex = index;
+    browser.currentIndex = currentIndex;
     [browser show];
+    
     
 //    YBImageBrowser *browser = [YBImageBrowser new];
 //    browser.dataSource = self;

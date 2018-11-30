@@ -41,6 +41,9 @@
 @property (copy, nonatomic) NSString *image_src;
 @property (copy, nonatomic) NSString *href;//详情的地址
 
+@property (assign, nonatomic) CGSize imageSize;
+
+
 @end
 
 

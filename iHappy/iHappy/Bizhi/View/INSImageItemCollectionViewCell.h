@@ -7,15 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "XDSMeituModel.h"
 
 UIKIT_EXTERN NSString *const kImageItemCollectionViewCellIdentifier;
+UIKIT_EXTERN CGFloat const kImageItemCollectionViewCellGap;
 
 @interface INSImageItemCollectionViewCell : IHPRootCollectionCell
 
 @property (strong, nonatomic) UIImageView *bgImageView;
-@property (strong, nonatomic) UILabel *titleLabel;
-
-@property (strong, nonatomic) XDSMeituModel *imageModel;
 
 @end

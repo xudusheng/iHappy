@@ -320,7 +320,7 @@ GDTMobInterstitialDelegate>
     if (self.expressAdViews.count) {
         [self.expressAdViews enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             GDTNativeExpressAdView *expressView = (GDTNativeExpressAdView *)obj;
-//            expressView.controller = [UIViewController xds_visiableViewController];
+            expressView.controller = [UIViewController xds_visiableViewController];
             [expressView render];
         }];
     }

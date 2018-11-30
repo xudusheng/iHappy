@@ -8,6 +8,8 @@
 
 #import "XDSBaseManager.h"
 #import "GDTMobBannerView.h"
+
+#define XDS_NATIVE_EXPRESS_AD_RETIO_HEIGHT_WIDTH (1200.f/800.f)
 @interface XDSAdManager : XDSBaseManager
 
 + (instancetype)sharedManager;

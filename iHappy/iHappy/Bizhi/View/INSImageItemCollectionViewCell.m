@@ -9,6 +9,7 @@
 #import "INSImageItemCollectionViewCell.h"
 
 NSString *const kImageItemCollectionViewCellIdentifier = @"INSImageItemCollectionViewCell";
+CGFloat const kImageItemCollectionViewCellGap = 10.f;
 
 @implementation INSImageItemCollectionViewCell
 
@@ -27,45 +28,20 @@ NSString *const kImageItemCollectionViewCellIdentifier = @"INSImageItemCollectio
 
 //MARK:UI
 - (void)createImageItemCollectionViewCellUI{
-    CGFloat width = CGRectGetWidth(self.frame);
-    CGFloat height = CGRectGetHeight(self.frame);
-    CGFloat gap = 10.f;
-    CGFloat imageWidth = width - gap*2;
     self.bgImageView = ({
-        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(gap, gap, imageWidth, imageWidth)];
+        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectZero];
         imageView.backgroundColor = [UIColor lightGrayColor];
         imageView.translatesAutoresizingMaskIntoConstraints = false;
         [self.contentView addSubview:imageView];
         imageView;
     });
-
-    self.titleLabel = ({
-        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(gap, CGRectGetMaxY(self.bgImageView.frame), imageWidth, height - CGRectGetMaxY(self.bgImageView.frame))];
-        label.translatesAutoresizingMaskIntoConstraints = false;
-        label.font = [UIFont systemFontOfSize:12];
-        label.textColor = [UIColor darkGrayColor];
-        label.backgroundColor = [UIColor whiteColor];
-        [self.contentView addSubview:label];
-        label;
-    });
-
-//    self.contentView.clipsToBounds = NO;
-//    self.contentView.layer.shadowColor = [UIColor lightGrayColor].CGColor;
-//    self.contentView.layer.shadowOffset = CGSizeMake(3, 3);
     
+    [self.bgImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.left.mas_equalTo(kImageItemCollectionViewCellGap);
+        make.bottom.right.mas_equalTo(-kImageItemCollectionViewCellGap);
+    }];
 
-    
-    
 }
 
-
-- (void)p_loadCell{
-    if (self.imageModel == nil) {
-        return;
-    }
-    NSURL *url = [NSURL URLWithString:_imageModel.image_src];
-    [_bgImageView sd_setImageWithURL:url placeholderImage:nil options:SDWebImageTransformAnimatedImage];
-    _titleLabel.text = _imageModel.name;
-}
 
 @end
