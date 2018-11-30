@@ -4,26 +4,27 @@
         "isForce": false,
         "url": "https://itunes.apple.com/cn/app/id1438199023",
         "updateMessage": "发现新版本，更新如下\n1、惺惺惜惺惺；\n2、一月又一月晕；\n3、吾问无为谓无",
-        "version":"1.0.1"
+        "version": "1.0.1"
     },
-    "menus": [        {
-        "title": "美女壁纸",
-        "menuId": "kPicture",
-        "type": "4",
-        "rooturl": "http://134.175.54.80/ihappy/meizi/query.php",
-        "enable": true,
-        "subMenus": [],
-    },
+    "menus": [
+        {
+            "title": "美女壁纸",
+            "menuId": "kPicture",
+            "type": "4",
+            "rooturl": "http://134.175.54.80/ihappy/meizi/query.php",
+            "enable": true,
+            "subMenus": []
+        },
         {
             "title": "微阅读",
             "menuId": "kReader",
             "type": "0",
             "enable": true,
             "rooturl": "http://120.76.205.241:8000/news/qihoo?apikey=cz1wjvkzGtuomNDXgLxmdq5aIwgytQvHHe0Dc8OcfHQva6hKQgDoDyBdUAQngGt6&site=qq.com",
-            "subMenus": [],
+            "subMenus": []
         },
         {
-            "title": "首页",
+            "title": "小微福利",
             "menuId": "kHome",
             "type": "1",
             "rooturl": "http://www.q2002.com",
@@ -48,62 +49,7 @@
                 {
                     "title": "综艺",
                     "url": "/type/4.html"
-                },
-                {
-                    "title": "福利",
-                    "url": "/type/3.html"
-                },
-                {
-                    "title": "WWE",
-                    "url": "/type/18.html"
                 }
-            ],
-            "unavailible_url_list": [
-                "http://www.q2002.com/show/46361.html",
-                "http://www.q2002.com/show/46325.html",
-                "http://www.q2002.com/show/46304.html"
-            ]
-        },
-        {
-            "title": "热门视频",
-            "menuId": "kVideo",
-            "type": "2",
-            "rooturl": "http://172.16.8.81:8091/video/list",
-            "enable": true,
-            "subMenus": [
-                {
-                    "title": "电影",
-                    "url": "1"
-                },
-                {
-                    "title": "电视剧",
-                    "url": "2"
-                },
-                {
-                    "title": "动漫",
-                    "url": "7"
-                },
-                {
-                    "title": "音乐",
-                    "url": "6"
-                },
-                {
-                    "title": "综艺",
-                    "url": "4"
-                },
-                {
-                    "title": "福利",
-                    "url": "3"
-                },
-                {
-                    "title": "WWE",
-                    "url": "18"
-                }
-            ],
-            "unavailible_url_list": [
-                "http://www.q2002.com/show/46361.html",
-                "http://www.q2002.com/show/46325.html",
-                "http://www.q2002.com/show/46304.html"
             ]
         },
         {
@@ -153,15 +99,15 @@
                     "title": "国际",
                     "url": ""
                 }
-            ],
+            ]
         },
         {
-            "title": "小微福利",
+            "title": "学习福利",
             "menuId": "kWelfare",
             "type": "5",
             "rooturl": "",
             "enable": true,
-            "subMenus": [],
+            "subMenus": []
         }
     ]
 }
