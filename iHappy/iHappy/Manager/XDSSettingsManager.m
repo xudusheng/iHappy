@@ -9,7 +9,9 @@
 #import "XDSSettingsManager.h"
 #import "XDSConfigItem.h"
 
+#import <UMCommon/UMCommon.h>
 #import <BaiduMobAdSDK/BaiduMobAdSetting.h>
+
 @implementation XDSSettingsManager
 + (instancetype)sharedManager
 {
@@ -62,6 +64,11 @@
 
 #pragma mark - Global Settings
 - (void)setGlobalSettings {
+    
+    //友盟统计初始化
+    [UMConfigure initWithAppkey:@"5c014f16f1f5560e2d000162" channel:@"App Store"];
+
+    //百度广告联盟设置网络
     [BaiduMobAdSetting sharedInstance].supportHttps = NO;
 }
 - (void)setOnlyOnceWhenLaunchTaskQueueFinished {}
