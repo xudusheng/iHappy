@@ -25,8 +25,10 @@
 
 
 //原生广告
-- (void)loadNativeAdInSize:(CGSize)inSize;
+- (void)loadNativeAdInView:(UIView *)inView;
 
+//TODO: 原生模板广告
+- (void)loadNativeExpressAdInView:(UIView *)inView adSize:(CGSize)adSize;
 
 //插屏广告
 - (void)showInterstitialAD;

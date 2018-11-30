@@ -81,8 +81,8 @@
 }
 
 + (void)load {
-    [self swizzleMethod:@selector(sd_setImageWithURL:) withMethod:@selector(replace_sd_setImageWithURL:)];
-    [self swizzleMethod:@selector(sd_setImageWithURL:placeholderImage:) withMethod:@selector(replace_sd_setImageWithURL:placeholderImage:)];
+//    [self swizzleMethod:@selector(sd_setImageWithURL:) withMethod:@selector(replace_sd_setImageWithURL:)];
+//    [self swizzleMethod:@selector(sd_setImageWithURL:placeholderImage:) withMethod:@selector(replace_sd_setImageWithURL:placeholderImage:)];
 }
 
 + (void)swizzleMethod:(SEL)origSelector withMethod:(SEL)newSelector {

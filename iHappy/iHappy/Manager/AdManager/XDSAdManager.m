@@ -9,7 +9,10 @@
 #import "XDSAdManager.h"
 #import "GDTSplashAd.h"
 #import "GDTMobBannerView.h"
+#import "GDTNativeAd.h"
 #import "GDTNativeExpressAd.h"
+#import "GDTNativeExpressAdView.h"
+
 #import "GDTNativeExpressAdView.h"
 #import "GDTMobInterstitial.h"
 
@@ -25,7 +28,8 @@
 NSString *const kGDTMobSDKAppId = @"1107811445";
 NSString *const kGDTMobSDKSplashAdId = @"6080544112424254";//开屏广告id
 NSString *const kGDTMobSDKBannerAdId = @"6070346162629225";//banner广告id
-NSString *const kGDTMobSDKNativeAdId = @"3020432808501644";//原生广告id
+NSString *const kGDTMobSDKNativeAdId = @"8020945710303246";//原生广告id
+NSString *const kGDTMobSDKNativeExpressAdId = @"4080444629286916";//原生模板广告id
 NSString *const kGDTMobSDKInterstitialAdId = @"3010544152029233";//插屏广告id
 
 
@@ -36,7 +40,11 @@ NSString *const kGDTMobSDKInterstitialAdId = @"3010544152029233";//插屏广告i
 //NSString *const kGDTMobSDKNativeAdId = @"2030749182423129";//原生广告id
 //NSString *const kGDTMobSDKInterstitialAdId = @"3010544152029233";//插屏广告id
 
-@interface XDSAdManager () <GDTSplashAdDelegate, GDTNativeExpressAdDelegete, GDTMobInterstitialDelegate>
+@interface XDSAdManager ()
+<GDTSplashAdDelegate,
+GDTNativeAdDelegate,
+GDTNativeExpressAdDelegete,
+GDTMobInterstitialDelegate>
 
 //开屏广告
 @property (nonatomic, strong) GDTSplashAd *splashAd;
@@ -47,8 +55,17 @@ NSString *const kGDTMobSDKInterstitialAdId = @"3010544152029233";//插屏广告i
 @property (nonatomic, strong) GDTMobBannerView *bannerView;
 
 //原生广告
+@property (nonatomic, strong) GDTNativeAd *nativeAd;
+@property (nonatomic, strong) UIView *nativeAdView;
+@property (nonatomic, copy) NSArray *nativeAdArray;
+@property (nonatomic, strong) UIView *nativeAdContainer;
+@property (nonatomic, strong) GDTNativeAdData *currentAdData;
+
+
+//原生模板广告
+@property (nonatomic, strong) NSArray *expressAdViews;
+@property (nonatomic, weak) UIView *nativeExpressAdContainer;
 @property (nonatomic, strong) GDTNativeExpressAd *nativeExpressAd;
-@property (nonatomic, strong) NSMutableArray *expressAdViews;
 
 //插屏广告
 @property (nonatomic, strong) GDTMobInterstitial *interstitial;
@@ -94,7 +111,7 @@ NSString *const kGDTMobSDKInterstitialAdId = @"3010544152029233";//插屏广告i
                                                object:nil];
 }
 
-//开屏广告
+//TODO: 开屏广告
 - (void)showSplashAd {
     self.splashAd = [[GDTSplashAd alloc] initWithAppId:kGDTMobSDKAppId placementId:kGDTMobSDKSplashAdId];
     self.splashAd.delegate = self;
@@ -156,7 +173,7 @@ NSString *const kGDTMobSDKInterstitialAdId = @"3010544152029233";//插屏广告i
 }
 
 
-//banner广告
+//TODO: banner广告
 - (void)loadBannerAdFromViewController:(UIViewController *)fromViewController{
     [[self bannerViewWithCurrentViewController:fromViewController] loadAdAndShow];
 }
@@ -184,44 +201,147 @@ NSString *const kGDTMobSDKInterstitialAdId = @"3010544152029233";//插屏广告i
 }
 
 
-//原生广告
-- (void)loadNativeAdInSize:(CGSize)inSize{
-    [self.expressAdViews removeAllObjects];
-    self.expressAdViews = nil;
-    self.nativeExpressAd = [[GDTNativeExpressAd alloc] initWithAppId:kGDTMobSDKAppId
-                                                         placementId:kGDTMobSDKNativeAdId
-                                                              adSize:inSize];
-    self.nativeExpressAd.delegate = self;
-    [self.nativeExpressAd loadAd:3];
+//TODO: 原生广告
+- (void)loadNativeAdInView:(UIView *)inView {
+    [self.nativeAdView removeFromSuperview];
+    self.nativeAdView = nil;
+    self.currentAdData = nil;
+    self.nativeAdContainer = inView;
+    self.nativeAd = nil;
+    /*
+    * 本原生广告位ID在联盟系统中创建时勾选的详情图尺寸为1280*720，开发者可以根据自己应用的需要
+    * 创建对应的尺寸规格ID
+    *
+    * 这里详情图以800*1200为例
+    */
+    self.nativeAd = [[GDTNativeAd alloc] initWithAppId:kGDTMobSDKAppId placementId:kGDTMobSDKNativeAdId];
+    self.nativeAd.controller = [UIViewController xds_visiableViewController];
+    self.nativeAd.delegate = self;
+    /*
+     * 拉取广告,传入参数为拉取个数。
+     * 发起拉取广告请求,在获得广告数据后回调delegate
+     */
+    [self.nativeAd loadAd:1]; //这里以一次拉取一条原生广告为例
 }
-/**
- * 拉取广告成功的回调
- */
+
+// GDTNativeAdDelegate
+-(void)nativeAdSuccessToLoad:(NSArray *)nativeAdDataArray {
+    NSLog(@"%s",__FUNCTION__);
+    /*广告数据拉取成功，存储并展示*/
+    self.nativeAdArray = nativeAdDataArray;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        NSMutableString *result = [NSMutableString string];
+        [result appendString:@"原生广告返回数据:\n"];
+        for (GDTNativeAdData *data in nativeAdDataArray) {
+            NSData *d = [[data.properties description] dataUsingEncoding:NSUTF8StringEncoding];
+            NSString *decodevalue = [[NSString alloc] initWithData:d encoding:NSNonLossyASCIIStringEncoding];;
+            [result appendFormat:@"%@",decodevalue];
+            [result appendFormat:@"\nisAppAd:%@",data.isAppAd ? @"YES":@"NO"];
+            [result appendFormat:@"\nisThreeImgsAd:%@",data.isThreeImgsAd ? @"YES":@"NO"];
+            [result appendString:@"\n------------------------"];
+        }
+        
+        [self showNativeAdInView:self.nativeAdContainer];
+    });
+}
+
+- (void)showNativeAdInView:(UIView *)InView {
+    if (self.nativeAdArray.count > 0) {
+        /*选择展示广告*/
+        self.currentAdData = self.nativeAdArray[0];
+        
+        /*广告详情图*/
+        UIImageView *imgV = [[UIImageView alloc] initWithFrame:CGRectMake(2, 70, 316, 176)];
+        [self.nativeAdView addSubview:imgV];
+        NSURL *imageURL = [NSURL URLWithString:[self.currentAdData.properties objectForKey:GDTNativeAdDataKeyImgUrl]];
+        [imgV sd_setImageWithURL:imageURL];
+        
+        /*广告Icon*/
+        UIImageView *iconV = [[UIImageView alloc] initWithFrame:CGRectMake(10, 5, 60, 60)];
+        [self.nativeAdView addSubview:iconV];
+        NSURL *iconURL = [NSURL URLWithString:[self.currentAdData.properties objectForKey:GDTNativeAdDataKeyIconUrl]];
+        [iconV sd_setImageWithURL:iconURL];
+        
+        /*广告标题*/
+        UILabel *txt = [[UILabel alloc] initWithFrame:CGRectMake(80, 5, 220, 35)];
+        txt.text = [self.currentAdData.properties objectForKey:GDTNativeAdDataKeyTitle];
+        [self.nativeAdView addSubview:txt];
+        
+        /*广告描述*/
+        UILabel *desc = [[UILabel alloc] initWithFrame:CGRectMake(80, 45, 220, 20)];
+        desc.text = [self.currentAdData.properties objectForKey:GDTNativeAdDataKeyDesc];
+        [self.nativeAdView addSubview:desc];
+        
+        CGRect adviewFrame = self.nativeAdView.frame;
+        adviewFrame.origin.x = [[UIScreen mainScreen] bounds].size.width + adviewFrame.origin.x;
+        self.nativeAdView.frame = adviewFrame;
+        [InView addSubview:self.nativeAdView];
+        
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(viewTapped:)];
+        [self.nativeAdView addGestureRecognizer:tap];
+        
+            self.nativeAdView.center = CGPointMake(CGRectGetMidX(InView.bounds), CGRectGetMidY(InView.bounds));
+        
+        /*
+         * 广告数据渲染完毕，即将展示时需调用AttachAd方法。
+         */
+        [self.nativeAd attachAd:self.currentAdData toView:self.nativeAdView];
+    }
+}
+- (void)viewTapped:(UITapGestureRecognizer *)gr {
+    /*点击发生，调用点击接口*/
+    [self.nativeAd clickAd:self.currentAdData];
+}
+
+-(void)nativeAdFailToLoad:(NSError *)error{
+    NSLog(@"%s = %@", __FUNCTION__, error);
+    self.currentAdData = nil;
+}
+- (void)nativeAdWillPresentScreen{}
+- (void)nativeAdApplicationWillEnterBackground{}
+- (void)nativeAdClosed{}
+
+//TODO: 原生模板广告
+- (void)loadNativeExpressAdInView:(UIView *)inView adSize:(CGSize)adSize{
+    self.nativeExpressAdContainer = inView;
+    [inView cw_removeAllSubviews];
+    self.expressAdViews = nil;
+    self.nativeExpressAd = nil;
+    self.nativeExpressAd = [[GDTNativeExpressAd alloc] initWithAppId:kGDTMobSDKAppId placementId:kGDTMobSDKNativeExpressAdId adSize:adSize];
+    self.nativeExpressAd.delegate = self;
+    // 配置视频播放属性
+    self.nativeExpressAd.videoAutoPlayOnWWAN = NO;
+    self.nativeExpressAd.videoMuted = NO;
+    [self.nativeExpressAd loadAd:1];
+}
+#pragma mark - GDTNativeExpressAdDelegete
 - (void)nativeExpressAdSuccessToLoad:(GDTNativeExpressAd *)nativeExpressAd views:(NSArray<__kindof GDTNativeExpressAdView *> *)views {
     self.expressAdViews = [NSMutableArray arrayWithArray:views];
     if (self.expressAdViews.count) {
         [self.expressAdViews enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             GDTNativeExpressAdView *expressView = (GDTNativeExpressAdView *)obj;
-            expressView.controller = [UIViewController xds_visiableViewController];
+//            expressView.controller = [UIViewController xds_visiableViewController];
             [expressView render];
         }];
     }
+    
+    if (self.expressAdViews.count > 0) {
+        UIView *expressAdView = self.expressAdViews.firstObject;
+        expressAdView.center = CGPointMake(CGRectGetMidX(self.nativeExpressAdContainer.bounds), CGRectGetMidY(self.nativeExpressAdContainer.bounds));
+        [self.nativeExpressAdContainer addSubview:expressAdView];
+    }
 }
-
 - (void)nativeExpressAdRenderFail:(GDTNativeExpressAdView *)nativeExpressAdView{}
-
-- (void)nativeExpressAdFailToLoad:(GDTNativeExpressAd *)nativeExpressAd error:(NSError *)error{}
-
-- (void)nativeExpressAdViewRenderSuccess:(GDTNativeExpressAdView *)nativeExpressAdView{}
-
-- (void)nativeExpressAdViewClicked:(GDTNativeExpressAdView *)nativeExpressAdView{}
-
-- (void)nativeExpressAdViewClosed:(GDTNativeExpressAdView *)nativeExpressAdView{
-    [self.expressAdViews removeObject:nativeExpressAdView];
+- (void)nativeExpressAdFailToLoad:(GDTNativeExpressAd *)nativeExpressAd error:(NSError *)error{
+    NSLog(@"Express Ad Load Fail : %@",error);
 }
+- (void)nativeExpressAdViewRenderSuccess:(GDTNativeExpressAdView *)nativeExpressAdView{}
+- (void)nativeExpressAdViewClicked:(GDTNativeExpressAdView *)nativeExpressAdView{}
+- (void)nativeExpressAdViewClosed:(GDTNativeExpressAdView *)nativeExpressAdView{}
 
 
-//插屏广告
+
+//TODO: 插屏广告
 - (void)showInterstitialAD{
     self.interstitial = [[GDTMobInterstitial alloc] initWithAppId:kGDTMobSDKAppId placementId:kGDTMobSDKInterstitialAdId];
     self.interstitial.delegate = self;
@@ -245,4 +365,16 @@ NSString *const kGDTMobSDKInterstitialAdId = @"3010544152029233";//插屏广告i
 }
 //// 详解: 当点击下载应用时会调用系统程序打开，应用切换到后台
 //- (void)interstitialApplicationWillEnterBackground:(GDTMobInterstitial *)interstitial{}
+
+
+
+
+- (UIView *)nativeAdView {
+    if (!_nativeAdView) {
+        _nativeAdView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 260)];
+        _nativeAdView.layer.borderWidth = 1;
+        _nativeAdView.backgroundColor = [UIColor whiteColor];
+    }
+    return _nativeAdView;
+}
 @end

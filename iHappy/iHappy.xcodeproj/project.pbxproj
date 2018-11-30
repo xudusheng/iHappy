@@ -28,6 +28,9 @@
 		1808D3BF215BDD5300F822FD /* XDSBaseContentVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1808D3BE215BDD5300F822FD /* XDSBaseContentVC.m */; };
 		1808D3C2215BDE2B00F822FD /* XDSBaseContentNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1808D3C1215BDE2B00F822FD /* XDSBaseContentNavigationController.m */; };
 		1808D3C5215BE66900F822FD /* XDSHomeSearchResultVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1808D3C4215BE66900F822FD /* XDSHomeSearchResultVC.m */; };
+		18182F3A21B0C7E700832736 /* YBAdBrowserCellData.m in Sources */ = {isa = PBXBuildFile; fileRef = 18182F3921B0C7E700832736 /* YBAdBrowserCellData.m */; };
+		18182F3D21B0C91700832736 /* YBAdBrowserCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18182F3C21B0C91700832736 /* YBAdBrowserCell.m */; };
+		18182F4021B1186F00832736 /* XDSImageItemAdCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18182F3F21B1186F00832736 /* XDSImageItemAdCell.m */; };
 		1819E37621A3E51000F67F56 /* XDSZFPlayerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1819E37521A3E51000F67F56 /* XDSZFPlayerCell.m */; };
 		1819E42D21A3EADF00F67F56 /* ZFPlayerGestureControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 1819E3F921A3EADE00F67F56 /* ZFPlayerGestureControl.m */; };
 		1819E42E21A3EADF00F67F56 /* ZFPlayerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1819E3FA21A3EADE00F67F56 /* ZFPlayerController.m */; };
@@ -388,6 +391,12 @@
 		1808D3C1215BDE2B00F822FD /* XDSBaseContentNavigationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XDSBaseContentNavigationController.m; sourceTree = "<group>"; };
 		1808D3C3215BE66900F822FD /* XDSHomeSearchResultVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XDSHomeSearchResultVC.h; sourceTree = "<group>"; };
 		1808D3C4215BE66900F822FD /* XDSHomeSearchResultVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XDSHomeSearchResultVC.m; sourceTree = "<group>"; };
+		18182F3821B0C7E700832736 /* YBAdBrowserCellData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YBAdBrowserCellData.h; sourceTree = "<group>"; };
+		18182F3921B0C7E700832736 /* YBAdBrowserCellData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YBAdBrowserCellData.m; sourceTree = "<group>"; };
+		18182F3B21B0C91700832736 /* YBAdBrowserCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YBAdBrowserCell.h; sourceTree = "<group>"; };
+		18182F3C21B0C91700832736 /* YBAdBrowserCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YBAdBrowserCell.m; sourceTree = "<group>"; };
+		18182F3E21B1186F00832736 /* XDSImageItemAdCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XDSImageItemAdCell.h; sourceTree = "<group>"; };
+		18182F3F21B1186F00832736 /* XDSImageItemAdCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XDSImageItemAdCell.m; sourceTree = "<group>"; };
 		1819E37421A3E51000F67F56 /* XDSZFPlayerCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XDSZFPlayerCell.h; sourceTree = "<group>"; };
 		1819E37521A3E51000F67F56 /* XDSZFPlayerCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XDSZFPlayerCell.m; sourceTree = "<group>"; };
 		1819E3F821A3EADE00F67F56 /* ZFPlayerNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFPlayerNotification.h; sourceTree = "<group>"; };
@@ -2142,15 +2151,15 @@
 		A24907DD21B0B35500E23542 /* VideoBrowse */ = {
 			isa = PBXGroup;
 			children = (
+				A24907E321B0B35500E23542 /* YBVideoBrowseCell.h */,
 				A24907DE21B0B35500E23542 /* YBVideoBrowseCell.m */,
 				A24907DF21B0B35500E23542 /* YBVideoBrowseCellData.h */,
-				A24907E021B0B35500E23542 /* YBVideoBrowseActionBar.m */,
-				A24907E121B0B35500E23542 /* YBVideoBrowseTopBar.h */,
-				A24907E221B0B35500E23542 /* YBVideoBrowseCellData+Internal.h */,
-				A24907E321B0B35500E23542 /* YBVideoBrowseCell.h */,
-				A24907E421B0B35500E23542 /* YBVideoBrowseTopBar.m */,
 				A24907E521B0B35500E23542 /* YBVideoBrowseCellData.m */,
+				A24907E121B0B35500E23542 /* YBVideoBrowseTopBar.h */,
+				A24907E421B0B35500E23542 /* YBVideoBrowseTopBar.m */,
 				A24907E621B0B35500E23542 /* YBVideoBrowseActionBar.h */,
+				A24907E021B0B35500E23542 /* YBVideoBrowseActionBar.m */,
+				A24907E221B0B35500E23542 /* YBVideoBrowseCellData+Internal.h */,
 			);
 			path = VideoBrowse;
 			sourceTree = "<group>";
@@ -2173,13 +2182,13 @@
 		A24907F021B0B35500E23542 /* ImageBrowse */ = {
 			isa = PBXGroup;
 			children = (
+				A24907F521B0B35500E23542 /* YBImage.h */,
 				A24907F121B0B35500E23542 /* YBImage.m */,
 				A24907F221B0B35500E23542 /* YBImageBrowseCellData.m */,
-				A24907F321B0B35500E23542 /* YBImageBrowseCellData+Internal.h */,
-				A24907F421B0B35500E23542 /* YBImageBrowseCell.h */,
-				A24907F521B0B35500E23542 /* YBImage.h */,
 				A24907F621B0B35500E23542 /* YBImageBrowseCellData.h */,
+				A24907F421B0B35500E23542 /* YBImageBrowseCell.h */,
 				A24907F721B0B35500E23542 /* YBImageBrowseCell.m */,
+				A24907F321B0B35500E23542 /* YBImageBrowseCellData+Internal.h */,
 			);
 			path = ImageBrowse;
 			sourceTree = "<group>";
@@ -2308,6 +2317,10 @@
 			isa = PBXGroup;
 			children = (
 				A2DFC71421B040F300DE696E /* meizi_zipai.txt */,
+				18182F3821B0C7E700832736 /* YBAdBrowserCellData.h */,
+				18182F3921B0C7E700832736 /* YBAdBrowserCellData.m */,
+				18182F3B21B0C91700832736 /* YBAdBrowserCell.h */,
+				18182F3C21B0C91700832736 /* YBAdBrowserCell.m */,
 				FC0B7C6F1EC7597E0022E504 /* Control */,
 				FC0B7C731EC75C190022E504 /* Model */,
 				FC0B7C741EC75C190022E504 /* View */,
@@ -2349,6 +2362,8 @@
 			children = (
 				FC0B7C821EC8B2260022E504 /* INSImageItemCollectionViewCell.h */,
 				FC0B7C831EC8B2260022E504 /* INSImageItemCollectionViewCell.m */,
+				18182F3E21B1186F00832736 /* XDSImageItemAdCell.h */,
+				18182F3F21B1186F00832736 /* XDSImageItemAdCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2754,6 +2769,7 @@
 				18F8EB5A2139626F00168506 /* XDS_CustomMjRefreshFooter.m in Sources */,
 				1819E44121A3EADF00F67F56 /* ZFSmallFloatControlView.m in Sources */,
 				A249081221B0B35600E23542 /* YBVideoBrowseCell.m in Sources */,
+				18182F3D21B0C91700832736 /* YBAdBrowserCell.m in Sources */,
 				18A6FA952130031600709EC9 /* NLEStack.m in Sources */,
 				18BB4F402153F9EE00C4A2CD /* GCDWebServerConnection.m in Sources */,
 				18A6FB022130E2D300709EC9 /* XDSMediaBrowserVC.m in Sources */,
@@ -2852,6 +2868,7 @@
 				18BB4F3F2153F9EE00C4A2CD /* GCDWebServer.m in Sources */,
 				1819E42F21A3EADF00F67F56 /* ZFOrientationObserver.m in Sources */,
 				FCAFC6141EAEDB8700B48C83 /* IHPForceUpdateModel.m in Sources */,
+				18182F4021B1186F00832736 /* XDSImageItemAdCell.m in Sources */,
 				181E540D214F928100E8A704 /* XDSNoteViewController.m in Sources */,
 				18A6FA33212FCC1700709EC9 /* XDSStartupManager.m in Sources */,
 				18BB4F422153F9EE00C4A2CD /* GCDWebServerFileResponse.m in Sources */,
@@ -2874,6 +2891,7 @@
 				18A6FA2C212FCB9D00709EC9 /* XDSLocalizableManager.m in Sources */,
 				A24FCBE421319AB2001A05DB /* XDSFullPlayerVC.m in Sources */,
 				18A6FAF02130DF3800709EC9 /* XDSMediaBrowser.m in Sources */,
+				18182F3A21B0C7E700832736 /* YBAdBrowserCellData.m in Sources */,
 				181E541B214FCFC800E8A704 /* XDSMainReaderVC.m in Sources */,
 				181E53DE214F928000E8A704 /* XDSPhotoBrowser.m in Sources */,
 				181E53C8214F928000E8A704 /* CXMLNode_PrivateExtensions.m in Sources */,

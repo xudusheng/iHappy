@@ -9,13 +9,14 @@
 #import "IHPMeituListViewController.h"
 #import "YSERequestFetcher.h"
 #import "INSImageItemCollectionViewCell.h"
-#import "XDSMediaBrowserVC.h"
-
+#import "XDSImageItemAdCell.h"
 #import "XDSMeituModel.h"
 
 //图片浏览器
 #import "YBImageBrowser.h"
+#import "YBAdBrowserCellData.h"
 
+#import "XDSMediaBrowserVC.h"
 
 @interface IHPMeituListViewController ()<
 UICollectionViewDelegate,
@@ -62,6 +63,9 @@ CGFloat const kBiZhiCollectionViewCellsGap = 10.0;
         [collectionView registerClass:[INSImageItemCollectionViewCell class]
            forCellWithReuseIdentifier:kImageItemCollectionViewCellIdentifier];
         
+        [collectionView registerClass:[XDSImageItemAdCell class]
+           forCellWithReuseIdentifier:NSStringFromClass([XDSImageItemAdCell class])];
+        
         collectionView.backgroundColor = [UIColor whiteColor];
         [self.view addSubview:collectionView];
 
@@ -98,7 +102,6 @@ CGFloat const kBiZhiCollectionViewCellsGap = 10.0;
     [self loadLocalData:isTop];
     return;
     
-    
     NSString *url = self.rootUrl;
     NSInteger size = 20;
     NSInteger page = isTop?0:(self.meituList.count/size);
@@ -132,7 +135,7 @@ CGFloat const kBiZhiCollectionViewCellsGap = 10.0;
 
 - (void)loadLocalData:(BOOL)isTop {
     
-    NSInteger page_size = 20;
+    NSInteger page_size = 1000;
     NSInteger page_no = isTop?0:(self.meituList.count/page_size);
     
     isTop?[self.meituList removeAllObjects]:NULL;
@@ -171,9 +174,7 @@ CGFloat const kBiZhiCollectionViewCellsGap = 10.0;
                                                     [weakSelf showMediaBrowserView:imageArray];
                                                 }
                                             } failed:nil];
-    
-    
-    
+
 }
 
 //TODO:保存下一页的链接 
@@ -200,11 +201,11 @@ CGFloat const kBiZhiCollectionViewCellsGap = 10.0;
     return self.meituList.count;
 }
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
-    INSImageItemCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kImageItemCollectionViewCellIdentifier forIndexPath:indexPath];
     XDSMeituModel *model = _meituList[indexPath.row];
-    cell.imageModel = model;
-    [cell p_loadCell];
-    return cell;
+        INSImageItemCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kImageItemCollectionViewCellIdentifier forIndexPath:indexPath];
+        cell.imageModel = model;
+        [cell p_loadCell];
+        return cell;
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
@@ -240,12 +241,16 @@ CGFloat const kBiZhiCollectionViewCellsGap = 10.0;
 }
 
 - (id<YBImageBrowserCellDataProtocol>)yb_imageBrowserView:(YBImageBrowserView *)imageBrowserView dataForCellAtIndex:(NSUInteger)index {
-//    PHAsset *asset = (PHAsset *)self.dataArray[index];
     XDSMeituModel *model = self.meituList[index];
-    YBImageBrowseCellData *data = [YBImageBrowseCellData new];
-    data.url = [NSURL URLWithString:model.image_src];
-    data.sourceObject = [self sourceObjAtIdx:index];
-    return data;
+    if (model.image_src.length > 1) {
+        YBImageBrowseCellData *data = [YBImageBrowseCellData new];
+        data.url = [NSURL URLWithString:model.image_src];
+        data.sourceObject = [self sourceObjAtIdx:index];
+        return data;
+    }else {
+        YBAdBrowserCellData *adCellData = [[YBAdBrowserCellData alloc] init];
+        return adCellData;
+    }
 }
 
 #pragma mark - 点击事件处理
@@ -260,6 +265,7 @@ CGFloat const kBiZhiCollectionViewCellsGap = 10.0;
         [mediaModelArray addObject:videoModel];
     }
     
+    
     XDSMediaBrowserVC *mediaBrowserVC = [[XDSMediaBrowserVC alloc] init];
     mediaBrowserVC.mediaModelArray = mediaModelArray;
     self.mediaBrowserVC = mediaBrowserVC;
@@ -270,21 +276,27 @@ CGFloat const kBiZhiCollectionViewCellsGap = 10.0;
 
 #pragma mark - Show 'YBImageBrowser'
 - (void)showBrowserForSimpleCaseWithIndex:(NSInteger)index {
-//    NSMutableArray *browserDataArr = [NSMutableArray array];
-//    XDSMeituModel *model = self.meituList[index];
-//    YBImageBrowseCellData *data = [YBImageBrowseCellData new];
-//    data.url = [NSURL URLWithString:model.image_src];
-//    data.sourceObject = [self sourceObjAtIdx:index];
-//    [browserDataArr addObject:data];
-//    YBImageBrowser *browser = [YBImageBrowser new];
-//    browser.dataSourceArray = browserDataArr;
-//    browser.currentIndex = 0;
-//    [browser show];
+    NSMutableArray *browserDataArr = [NSMutableArray array];
 
+
+    for (XDSMeituModel *meituMode in self.meituList) {
+        YBImageBrowseCellData *data = [YBImageBrowseCellData new];
+        data.url = [NSURL URLWithString:meituMode.image_src];
+        data.sourceObject = [self sourceObjAtIdx:index];
+        [browserDataArr addObject:data];
+    }
+
+    YBAdBrowserCellData *adCellData = [[YBAdBrowserCellData alloc] init];
+    [browserDataArr addObject:adCellData];
     YBImageBrowser *browser = [YBImageBrowser new];
-    browser.dataSource = self;
+    browser.dataSourceArray = browserDataArr;
     browser.currentIndex = index;
     [browser show];
+    
+//    YBImageBrowser *browser = [YBImageBrowser new];
+//    browser.dataSource = self;
+//    browser.currentIndex = index;
+//    [browser show];
 }
 #pragma mark - 其他私有方法
 - (id)sourceObjAtIdx:(NSInteger)idx {
