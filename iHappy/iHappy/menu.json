@@ -6,7 +6,22 @@
         "updateMessage": "发现新版本，更新如下\n1、惺惺惜惺惺；\n2、一月又一月晕；\n3、吾问无为谓无",
         "version": "1.0.1"
     },
-    "menus": [
+    "menus": [ {
+        "title": "帅哥壁纸",
+        "menuId": "kShuaigePicture",
+        "type": "5",
+        "rooturl": "http://134.175.54.80/ihappy/meizi/query.php",
+        "enable": true,
+        "subMenus": []
+    },
+    {
+        "title": "美女壁纸",
+        "menuId": "kPicture",
+        "type": "4",
+        "rooturl": "http://134.175.54.80/ihappy/meizi/query.php",
+        "enable": true,
+        "subMenus": []
+    },
         {
             "title": "小微福利",
             "menuId": "kHome",
@@ -37,15 +52,7 @@
             ]
         },
         {
-            "title": "美女壁纸",
-            "menuId": "kPicture",
-            "type": "4",
-            "rooturl": "http://134.175.54.80/ihappy/meizi/query.php",
-            "enable": true,
-            "subMenus": []
-        },
-        {
-            "title": "头条新闻",
+            "title": "小微头条",
             "menuId": "kNews",
             "type": "3",
             "enable": true,
@@ -94,7 +101,7 @@
             ]
         },
         {
-            "title": "微阅读",
+            "title": "小微阅读",
             "menuId": "kReader",
             "type": "0",
             "enable": true,
@@ -104,7 +111,7 @@
         {
             "title": "学习福利",
             "menuId": "kWelfare",
-            "type": "5",
+            "type": "6",
             "rooturl": "",
             "enable": true,
             "subMenus": []

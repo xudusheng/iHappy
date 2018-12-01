@@ -11,10 +11,13 @@
 #import "IHPMenuViewController.h"
 #import "AppDelegate.h"
 #import "IHYNewsListViewController.h"
-#import "IHPMeituListViewController.h"
 #import "XDSHTMLMovieListVC.h"
 #import "IHYHomsSearchViewController.h"
 #import "XDSHTMLVideoSearchVC.h"
+
+#import "IHPMeituListViewController.h"
+#import "IHPShuaigeListViewController.h"
+
 @interface IHYMainViewController ()<UISearchBarDelegate>
 
 @property (strong, nonatomic) UISearchBar *searchBar;

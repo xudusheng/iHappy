@@ -43,6 +43,8 @@
 
 @property (assign, nonatomic) CGSize imageSize;
 
+@property (nonatomic, copy) NSArray<NSString*> *imageList;
+
 
 @end
 

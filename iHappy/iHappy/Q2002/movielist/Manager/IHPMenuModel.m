@@ -10,7 +10,9 @@
 #import "IHPSubMenuModel.h"
 #import "IHYMainViewController.h"
 #import "XDSMainReaderVC.h"
+
 #import "IHPMeituListViewController.h"
+#import "IHPShuaigeListViewController.h"
 
 #import "XDSWelfareVCTableViewController.h"//小微福利
 
@@ -30,6 +32,10 @@
         }else if (self.type == IHPMenuTypeBizhi){
             contentController = [[IHPMeituListViewController alloc] init];
             ((IHPMeituListViewController *)contentController).rootUrl = self.rooturl;
+            contentController.title = self.title;
+        }else if (self.type == IHPMenuTypeShuaige){
+            contentController = [[IHPShuaigeListViewController alloc] init];
+            ((IHPShuaigeListViewController *)contentController).rootUrl = self.rooturl;
             contentController.title = self.title;
         }else if(self.type == IHPMenuTypeWelfare){
             contentController = [[XDSWelfareVCTableViewController alloc] init];

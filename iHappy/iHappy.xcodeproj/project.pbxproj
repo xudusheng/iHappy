@@ -130,6 +130,8 @@
 		1885EDC421605A91004C4FD7 /* unavailible_url.json in Resources */ = {isa = PBXBuildFile; fileRef = 1885EDC321605A90004C4FD7 /* unavailible_url.json */; };
 		1885EDC721607030004C4FD7 /* IHYHiddenModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1885EDC621607030004C4FD7 /* IHYHiddenModel.m */; };
 		1885EDCA2160709D004C4FD7 /* IHYHiddenItemModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1885EDC92160709D004C4FD7 /* IHYHiddenItemModel.m */; };
+		18A041D321B2514B00B5993D /* shuaigetupian.txt in Resources */ = {isa = PBXBuildFile; fileRef = 18A041D221B2514B00B5993D /* shuaigetupian.txt */; };
+		18A041D621B251B100B5993D /* IHPShuaigeListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A041D521B251B100B5993D /* IHPShuaigeListViewController.m */; };
 		18A1FB49218A8AFB00E12658 /* player.html in Resources */ = {isa = PBXBuildFile; fileRef = 18A1FB48218A8AFB00E12658 /* player.html */; };
 		18A6FA12212F983E00709EC9 /* IHYHomsSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A6FA10212F983D00709EC9 /* IHYHomsSearchViewController.m */; };
 		18A6FA28212FCB9D00709EC9 /* appConfig.txt in Resources */ = {isa = PBXBuildFile; fileRef = 18A6FA1E212FCB9D00709EC9 /* appConfig.txt */; };
@@ -586,6 +588,9 @@
 		1885EDC621607030004C4FD7 /* IHYHiddenModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IHYHiddenModel.m; sourceTree = "<group>"; };
 		1885EDC82160709D004C4FD7 /* IHYHiddenItemModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IHYHiddenItemModel.h; sourceTree = "<group>"; };
 		1885EDC92160709D004C4FD7 /* IHYHiddenItemModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IHYHiddenItemModel.m; sourceTree = "<group>"; };
+		18A041D221B2514B00B5993D /* shuaigetupian.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = shuaigetupian.txt; sourceTree = "<group>"; };
+		18A041D421B251B100B5993D /* IHPShuaigeListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IHPShuaigeListViewController.h; sourceTree = "<group>"; };
+		18A041D521B251B100B5993D /* IHPShuaigeListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IHPShuaigeListViewController.m; sourceTree = "<group>"; };
 		18A1FB48218A8AFB00E12658 /* player.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = player.html; sourceTree = "<group>"; };
 		18A6FA0E212F983D00709EC9 /* IHYHomsSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IHYHomsSearchViewController.h; sourceTree = "<group>"; };
 		18A6FA10212F983D00709EC9 /* IHYHomsSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IHYHomsSearchViewController.m; sourceTree = "<group>"; };
@@ -2317,6 +2322,7 @@
 			isa = PBXGroup;
 			children = (
 				A2DFC71421B040F300DE696E /* meizi_zipai.txt */,
+				18A041D221B2514B00B5993D /* shuaigetupian.txt */,
 				18182F3821B0C7E700832736 /* YBAdBrowserCellData.h */,
 				18182F3921B0C7E700832736 /* YBAdBrowserCellData.m */,
 				18182F3B21B0C91700832736 /* YBAdBrowserCell.h */,
@@ -2327,6 +2333,8 @@
 				18A6FAFF2130E1B400709EC9 /* ViewController */,
 				FC0B7C6C1EC751C90022E504 /* IHPMeituListViewController.h */,
 				FC0B7C6D1EC751C90022E504 /* IHPMeituListViewController.m */,
+				18A041D421B251B100B5993D /* IHPShuaigeListViewController.h */,
+				18A041D521B251B100B5993D /* IHPShuaigeListViewController.m */,
 			);
 			path = Bizhi;
 			sourceTree = "<group>";
@@ -2551,9 +2559,9 @@
 		A0D46B6E1DE0173500637681 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				CLASSPREFIX = IHY;
+				CLASSPREFIX = XDS;
 				LastUpgradeCheck = 0940;
-				ORGANIZATIONNAME = dusheng.xu;
+				ORGANIZATIONNAME = "Dusheng Du";
 				TargetAttributes = {
 					A0D46B751DE0173500637681 = {
 						CreatedOnToolsVersion = 8.1;
@@ -2636,6 +2644,7 @@
 				18A1FB49218A8AFB00E12658 /* player.html in Resources */,
 				A01579F31DE1776C00CD7DDB /* ico_back@2x.png in Resources */,
 				FCA032421F8DD7DE00600581 /* PYSearch.bundle in Resources */,
+				18A041D321B2514B00B5993D /* shuaigetupian.txt in Resources */,
 				18A6FAF52130DF3800709EC9 /* btn_voice@3x.png in Resources */,
 				18A6FAF42130DF3800709EC9 /* btn_voice@2x.png in Resources */,
 				09F90D7A1DE2D2F600542684 /* IHYNewsMultableImageCell.xib in Resources */,
@@ -2970,6 +2979,7 @@
 				A0D46B7B1DE0173500637681 /* main.m in Sources */,
 				181E53BD214F928000E8A704 /* XDSNoteModel.m in Sources */,
 				1819E43121A3EADF00F67F56 /* UIScrollView+ZFPlayer.m in Sources */,
+				18A041D621B251B100B5993D /* IHPShuaigeListViewController.m in Sources */,
 				1819E43521A3EADF00F67F56 /* ZFKVOController.m in Sources */,
 				181E53D4214F928000E8A704 /* UIView+XDSHyperLink.m in Sources */,
 				18A6FA922130031600709EC9 /* NLEBNFIndex.m in Sources */,

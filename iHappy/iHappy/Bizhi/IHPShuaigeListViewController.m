@@ -1,12 +1,12 @@
 //
-//  IHPMeituListViewController.m
+//  IHPShuaigeListViewController.m
 //  iHappy
 //
 //  Created by dusheng.xu on 2017/5/13.
 //  Copyright © 2017年 上海优蜜科技有限公司. All rights reserved.
 //
 
-#import "IHPMeituListViewController.h"
+#import "IHPShuaigeListViewController.h"
 #import "YSERequestFetcher.h"
 #import "INSImageItemCollectionViewCell.h"
 #import "XDSImageItemAdCell.h"
@@ -17,21 +17,21 @@
 #import "YBAdBrowserCellData.h"
 
 #import "CHTCollectionViewWaterfallLayout.h"
-@interface IHPMeituListViewController ()<
+@interface IHPShuaigeListViewController ()<
 UICollectionViewDelegate,
 UICollectionViewDataSource,
 CHTCollectionViewDelegateWaterfallLayout,
 YBImageBrowserDataSource,
 YBImageBrowserDelegate
 >
-@property (strong, nonatomic) NSMutableArray<XDSMeituModel *> * meituList;
 @property (strong, nonatomic) UICollectionView * collectionView;
-@property (copy, nonatomic) NSString * nextPageUrl;
-@property (copy, nonatomic) NSArray* imageUrlList;
+
+@property (strong, nonatomic) NSMutableArray<XDSMeituModel *> *meituList;//列表数据，配合本地数据模拟上拉下拉刷新
+@property (strong, nonatomic) NSMutableArray<XDSMeituModel *> *totalMeituList;//从本地文件读取的所有缓存数据
 
 @end
 
-@implementation IHPMeituListViewController
+@implementation IHPShuaigeListViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -41,15 +41,15 @@ YBImageBrowserDelegate
 
 #pragma mark - UI相关
 - (void)createBiZhiListViewControllerUI{
-
+    
     self.view.backgroundColor = [UIColor brownColor];
-
-//    UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
+    
+    //    UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
     CHTCollectionViewWaterfallLayout *flowLayout = [[CHTCollectionViewWaterfallLayout alloc] init];
     flowLayout.sectionInset = UIEdgeInsetsMake(10, 10, 10, 10);
-
-//    flowLayout.minimumLineSpacing = kBiZhiCollectionViewMinimumLineSpacing;//纵向间距
-//    flowLayout.minimumInteritemSpacing = kBiZhiCollectionViewMinimumInteritemSpacing;//横向内边距
+    
+    //    flowLayout.minimumLineSpacing = kBiZhiCollectionViewMinimumLineSpacing;//纵向间距
+    //    flowLayout.minimumInteritemSpacing = kBiZhiCollectionViewMinimumInteritemSpacing;//横向内边距
     
     self.collectionView = ({
         UICollectionView *collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:flowLayout];
@@ -65,7 +65,7 @@ YBImageBrowserDelegate
         
         collectionView.backgroundColor = [UIColor whiteColor];
         [self.view addSubview:collectionView];
-
+        
         NSDictionary *viewsDict = NSDictionaryOfVariableBindings(collectionView);
         NSArray *constraints_H = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|[collectionView]|" options:NSLayoutFormatAlignAllLeft metrics:nil views:viewsDict];
         NSArray *constraints_V = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|[collectionView]|" options:NSLayoutFormatAlignAllLeft metrics:nil views:viewsDict];
@@ -75,14 +75,14 @@ YBImageBrowserDelegate
         
         collectionView;
     });
-
+    
     
     _collectionView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self
                                                                  refreshingAction:@selector(headerRequest)];
     _collectionView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self
                                                                      refreshingAction:@selector(footerRequest)];
     [_collectionView.mj_header beginRefreshing];
-
+    
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -145,28 +145,23 @@ YBImageBrowserDelegate
 }
 
 - (void)loadLocalData:(BOOL)isTop {
-    
     isTop?[self.meituList removeAllObjects]:NULL;
     
     NSInteger page_size = 10;
     NSInteger page_no = isTop?0:(self.meituList.count/page_size);
-    
     [self.collectionView.mj_header endRefreshing];
-    if (page_size*page_no+page_size >self.imageUrlList.count) {
-        page_size = self.imageUrlList.count - page_size*page_no;
+    if (page_size*page_no+page_size >self.totalMeituList.count) {
+        page_size = self.totalMeituList.count - page_size*page_no;
         [self.collectionView.mj_footer endRefreshingWithNoMoreData];
     } else {
         [self.collectionView.mj_footer endRefreshing];
     }
-
     
-    NSArray *imageList = [self.imageUrlList subarrayWithRange:NSMakeRange(page_size*page_no, page_size)];
-    for (NSString *imgUrl in imageList) {
-        XDSMeituModel *model = [[XDSMeituModel alloc] init];
-        model.image_src = imgUrl;
-        [self.meituList addObject:model];
-        
-        if (self.meituList.count%23 == 0) {
+    NSArray *imageList = [self.totalMeituList subarrayWithRange:NSMakeRange(page_size*page_no, page_size)];
+    
+    for (XDSMeituModel *meituModel in imageList) {
+        [self.meituList addObject:meituModel];
+        if (self.meituList.count%13 == 0) {
             //广告占位
             XDSMeituModel *model = [[XDSMeituModel alloc] init];
             [self.meituList addObject:model];
@@ -179,39 +174,24 @@ YBImageBrowserDelegate
 
 - (void)fetchDetailImageListWithMd5key:(NSString *)md5key{
     
-//    NSString *url = @"http://134.175.54.80/ihappy/meizi/querydetail.php";
-//    NSDictionary *params = @{
-//                             @"md5key":md5key?md5key:@"",
-//                             };
-//    __weak typeof(self)weakSelf = self;
-//    [[[XDSHttpRequest alloc] init] GETWithURLString:url
-//                                           reqParam:params
-//                                      hudController:self
-//                                            showHUD:NO
-//                                            HUDText:nil
-//                                      showFailedHUD:YES
-//                                            success:^(BOOL success, NSDictionary *successResult) {
-//                                                XDSDetaimImageResponseModel *responseModel = [XDSDetaimImageResponseModel mj_objectWithKeyValues:successResult];
-//                                                NSArray *imageArray = responseModel.imageList;
-//                                                if (imageArray.count) {
-//                                                    [weakSelf showMediaBrowserView:imageArray];
-//                                                }
-//                                            } failed:nil];
-
-}
-
-//TODO:保存下一页的链接 
-- (void)saveNextPageInfo:(NSDictionary *)result{
-    
-    NSString *nextPageHref = result[kBiZhiNextPageHrefKey];
-    self.nextPageUrl = nextPageHref;
-
-    BOOL isLastPage = [result[kBiZhiIsLastPageKey] boolValue];
-    if (isLastPage){
-        [self.collectionView.mj_footer endRefreshingWithNoMoreData];
-    }else{
-        [self.collectionView.mj_footer resetNoMoreData];
-    }
+    //    NSString *url = @"http://134.175.54.80/ihappy/meizi/querydetail.php";
+    //    NSDictionary *params = @{
+    //                             @"md5key":md5key?md5key:@"",
+    //                             };
+    //    __weak typeof(self)weakSelf = self;
+    //    [[[XDSHttpRequest alloc] init] GETWithURLString:url
+    //                                           reqParam:params
+    //                                      hudController:self
+    //                                            showHUD:NO
+    //                                            HUDText:nil
+    //                                      showFailedHUD:YES
+    //                                            success:^(BOOL success, NSDictionary *successResult) {
+    //                                                XDSDetaimImageResponseModel *responseModel = [XDSDetaimImageResponseModel mj_objectWithKeyValues:successResult];
+    //                                                NSArray *imageArray = responseModel.imageList;
+    //                                                if (imageArray.count) {
+    //                                                    [weakSelf showMediaBrowserView:imageArray];
+    //                                                }
+    //                                            } failed:nil];
     
 }
 
@@ -241,7 +221,7 @@ YBImageBrowserDelegate
         [cell p_loadCell];
         return cell;
     }
-
+    
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
@@ -253,7 +233,7 @@ YBImageBrowserDelegate
     }else if (model.image_src.length > 0) {
         [self showBrowserForSimpleCaseWithIndex:indexPath.row];
     }
-
+    
 }
 
 //TODO:UICollectionViewDelegateFlowLayout
@@ -290,52 +270,23 @@ YBImageBrowserDelegate
 }
 #pragma mark - 点击事件处理
 - (void)showBrowserForSimpleCaseWithIndex:(NSInteger)index {
-    NSArray *visibleCells = self.collectionView.visibleCells;
-
-    visibleCells = [visibleCells sortedArrayUsingComparator:^NSComparisonResult(UICollectionViewCell *cell1, UICollectionViewCell *cell2) {
-        NSIndexPath *indexPath1 = [self.collectionView indexPathForCell:cell1];
-        NSIndexPath *indexPath2 = [self.collectionView indexPathForCell:cell2];
-        return indexPath1.row > indexPath2.row;
-    }];
-
-    UICollectionViewCell *cell = visibleCells.firstObject;
-    NSIndexPath *firstIndexPath = [self.collectionView indexPathForCell:cell];
-    NSArray *visibleMeituList = [self.meituList subarrayWithRange:NSMakeRange(firstIndexPath.row, visibleCells.count)];
-
     
+    XDSMeituModel *meituModel = self.meituList[index];
     NSMutableArray *browserDataArr = [NSMutableArray arrayWithCapacity:0];
-    NSInteger currentIndex = 0;
-    for (int i = 0; i < visibleMeituList.count; i ++) {
-        XDSMeituModel *meituModel = visibleMeituList[i];
-        if (meituModel.image_src.length > 0) {
-            YBImageBrowseCellData *data = [YBImageBrowseCellData new];
-            data.url = [NSURL URLWithString:meituModel.image_src];
-            data.sourceObject = [self sourceObjAtIdx:firstIndexPath.row + i];
-            [browserDataArr addObject:data];
-        }else {
-            //广告在图片之前显示，退一位
-            if (currentIndex == 0 && i > currentIndex) {
-                currentIndex -= 1;
-            }
-        }
-        
-        if (firstIndexPath.row + i == index) {
-            currentIndex += i;
-        }
+    for (NSString *img_url in meituModel.imageList) {
+        YBImageBrowseCellData *data = [YBImageBrowseCellData new];
+        data.url = [NSURL URLWithString:img_url];
+        data.sourceObject = [self sourceObjAtIdx:index];
+        [browserDataArr addObject:data];
     }
-
+    
     YBAdBrowserCellData *adCellData = [[YBAdBrowserCellData alloc] init];
     [browserDataArr addObject:adCellData];
+    
     YBImageBrowser *browser = [YBImageBrowser new];
     browser.dataSourceArray = browserDataArr;
-    browser.currentIndex = currentIndex;
+    browser.currentIndex = index;
     [browser show];
-    
-    
-//    YBImageBrowser *browser = [YBImageBrowser new];
-//    browser.dataSource = self;
-//    browser.currentIndex = index;
-//    [browser show];
 }
 #pragma mark - 其他私有方法
 - (id)sourceObjAtIdx:(NSInteger)idx {
@@ -344,14 +295,67 @@ YBImageBrowserDelegate
 }
 #pragma mark - 内存管理相关
 - (void)biZhiListViewControllerDataInit{
-    
-    NSBundle* bundle = [NSBundle bundleForClass:self.class];
-    NSString *filePath = [bundle pathForResource:@"meizi_zipai" ofType:@"txt"];
-    NSData *imgListData = [NSData dataWithContentsOfFile:filePath];
-    NSString *imgListString = [[NSString alloc] initWithData:imgListData encoding:NSUTF8StringEncoding];
-    NSArray *imgList = [imgListString componentsSeparatedByString:@";"];
-    self.imageUrlList = imgList;
-    self.meituList = [NSMutableArray arrayWithCapacity:0];
+    @autoreleasepool {
+        NSBundle* bundle = [NSBundle bundleForClass:self.class];
+        NSString *filePath = [bundle pathForResource:@"shuaigetupian" ofType:@"txt"];
+        NSData *imgListData = [NSData dataWithContentsOfFile:filePath];
+        NSString *imgListString = [[NSString alloc] initWithData:imgListData encoding:NSUTF8StringEncoding];
+        NSArray *imgList = [imgListString componentsSeparatedByString:@";"];
+        
+        NSSet *set = [NSSet setWithArray:imgList];
+        imgList = nil;
+        imgList = set.allObjects;
+        
+        NSMutableArray *smallIconArray = [NSMutableArray arrayWithCapacity:0];
+        NSMutableArray *smallAndBigImgArray = [NSMutableArray arrayWithCapacity:0];
+        for (NSString *subString in imgList) {
+            @autoreleasepool {
+                NSArray *urls = [subString componentsSeparatedByString:@","];
+                if (urls.count == 4) {
+                    NSString *smallIcon =urls[2];
+                    NSString *bigImg = urls.lastObject;
+                    [smallIconArray addObject:smallIcon];
+                    [smallAndBigImgArray addObject:[NSString stringWithFormat:@"%@,%@", smallIcon, bigImg]];
+                }
+            }
+        }
+        
+        
+        
+        [smallAndBigImgArray sortUsingComparator:^NSComparisonResult(NSString *obj1, NSString *obj2) {
+            return ([obj1 compare:obj2] == NSOrderedAscending);
+        }];
+        
+        NSMutableArray *meituModelList = [NSMutableArray arrayWithCapacity:0];
+        XDSMeituModel *meituModel = nil;
+        NSMutableArray *img_list = [NSMutableArray arrayWithCapacity:0];
+        for (NSString *imgString in smallAndBigImgArray) {
+            @autoreleasepool {
+                NSArray *smallAndBig = [imgString componentsSeparatedByString:@","];
+                //如果小图标的地址一样，表示同一组图片，否则为不同组
+                //不同组图片的处理：先把第一张大图赋值给作为image_src（小图），把大图数组赋值，再新建model继续下一个循环
+                if (![meituModel.image_src isEqualToString:smallAndBig.firstObject]) {
+                    if (meituModel) {
+                        meituModel.image_src = img_list.firstObject;
+                        meituModel.imageList = img_list;
+                        [meituModelList addObject:meituModel];
+                    }
+                    meituModel = [XDSMeituModel new];
+                    meituModel.image_src = smallAndBig.firstObject;
+                    [img_list removeAllObjects];
+                }
+                [img_list addObject:smallAndBig.lastObject];
+            }
+        }
+        
+        //循环结束，添加最后一组图片
+        meituModel.image_src = img_list.firstObject;
+        meituModel.imageList = img_list;
+        [meituModelList addObject:meituModel];
+        
+        self.totalMeituList = meituModelList;
+        self.meituList = [NSMutableArray arrayWithCapacity:0];
+    }
 }
 
 @end

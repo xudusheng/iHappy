@@ -11,6 +11,10 @@
 UIKIT_EXTERN NSString *const kImageItemCollectionViewCellIdentifier;
 UIKIT_EXTERN CGFloat const kImageItemCollectionViewCellGap;
 
+UIKIT_EXTERN CGFloat const kBiZhiCollectionViewMinimumLineSpacing ;
+UIKIT_EXTERN CGFloat const kBiZhiCollectionViewMinimumInteritemSpacing ;
+UIKIT_EXTERN CGFloat const kBiZhiCollectionViewCellsGap ;
+
 @interface INSImageItemCollectionViewCell : IHPRootCollectionCell
 
 @property (strong, nonatomic) UIImageView *bgImageView;

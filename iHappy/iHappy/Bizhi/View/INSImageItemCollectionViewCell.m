@@ -11,6 +11,10 @@
 NSString *const kImageItemCollectionViewCellIdentifier = @"INSImageItemCollectionViewCell";
 CGFloat const kImageItemCollectionViewCellGap = 10.f;
 
+CGFloat const kBiZhiCollectionViewMinimumLineSpacing = 10.f;
+CGFloat const kBiZhiCollectionViewMinimumInteritemSpacing = 10.f;
+CGFloat const kBiZhiCollectionViewCellsGap = 10.f;
+
 @implementation INSImageItemCollectionViewCell
 
 - (instancetype)initWithFrame:(CGRect)frame{
