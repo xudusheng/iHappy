@@ -148,7 +148,7 @@ YBImageBrowserDelegate
     
     isTop?[self.meituList removeAllObjects]:NULL;
     
-    NSInteger page_size = 10;
+    NSInteger page_size = 40;
     NSInteger page_no = isTop?0:(self.meituList.count/page_size);
     
     [self.collectionView.mj_header endRefreshing];
@@ -166,7 +166,7 @@ YBImageBrowserDelegate
         model.image_src = imgUrl;
         [self.meituList addObject:model];
         
-        if (self.meituList.count%23 == 0) {
+        if (self.meituList.count%13 == 0) {
             //广告占位
             XDSMeituModel *model = [[XDSMeituModel alloc] init];
             [self.meituList addObject:model];
@@ -350,6 +350,28 @@ YBImageBrowserDelegate
     NSData *imgListData = [NSData dataWithContentsOfFile:filePath];
     NSString *imgListString = [[NSString alloc] initWithData:imgListData encoding:NSUTF8StringEncoding];
     NSArray *imgList = [imgListString componentsSeparatedByString:@";"];
+    
+    NSSet *set = [NSSet setWithArray:imgList];
+    imgList = nil;
+    imgList = set.allObjects;
+    
+    NSInteger index = 0;
+    if (imgList.count > 0) {
+        NSString *url = imgList.firstObject;
+        
+        if (url.length > 23) {
+           index = arc4random()%18+1;
+        }
+    }
+    
+
+    NSInteger length = arc4random()%3+1;
+    imgList = [imgList sortedArrayUsingComparator:^NSComparisonResult(NSString *obj1, NSString *obj2) {
+        NSString *subString1 = [obj1 substringWithRange:NSMakeRange(obj1.length - index, length)];
+        NSString *subString2 = [obj1 substringWithRange:NSMakeRange(obj2.length - index, length)];
+        return ([subString1 compare:subString2] == NSOrderedAscending);
+    }];
+    
     self.imageUrlList = imgList;
     self.meituList = [NSMutableArray arrayWithCapacity:0];
 }

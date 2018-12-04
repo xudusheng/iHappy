@@ -147,7 +147,7 @@ YBImageBrowserDelegate
 - (void)loadLocalData:(BOOL)isTop {
     isTop?[self.meituList removeAllObjects]:NULL;
     
-    NSInteger page_size = 10;
+    NSInteger page_size = 40;
     NSInteger page_no = isTop?0:(self.meituList.count/page_size);
     [self.collectionView.mj_header endRefreshing];
     if (page_size*page_no+page_size >self.totalMeituList.count) {
@@ -285,7 +285,7 @@ YBImageBrowserDelegate
     
     YBImageBrowser *browser = [YBImageBrowser new];
     browser.dataSourceArray = browserDataArr;
-    browser.currentIndex = index;
+    browser.currentIndex = 0;
     [browser show];
 }
 #pragma mark - 其他私有方法
@@ -321,8 +321,22 @@ YBImageBrowserDelegate
         }
         
         
-        
+        NSInteger location = 0;
+        if (smallAndBigImgArray.count > 0) {
+            NSString *url = smallAndBigImgArray.firstObject;
+            url = [url componentsSeparatedByString:@","].firstObject;
+
+            if (url.length > 18) {
+                location = arc4random()%15+1;
+            }
+            location = url.length - location-4;
+        }
+        NSInteger length = arc4random()%3+1;
+
         [smallAndBigImgArray sortUsingComparator:^NSComparisonResult(NSString *obj1, NSString *obj2) {
+            NSString *subString1 = [obj1 substringWithRange:NSMakeRange(location, length)];
+            NSString *subString2 = [obj2 substringWithRange:NSMakeRange(location, length)];
+            return ([subString1 compare:subString2] == NSOrderedAscending);
             return ([obj1 compare:obj2] == NSOrderedAscending);
         }];
         
