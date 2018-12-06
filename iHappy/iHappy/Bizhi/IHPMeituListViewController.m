@@ -290,18 +290,40 @@ YBImageBrowserDelegate
 }
 #pragma mark - 点击事件处理
 - (void)showBrowserForSimpleCaseWithIndex:(NSInteger)index {
-    NSArray *visibleCells = self.collectionView.visibleCells;
 
+#if DEBUG
+    NSMutableArray *browserDataArr = [NSMutableArray arrayWithCapacity:0];
+    NSInteger currentIndex = 0;
+    for (int i = 0; i < self.meituList.count; i ++) {
+        XDSMeituModel *meituModel = self.meituList[i];
+        if (meituModel.image_src.length > 0) {
+            YBImageBrowseCellData *data = [YBImageBrowseCellData new];
+            data.url = [NSURL URLWithString:meituModel.image_src];
+            data.sourceObject = [self sourceObjAtIdx:i];
+            [browserDataArr addObject:data];
+        }else {
+            YBAdBrowserCellData *adCellData = [[YBAdBrowserCellData alloc] init];
+            [browserDataArr addObject:adCellData];
+        }
+    }
+    
+
+    YBImageBrowser *browser = [YBImageBrowser new];
+    browser.dataSourceArray = browserDataArr;
+    browser.currentIndex = currentIndex;
+    [browser show];
+    
+#else
+    NSArray *visibleCells = self.collectionView.visibleCells;
     visibleCells = [visibleCells sortedArrayUsingComparator:^NSComparisonResult(UICollectionViewCell *cell1, UICollectionViewCell *cell2) {
         NSIndexPath *indexPath1 = [self.collectionView indexPathForCell:cell1];
         NSIndexPath *indexPath2 = [self.collectionView indexPathForCell:cell2];
         return indexPath1.row > indexPath2.row;
     }];
-
+    
     UICollectionViewCell *cell = visibleCells.firstObject;
     NSIndexPath *firstIndexPath = [self.collectionView indexPathForCell:cell];
     NSArray *visibleMeituList = [self.meituList subarrayWithRange:NSMakeRange(firstIndexPath.row, visibleCells.count)];
-
     
     NSMutableArray *browserDataArr = [NSMutableArray arrayWithCapacity:0];
     NSInteger currentIndex = 0;
@@ -323,13 +345,14 @@ YBImageBrowserDelegate
             currentIndex += i;
         }
     }
-
+    
     YBAdBrowserCellData *adCellData = [[YBAdBrowserCellData alloc] init];
     [browserDataArr addObject:adCellData];
     YBImageBrowser *browser = [YBImageBrowser new];
     browser.dataSourceArray = browserDataArr;
     browser.currentIndex = currentIndex;
     [browser show];
+#endif
     
     
 //    YBImageBrowser *browser = [YBImageBrowser new];

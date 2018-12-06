@@ -6,24 +6,24 @@
         "updateMessage": "发现新版本，更新如下\n1、惺惺惜惺惺；\n2、一月又一月晕；\n3、吾问无为谓无",
         "version": "1.0.1"
     },
-    "menus": [ {
-        "title": "帅哥壁纸",
+    "menus": [
+    {
+        "title": "小微美女",
+        "menuId": "kPicture",
+        "type": "4",
+        "rooturl": "http://134.175.54.80/ihappy/meizi/query.php",
+        "enable": true,
+        "subMenus": []
+    },{
+        "title": "小微帅哥",
         "menuId": "kShuaigePicture",
         "type": "5",
         "rooturl": "http://134.175.54.80/ihappy/meizi/query.php",
         "enable": true,
         "subMenus": []
     },
-    {
-        "title": "美女壁纸",
-        "menuId": "kPicture",
-        "type": "4",
-        "rooturl": "http://134.175.54.80/ihappy/meizi/query.php",
-        "enable": true,
-        "subMenus": []
-    },
         {
-            "title": "小微福利",
+            "title": "小微视频",
             "menuId": "kHome",
             "type": "1",
             "rooturl": "http://www.q2002.com",
