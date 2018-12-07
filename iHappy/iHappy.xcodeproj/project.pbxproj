@@ -257,8 +257,6 @@
 		A0D46B861DE0173500637681 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A0D46B851DE0173500637681 /* Assets.xcassets */; };
 		A208A6CD2132B39600900DFC /* XDSMeituModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A208A6CC2132B39600900DFC /* XDSMeituModel.m */; };
 		A227A84B2130641300568BCB /* SplashNormal.png in Resources */ = {isa = PBXBuildFile; fileRef = A227A8472130641300568BCB /* SplashNormal.png */; };
-		A227A84C2130641300568BCB /* SplashSmall.png in Resources */ = {isa = PBXBuildFile; fileRef = A227A8482130641300568BCB /* SplashSmall.png */; };
-		A227A84D2130641300568BCB /* SplashX.png in Resources */ = {isa = PBXBuildFile; fileRef = A227A8492130641300568BCB /* SplashX.png */; };
 		A22C12EE2144611800896F00 /* XDSVideoSummaryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A22C12EC2144611800896F00 /* XDSVideoSummaryCell.m */; };
 		A22C12EF2144611800896F00 /* XDSVideoSummaryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A22C12ED2144611800896F00 /* XDSVideoSummaryCell.xib */; };
 		A22C12F4214464BF00896F00 /* NSString+XDSAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = A22C12F3214464BF00896F00 /* NSString+XDSAddition.m */; };
@@ -830,8 +828,6 @@
 		A208A6CB2132B39600900DFC /* XDSMeituModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XDSMeituModel.h; sourceTree = "<group>"; };
 		A208A6CC2132B39600900DFC /* XDSMeituModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XDSMeituModel.m; sourceTree = "<group>"; };
 		A227A8472130641300568BCB /* SplashNormal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SplashNormal.png; sourceTree = "<group>"; };
-		A227A8482130641300568BCB /* SplashSmall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SplashSmall.png; sourceTree = "<group>"; };
-		A227A8492130641300568BCB /* SplashX.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SplashX.png; sourceTree = "<group>"; };
 		A22C12EB2144611800896F00 /* XDSVideoSummaryCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XDSVideoSummaryCell.h; sourceTree = "<group>"; };
 		A22C12EC2144611800896F00 /* XDSVideoSummaryCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XDSVideoSummaryCell.m; sourceTree = "<group>"; };
 		A22C12ED2144611800896F00 /* XDSVideoSummaryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = XDSVideoSummaryCell.xib; sourceTree = "<group>"; };
@@ -2101,8 +2097,6 @@
 				A2755B8B216646B600006989 /* launch_414x736@2x.png */,
 				A2755B892166444700006989 /* logo_launch.png */,
 				A227A8472130641300568BCB /* SplashNormal.png */,
-				A227A8482130641300568BCB /* SplashSmall.png */,
-				A227A8492130641300568BCB /* SplashX.png */,
 			);
 			path = adImage;
 			sourceTree = "<group>";
@@ -2626,7 +2620,6 @@
 				18A6FA862130031500709EC9 /* json.bnf in Resources */,
 				18A6FA2D212FCB9D00709EC9 /* Localizable_en.string in Resources */,
 				181E5414214F928100E8A704 /* XDSReadMenu.xcassets in Resources */,
-				A227A84C2130641300568BCB /* SplashSmall.png in Resources */,
 				A2DFC71521B040F400DE696E /* meizi_zipai.txt in Resources */,
 				A22C12FD2144734E00896F00 /* XDSPlayerSectionHeader.xib in Resources */,
 				18A6FAF72130DF3800709EC9 /* btn_stop@2x.png in Resources */,
@@ -2640,7 +2633,6 @@
 				A2DBD4C821A6ECDB0094A1D9 /* btn_play_new@2x.png in Resources */,
 				092CAF2F1DE2B20F008127DA /* IHYNewsListCell.xib in Resources */,
 				A2755B8C216646B600006989 /* launch_414x736@2x.png in Resources */,
-				A227A84D2130641300568BCB /* SplashX.png in Resources */,
 				18A1FB49218A8AFB00E12658 /* player.html in Resources */,
 				A01579F31DE1776C00CD7DDB /* ico_back@2x.png in Resources */,
 				FCA032421F8DD7DE00600581 /* PYSearch.bundle in Resources */,

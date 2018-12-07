@@ -293,7 +293,6 @@ YBImageBrowserDelegate
 
 #if DEBUG
     NSMutableArray *browserDataArr = [NSMutableArray arrayWithCapacity:0];
-    NSInteger currentIndex = 0;
     for (int i = 0; i < self.meituList.count; i ++) {
         XDSMeituModel *meituModel = self.meituList[i];
         if (meituModel.image_src.length > 0) {
@@ -310,7 +309,7 @@ YBImageBrowserDelegate
 
     YBImageBrowser *browser = [YBImageBrowser new];
     browser.dataSourceArray = browserDataArr;
-    browser.currentIndex = currentIndex;
+    browser.currentIndex = index;
     [browser show];
     
 #else
