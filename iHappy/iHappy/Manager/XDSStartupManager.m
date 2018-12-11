@@ -175,18 +175,18 @@ NSString *const kXDSUpdateLocalizableTaskID = @"XDSUpdateLocalizableTask";
 
 - (void)fetchConfigData{
     
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"menu" ofType:@"json"];
-    NSData *menuData = [NSData dataWithContentsOfFile:path];
-    NSLog(@"%@", [[NSString alloc] initWithData:menuData encoding:NSUTF8StringEncoding]);
-
-    IHPConfigManager *manager = [IHPConfigManager shareManager];
-    [manager configManagerWithJsondData:menuData];
-    [self finishTaskWithTaksID:kXDSFetchConfigTaskID];
-
-    return;
+//    NSString *path = [[NSBundle mainBundle] pathForResource:@"menu" ofType:@"json"];
+//    NSData *menuData = [NSData dataWithContentsOfFile:path];
+//    NSLog(@"%@", [[NSString alloc] initWithData:menuData encoding:NSUTF8StringEncoding]);
+//
+//    IHPConfigManager *manager = [IHPConfigManager shareManager];
+//    [manager configManagerWithJsondData:menuData];
+//    [self finishTaskWithTaksID:kXDSFetchConfigTaskID];
+//
+//    return;
     
 //    NSString *requesturl = @"http://134.175.54.80/ihappy/menu.json";
-    NSString *requesturl = @"http://129.204.47.207/ihappy/config/menu_1.0.4.json";
+    NSString *requesturl = @"http://129.204.47.207/ihappy/config/menu_1.0.5.json";
 
     __weak typeof(self)weakSelf = self;
     [[[XDSHttpRequest alloc] init] htmlRequestWithHref:requesturl
