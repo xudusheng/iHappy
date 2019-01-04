@@ -9,10 +9,13 @@
 #import <JSONModel/JSONModel.h>
 #import "IHPForceUpdateModel.h"
 #import "IHPMenuModel.h"
+#import "XDSAdInfoModel.h"
 @protocol IHPMenuModel;
+@protocol XDSAdInfoModel;
 @interface IHPConfigModel : JSONModel
 
 @property (strong, nonatomic) IHPForceUpdateModel *forceUpdate;
+@property (strong, nonatomic) XDSAdInfoModel *adInfo;
 @property (strong, nonatomic) NSArray<IHPMenuModel> *menus;
 
 @end

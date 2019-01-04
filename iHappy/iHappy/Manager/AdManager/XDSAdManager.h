@@ -14,6 +14,8 @@
 
 + (instancetype)sharedManager;
 
+- (BOOL)isAdAvailible;
+
 //展示开屏广告
 - (void)showSplashAd;
 

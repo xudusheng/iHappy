@@ -1,12 +1,12 @@
 //
-//  NSString+Tony.m
-//  WX189study
+//  NSString+XDSAdd.m
+//  Demo
 //
-//  Created by Tony zhou on 13-5-10.
-//  Copyright (c) 2013年 Tony. All rights reserved.
+//  Created by Hmily on 2018/10/19.
+//  Copyright © 2018年 BX. All rights reserved.
 //
 
-#import "NSString+Tony.h"
+#import "NSString+XDSAdd.h"
 #import <CommonCrypto/CommonDigest.h>
 #include <stdint.h>
 #include <stdio.h>
@@ -17,8 +17,12 @@ static char base64EncodingTable[64] = {
     'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v',
     'w', 'x', 'y', 'z', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '+', '/'
 };
+@implementation NSString (XDSAdd)
 
-@implementation NSString (Tony)
+
+- (NSString *)trimString{
+    return [self stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+}
 
 + (NSString *)md5StringFromString:(NSString *)s
 {
@@ -37,11 +41,11 @@ static char base64EncodingTable[64] = {
 //+ (NSString *)md5:(NSString *)value
 //{
 //    char hexDigits[] = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F' };
-//    
+//
 //    const char * cStr = [value UTF8String];
 //    unsigned char result[16];
 //    CC_MD5(cStr, strlen(cStr), result);
-//    
+//
 //    int j = 16;
 //    unsigned char str[48];
 //    int k = 0;
@@ -51,11 +55,11 @@ static char base64EncodingTable[64] = {
 //        str[k++] = hexDigits[byte0 >> 4 & 0xf];
 //        str[k++] = hexDigits[byte0 & 0xf];
 //        str[k++] = hexDigits[byte0 & 3];
-//        
+//
 //    }
 //    NSString *strNSString = [NSString stringWithFormat:@"%s",str];//[[[NSString alloc] initWithCString:str encoding:NSASCIIStringEncoding] autorelease];
-//    
-//    
+//
+//
 //    return [strNSString substringToIndex:48];
 //}
 
@@ -259,16 +263,16 @@ static char base64EncodingTable[64] = {
             if (year %4 ==0 || (year %100 ==0 && year %4 ==0)) {
                 
                 regularExpression = [[NSRegularExpression alloc]initWithPattern:@"^[1-9][0-9]{5}[0-9]{2}((01|03|05|07|08|10|12)(0[1-9]|[1-2][0-9]|3[0-1])|(04|06|09|11)(0[1-9]|[1-2][0-9]|30)|02(0[1-9]|[1-2][0-9]))[0-9]{3}$"
-                                                                       options:NSRegularExpressionCaseInsensitive
-                                                                         error:nil];//测试出生日期的合法性
+                                                                        options:NSRegularExpressionCaseInsensitive
+                                                                          error:nil];//测试出生日期的合法性
             }else {
                 regularExpression = [[NSRegularExpression alloc]initWithPattern:@"^[1-9][0-9]{5}[0-9]{2}((01|03|05|07|08|10|12)(0[1-9]|[1-2][0-9]|3[0-1])|(04|06|09|11)(0[1-9]|[1-2][0-9]|30)|02(0[1-9]|1[0-9]|2[0-8]))[0-9]{3}$"
-                                                                       options:NSRegularExpressionCaseInsensitive
-                                                                         error:nil];//测试出生日期的合法性
+                                                                        options:NSRegularExpressionCaseInsensitive
+                                                                          error:nil];//测试出生日期的合法性
             }
             numberofMatch = [regularExpression numberOfMatchesInString:value
-                                                              options:NSMatchingReportProgress
-                                                                range:NSMakeRange(0, value.length)];
+                                                               options:NSMatchingReportProgress
+                                                                 range:NSMakeRange(0, value.length)];
             
             
             if(numberofMatch >0) {
@@ -282,16 +286,16 @@ static char base64EncodingTable[64] = {
             if (year %4 ==0 || (year %100 ==0 && year %4 ==0)) {
                 
                 regularExpression = [[NSRegularExpression alloc]initWithPattern:@"^[1-9][0-9]{5}(19|20)[0-9]{2}((01|03|05|07|08|10|12)(0[1-9]|[1-2][0-9]|3[0-1])|(04|06|09|11)(0[1-9]|[1-2][0-9]|30)|02(0[1-9]|[1-2][0-9]))[0-9]{3}[0-9Xx]$"
-                                                                       options:NSRegularExpressionCaseInsensitive
-                                                                         error:nil];//测试出生日期的合法性
+                                                                        options:NSRegularExpressionCaseInsensitive
+                                                                          error:nil];//测试出生日期的合法性
             }else {
                 regularExpression = [[NSRegularExpression alloc]initWithPattern:@"^[1-9][0-9]{5}(19|20)[0-9]{2}((01|03|05|07|08|10|12)(0[1-9]|[1-2][0-9]|3[0-1])|(04|06|09|11)(0[1-9]|[1-2][0-9]|30)|02(0[1-9]|1[0-9]|2[0-8]))[0-9]{3}[0-9Xx]$"
-                                                                       options:NSRegularExpressionCaseInsensitive
-                                                                         error:nil];//测试出生日期的合法性
+                                                                        options:NSRegularExpressionCaseInsensitive
+                                                                          error:nil];//测试出生日期的合法性
             }
             numberofMatch = [regularExpression numberOfMatchesInString:value
-                                                              options:NSMatchingReportProgress
-                                                                range:NSMakeRange(0, value.length)];
+                                                               options:NSMatchingReportProgress
+                                                                 range:NSMakeRange(0, value.length)];
             
             if(numberofMatch >0) {
                 int S = ([value substringWithRange:NSMakeRange(0,1)].intValue + [value substringWithRange:NSMakeRange(10,1)].intValue) *7 + ([value substringWithRange:NSMakeRange(1,1)].intValue + [value substringWithRange:NSMakeRange(11,1)].intValue) *9 + ([value substringWithRange:NSMakeRange(2,1)].intValue + [value substringWithRange:NSMakeRange(12,1)].intValue) *10 + ([value substringWithRange:NSMakeRange(3,1)].intValue + [value substringWithRange:NSMakeRange(13,1)].intValue) *5 + ([value substringWithRange:NSMakeRange(4,1)].intValue + [value substringWithRange:NSMakeRange(14,1)].intValue) *8 + ([value substringWithRange:NSMakeRange(5,1)].intValue + [value substringWithRange:NSMakeRange(15,1)].intValue) *4 + ([value substringWithRange:NSMakeRange(6,1)].intValue + [value substringWithRange:NSMakeRange(16,1)].intValue) *2 + [value substringWithRange:NSMakeRange(7,1)].intValue *1 + [value substringWithRange:NSMakeRange(8,1)].intValue *6 + [value substringWithRange:NSMakeRange(9,1)].intValue *3;
@@ -337,21 +341,21 @@ static char base64EncodingTable[64] = {
 + (NSDate *)fetchDateFromDay:(NSInteger)day Hour:(NSInteger)hour minute:(NSInteger)minute second:(NSInteger)second {
     NSDate *date = [NSDate date];
     
-//    NSTimeZone *gmt = [NSTimeZone timeZoneWithAbbreviation:@"GMT"];
-//    
-//    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier: NSGregorianCalendar];
-//    
-//    [gregorian setTimeZone:gmt];
+    //    NSTimeZone *gmt = [NSTimeZone timeZoneWithAbbreviation:@"GMT"];
+    //
+    //    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier: NSGregorianCalendar];
+    //
+    //    [gregorian setTimeZone:gmt];
     NSCalendar *gregorian = [NSCalendar currentCalendar];
     
-//    NSDateComponents *components = [gregorian components: NSUIntegerMax fromDate: date];
+    //    NSDateComponents *components = [gregorian components: NSUIntegerMax fromDate: date];
     NSDateComponents *components = [gregorian components:NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay | NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond  fromDate:date];
-//    int iYear = components.year;
-//    int iMonth = components.month;
+    //    int iYear = components.year;
+    //    int iMonth = components.month;
     NSInteger iDay = components.day;
-//    int iHour = components.hour;
-//    int iMinute = components.minute;
-//    int iSecond = components.second;
+    //    int iHour = components.hour;
+    //    int iMinute = components.minute;
+    //    int iSecond = components.second;
     
     [components setDay:iDay + day];
     
@@ -383,121 +387,121 @@ static char base64EncodingTable[64] = {
 }
 
 /*
-+ (NSData *) base64DataFromString:(NSString *)string
-{
-    unsigned long ixtext, lentext;
-    unsigned char ch, inbuf[3], outbuf[4];
-    short i, ixinbuf;
-    Boolean flignore, flendtext = false;
-    const unsigned char *tempcstring;
-    NSMutableData *theData;
-    
-    if (string == nil)
-    {
-        return [NSData data];
-    }
-    
-    ixtext = 0;
-    
-    tempcstring = (const unsigned char *)[string UTF8String];
-    
-    lentext = [string length];
-    
-    theData = [NSMutableData dataWithCapacity: lentext];
-    
-    ixinbuf = 0;
-    
-    while (true)
-    {
-        if (ixtext >= lentext)
-        {
-            break;
-        }
-        
-        ch = tempcstring [ixtext++];
-        
-        flignore = false;
-        
-        if ((ch >= 'A') && (ch <= 'Z'))
-        {
-            ch = ch - 'A';
-        }
-        else if ((ch >= 'a') && (ch <= 'z'))
-        {
-            ch = ch - 'a' + 26;
-        }
-        else if ((ch >= '0') && (ch <= '9'))
-        {
-            ch = ch - '0' + 52;
-        }
-        else if (ch == '+')
-        {
-            ch = 62;
-        }
-        else if (ch == '=')
-        {
-            flendtext = true;
-        }
-        else if (ch == '/')
-        {
-            ch = 63;
-        }
-        else
-        {
-            flignore = true;
-        }
-        
-        if (!flignore)
-        {
-            short ctcharsinbuf = 3;
-            Boolean flbreak = false;
-            
-            if (flendtext)
-            {
-                if (ixinbuf == 0)
-                {
-                    break;
-                }
-                
-                if ((ixinbuf == 1) || (ixinbuf == 2))
-                {
-                    ctcharsinbuf = 1;
-                }
-                else
-                {
-                    ctcharsinbuf = 2;
-                }
-                
-                ixinbuf = 3;
-                
-                flbreak = true;
-            }
-            
-            inbuf [ixinbuf++] = ch;
-            
-            if (ixinbuf == 4)
-            {
-                ixinbuf = 0;
-                
-                outbuf[0] = (inbuf[0] << 2) | ((inbuf[1] & 0x30) >> 4);
-                outbuf[1] = ((inbuf[1] & 0x0F) << 4) | ((inbuf[2] & 0x3C) >> 2);
-                outbuf[2] = ((inbuf[2] & 0x03) << 6) | (inbuf[3] & 0x3F);
-                
-                for (i = 0; i < ctcharsinbuf; i++)
-                {
-                    [theData appendBytes: &outbuf[i] length: 1];
-                }
-            }
-            
-            if (flbreak)
-            {
-                break;
-            }
-        }
-    }
-    
-    return theData;
-}*/
+ + (NSData *) base64DataFromString:(NSString *)string
+ {
+ unsigned long ixtext, lentext;
+ unsigned char ch, inbuf[3], outbuf[4];
+ short i, ixinbuf;
+ Boolean flignore, flendtext = false;
+ const unsigned char *tempcstring;
+ NSMutableData *theData;
+ 
+ if (string == nil)
+ {
+ return [NSData data];
+ }
+ 
+ ixtext = 0;
+ 
+ tempcstring = (const unsigned char *)[string UTF8String];
+ 
+ lentext = [string length];
+ 
+ theData = [NSMutableData dataWithCapacity: lentext];
+ 
+ ixinbuf = 0;
+ 
+ while (true)
+ {
+ if (ixtext >= lentext)
+ {
+ break;
+ }
+ 
+ ch = tempcstring [ixtext++];
+ 
+ flignore = false;
+ 
+ if ((ch >= 'A') && (ch <= 'Z'))
+ {
+ ch = ch - 'A';
+ }
+ else if ((ch >= 'a') && (ch <= 'z'))
+ {
+ ch = ch - 'a' + 26;
+ }
+ else if ((ch >= '0') && (ch <= '9'))
+ {
+ ch = ch - '0' + 52;
+ }
+ else if (ch == '+')
+ {
+ ch = 62;
+ }
+ else if (ch == '=')
+ {
+ flendtext = true;
+ }
+ else if (ch == '/')
+ {
+ ch = 63;
+ }
+ else
+ {
+ flignore = true;
+ }
+ 
+ if (!flignore)
+ {
+ short ctcharsinbuf = 3;
+ Boolean flbreak = false;
+ 
+ if (flendtext)
+ {
+ if (ixinbuf == 0)
+ {
+ break;
+ }
+ 
+ if ((ixinbuf == 1) || (ixinbuf == 2))
+ {
+ ctcharsinbuf = 1;
+ }
+ else
+ {
+ ctcharsinbuf = 2;
+ }
+ 
+ ixinbuf = 3;
+ 
+ flbreak = true;
+ }
+ 
+ inbuf [ixinbuf++] = ch;
+ 
+ if (ixinbuf == 4)
+ {
+ ixinbuf = 0;
+ 
+ outbuf[0] = (inbuf[0] << 2) | ((inbuf[1] & 0x30) >> 4);
+ outbuf[1] = ((inbuf[1] & 0x0F) << 4) | ((inbuf[2] & 0x3C) >> 2);
+ outbuf[2] = ((inbuf[2] & 0x03) << 6) | (inbuf[3] & 0x3F);
+ 
+ for (i = 0; i < ctcharsinbuf; i++)
+ {
+ [theData appendBytes: &outbuf[i] length: 1];
+ }
+ }
+ 
+ if (flbreak)
+ {
+ break;
+ }
+ }
+ }
+ 
+ return theData;
+ }*/
 
 
 
@@ -644,6 +648,20 @@ void *NewBase64Decode(
     NSData *result = [NSData dataWithBytes:outputBuffer length:outputLength];
     free(outputBuffer);
     return result;
+}
+
++ (NSString *)stringWithUUID {
+    CFUUIDRef uuid = CFUUIDCreate(NULL);
+    CFStringRef string = CFUUIDCreateString(NULL, uuid);
+    CFRelease(uuid);
+    return (__bridge_transfer NSString *)string;
+}
+
+
+- (CGSize)sizeWithFont:(UIFont *)font maxSize:(CGSize)maxSize {
+    NSDictionary *attrs = @{NSFontAttributeName:font};
+    return [self boundingRectWithSize:maxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:attrs context:nil].size;
+    
 }
 
 @end

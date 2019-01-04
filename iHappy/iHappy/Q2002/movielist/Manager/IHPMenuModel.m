@@ -16,6 +16,8 @@
 
 #import "XDSWelfareVCTableViewController.h"//小微福利
 
+#import "XDSSettingVC.h"//设置
+
 @interface IHPMenuModel (){
     UINavigationController *_contentViewController;//这个model下的controller，单例
 }
@@ -32,15 +34,14 @@
         }else if (self.type == IHPMenuTypeBizhi){
             contentController = [[IHPMeituListViewController alloc] init];
             ((IHPMeituListViewController *)contentController).rootUrl = self.rooturl;
-            contentController.title = self.title;
         }else if (self.type == IHPMenuTypeShuaige){
             contentController = [[IHPShuaigeListViewController alloc] init];
             ((IHPShuaigeListViewController *)contentController).rootUrl = self.rooturl;
-            contentController.title = self.title;
         }else if(self.type == IHPMenuTypeWelfare){
             contentController = [[XDSWelfareVCTableViewController alloc] init];
-            contentController.title = self.title;
-        }else {
+        }else if(self.type == IHPMenuTypeSetting){
+            contentController = [[UIStoryboard storyboardWithName:@"Setting" bundle:nil] instantiateViewControllerWithIdentifier:NSStringFromClass([XDSSettingVC class])];
+        } else {
             contentController = [[IHYMainViewController alloc] init];
             ((IHYMainViewController *)contentController).menuModel = self;
         }

@@ -79,40 +79,45 @@ GDTMobInterstitialDelegate>
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         sharedInstance = [[[self instanceClass] alloc] init];
-        [sharedInstance addNotificationsObservers];
-        
+//        [sharedInstance addNotificationsObservers];
     });
     return sharedInstance;
 }
 - (void)dealloc {
-    [[NSNotificationCenter defaultCenter] removeObserver:self
-                                                    name:UIApplicationWillEnterForegroundNotification
-                                                  object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self
-                                                    name:kXDSEnterMainViewFinishedNotification
-                                                  object:nil];
+//    [[NSNotificationCenter defaultCenter] removeObserver:self
+//                                                    name:UIApplicationWillEnterForegroundNotification
+//                                                  object:nil];
+//    [[NSNotificationCenter defaultCenter] removeObserver:self
+//                                                    name:kXDSEnterMainViewFinishedNotification
+//                                                  object:nil];
 }
 
 - (void)addNotificationsObservers {
-    [[NSNotificationCenter defaultCenter] removeObserver:self
-                                                    name:UIApplicationWillEnterForegroundNotification
-                                                  object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(handleAppDidBecomeActiveNotification)
-                                                 name:UIApplicationWillEnterForegroundNotification
-                                               object:nil];
+//    [[NSNotificationCenter defaultCenter] removeObserver:self
+//                                                    name:UIApplicationWillEnterForegroundNotification
+//                                                  object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self
+//                                             selector:@selector(handleAppDidBecomeActiveNotification)
+//                                                 name:UIApplicationWillEnterForegroundNotification
+//                                               object:nil];
     
-    [[NSNotificationCenter defaultCenter] removeObserver:self
-                                                    name:kXDSEnterMainViewFinishedNotification
-                                                  object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(showSplashAd)
-                                                 name:kXDSEnterMainViewFinishedNotification
-                                               object:nil];
+//    [[NSNotificationCenter defaultCenter] removeObserver:self
+//                                                    name:kXDSEnterMainViewFinishedNotification
+//                                                  object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self
+//                                             selector:@selector(showSplashAd)
+//                                                 name:kXDSEnterMainViewFinishedNotification
+//                                               object:nil];
 }
 
+- (BOOL)isAdAvailible {
+    return [IHPConfigManager shareManager].adInfo.enable;
+}
 //TODO: 开屏广告
 - (void)showSplashAd {
+    if (self.isAdAvailible == NO) {
+        return;
+    }
     self.splashAd = [[GDTSplashAd alloc] initWithAppId:kGDTMobSDKAppId placementId:kGDTMobSDKSplashAdId];
     self.splashAd.delegate = self;
     self.splashAd.fetchDelay = 5;
@@ -175,6 +180,9 @@ GDTMobInterstitialDelegate>
 
 //TODO: banner广告
 - (void)loadBannerAdFromViewController:(UIViewController *)fromViewController{
+    if (self.isAdAvailible == NO) {
+        return;
+    }
     [[self bannerViewWithCurrentViewController:fromViewController] loadAdAndShow];
 }
 - (GDTMobBannerView *)bannerView {
@@ -343,6 +351,9 @@ GDTMobInterstitialDelegate>
 
 //TODO: 插屏广告
 - (void)showInterstitialAD{
+    if (self.isAdAvailible == NO) {
+        return;
+    }
     self.interstitial = [[GDTMobInterstitial alloc] initWithAppId:kGDTMobSDKAppId placementId:kGDTMobSDKInterstitialAdId];
     self.interstitial.delegate = self;
     [self.interstitial loadAd];
@@ -354,7 +365,9 @@ GDTMobInterstitialDelegate>
     }
 }
 //// 详解:当接收服务器返回的广告数据失败后调用该函数
-//- (void)interstitialFailToLoadAd:(GDTMobInterstitial *)interstitial error:(NSError *)error{}
+- (void)interstitialFailToLoadAd:(GDTMobInterstitial *)interstitial error:(NSError *)error{
+    NSLog(@"error = %@", error);
+}
 //// 详解: 插屏广告即将展示回调该函数
 //- (void)interstitialWillPresentScreen:(GDTMobInterstitial *)interstitial{}
 //// 详解: 插屏广告展示成功回调该函数

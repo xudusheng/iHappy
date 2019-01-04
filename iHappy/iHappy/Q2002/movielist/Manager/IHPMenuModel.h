@@ -17,6 +17,7 @@ typedef NS_ENUM(NSInteger, IHPMenuType) {
     IHPMenuTypeBizhi    = 4,
     IHPMenuTypeShuaige    = 5,
     IHPMenuTypeWelfare  = 6,
+    IHPMenuTypeSetting = 100,
 };
 
 @protocol IHPSubMenuModel;

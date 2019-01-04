@@ -83,6 +83,10 @@ YBImageBrowserDelegate
                                                                      refreshingAction:@selector(footerRequest)];
     [_collectionView.mj_header beginRefreshing];
 
+    
+//    [[XDSAdManager sharedManager] showInterstitialAD];
+    [[XDSAdManager sharedManager] performSelector:@selector(showInterstitialAD) withObject:nil afterDelay:1];
+
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -166,7 +170,7 @@ YBImageBrowserDelegate
         model.image_src = imgUrl;
         [self.meituList addObject:model];
         
-        if (self.meituList.count%13 == 0) {
+        if ([[XDSAdManager sharedManager] isAdAvailible] && self.meituList.count%[IHPConfigManager shareManager].adInfo.index == 0) {
             //广告占位
             XDSMeituModel *model = [[XDSMeituModel alloc] init];
             [self.meituList addObject:model];

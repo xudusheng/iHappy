@@ -83,6 +83,8 @@ YBImageBrowserDelegate
                                                                      refreshingAction:@selector(footerRequest)];
     [_collectionView.mj_header beginRefreshing];
     
+    [[XDSAdManager sharedManager] showInterstitialAD];
+
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -161,7 +163,7 @@ YBImageBrowserDelegate
     
     for (XDSMeituModel *meituModel in imageList) {
         [self.meituList addObject:meituModel];
-        if (self.meituList.count%13 == 0) {
+        if ([[XDSAdManager sharedManager] isAdAvailible] && self.meituList.count%[IHPConfigManager shareManager].adInfo.index  == 0) {
             //广告占位
             XDSMeituModel *model = [[XDSMeituModel alloc] init];
             [self.meituList addObject:model];

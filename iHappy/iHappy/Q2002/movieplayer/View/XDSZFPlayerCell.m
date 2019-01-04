@@ -134,12 +134,15 @@ static NSString *kXDSPlayerCover = @"https://upload-images.jianshu.io/upload_ima
         }
     }
     
-//    //添加视频贴片广告
-//    [self.adContainer removeFromSuperview];
-//    self.adContainer = nil;
-//    self.adContainer = [[UIView alloc] initWithFrame:CGRectMake(0, 0, XDS_PLAYER_SIZE.width, XDS_PLAYER_SIZE.height)];
-//    [self.contentView addSubview:self.adContainer];
-//    [[BaiduAdManager sharedManager] loadPrerollAdInView:self.adContainer];
+    //添加视频贴片广告
+    
+    if ([[XDSAdManager sharedManager] isAdAvailible] && [IHPConfigManager shareManager].adInfo.player_enable) {
+        [self.adContainer removeFromSuperview];
+        self.adContainer = nil;
+        self.adContainer = [[UIView alloc] initWithFrame:CGRectMake(0, 0, XDS_PLAYER_SIZE.width, XDS_PLAYER_SIZE.height)];
+        [self.contentView addSubview:self.adContainer];
+        [[BaiduAdManager sharedManager] loadPrerollAdInView:self.adContainer];
+    }
 }
 
 //TODO: 点击播放按钮

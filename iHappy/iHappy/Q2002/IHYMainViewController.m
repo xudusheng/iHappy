@@ -51,7 +51,6 @@
         [titleView addSubview:_searchBar];
         self.navigationItem.titleView = titleView;
         
-        
         [[XDSAdManager sharedManager] showInterstitialAD];
 
     }

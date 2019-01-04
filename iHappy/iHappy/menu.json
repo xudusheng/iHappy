@@ -6,6 +6,11 @@
         "updateMessage": "发现新版本，更新如下\n1、惺惺惜惺惺；\n2、一月又一月晕；\n3、吾问无为谓无",
         "version": "1.0.1"
     },
+    "adInfo":{
+        "enable":true,
+        "player_enable":true,
+        "index":23,
+    },
     "menus": [
     {
         "title": "小微美女",
@@ -30,73 +35,24 @@
             "enable": true,
             "subMenus": [
                 {
-                    "title": "电影",
-                    "url": "/type/1.html"
-                },
-                {
                     "title": "电视剧",
                     "url": "/type/2.html"
+                },
+                {
+                    "title": "电影",
+                    "url": "/type/1.html"
                 },
                 {
                     "title": "动漫",
                     "url": "/type/7.html"
                 },
                 {
-                    "title": "音乐",
-                    "url": "/type/6.html"
-                },
-                {
                     "title": "综艺",
                     "url": "/type/4.html"
-                }
-            ]
-        },
-        {
-            "title": "小微头条",
-            "menuId": "kNews",
-            "type": "3",
-            "enable": true,
-            "rooturl": "http://120.76.205.241:8000/news/qihoo?apikey=cz1wjvkzGtuomNDXgLxmdq5aIwgytQvHHe0Dc8OcfHQva6hKQgDoDyBdUAQngGt6&site=qq.com",
-            "subMenus": [
-                {
-                    "title": "推荐",
-                    "url": ""
                 },
                 {
-                    "title": "头条",
-                    "url": ""
-                },
-                {
-                    "title": "娱乐",
-                    "url": ""
-                },
-                {
-                    "title": "科技",
-                    "url": ""
-                },
-                {
-                    "title": "财经",
-                    "url": ""
-                },
-                {
-                    "title": "体育",
-                    "url": ""
-                },
-                {
-                    "title": "房产",
-                    "url": ""
-                },
-                {
-                    "title": "图片",
-                    "url": ""
-                },
-                {
-                    "title": "时尚",
-                    "url": ""
-                },
-                {
-                    "title": "国际",
-                    "url": ""
+                    "title": "音乐",
+                    "url": "/type/6.html"
                 }
             ]
         },
@@ -112,6 +68,14 @@
             "title": "学习福利",
             "menuId": "kWelfare",
             "type": "6",
+            "rooturl": "",
+            "enable": true,
+            "subMenus": []
+        },
+        {
+            "title": "设置",
+            "menuId": "kSetting",
+            "type": "100",
             "rooturl": "",
             "enable": true,
             "subMenus": []

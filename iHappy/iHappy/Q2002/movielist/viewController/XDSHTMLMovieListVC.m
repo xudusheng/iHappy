@@ -103,10 +103,10 @@ NSString * const MovieListViewController_movieCellIdentifier = @"IHPMovieCell";
     XDSHTMLMovieModel *movieModel = _movieList[indexPath.row];
     XDSHTMLPlayerVC *movieDetailVC = [[XDSHTMLPlayerVC alloc] init];
     movieDetailVC.htmlMovieModel = movieModel;
-//    [self.navigationController pushViewController:movieDetailVC animated:YES];
+    [self.navigationController pushViewController:movieDetailVC animated:YES];
     
-    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:movieDetailVC];
-    [self.navigationController presentViewController:nav animated:YES completion:nil];
+//    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:movieDetailVC];
+//    [self.navigationController presentViewController:nav animated:YES completion:nil];
 }
 #pragma mark - 点击事件处理
 - (void)fetchMovieList:(BOOL)isTop{
@@ -204,7 +204,7 @@ NSString * const MovieListViewController_movieCellIdentifier = @"IHPMovieCell";
         [newMovies addObject:model];
         
         
-        if ((newMovies.count + _movieList.count)%25 == 0) {
+        if ([[XDSAdManager sharedManager] isAdAvailible] && (newMovies.count + _movieList.count)%[IHPConfigManager shareManager].adInfo.index  == 0) {
             XDSHTMLMovieModel *model = [[XDSHTMLMovieModel alloc] init];
             [newMovies addObject:model];
         }

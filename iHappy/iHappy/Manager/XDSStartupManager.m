@@ -105,11 +105,12 @@ NSString * const kXDSEnterMainViewFinishedNotification = @"XDSEnterMainViewFinis
                                                          rightMenuViewController:nil];
     
     mainmeunVC.contentViewInLandscapeOffsetCenterX = -480;
-    mainmeunVC.contentViewShadowColor = [UIColor lightGrayColor];
+//    mainmeunVC.animationDuration = 2.f;
+    mainmeunVC.contentViewShadowColor = [UIColor blackColor];
     mainmeunVC.contentViewShadowOffset = CGSizeMake(0, 0);
     mainmeunVC.contentViewShadowOpacity = 0.6;
     mainmeunVC.contentViewShadowRadius = 12;
-    mainmeunVC.contentViewShadowEnabled = NO;
+    mainmeunVC.contentViewShadowEnabled = YES;
     mainmeunVC.scaleMenuView = NO;
     mainmeunVC.scaleContentView = NO;
     mainmeunVC.parallaxEnabled = NO;
@@ -175,15 +176,15 @@ NSString *const kXDSUpdateLocalizableTaskID = @"XDSUpdateLocalizableTask";
 
 - (void)fetchConfigData{
     
-//    NSString *path = [[NSBundle mainBundle] pathForResource:@"menu" ofType:@"json"];
-//    NSData *menuData = [NSData dataWithContentsOfFile:path];
-//    NSLog(@"%@", [[NSString alloc] initWithData:menuData encoding:NSUTF8StringEncoding]);
-//
-//    IHPConfigManager *manager = [IHPConfigManager shareManager];
-//    [manager configManagerWithJsondData:menuData];
-//    [self finishTaskWithTaksID:kXDSFetchConfigTaskID];
-//
-//    return;
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"menu" ofType:@"json"];
+    NSData *menuData = [NSData dataWithContentsOfFile:path];
+    NSLog(@"%@", [[NSString alloc] initWithData:menuData encoding:NSUTF8StringEncoding]);
+
+    IHPConfigManager *manager = [IHPConfigManager shareManager];
+    [manager configManagerWithJsondData:menuData];
+    [self finishTaskWithTaksID:kXDSFetchConfigTaskID];
+
+    return;
     
 //    NSString *requesturl = @"http://134.175.54.80/ihappy/menu.json";
     NSString *requesturl = @"http://129.204.47.207/ihappy/config/menu_1.0.5.json";
@@ -201,7 +202,7 @@ NSString *const kXDSUpdateLocalizableTaskID = @"XDSUpdateLocalizableTask";
                                                    [manager configManagerWithJsondData:htmlData];
                                                    
                                                    NSString *appVersion = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
-                                                   if ([manager.forceUpdate.version compare:appVersion] == NSOrderedDescending &&
+                                                   if ([manager.forceUpdate.version compare:appVersion  options:NSNumericSearch] == NSOrderedDescending &&
                                                        manager.forceUpdate.enable) {
                                                        
                                                        if (manager.forceUpdate.isForce) {
@@ -228,7 +229,6 @@ NSString *const kXDSUpdateLocalizableTaskID = @"XDSUpdateLocalizableTask";
                                                                                                          }
                                                                                                          [weakSelf finishTaskWithTaksID:kXDSFetchConfigTaskID];
                                                                                                      }];
-
                                                        }
                                                    }else{
                                                        [weakSelf finishTaskWithTaksID:kXDSFetchConfigTaskID];
