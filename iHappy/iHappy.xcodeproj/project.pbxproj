@@ -314,6 +314,18 @@
 		A27BB36F215FEF01004C9635 /* IHYMovieDetailInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = A27BB36C215FEF00004C9635 /* IHYMovieDetailInfoView.m */; };
 		A27BB370215FEF01004C9635 /* IHYMovieDetailInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A27BB36E215FEF01004C9635 /* IHYMovieDetailInfoView.xib */; };
 		A29B03F52142D88100876433 /* XDSBaseResponseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A29B03F42142D88100876433 /* XDSBaseResponseModel.m */; };
+		A2D3668921DFB677001FA648 /* HQFlowView.m in Sources */ = {isa = PBXBuildFile; fileRef = A2D3668321DFB677001FA648 /* HQFlowView.m */; };
+		A2D3668A21DFB677001FA648 /* HQIndexBannerSubview.m in Sources */ = {isa = PBXBuildFile; fileRef = A2D3668421DFB677001FA648 /* HQIndexBannerSubview.m */; };
+		A2D3668B21DFB677001FA648 /* HQImagePageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = A2D3668521DFB677001FA648 /* HQImagePageControl.m */; };
+		A2D3668E21DFB6BF001FA648 /* BXRetailStoreGuideVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A2D3668D21DFB6BF001FA648 /* BXRetailStoreGuideVC.m */; };
+		A2D3669721DFB6CE001FA648 /* 分享赚钱@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = A2D3668F21DFB6CC001FA648 /* 分享赚钱@3x.png */; };
+		A2D3669821DFB6CE001FA648 /* 专享礼遇@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A2D3669021DFB6CD001FA648 /* 专享礼遇@2x.png */; };
+		A2D3669921DFB6CE001FA648 /* 纳新有礼@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A2D3669121DFB6CD001FA648 /* 纳新有礼@2x.png */; };
+		A2D3669A21DFB6CE001FA648 /* 分享赚钱@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A2D3669221DFB6CD001FA648 /* 分享赚钱@2x.png */; };
+		A2D3669B21DFB6CE001FA648 /* 专享礼遇@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = A2D3669321DFB6CD001FA648 /* 专享礼遇@3x.png */; };
+		A2D3669C21DFB6CE001FA648 /* 纳新有礼@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = A2D3669421DFB6CD001FA648 /* 纳新有礼@3x.png */; };
+		A2D3669D21DFB6CE001FA648 /* 购物省钱@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A2D3669521DFB6CE001FA648 /* 购物省钱@2x.png */; };
+		A2D3669E21DFB6CE001FA648 /* 购物省钱@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = A2D3669621DFB6CE001FA648 /* 购物省钱@3x.png */; };
 		A2DBD4AE21A6D48C0094A1D9 /* BaiduAdManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A2DBD4AD21A6D48C0094A1D9 /* BaiduAdManager.m */; };
 		A2DBD4B221A6D6FD0094A1D9 /* baidumobadsdk.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A2DBD4B021A6D6FD0094A1D9 /* baidumobadsdk.bundle */; };
 		A2DBD4B321A6D6FD0094A1D9 /* BaiduMobAdSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2DBD4B121A6D6FD0094A1D9 /* BaiduMobAdSDK.framework */; };
@@ -953,6 +965,22 @@
 		A27BB36E215FEF01004C9635 /* IHYMovieDetailInfoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IHYMovieDetailInfoView.xib; sourceTree = "<group>"; };
 		A29B03F32142D88100876433 /* XDSBaseResponseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDSBaseResponseModel.h; sourceTree = "<group>"; };
 		A29B03F42142D88100876433 /* XDSBaseResponseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XDSBaseResponseModel.m; sourceTree = "<group>"; };
+		A2D3668321DFB677001FA648 /* HQFlowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HQFlowView.m; sourceTree = "<group>"; };
+		A2D3668421DFB677001FA648 /* HQIndexBannerSubview.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HQIndexBannerSubview.m; sourceTree = "<group>"; };
+		A2D3668521DFB677001FA648 /* HQImagePageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HQImagePageControl.m; sourceTree = "<group>"; };
+		A2D3668621DFB677001FA648 /* HQFlowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HQFlowView.h; sourceTree = "<group>"; };
+		A2D3668721DFB677001FA648 /* HQImagePageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HQImagePageControl.h; sourceTree = "<group>"; };
+		A2D3668821DFB677001FA648 /* HQIndexBannerSubview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HQIndexBannerSubview.h; sourceTree = "<group>"; };
+		A2D3668C21DFB6BF001FA648 /* BXRetailStoreGuideVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BXRetailStoreGuideVC.h; sourceTree = "<group>"; };
+		A2D3668D21DFB6BF001FA648 /* BXRetailStoreGuideVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BXRetailStoreGuideVC.m; sourceTree = "<group>"; };
+		A2D3668F21DFB6CC001FA648 /* 分享赚钱@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "分享赚钱@3x.png"; sourceTree = "<group>"; };
+		A2D3669021DFB6CD001FA648 /* 专享礼遇@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "专享礼遇@2x.png"; sourceTree = "<group>"; };
+		A2D3669121DFB6CD001FA648 /* 纳新有礼@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "纳新有礼@2x.png"; sourceTree = "<group>"; };
+		A2D3669221DFB6CD001FA648 /* 分享赚钱@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "分享赚钱@2x.png"; sourceTree = "<group>"; };
+		A2D3669321DFB6CD001FA648 /* 专享礼遇@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "专享礼遇@3x.png"; sourceTree = "<group>"; };
+		A2D3669421DFB6CD001FA648 /* 纳新有礼@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "纳新有礼@3x.png"; sourceTree = "<group>"; };
+		A2D3669521DFB6CE001FA648 /* 购物省钱@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "购物省钱@2x.png"; sourceTree = "<group>"; };
+		A2D3669621DFB6CE001FA648 /* 购物省钱@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "购物省钱@3x.png"; sourceTree = "<group>"; };
 		A2DBD4AC21A6D48C0094A1D9 /* BaiduAdManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaiduAdManager.h; sourceTree = "<group>"; };
 		A2DBD4AD21A6D48C0094A1D9 /* BaiduAdManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaiduAdManager.m; sourceTree = "<group>"; };
 		A2DBD4B021A6D6FD0094A1D9 /* baidumobadsdk.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = baidumobadsdk.bundle; sourceTree = "<group>"; };
@@ -2101,6 +2129,7 @@
 				1808D3BE215BDD5300F822FD /* XDSBaseContentVC.m */,
 				1808D3C0215BDE2B00F822FD /* XDSBaseContentNavigationController.h */,
 				1808D3C1215BDE2B00F822FD /* XDSBaseContentNavigationController.m */,
+				A2D3668121DFB677001FA648 /* guidement */,
 				180933F421DF43AA00D3A0CA /* Setting */,
 				181E5418214FCFA400E8A704 /* Reader */,
 				A22C12F02144648A00896F00 /* Tools */,
@@ -2301,6 +2330,37 @@
 				A29B03F42142D88100876433 /* XDSBaseResponseModel.m */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		A2D3668121DFB677001FA648 /* guidement */ = {
+			isa = PBXGroup;
+			children = (
+				A2D3669221DFB6CD001FA648 /* 分享赚钱@2x.png */,
+				A2D3668F21DFB6CC001FA648 /* 分享赚钱@3x.png */,
+				A2D3669521DFB6CE001FA648 /* 购物省钱@2x.png */,
+				A2D3669621DFB6CE001FA648 /* 购物省钱@3x.png */,
+				A2D3669121DFB6CD001FA648 /* 纳新有礼@2x.png */,
+				A2D3669421DFB6CD001FA648 /* 纳新有礼@3x.png */,
+				A2D3669021DFB6CD001FA648 /* 专享礼遇@2x.png */,
+				A2D3669321DFB6CD001FA648 /* 专享礼遇@3x.png */,
+				A2D3668221DFB677001FA648 /* HQFlowView */,
+				A2D3668C21DFB6BF001FA648 /* BXRetailStoreGuideVC.h */,
+				A2D3668D21DFB6BF001FA648 /* BXRetailStoreGuideVC.m */,
+			);
+			path = guidement;
+			sourceTree = "<group>";
+		};
+		A2D3668221DFB677001FA648 /* HQFlowView */ = {
+			isa = PBXGroup;
+			children = (
+				A2D3668321DFB677001FA648 /* HQFlowView.m */,
+				A2D3668421DFB677001FA648 /* HQIndexBannerSubview.m */,
+				A2D3668521DFB677001FA648 /* HQImagePageControl.m */,
+				A2D3668621DFB677001FA648 /* HQFlowView.h */,
+				A2D3668721DFB677001FA648 /* HQImagePageControl.h */,
+				A2D3668821DFB677001FA648 /* HQIndexBannerSubview.h */,
+			);
+			path = HQFlowView;
 			sourceTree = "<group>";
 		};
 		A2DBD4AB21A6D46E0094A1D9 /* baidu */ = {
@@ -2642,6 +2702,7 @@
 				A2DBD4B221A6D6FD0094A1D9 /* baidumobadsdk.bundle in Resources */,
 				A227A84B2130641300568BCB /* SplashNormal.png in Resources */,
 				A2DBD4C921A6ECDB0094A1D9 /* btn_play_new@3x.png in Resources */,
+				A2D3669B21DFB6CE001FA648 /* 专享礼遇@3x.png in Resources */,
 				18A6FA28212FCB9D00709EC9 /* appConfig.txt in Resources */,
 				18A6FAF62130DF3800709EC9 /* img_circular@3x.png in Resources */,
 				092CAF051DE28620008127DA /* IHPMovieCell.xib in Resources */,
@@ -2665,10 +2726,12 @@
 				18A6FAFD2130DF3800709EC9 /* btn_play@3x.png in Resources */,
 				18A6FA862130031500709EC9 /* json.bnf in Resources */,
 				18A6FA2D212FCB9D00709EC9 /* Localizable_en.string in Resources */,
+				A2D3669C21DFB6CE001FA648 /* 纳新有礼@3x.png in Resources */,
 				181E5414214F928100E8A704 /* XDSReadMenu.xcassets in Resources */,
 				A2DFC71521B040F400DE696E /* meizi_zipai.txt in Resources */,
 				A22C12FD2144734E00896F00 /* XDSPlayerSectionHeader.xib in Resources */,
 				18A6FAF72130DF3800709EC9 /* btn_stop@2x.png in Resources */,
+				A2D3669A21DFB6CE001FA648 /* 分享赚钱@2x.png in Resources */,
 				18A6FAFA2130DF3800709EC9 /* btn-amplification@2x.png in Resources */,
 				A2755B8A2166444700006989 /* logo_launch.png in Resources */,
 				181E53E0214F928000E8A704 /* 华文行楷.ttf in Resources */,
@@ -2678,17 +2741,22 @@
 				18A6FAF32130DF3800709EC9 /* img_circular@2x.png in Resources */,
 				A2DBD4C821A6ECDB0094A1D9 /* btn_play_new@2x.png in Resources */,
 				092CAF2F1DE2B20F008127DA /* IHYNewsListCell.xib in Resources */,
+				A2D3669721DFB6CE001FA648 /* 分享赚钱@3x.png in Resources */,
 				A2755B8C216646B600006989 /* launch_414x736@2x.png in Resources */,
 				18A1FB49218A8AFB00E12658 /* player.html in Resources */,
 				A01579F31DE1776C00CD7DDB /* ico_back@2x.png in Resources */,
 				FCA032421F8DD7DE00600581 /* PYSearch.bundle in Resources */,
+				A2D3669E21DFB6CE001FA648 /* 购物省钱@3x.png in Resources */,
 				18A041D321B2514B00B5993D /* shuaigetupian.txt in Resources */,
 				18A6FAF52130DF3800709EC9 /* btn_voice@3x.png in Resources */,
 				18A6FAF42130DF3800709EC9 /* btn_voice@2x.png in Resources */,
+				A2D3669921DFB6CE001FA648 /* 纳新有礼@2x.png in Resources */,
+				A2D3669821DFB6CE001FA648 /* 专享礼遇@2x.png in Resources */,
 				09F90D7A1DE2D2F600542684 /* IHYNewsMultableImageCell.xib in Resources */,
 				A22C12EF2144611800896F00 /* XDSVideoSummaryCell.xib in Resources */,
 				181E53E1214F928000E8A704 /* 华文彩云.ttf in Resources */,
 				18A6FAF92130DF3800709EC9 /* btn_voice_disabled@2x.png in Resources */,
+				A2D3669D21DFB6CE001FA648 /* 购物省钱@2x.png in Resources */,
 				18A6FAF82130DF3800709EC9 /* btn_voice_disabled@3x.png in Resources */,
 				18A6FAFC2130DF3800709EC9 /* btn_play@2x.png in Resources */,
 				A27BB370215FEF01004C9635 /* IHYMovieDetailInfoView.xib in Resources */,
@@ -2811,6 +2879,7 @@
 				092CAF071DE28620008127DA /* IHYMoviePlayerViewController.m in Sources */,
 				1809341821DF5D7B00D3A0CA /* UIDevice+XDSAdd.m in Sources */,
 				1819E43721A3EADF00F67F56 /* UIViewController+ZFPlayerRotation.m in Sources */,
+				A2D3668921DFB677001FA648 /* HQFlowView.m in Sources */,
 				092CAF041DE28620008127DA /* IHPMovieCell.m in Sources */,
 				18A6FA8D2130031600709EC9 /* NLEBNFSequenceFactory.m in Sources */,
 				1808D3BF215BDD5300F822FD /* XDSBaseContentVC.m in Sources */,
@@ -2820,6 +2889,7 @@
 				1819E44121A3EADF00F67F56 /* ZFSmallFloatControlView.m in Sources */,
 				A249081221B0B35600E23542 /* YBVideoBrowseCell.m in Sources */,
 				1809341321DF5D7B00D3A0CA /* NSTimer+XDSAdd.m in Sources */,
+				A2D3668A21DFB677001FA648 /* HQIndexBannerSubview.m in Sources */,
 				18182F3D21B0C91700832736 /* YBAdBrowserCell.m in Sources */,
 				18A6FA952130031600709EC9 /* NLEStack.m in Sources */,
 				18BB4F402153F9EE00C4A2CD /* GCDWebServerConnection.m in Sources */,
@@ -2835,6 +2905,7 @@
 				180933F121DEFE0C00D3A0CA /* XDSAdInfoModel.m in Sources */,
 				181E5412214F928100E8A704 /* XDSReadViewConst.m in Sources */,
 				18A6FA902130031600709EC9 /* NLEBNFTokens.m in Sources */,
+				A2D3668B21DFB677001FA648 /* HQImagePageControl.m in Sources */,
 				A249082421B0B35600E23542 /* YBIBGestureInteractionProfile.m in Sources */,
 				A249082621B0B35600E23542 /* YBImageBrowserViewLayout.m in Sources */,
 				18BB4F3E2153F9EE00C4A2CD /* GCDWebServerFunctions.m in Sources */,
@@ -2920,6 +2991,7 @@
 				181E540C214F928100E8A704 /* XDSNoDataView.m in Sources */,
 				18DEE8B921AF82530016BE61 /* UIButton+XDSAddition.m in Sources */,
 				18BB4F3F2153F9EE00C4A2CD /* GCDWebServer.m in Sources */,
+				A2D3668E21DFB6BF001FA648 /* BXRetailStoreGuideVC.m in Sources */,
 				1819E42F21A3EADF00F67F56 /* ZFOrientationObserver.m in Sources */,
 				FCAFC6141EAEDB8700B48C83 /* IHPForceUpdateModel.m in Sources */,
 				18182F4021B1186F00832736 /* XDSImageItemAdCell.m in Sources */,
