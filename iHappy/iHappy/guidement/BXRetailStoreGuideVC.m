@@ -48,6 +48,7 @@
         _pageFlowView.bottomMargin = 0;
         _pageFlowView.orginPageCount = self.imageNameArray.count;
         _pageFlowView.isOpenAutoScroll = NO;
+        _pageFlowView.isCarousel = NO;
         _pageFlowView.orientation = HQFlowViewOrientationHorizontal;
         
     }
