@@ -68,7 +68,6 @@ NSString * const kXDSEnterMainViewFinishedNotification = @"XDSEnterMainViewFinis
         [[XDSSettingsManager sharedManager] setOnlyOnceWhenLaunchTaskQueueFinished];
         [self initMainViewLaunchingOptions:launchOptions];
         [[XDSPlaceholdSplashManager sharedManager] removePlaceholderSplashView];
-        
         self.launchTaskQueueFinished = YES;
         [[NSNotificationCenter defaultCenter] postNotificationName:kXDSEnterMainViewFinishedNotification object:nil];
     }

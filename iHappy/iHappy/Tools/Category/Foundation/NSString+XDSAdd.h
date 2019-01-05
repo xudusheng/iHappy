@@ -24,7 +24,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (NSString *)stringOfAddPercentEscapesWithString:(NSString *)s;
 
 + (NSString *)base64StringFromData:(NSData *)data;
-+ (NSData *) dataFromBase64String:(NSString *)string;
++ (NSData *)dataFromBase64String:(NSString *)string;
 
 
 + (NSString *)timeStringForTime:(NSUInteger)time;//整形时间转化为00:00字符串
@@ -45,6 +45,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (BOOL)validateIDCardNumber:(NSString *)value;//校验身份证
 + (BOOL)isMobileNumber:(NSString *)mobileNum;//校验手机号
+
+//判断是否为整形：
+- (BOOL)isPureInt;
+//判断是否为浮点形：
+- (BOOL)isPureFloat;
 
 /**
  Returns a new UUID NSString

@@ -323,22 +323,7 @@ YBImageBrowserDelegate
         }
         
         
-        NSInteger location = 0;
-        if (smallAndBigImgArray.count > 0) {
-            NSString *url = smallAndBigImgArray.firstObject;
-            url = [url componentsSeparatedByString:@","].firstObject;
-
-            if (url.length > 18) {
-                location = arc4random()%15+1;
-            }
-            location = url.length - location-4;
-        }
-        NSInteger length = arc4random()%3+1;
-
         [smallAndBigImgArray sortUsingComparator:^NSComparisonResult(NSString *obj1, NSString *obj2) {
-            NSString *subString1 = [obj1 substringWithRange:NSMakeRange(location, length)];
-            NSString *subString2 = [obj2 substringWithRange:NSMakeRange(location, length)];
-            return ([subString1 compare:subString2] == NSOrderedAscending);
             return ([obj1 compare:obj2] == NSOrderedAscending);
         }];
         
@@ -352,7 +337,7 @@ YBImageBrowserDelegate
                 //不同组图片的处理：先把第一张大图赋值给作为image_src（小图），把大图数组赋值，再新建model继续下一个循环
                 if (![meituModel.image_src isEqualToString:smallAndBig.firstObject]) {
                     if (meituModel) {
-                        meituModel.image_src = img_list.firstObject;
+//                        meituModel.image_src = img_list.firstObject;
                         meituModel.imageList = img_list;
                         [meituModelList addObject:meituModel];
                     }
@@ -368,6 +353,29 @@ YBImageBrowserDelegate
         meituModel.image_src = img_list.firstObject;
         meituModel.imageList = img_list;
         [meituModelList addObject:meituModel];
+        
+       //随机排序
+        NSInteger index = 0;
+        if (imgList.count > 0) {
+            NSString *url = imgList.firstObject;
+            if (url.length > 23) {
+                index = arc4random()%18+1;
+            }
+        }
+       [meituModelList sortUsingComparator:^NSComparisonResult(XDSMeituModel  *obj1, XDSMeituModel *obj2) {
+           NSString *jpg_1 = [obj1.image_src componentsSeparatedByString:@"/"].lastObject;
+           NSString *jpg_2 = [obj2.image_src componentsSeparatedByString:@"/"].lastObject;
+           NSInteger location = arc4random()%9+1;
+
+           if (jpg_1.length <= location || jpg_2.length <= location) {
+               return [jpg_1 compare:jpg_2] == NSOrderedAscending;
+           }
+           return [[jpg_1 substringFromIndex:location] compare:[jpg_2 substringFromIndex:location]] == NSOrderedAscending;
+       }];
+        
+        for (XDSMeituModel *model in meituModelList) {
+            model.image_src = model.imageList.firstObject;
+        }
         
         self.totalMeituList = meituModelList;
         self.meituList = [NSMutableArray arrayWithCapacity:0];

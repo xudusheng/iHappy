@@ -6,7 +6,20 @@ xds.loading.footer.pulling = 松开立即刷新
 xds.loading.footer.refreshing = 正在刷新数据...
 xds.loading.footer.nomoredata = 已经到底了~
 
+#blank page
+xds.blank.page.tip.title.connecterror = 网络出错，请检查您的网络
+xds.blank.page.reload.title.connecterror = 刷新
+xds.blank.page.tip.title.apperror = 很抱歉，程序出问题了
+xds.blank.page.reload.title.apperror = 刷新
+xds.blank.page.tip.title.empty = 暂无数据哦~
+xds.blank.page.reload.title.empty = 刷新
+xds.blank.page.tip.title.unknowerror = 未知错误~
+xds.blank.page.reload.title.unknowerror = 刷新
+xds.blank.page.tip.title.empty.bookshelf = 暂无书籍\n请前往添加书籍哦~
+xds.blank.page.reload.title.empty.bookshelf = 立即添加
 
+xds.blank.page.tip.title.unknowerror = 貌似出了点差错，请稍后重试~
+xds.blank.page.reload.title.unknowerror  = 刷新
 
 xds.ui.cancel = 取消
 xds.ui.ok = 确定

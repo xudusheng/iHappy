@@ -19,6 +19,7 @@
 #import "UIColor+Hex.h"
 
 #import "UIView+XDSAdd.h"
+#import "UIView+EaseBlankView.h"
 #import "UIImage+XDSAdd.h"
 #import "UIImageView+XDSAddition.h"
 #import "UIButton+XDSAddition.h"

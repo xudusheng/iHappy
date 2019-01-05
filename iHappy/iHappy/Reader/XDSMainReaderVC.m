@@ -118,6 +118,27 @@ OCT_SYNTHESIZE_SINGLETON_FOR_CLASS(XDSMainReaderVC)
 - (void)didBooksChanged {
     [self loadLocalBooks];
 }
+
+- (void)configEmptyPage {
+    [XDSUtilities hideHud:self.view];
+    
+    __weak typeof(self)weakSelf = self;
+    [self.view configWithType:XDSEaseBlankPageTypeEmptyBookShelf
+                      hasData:self.bookList.count > 0
+                 errorMessage:nil
+            reloadButtonBlock:nil
+       errorReloadButtonBlock:^(id obj) {
+           [weakSelf showWifiView];
+       }];
+//    [self.view configWithType:BXEaseBlankPageTypeConnectError
+//                      hasData:(self.homeModel != nil)
+//                 errorMessage:self.responseModel.errorMessage
+//            reloadButtonBlock:nil
+//       errorReloadButtonBlock:^(id obj) {
+//           [BSNLUtil showHud:self.view text:nil];
+//           [self fetchHomeInitData:nil];
+//       }];
+}
 #pragma mark - 点击事件处理
 - (void)showReadPageViewControllerWithFileURL:(NSURL *)fileURL{
     if (nil == fileURL) {
@@ -149,7 +170,8 @@ OCT_SYNTHESIZE_SINGLETON_FOR_CLASS(XDSMainReaderVC)
     [self.bookList removeAllObjects];
     
     //本地文件-同步执行
-    NSArray *fileList = @[@"生活小科普.txt"];
+//    NSArray *fileList = @[@"生活小科普.txt"];
+    NSArray *fileList = @[];
     for (NSString *fileName in fileList) {
         //注意，url初始化方法与从documents读取文件的url初始化方法的区别
         NSURL *fileURL = [[NSBundle mainBundle] URLForResource:fileName withExtension:nil];        
@@ -184,6 +206,7 @@ OCT_SYNTHESIZE_SINGLETON_FOR_CLASS(XDSMainReaderVC)
         });
     });
 
+
 }
 
 - (void)sortBooksByModifyTime {
@@ -195,6 +218,7 @@ OCT_SYNTHESIZE_SINGLETON_FOR_CLASS(XDSMainReaderVC)
         return isBig;
     }];
     [self.mCollectionView reloadSections:[NSIndexSet indexSetWithIndex:0]];
+    [self configEmptyPage];
 }
 
 #pragma mark - 内存管理相关

@@ -96,10 +96,11 @@
 }
 #pragma mark - UI相关
 - (void)createXDSWIFIFileTransferViewControllerUI{
+    self.view.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.3];
     self.wifiView = [[NSBundle mainBundle] loadNibNamed:NSStringFromClass([XDSReaderWifiView class]) owner:self options:nil].firstObject;
     self.wifiView.frame = CGRectMake(0, XDS_WIFI_VIEW_HIDDEN_ORIGINY, DEVICE_MAIN_SCREEN_WIDTH_XDSR, XDS_WIFI_VIEW_HEIGHT);
     [self.view addSubview:self.wifiView];
-    
+
     self.wifiView.progressView.progress = 0.0;
     [self.wifiView.closeButton addTarget:self action:@selector(closeButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     
