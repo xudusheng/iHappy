@@ -18,6 +18,7 @@
 @property (nonatomic, readonly) IHPForceUpdateModel *forceUpdate;
 @property (nonatomic, readonly) XDSAdInfoModel *adInfo;
 @property (nonatomic, readonly) NSArray<IHPMenuModel *> *menus;
+@property (strong, nonatomic) NSArray<NSString*> *searchkeys;
 
 - (void)configManagerWithJsondData:(NSData *)configData;
 - (void)configHiddenModelWithJsondData:(NSData *)hiddenModelData;

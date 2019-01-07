@@ -37,6 +37,9 @@
 - (XDSAdInfoModel *)adInfo {
     return _configModel.adInfo;
 }
+- (NSArray<NSString *> *)searchkeys {
+    return _configModel.searchkeys;
+}
 - (NSArray<IHPMenuModel *> *)menus{
     NSMutableArray *availibleMenus = [NSMutableArray arrayWithCapacity:0];
     for (IHPMenuModel *aMenuModel in _configModel.menus) {

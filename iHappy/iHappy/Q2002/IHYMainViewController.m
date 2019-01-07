@@ -198,6 +198,7 @@
     if (self.menuModel.type == IHPMenuTypeVideo) {
         IHYHomsSearchViewController *searchVC = [[IHYHomsSearchViewController alloc] init];
         searchVC.searchPlaceholder = @"输入搜索关键字";
+        searchVC.hotSearches = [IHPConfigManager shareManager].searchkeys;
         searchVC.rootUrl = self.menuModel.rooturl;
         UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:searchVC];
         nav.navigationBar.translucent = NO;
@@ -205,6 +206,7 @@
     }else if (self.menuModel.type == IHPMenuTypeQ2002) {
         XDSHTMLVideoSearchVC *searchVC = [[XDSHTMLVideoSearchVC alloc] init];
         searchVC.menuModel = self.menuModel;
+        searchVC.hotSearches = [IHPConfigManager shareManager].searchkeys;
         UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:searchVC];
         nav.navigationBar.translucent = NO;
         [self presentViewController:nav animated:NO completion:nil];

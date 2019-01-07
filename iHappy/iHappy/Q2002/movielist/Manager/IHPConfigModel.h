@@ -17,5 +17,6 @@
 @property (strong, nonatomic) IHPForceUpdateModel *forceUpdate;
 @property (strong, nonatomic) XDSAdInfoModel *adInfo;
 @property (strong, nonatomic) NSArray<IHPMenuModel> *menus;
+@property (strong, nonatomic) NSArray<NSString*> *searchkeys;
 
 @end
