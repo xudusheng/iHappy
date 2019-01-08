@@ -13,8 +13,6 @@ static UIStatusBarStyle splashVCStatusBarStyle = UIStatusBarStyleDefault;
 
 @interface XDSPlaceholdSplashViewController ()
 
-@property (nonatomic, strong) UIImageView * splashImageView;
-
 @end
 
 @implementation XDSPlaceholdSplashViewController

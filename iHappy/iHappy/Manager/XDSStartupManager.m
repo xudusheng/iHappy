@@ -13,9 +13,12 @@
 #import "XDSTaskQueue.h"
 #import "IHPMenuViewController.h"
 
+
+#import "IHPPlaceholderSplashViewController.h"
 #import "IHYMainViewController.h"
 #import "XDSMainReaderVC.h"
 #import "AppDelegate.h"
+
 NSString * const kXDSEnterMainViewFinishedNotification = @"XDSEnterMainViewFinishedNotification";
 
 @implementation XDSStartupManager
@@ -53,6 +56,7 @@ NSString * const kXDSEnterMainViewFinishedNotification = @"XDSEnterMainViewFinis
     XDSRootViewController *rootViewController = [XDSRootViewController sharedRootViewController];
     [UIApplication sharedApplication].delegate.window.rootViewController = rootViewController;
     
+
     XDSPlaceholdSplashViewController *customPlaceholdSplashVC = [[XDSSettingsManager sharedManager] customPlaceholdSplashViewController];
     if (customPlaceholdSplashVC) {
         [[XDSPlaceholdSplashManager sharedManager] showPlaceholderSplashViewWithViewController:customPlaceholdSplashVC];
@@ -67,7 +71,7 @@ NSString * const kXDSEnterMainViewFinishedNotification = @"XDSEnterMainViewFinis
     if (!self.launchTaskQueueFinished) {
         [[XDSSettingsManager sharedManager] setOnlyOnceWhenLaunchTaskQueueFinished];
         [self initMainViewLaunchingOptions:launchOptions];
-        [[XDSPlaceholdSplashManager sharedManager] removePlaceholderSplashView];
+//        [[XDSPlaceholdSplashManager sharedManager] removePlaceholderSplashView];
         self.launchTaskQueueFinished = YES;
         [[NSNotificationCenter defaultCenter] postNotificationName:kXDSEnterMainViewFinishedNotification object:nil];
     }
@@ -166,6 +170,8 @@ NSString *const kXDSUpdateLocalizableTaskID = @"XDSUpdateLocalizableTask";
 #endif
     
     [_launchTaskQueue goWithFinishedBlock:^(XDSTaskQueue *taskQueue) {
+        IHPPlaceholderSplashViewController *customPlaceholdSplashVC = (IHPPlaceholderSplashViewController *)[[XDSSettingsManager sharedManager] customPlaceholdSplashViewController];
+        [customPlaceholdSplashVC handleUpdate];
         //enter main page
         [self enterMainViewWithLaunchingOptions:nil];
     }];

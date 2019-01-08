@@ -50,6 +50,12 @@
     return availibleMenus;
 }
 
+- (NSArray<XDSSkipModel *> *)launch_pop_list {
+    return _configModel.launch_pop_list;
+}
+- (NSArray<XDSSkipModel *> *)home_pop_list {
+    return _configModel.home_pop_list;
+}
 - (void)setConfigModel:(IHPConfigModel *)configModel{
     _configModel = configModel;
 }

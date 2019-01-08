@@ -12,6 +12,13 @@
 #import <UMCommon/UMCommon.h>
 #import <BaiduMobAdSDK/BaiduMobAdSetting.h>
 
+#import "IHPPlaceholderSplashViewController.h"
+
+@interface  XDSSettingsManager()
+
+@property (nonatomic,strong) IHPPlaceholderSplashViewController *spashVC;
+
+@end
 @implementation XDSSettingsManager
 + (instancetype)sharedManager
 {
@@ -39,7 +46,10 @@
     [self addObserverNotification];
 }
 - (XDSPlaceholdSplashViewController *)customPlaceholdSplashViewController {
-    return nil;
+    if (self.spashVC == nil) {
+        self.spashVC = [[IHPPlaceholderSplashViewController alloc] init];
+    }
+    return self.spashVC;
 }
 
 #pragma mark - UI Style

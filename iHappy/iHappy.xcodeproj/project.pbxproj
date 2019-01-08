@@ -147,6 +147,8 @@
 		1861C6E0215A1C3D005A03D7 /* logo_book.png in Resources */ = {isa = PBXBuildFile; fileRef = 1861C6DF215A1C3D005A03D7 /* logo_book.png */; };
 		186DA10221A4E39E00C5F5F8 /* note.html in Resources */ = {isa = PBXBuildFile; fileRef = 186DA10021A4E39D00C5F5F8 /* note.html */; };
 		186DA10321A4E39E00C5F5F8 /* subnote.html in Resources */ = {isa = PBXBuildFile; fileRef = 186DA10121A4E39D00C5F5F8 /* subnote.html */; };
+		1877C9CC21E48A520002380F /* IHPPlaceholderSplashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1877C9CB21E48A520002380F /* IHPPlaceholderSplashViewController.m */; };
+		1877C9D221E4ABD00002380F /* XDSSkipModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1877C9D121E4ABD00002380F /* XDSSkipModel.m */; };
 		1885EDC421605A91004C4FD7 /* unavailible_url.json in Resources */ = {isa = PBXBuildFile; fileRef = 1885EDC321605A90004C4FD7 /* unavailible_url.json */; };
 		1885EDC721607030004C4FD7 /* IHYHiddenModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1885EDC621607030004C4FD7 /* IHYHiddenModel.m */; };
 		1885EDCA2160709D004C4FD7 /* IHYHiddenItemModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1885EDC92160709D004C4FD7 /* IHYHiddenItemModel.m */; };
@@ -645,6 +647,10 @@
 		1861C6DF215A1C3D005A03D7 /* logo_book.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_book.png; sourceTree = "<group>"; };
 		186DA10021A4E39D00C5F5F8 /* note.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = note.html; sourceTree = "<group>"; };
 		186DA10121A4E39D00C5F5F8 /* subnote.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = subnote.html; sourceTree = "<group>"; };
+		1877C9CA21E48A520002380F /* IHPPlaceholderSplashViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IHPPlaceholderSplashViewController.h; sourceTree = "<group>"; };
+		1877C9CB21E48A520002380F /* IHPPlaceholderSplashViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IHPPlaceholderSplashViewController.m; sourceTree = "<group>"; };
+		1877C9D021E4ABD00002380F /* XDSSkipModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XDSSkipModel.h; sourceTree = "<group>"; };
+		1877C9D121E4ABD00002380F /* XDSSkipModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XDSSkipModel.m; sourceTree = "<group>"; };
 		1885EDC321605A90004C4FD7 /* unavailible_url.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = unavailible_url.json; sourceTree = "<group>"; };
 		1885EDC521607030004C4FD7 /* IHYHiddenModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IHYHiddenModel.h; sourceTree = "<group>"; };
 		1885EDC621607030004C4FD7 /* IHYHiddenModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IHYHiddenModel.m; sourceTree = "<group>"; };
@@ -1819,10 +1825,12 @@
 		18A6FA54212FFFB900709EC9 /* PlaceholderSplashViewController */ = {
 			isa = PBXGroup;
 			children = (
-				18A6FA56212FFFB900709EC9 /* XDSPlaceholdSplashManager.m */,
 				18A6FA57212FFFB900709EC9 /* XDSPlaceholdSplashManager.h */,
+				18A6FA56212FFFB900709EC9 /* XDSPlaceholdSplashManager.m */,
 				18A6FA58212FFFB900709EC9 /* XDSPlaceholdSplashViewController.h */,
 				18A6FA55212FFFB900709EC9 /* XDSPlaceholdSplashViewController.m */,
+				1877C9CA21E48A520002380F /* IHPPlaceholderSplashViewController.h */,
+				1877C9CB21E48A520002380F /* IHPPlaceholderSplashViewController.m */,
 			);
 			path = PlaceholderSplashViewController;
 			sourceTree = "<group>";
@@ -2364,6 +2372,8 @@
 			children = (
 				A29B03F32142D88100876433 /* XDSBaseResponseModel.h */,
 				A29B03F42142D88100876433 /* XDSBaseResponseModel.m */,
+				1877C9D021E4ABD00002380F /* XDSSkipModel.h */,
+				1877C9D121E4ABD00002380F /* XDSSkipModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -2995,6 +3005,7 @@
 				A249081D21B0B35600E23542 /* YBIBWebImageManager.m in Sources */,
 				A249081921B0B35600E23542 /* YBImageBrowserSheetView.m in Sources */,
 				181E53D0214F928000E8A704 /* CXMLElement_CreationExtensions.m in Sources */,
+				1877C9D221E4ABD00002380F /* XDSSkipModel.m in Sources */,
 				18A6FA9C21300D5800709EC9 /* UIAlertController+XDS.m in Sources */,
 				A249081F21B0B35600E23542 /* YBIBCopywriter.m in Sources */,
 				A249081A21B0B35600E23542 /* YBImage.m in Sources */,
@@ -3099,6 +3110,7 @@
 				092CAEFB1DE28620008127DA /* IHYViewControllerModel.m in Sources */,
 				181E53C6214F928000E8A704 /* CXMLNamespaceNode.m in Sources */,
 				A2755B8F21665B5300006989 /* XDSHTMLVideoSearchVC.m in Sources */,
+				1877C9CC21E48A520002380F /* IHPPlaceholderSplashViewController.m in Sources */,
 				A249081621B0B35600E23542 /* YBImageBrowserProgressView.m in Sources */,
 				1819E43B21A3EADF00F67F56 /* ZFVolumeBrightnessView.m in Sources */,
 				FCAFC6111EAED7DF00B48C83 /* IHPConfigModel.m in Sources */,
