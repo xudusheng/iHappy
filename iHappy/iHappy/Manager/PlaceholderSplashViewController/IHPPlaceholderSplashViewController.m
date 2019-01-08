@@ -62,8 +62,6 @@ NSInteger const kLaunchAdShowTime = 3;
         button;
     });
     self.timeInterval = kSplashVCWaitingTime;
-    self.timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(handleCountDown) userInfo:nil repeats:YES];
-    [self.timer fire];
     
     self.timeCount.hidden = YES;
     
@@ -79,7 +77,12 @@ NSInteger const kLaunchAdShowTime = 3;
     
     
     [self.view bringSubviewToFront:self.timeCount];
-//    [self handleUpdate];
+}
+
+- (void)configLaunch {
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(handleCountDown) userInfo:nil repeats:YES];
+    [self.timer fire];
+    [self handleUpdate];
 }
 
 - (void)timeCountButtonClick:(UIButton *)button {
@@ -127,10 +130,10 @@ NSInteger const kLaunchAdShowTime = 3;
         //        IHP.update.content.force = 发现新版本，请前往下载最新版本！
         //        IHP.update.content = 发现新版本！是否升级？
         [UIAlertController showAlertInViewController:self
-                                           withTitle:(updateModel.isForce > 0)?XDSLocalizedString(@"IHP.update.content.force", nil):XDSLocalizedString(@"IHP.update.title", nil)
-                                             message:updateModel.updateMessage.length?updateModel.updateMessage:XDSLocalizedString(@"IHP.update.content", nil)
-                                   cancelButtonTitle:(updateModel.isForce > 0)?nil:XDSLocalizedString(@"IHP.update.cancel", nil)
-                                   otherButtonTitles:@[XDSLocalizedString(@"IHP.update.update", nil)]
+                                           withTitle:(updateModel.isForce > 0)?XDSLocalizedString(@"xds.update.content.force", nil):XDSLocalizedString(@"xds.update.title", nil)
+                                             message:updateModel.updateMessage.length?updateModel.updateMessage:XDSLocalizedString(@"xds.update.content", nil)
+                                   cancelButtonTitle:(updateModel.isForce > 0)?nil:XDSLocalizedString(@"xds.update.cancel", nil)
+                                   otherButtonTitles:@[XDSLocalizedString(@"xds.update.update", nil)]
                                             tapBlock:^(UIAlertController * _Nonnull controller, UIAlertAction * _Nonnull action, NSInteger buttonIndex) {
                                                 if (controller.cancelButtonIndex != buttonIndex) {
                                                     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:updateModel.ios_download_url]];

@@ -10,4 +10,11 @@
 
 @implementation IHPConfigModel
 
++(NSDictionary *)mj_objectClassInArray {
+    return @{
+             @"menus":@"IHPMenuModel",
+             @"launch_pop_list":@"XDSSkipModel",
+             @"home_pop_list":@"XDSSkipModel",
+             };
+}
 @end

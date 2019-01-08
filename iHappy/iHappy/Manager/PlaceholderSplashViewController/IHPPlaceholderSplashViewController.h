@@ -10,6 +10,7 @@
 
 @interface IHPPlaceholderSplashViewController : XDSPlaceholdSplashViewController
 
-- (void)handleUpdate;
+- (void)configLaunch;
+
 
 @end

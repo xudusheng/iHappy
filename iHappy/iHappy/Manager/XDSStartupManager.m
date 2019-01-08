@@ -54,12 +54,14 @@ NSString * const kXDSEnterMainViewFinishedNotification = @"XDSEnterMainViewFinis
 
 //    //init root view controller
     XDSRootViewController *rootViewController = [XDSRootViewController sharedRootViewController];
+    rootViewController.view.backgroundColor = [UIColor yellowColor];
     [UIApplication sharedApplication].delegate.window.rootViewController = rootViewController;
     
 
     XDSPlaceholdSplashViewController *customPlaceholdSplashVC = [[XDSSettingsManager sharedManager] customPlaceholdSplashViewController];
     if (customPlaceholdSplashVC) {
         [[XDSPlaceholdSplashManager sharedManager] showPlaceholderSplashViewWithViewController:customPlaceholdSplashVC];
+
     }else {
         [[XDSPlaceholdSplashManager sharedManager] showPlaceholderSplashView];
     }
@@ -71,7 +73,6 @@ NSString * const kXDSEnterMainViewFinishedNotification = @"XDSEnterMainViewFinis
     if (!self.launchTaskQueueFinished) {
         [[XDSSettingsManager sharedManager] setOnlyOnceWhenLaunchTaskQueueFinished];
         [self initMainViewLaunchingOptions:launchOptions];
-//        [[XDSPlaceholdSplashManager sharedManager] removePlaceholderSplashView];
         self.launchTaskQueueFinished = YES;
         [[NSNotificationCenter defaultCenter] postNotificationName:kXDSEnterMainViewFinishedNotification object:nil];
     }
@@ -100,6 +101,8 @@ NSString * const kXDSEnterMainViewFinishedNotification = @"XDSEnterMainViewFinis
     
     IHPMenuViewController *leftMenu = [[IHPMenuViewController alloc] init];
     leftMenu.menus = menus;
+    [XDSRootViewController sharedRootViewController].mainViewController = leftMenu;
+    return;
     
     IHPMenuModel *theMenu = menus.firstObject;
     
@@ -107,25 +110,24 @@ NSString * const kXDSEnterMainViewFinishedNotification = @"XDSEnterMainViewFinis
                                                           leftMenuViewController:leftMenu
                                                          rightMenuViewController:nil];
     
-    mainmeunVC.contentViewInLandscapeOffsetCenterX = -480;
+    mainmeunVC.contentViewInLandscapeOffsetCenterX = -420;
 //    mainmeunVC.animationDuration = 2.f;
-    mainmeunVC.contentViewShadowColor = [UIColor blackColor];
-    mainmeunVC.contentViewShadowOffset = CGSizeMake(0, 0);
-    mainmeunVC.contentViewShadowOpacity = 0.6;
-    mainmeunVC.contentViewShadowRadius = 12;
-    mainmeunVC.contentViewShadowEnabled = YES;
+//    mainmeunVC.contentViewShadowColor = [UIColor blackColor];
+//    mainmeunVC.contentViewShadowOffset = CGSizeMake(0, 0);
+//    mainmeunVC.contentViewShadowOpacity = 0.6;
+//    mainmeunVC.contentViewShadowRadius = 12;
+//    mainmeunVC.contentViewShadowEnabled = YES;
     mainmeunVC.scaleMenuView = NO;
     mainmeunVC.scaleContentView = NO;
     mainmeunVC.parallaxEnabled = NO;
-    mainmeunVC.bouncesHorizontally = NO;
     
     mainmeunVC.panGestureEnabled = YES;
     mainmeunVC.panFromEdge = YES;
     mainmeunVC.panMinimumOpenThreshold = 60.0;
-    //    mainmeunVC.bouncesHorizontally = NO;    
+    mainmeunVC.bouncesHorizontally = NO;    
     mainmeunVC.delegate = leftMenu;
     [XDSRootViewController sharedRootViewController].mainViewController = mainmeunVC;
-    
+
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     appDelegate.leftMenu = leftMenu;
     appDelegate.mainmeunVC = mainmeunVC;
@@ -170,8 +172,8 @@ NSString *const kXDSUpdateLocalizableTaskID = @"XDSUpdateLocalizableTask";
 #endif
     
     [_launchTaskQueue goWithFinishedBlock:^(XDSTaskQueue *taskQueue) {
-        IHPPlaceholderSplashViewController *customPlaceholdSplashVC = (IHPPlaceholderSplashViewController *)[[XDSSettingsManager sharedManager] customPlaceholdSplashViewController];
-        [customPlaceholdSplashVC handleUpdate];
+        IHPPlaceholderSplashViewController *splashVC = [XDSSettingsManager sharedManager].customPlaceholdSplashViewController;
+        [splashVC configLaunch];
         //enter main page
         [self enterMainViewWithLaunchingOptions:nil];
     }];

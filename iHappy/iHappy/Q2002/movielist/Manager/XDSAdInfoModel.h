@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface XDSAdInfoModel : JSONModel
+@interface XDSAdInfoModel : NSObject
 
 @property (assign, nonatomic) BOOL enable;//广告是否开启
 @property (assign, nonatomic) BOOL player_enable;//是否在播放器上显示广告

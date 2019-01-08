@@ -22,13 +22,8 @@
 }
 
 - (void)configManagerWithJsondData:(NSData *)configData{
-    NSError* err = nil;
-    IHPConfigModel *configModel = [[IHPConfigModel alloc] initWithData:configData error:&err];
-    if (!err) {
-        [self setConfigModel:configModel];
-    }else{
-        NSLog(@"error = %@", err);
-    }
+    IHPConfigModel *configModel = [IHPConfigModel mj_objectWithKeyValues:configData];
+    [self setConfigModel:configModel];
 }
 
 - (IHPForceUpdateModel *)forceUpdate{

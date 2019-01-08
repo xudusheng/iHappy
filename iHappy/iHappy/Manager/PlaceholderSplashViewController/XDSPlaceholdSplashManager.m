@@ -28,7 +28,6 @@
 
 - (void)showPlaceholderSplashViewWithViewController:(XDSPlaceholdSplashViewController *)viewController
 {
-    viewController.isCustomView = YES;
     [self displayPlaceholderSplashView:viewController];
 }
 

@@ -1,35 +1,40 @@
 {
     "forceUpdate": {
         "enable": true,
-        "isForce": false,
+        "isForce": true,
         "url": "https://itunes.apple.com/cn/app/id1438199023",
-        "ios_download_url":"https://itunes.apple.com/cn/app/id1438199023",
-        "android_download_url":"https://itunes.apple.com/cn/app/id1438199023",
+        "ios_download_url": "https://itunes.apple.com/cn/app/id1438199023",
+        "android_download_url": "https://itunes.apple.com/cn/app/id1438199023",
         "updateMessage": "发现新版本，更新如下\n1、惺惺惜惺惺；\n2、一月又一月晕；\n3、吾问无为谓无",
-        "version": "1.0.1"
+        "version": "1.0.5"
     },
-    "adInfo":{
-        "enable":true,
-        "player_enable":true,
-        "index":23,
+    "adInfo": {
+        "enable": true,
+        "player_enable": true,
+        "index": 23
     },
-    "searchkeys":["星辰变2018", "海贼王", "格子间女人"],
+    "searchkeys": [
+        "星辰变2018",
+        "海贼王",
+        "格子间女人"
+    ],
     "menus": [
-    {
-        "title": "小微美女",
-        "menuId": "kPicture",
-        "type": "4",
-        "rooturl": "http://134.175.54.80/ihappy/meizi/query.php",
-        "enable": true,
-        "subMenus": []
-    },{
-        "title": "小微帅哥",
-        "menuId": "kShuaigePicture",
-        "type": "5",
-        "rooturl": "http://134.175.54.80/ihappy/meizi/query.php",
-        "enable": true,
-        "subMenus": []
-    },
+        {
+            "title": "小微美女",
+            "menuId": "kPicture",
+            "type": "4",
+            "rooturl": "http://134.175.54.80/ihappy/meizi/query.php",
+            "enable": true,
+            "subMenus": []
+        },
+        {
+            "title": "小微帅哥",
+            "menuId": "kShuaigePicture",
+            "type": "5",
+            "rooturl": "http://134.175.54.80/ihappy/meizi/query.php",
+            "enable": true,
+            "subMenus": []
+        },
         {
             "title": "小微视频",
             "menuId": "kHome",
@@ -87,28 +92,28 @@
     "home_pop_list": [
         {
             "pic": "https://img.bisinuolan.cn/b3a49311-0614-4914-b2c4-000e3bfa0666-1546858135781.png",
-            "subtitle": "",
+            "content": "",
             "title": "年货节",
             "type": 0,
             "type_val": ""
         },
         {
             "pic": "https://img.bisinuolan.cn/b3a49311-0614-4914-b2c4-000e3bfa0666-1546858135781.png",
-            "subtitle": "",
+            "content": "",
             "title": "年货节",
             "type": 0,
             "type_val": ""
         },
         {
             "pic": "https://img.bisinuolan.cn/b3a49311-0614-4914-b2c4-000e3bfa0666-1546858135781.png",
-            "subtitle": "",
+            "content": "",
             "title": "年货节",
             "type": 0,
             "type_val": ""
         },
         {
             "pic": "https://img.bisinuolan.cn/b3a49311-0614-4914-b2c4-000e3bfa0666-1546858135781.png",
-            "subtitle": "",
+            "content": "",
             "title": "年货节",
             "type": 0,
             "type_val": ""
@@ -117,28 +122,28 @@
     "launch_pop_list": [
         {
             "pic": "http://n.sinaimg.cn/sinacn08/133/w640h1093/20180824/0868-hicsiaw0764475.jpg",
-            "subtitle": "",
+            "content": "",
             "title": "年货节",
             "type": 0,
             "type_val": ""
         },
         {
             "pic": "http://n.sinaimg.cn/sinacn08/133/w640h1093/20180824/0317-hicsiaw0768149.jpg",
-            "subtitle": "",
+            "content": "",
             "title": "年货节",
             "type": 0,
             "type_val": ""
         },
         {
             "pic": "http://img.xspic.com/img8/225/112/2453729_7.jpg",
-            "subtitle": "",
+            "content": "",
             "title": "年货节",
             "type": 0,
             "type_val": ""
         },
         {
             "pic": "http://s1.sinaimg.cn/large/006SDutnzy7hD0mnkmLbb",
-            "subtitle": "",
+            "content": "",
             "title": "年货节",
             "type": 0,
             "type_val": ""

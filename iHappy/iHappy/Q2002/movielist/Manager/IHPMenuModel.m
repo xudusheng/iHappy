@@ -25,6 +25,13 @@
 
 @implementation IHPMenuModel
 
++ (NSDictionary *)mj_objectClassInArray {
+    return @{
+             @"subMenus":@"IHPSubMenuModel"
+             };
+}
+
+
 - (UINavigationController *)contentViewController {
     if (!_contentViewController) {        
         UIViewController *contentController;

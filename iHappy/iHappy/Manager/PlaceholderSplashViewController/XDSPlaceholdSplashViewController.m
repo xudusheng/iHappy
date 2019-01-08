@@ -36,23 +36,16 @@ static UIStatusBarStyle splashVCStatusBarStyle = UIStatusBarStyleDefault;
     [super viewDidLoad];
     
     if (!self.isCustomView) {
+        self.view.backgroundColor = [UIColor redColor];
         self.splashImageView = [[UIImageView alloc] initWithFrame:self.view.bounds];
         [self.view addSubview:self.splashImageView];
         NSString * imageName = [self getCurrentLaunchImageName];
         self.splashImageView.image = [UIImage imageNamed:imageName];
-        
-//        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"LaunchScreen" bundle:nil];
-//        UIViewController *lanchVC = [storyboard instantiateViewControllerWithIdentifier:@"LaunchScreenViewController"];
-//        lanchVC.view.frame = self.view.bounds;
-//        [self.view addSubview:lanchVC.view];
-//        [self addChildViewController:lanchVC];
     }
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    
-    
 }
 
 - (void)viewDidAppear:(BOOL)animated {

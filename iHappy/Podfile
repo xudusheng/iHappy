@@ -23,6 +23,8 @@ pod 'JSONModel'
 pod 'MJExtension'
 pod 'WMPageController'
 
+#侧滑菜单
+pod 'SideMenu', '~> 5.0.3'
 
 #AOP面向切面思想
 pod 'AspectsV1.4.2', '~> 1.4.2'

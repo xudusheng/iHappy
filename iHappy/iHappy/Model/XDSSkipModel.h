@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface XDSSkipModel : JSONModel
+@interface XDSSkipModel : NSObject
 
 @property (copy, nonatomic) NSString *title;
 @property (copy, nonatomic) NSString *content;

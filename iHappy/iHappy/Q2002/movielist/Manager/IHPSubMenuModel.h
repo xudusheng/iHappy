@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface IHPSubMenuModel : JSONModel
+@interface IHPSubMenuModel : NSObject
 
 @property (copy, nonatomic) NSString *title;
 
