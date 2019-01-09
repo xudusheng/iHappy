@@ -111,7 +111,12 @@ NSString * const MovieListViewController_movieCellIdentifier = @"IHPMovieCell";
 #pragma mark - 点击事件处理
 - (void)fetchMovieList:(BOOL)isTop{
     __weak typeof(self)weakSelf = self;
-    [[[XDSHttpRequest alloc] init] htmlRequestWithHref:isTop?_firstPageUrl:_nextPageUrl
+    
+    NSString *url = isTop?_firstPageUrl:_nextPageUrl;
+    if (![url hasPrefix:@"http"]) {
+        url = [self.menuModel.rooturl stringByAppendingString:url];
+    }
+    [[[XDSHttpRequest alloc] init] htmlRequestWithHref:url
                                          hudController:self
                                                showHUD:NO
                                                HUDText:nil
