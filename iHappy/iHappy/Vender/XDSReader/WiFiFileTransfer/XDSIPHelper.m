@@ -16,7 +16,8 @@
 
 @implementation XDSIPHelper
 + (NSString *)deviceIPAdress {
-    NSString *address = @"an error occurred when obtaining ip address";
+//    NSString *address = @"an error occurred when obtaining ip address";
+    NSString *address = @"";
     struct ifaddrs *interfaces = NULL;
     struct ifaddrs *temp_addr = NULL;
     int success = 0;

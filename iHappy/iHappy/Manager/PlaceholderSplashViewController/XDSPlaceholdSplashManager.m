@@ -10,6 +10,7 @@
 #import "XDSPlaceholdSplashViewController.h"
 #import "XDSRootViewController.h"
 
+#import "IHPHomePopAdViewController.h"
 @interface XDSPlaceholdSplashManager ()
 @property (weak, nonatomic) XDSPlaceholdSplashViewController *placeholdSplashViewController;
 @end
@@ -54,5 +55,15 @@
     [[UIApplication sharedApplication].delegate.window makeKeyAndVisible];
 }
 
+- (BOOL)isShowing {
+    return _placeholdSplashViewController != nil;
+}
+
+- (void)showHomePop {
+    if ([IHPConfigManager shareManager].popImage && (NO == self.isShowing)) {
+        IHPHomePopAdViewController *popVC = [[IHPHomePopAdViewController alloc] init];
+        [[XDSRootViewController sharedRootViewController].mainViewController presentViewController:popVC animated:NO inRransparentForm:YES completion:nil];
+    }
+}
 
 @end

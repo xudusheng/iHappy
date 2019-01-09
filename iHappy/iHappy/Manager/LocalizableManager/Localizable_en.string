@@ -22,7 +22,8 @@ xds.blank.page.tip.title.unknowerror = 貌似出了点差错，请稍后重试~
 xds.blank.page.reload.title.unknowerror  = 刷新
 
 
-
+#setting
+xds.setting.clearmemery.content = 是否确定要清空缓存？
 
 xds.update.content.force = 发现新版本
 xds.update.content = 发现新版本！是否升级？

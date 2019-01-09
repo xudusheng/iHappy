@@ -44,12 +44,24 @@
 
 #pragma mark - private method 其他私有方法
 - (void)clearMemery {
-    __weak typeof(self)weakSelf = self;
-    [[SDImageCache sharedImageCache] clearMemory];
-    [[SDImageCache sharedImageCache] clearDiskOnCompletion:^{
-        [XDSUtilities showHudSuccess:@"缓存清理成功~" rootView:self.view imageName:nil];
-        [weakSelf setUsedMemerySize];
-    }];
+    
+    [UIAlertController showAlertInViewController:self
+                                       withTitle:nil
+                                         message:XDSLocalizedString(@"xds.setting.clearmemery.content", nil)
+                               cancelButtonTitle:XDSLocalizedString(@"xds.ui.cancel", nil)
+                               otherButtonTitles:@[XDSLocalizedString(@"xds.ui.ok", nil)]
+                                        tapBlock:^(UIAlertController * _Nonnull controller, UIAlertAction * _Nonnull action, NSInteger buttonIndex) {
+                                            if (controller.cancelButtonIndex == buttonIndex) {
+                                                [[IHPConfigManager shareManager] downloadPopImage];
+                                            }else {
+                                                __weak typeof(self)weakSelf = self;
+                                                [[SDImageCache sharedImageCache] clearMemory];
+                                                [[SDImageCache sharedImageCache] clearDiskOnCompletion:^{
+                                                    [XDSUtilities showHudSuccess:@"缓存清理成功~" rootView:self.view imageName:nil];
+                                                    [weakSelf setUsedMemerySize];
+                                                }];
+                                            }
+                                        }];
 }
 
 - (void)setUsedMemerySize{

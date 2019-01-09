@@ -35,8 +35,16 @@ YBImageBrowserDelegate
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self biZhiListViewControllerDataInit];
+    self.view.backgroundColor = [UIColor whiteColor];
     [self createBiZhiListViewControllerUI];
+    [XDSUtilities showHud:self.view text:nil];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        [self biZhiListViewControllerDataInit];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self headerRequest];
+            [XDSUtilities hideHud:self.view];
+        });
+    });
 }
 
 #pragma mark - UI相关
@@ -81,10 +89,9 @@ YBImageBrowserDelegate
                                                                  refreshingAction:@selector(headerRequest)];
     _collectionView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self
                                                                      refreshingAction:@selector(footerRequest)];
-    [_collectionView.mj_header beginRefreshing];
     
     [[XDSAdManager sharedManager] showInterstitialAD];
-
+    
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -279,6 +286,7 @@ YBImageBrowserDelegate
         YBImageBrowseCellData *data = [YBImageBrowseCellData new];
         data.url = [NSURL URLWithString:img_url];
         data.sourceObject = [self sourceObjAtIdx:index];
+        data.maxZoomScale = 3.f;
         [browserDataArr addObject:data];
     }
     
@@ -302,6 +310,11 @@ YBImageBrowserDelegate
         NSString *filePath = [bundle pathForResource:@"shuaigetupian" ofType:@"txt"];
         NSData *imgListData = [NSData dataWithContentsOfFile:filePath];
         NSString *imgListString = [[NSString alloc] initWithData:imgListData encoding:NSUTF8StringEncoding];
+        
+        NSString *remoteImgListString = [IHPConfigManager shareManager].shuaige;
+        if (remoteImgListString.length > 0) {
+            imgListString = [NSString stringWithFormat:@"%@;%@",imgListString, remoteImgListString];
+        }
         NSArray *imgList = [imgListString componentsSeparatedByString:@";"];
         
         NSSet *set = [NSSet setWithArray:imgList];
@@ -337,7 +350,7 @@ YBImageBrowserDelegate
                 //不同组图片的处理：先把第一张大图赋值给作为image_src（小图），把大图数组赋值，再新建model继续下一个循环
                 if (![meituModel.image_src isEqualToString:smallAndBig.firstObject]) {
                     if (meituModel) {
-//                        meituModel.image_src = img_list.firstObject;
+                        //                        meituModel.image_src = img_list.firstObject;
                         meituModel.imageList = img_list;
                         [meituModelList addObject:meituModel];
                     }
@@ -354,24 +367,14 @@ YBImageBrowserDelegate
         meituModel.imageList = img_list;
         [meituModelList addObject:meituModel];
         
-       //随机排序
-        NSInteger index = 0;
-        if (imgList.count > 0) {
-            NSString *url = imgList.firstObject;
-            if (url.length > 23) {
-                index = arc4random()%18+1;
-            }
-        }
-       [meituModelList sortUsingComparator:^NSComparisonResult(XDSMeituModel  *obj1, XDSMeituModel *obj2) {
-           NSString *jpg_1 = [obj1.image_src componentsSeparatedByString:@"/"].lastObject;
-           NSString *jpg_2 = [obj2.image_src componentsSeparatedByString:@"/"].lastObject;
-           NSInteger location = arc4random()%9+1;
-
-           if (jpg_1.length <= location || jpg_2.length <= location) {
-               return [jpg_1 compare:jpg_2] == NSOrderedAscending;
-           }
-           return [[jpg_1 substringFromIndex:location] compare:[jpg_2 substringFromIndex:location]] == NSOrderedAscending;
-       }];
+        //随机排序
+        NSInteger location = arc4random()%30+1;
+        NSInteger length = 1;
+        [meituModelList sortUsingComparator:^NSComparisonResult(XDSMeituModel  *obj1, XDSMeituModel *obj2) {
+            NSString *subString1 = [obj1.image_src.xds_md5 substringWithRange:NSMakeRange(location, length)];
+            NSString *subString2 = [obj2.image_src.xds_md5 substringWithRange:NSMakeRange(location, length)];
+            return ([subString1 compare:subString2] == NSOrderedAscending);
+        }];
         
         for (XDSMeituModel *model in meituModelList) {
             model.image_src = model.imageList.firstObject;

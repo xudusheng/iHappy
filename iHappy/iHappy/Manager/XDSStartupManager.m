@@ -53,11 +53,10 @@ NSString * const kXDSEnterMainViewFinishedNotification = @"XDSEnterMainViewFinis
 //    [self addApplicationNotifications];
 
 //    //init root view controller
+    [XDSRootViewController needAdjustPageLevel:YES];
     XDSRootViewController *rootViewController = [XDSRootViewController sharedRootViewController];
-    rootViewController.view.backgroundColor = [UIColor yellowColor];
     [UIApplication sharedApplication].delegate.window.rootViewController = rootViewController;
     
-
     XDSPlaceholdSplashViewController *customPlaceholdSplashVC = [[XDSSettingsManager sharedManager] customPlaceholdSplashViewController];
     if (customPlaceholdSplashVC) {
         [[XDSPlaceholdSplashManager sharedManager] showPlaceholderSplashViewWithViewController:customPlaceholdSplashVC];
@@ -100,9 +99,6 @@ NSString * const kXDSEnterMainViewFinishedNotification = @"XDSEnterMainViewFinis
     NSArray<IHPMenuModel*> *menus = [IHPConfigManager shareManager].menus;
     
     IHPMenuViewController *leftMenu = [[IHPMenuViewController alloc] init];
-    leftMenu.menus = menus;
-    [XDSRootViewController sharedRootViewController].mainViewController = leftMenu;
-    return;
     
     IHPMenuModel *theMenu = menus.firstObject;
     
@@ -112,19 +108,18 @@ NSString * const kXDSEnterMainViewFinishedNotification = @"XDSEnterMainViewFinis
     
     mainmeunVC.contentViewInLandscapeOffsetCenterX = -420;
 //    mainmeunVC.animationDuration = 2.f;
-//    mainmeunVC.contentViewShadowColor = [UIColor blackColor];
-//    mainmeunVC.contentViewShadowOffset = CGSizeMake(0, 0);
-//    mainmeunVC.contentViewShadowOpacity = 0.6;
-//    mainmeunVC.contentViewShadowRadius = 12;
-//    mainmeunVC.contentViewShadowEnabled = YES;
+    mainmeunVC.contentViewShadowColor = [UIColor blackColor];
+    mainmeunVC.contentViewShadowOffset = CGSizeMake(0, 0);
+    mainmeunVC.contentViewShadowOpacity = 0.6;
+    mainmeunVC.contentViewShadowRadius = 12;
+    mainmeunVC.contentViewShadowEnabled = YES;
     mainmeunVC.scaleMenuView = NO;
     mainmeunVC.scaleContentView = NO;
-    mainmeunVC.parallaxEnabled = NO;
-    
+    mainmeunVC.contentViewScaleValue = 0.9;
     mainmeunVC.panGestureEnabled = YES;
     mainmeunVC.panFromEdge = YES;
     mainmeunVC.panMinimumOpenThreshold = 60.0;
-    mainmeunVC.bouncesHorizontally = NO;    
+    mainmeunVC.bouncesHorizontally = NO;
     mainmeunVC.delegate = leftMenu;
     [XDSRootViewController sharedRootViewController].mainViewController = mainmeunVC;
 
@@ -176,26 +171,30 @@ NSString *const kXDSUpdateLocalizableTaskID = @"XDSUpdateLocalizableTask";
         [splashVC configLaunch];
         //enter main page
         [self enterMainViewWithLaunchingOptions:nil];
+        [self fetchMeiziFileContent];
+        [self fetchShuaigeFileContent];
     }];
     
 }
 
 
 - (void)fetchConfigData{
-    
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"menu" ofType:@"json"];
-    NSData *menuData = [NSData dataWithContentsOfFile:path];
-    NSLog(@"%@", [[NSString alloc] initWithData:menuData encoding:NSUTF8StringEncoding]);
 
-    IHPConfigManager *manager = [IHPConfigManager shareManager];
-    [manager configManagerWithJsondData:menuData];
-    [self finishTaskWithTaksID:kXDSFetchConfigTaskID];
-
-    return;
+//    NSString *path = [[NSBundle mainBundle] pathForResource:@"menu" ofType:@"json"];
+//    NSData *menuData = [NSData dataWithContentsOfFile:path];
+//    NSLog(@"%@", [[NSString alloc] initWithData:menuData encoding:NSUTF8StringEncoding]);
+//    IHPConfigManager *manager = [IHPConfigManager shareManager];
+//    [manager configManagerWithJsondData:menuData];
+//    [self finishTaskWithTaksID:kXDSFetchConfigTaskID];
+//    return;
     
 //    NSString *requesturl = @"http://134.175.54.80/ihappy/menu.json";
+    
+#if DEBUG
+    NSString *requesturl = @"http://129.204.47.207/ihappy/config/menu_dev.json";
+#else
     NSString *requesturl = @"http://129.204.47.207/ihappy/config/menu_1.0.5.json";
-
+#endif
     __weak typeof(self)weakSelf = self;
     [[[XDSHttpRequest alloc] init] htmlRequestWithHref:requesturl
                                          hudController:nil
@@ -300,10 +299,49 @@ NSString *const kXDSUpdateLocalizableTaskID = @"XDSUpdateLocalizableTask";
                                                                                                      [weakSelf fetchUnavailibleUrlList];
                                                                                                  }
                                                                                              }];
-                                                   
                                                }];
 }
 
+#pragma mark - 下载图片链接文件--妹子
+- (void)fetchMeiziFileContent {
+
+    NSString *requesturl = @"http://129.204.47.207/ihappy/source/meizi.txt";
+    
+    __weak typeof(self)weakSelf = self;
+    [[[XDSHttpRequest alloc] init] htmlRequestWithHref:requesturl
+                                         hudController:nil
+                                               showHUD:NO
+                                               HUDText:nil
+                                         showFailedHUD:YES
+                                               success:^(BOOL success, NSData * htmlData) {
+                                                   NSLog(@"%@", [[NSString alloc] initWithData:htmlData encoding:NSUTF8StringEncoding]);
+                                                   
+                                                   IHPConfigManager *manager = [IHPConfigManager shareManager];
+                                                   manager.meizi = [[NSString alloc] initWithData:htmlData encoding:NSUTF8StringEncoding];
+                                               } failed:^(NSString *errorDescription) {
+                                                   NSLog(@"妹子图片链接文件下载失败 = %@", errorDescription);
+                                               }];
+}
+
+
+#pragma mark - 下载图片链接文件--帅哥
+- (void)fetchShuaigeFileContent {
+    
+    NSString *requesturl = @"http://129.204.47.207/ihappy/source/shuaige.txt";
+    
+    [[[XDSHttpRequest alloc] init] htmlRequestWithHref:requesturl
+                                         hudController:nil
+                                               showHUD:NO
+                                               HUDText:nil
+                                         showFailedHUD:YES
+                                               success:^(BOOL success, NSData * htmlData) {
+                                                   NSLog(@"%@", [[NSString alloc] initWithData:htmlData encoding:NSUTF8StringEncoding]);
+                                                   IHPConfigManager *manager = [IHPConfigManager shareManager];
+                                                   manager.shuaige = [[NSString alloc] initWithData:htmlData encoding:NSUTF8StringEncoding];
+                                               } failed:^(NSString *errorDescription) {
+                                                   NSLog(@"帅哥图片链接文件下载失败 = %@", errorDescription);
+                                               }];
+}
 
 
 - (void)finishTaskWithTaksID:(NSString *)taskID{

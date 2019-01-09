@@ -24,6 +24,15 @@
 @property (nonatomic, readonly) NSArray<XDSSkipModel *> *launch_pop_list;//启动广告
 @property (nonatomic, readonly) NSArray<XDSSkipModel *> *home_pop_list;//首页广告
 
+//自定义字段
+@property (nonatomic, readonly) XDSSkipModel *launch_pop;//启动广告
+@property (nonatomic, readonly) XDSSkipModel *home_pop;//首页广告
+- (void)downloadPopImage;
+@property (nonatomic,strong) UIImage *popImage;
+
+@property (nonatomic, copy) NSString *meizi;//远程下载的美女图片链接
+@property (nonatomic, copy) NSString *shuaige;//远程下载的帅哥图片链接
+
 - (void)configManagerWithJsondData:(NSData *)configData;
 - (void)configHiddenModelWithJsondData:(NSData *)hiddenModelData;
 

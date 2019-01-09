@@ -35,4 +35,23 @@
 
 
 
+- (void)showViewControllerWithSkipModel:(XDSSkipModel *)skipModel {
+    UINavigationController *nav = nil;
+    if ([self isKindOfClass:[UINavigationController class]]) {
+        nav = (UINavigationController *)self;
+    }else {
+        nav = self.navigationController;
+    }
+    switch (skipModel.type) {
+        default:{ //BSNLPageRedirectTypeHTML
+            XDSWebViewController *webVC = [[XDSWebViewController alloc] init];
+            webVC.title = skipModel.title;
+            webVC.requestURL = skipModel.type_val?skipModel.type_val:@"";
+            [nav pushViewController:webVC animated:YES];
+            break;
+        }
+    }
+    
+}
+
 @end

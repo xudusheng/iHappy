@@ -9,6 +9,9 @@
 #import "IHPConfigManager.h"
 @interface IHPConfigManager()
 @property (strong, nonatomic) IHPConfigModel *configModel;
+
+@property (nonatomic, assign) XDSSkipModel *launch_pop;//启动广告
+@property (nonatomic, assign) XDSSkipModel *home_pop;//首页广告
 @end
 @implementation IHPConfigManager
 
@@ -24,6 +27,17 @@
 - (void)configManagerWithJsondData:(NSData *)configData{
     IHPConfigModel *configModel = [IHPConfigModel mj_objectWithKeyValues:configData];
     [self setConfigModel:configModel];
+    
+    if (self.launch_pop_list.count > 0) {
+        NSInteger index = arc4random()%(self.launch_pop_list.count -1);
+        self.launch_pop =[IHPConfigManager shareManager].launch_pop_list[index];
+    }
+
+    if (self.home_pop_list.count > 0) {
+        NSInteger index = arc4random()%(self.home_pop_list.count -1);
+        self.home_pop =[IHPConfigManager shareManager].home_pop_list[index];
+    }
+
 }
 
 - (IHPForceUpdateModel *)forceUpdate{
@@ -55,6 +69,23 @@
     _configModel = configModel;
 }
 
+- (void)downloadPopImage {
+    [_configModel downloadPopImage];
+}
+
+- (UIImage *)popImage {
+    return _configModel.popImage;
+}
+- (void)setPopImage:(UIImage *)popImage {
+    _configModel.popImage = popImage;
+}
+
+- (XDSSkipModel *)launch_pop {
+    return self->_launch_pop;
+}
+- (XDSSkipModel *)home_pop {
+    return self->_home_pop;
+}
 
 - (void)configHiddenModelWithJsondData:(NSData *)hiddenModelData {
     NSError* err = nil;

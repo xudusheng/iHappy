@@ -110,8 +110,14 @@
     webServer.allowHiddenItems = YES;
     webServer.allowedFileExtensions = @[@"epub", @"txt"];
     if ([webServer start]) {
-        self.wifiView.ipAndPortLabel.text = [NSString stringWithFormat:NSLocalizedString(@"http://%@", nil), [XDSIPHelper deviceIPAdress]];
-        self.wifiView.wifiNameLabel.text = [NSString stringWithFormat:@"已连接WiFi：%@", [XDSIPHelper getWifiName]];
+        NSString *ipAddress = [XDSIPHelper deviceIPAdress];
+        if (ipAddress.length > 0) {
+            self.wifiView.ipAndPortLabel.text = [NSString stringWithFormat:NSLocalizedString(@"http://%@", nil), [XDSIPHelper deviceIPAdress]];
+            self.wifiView.wifiNameLabel.text = [NSString stringWithFormat:@"已连接WiFi：%@", [XDSIPHelper getWifiName]];
+        } else {
+            self.wifiView.ipAndPortLabel.text = @"请连接WiFi~";
+            self.wifiView.wifiNameLabel.text = @"未能检测到WiFi";
+        }
     } else {
         self.wifiView.ipAndPortLabel.text = @"";
     }

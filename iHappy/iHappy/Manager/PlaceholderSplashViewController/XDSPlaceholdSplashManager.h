@@ -17,4 +17,6 @@
 - (void)showPlaceholderSplashViewWithViewController:(XDSPlaceholdSplashViewController *)viewController;
 - (void)removePlaceholderSplashView;
 
+//显示首页弹层广告
+- (void)showHomePop;
 @end

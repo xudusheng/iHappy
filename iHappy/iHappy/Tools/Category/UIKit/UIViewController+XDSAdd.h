@@ -7,6 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "XDSSkipModel.h"
+
+//type 页面跳转类型 类型，0h5
+typedef NS_ENUM(NSInteger, XDSPageRedirectType) {
+    XDSPageRedirectTypeHTML = 0,//HTML
+};
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -24,6 +30,16 @@ NS_ASSUME_NONNULL_BEGIN
             inRransparentForm:(BOOL)inRransparentForm
                    completion:(void (^ __nullable)(void))completion NS_AVAILABLE_IOS(5_0);
 
+
+/**
+ 根据type进行页面跳转
+ 
+ @param title 标题
+ @param type 跳转类型
+ @param value 传值
+ @param from_type 来源
+ */
+- (void)showViewControllerWithSkipModel:(XDSSkipModel *)skipModel;
 
 @end
 

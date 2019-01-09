@@ -75,7 +75,6 @@ NSInteger const kLaunchAdShowTime = 3;
     });
     self.touchButton.hidden = YES;
     
-    
     [self.view bringSubviewToFront:self.timeCount];
 }
 
@@ -88,8 +87,6 @@ NSInteger const kLaunchAdShowTime = 3;
 - (void)timeCountButtonClick:(UIButton *)button {
     //收起页面
     [self hiddenSplashVC];
-#warning 显示首页pop广告
-//    [[BSNLHomeViewController sharedInstance] viewDidAppear:NO];
 }
 - (void)handleCountDown {
     if (self.timeInterval < 1) {
@@ -100,67 +97,68 @@ NSInteger const kLaunchAdShowTime = 3;
 }
 
 - (void)touchButtonClick:(UIButton *)button {
-#warning 点击跳转
-//    IHPSkipObjectModel *launchModel = [IHPLaunchConfigModel sharedLaucnConfigModel].launch;
-//
-//    if (launchModel.type_val.length) {
-//        [[BSNLHomeViewController sharedInstance] showViewControllerWithSkipModel:launchModel];
-//        [self hiddenSplashVC];
-//    }
+    XDSSkipModel *launchModel = self.launchAdModel;
+
+    if (launchModel.type_val.length) {
+        [self hiddenSplashVC];
+        UIViewController *vc = APP_DELEGATE.mainmeunVC.contentViewController;
+        [vc showViewControllerWithSkipModel:launchModel];
+    }
 }
 
 - (void)hiddenSplashVC {
     [self.timer invalidate];
     self.timer = nil;
     [[XDSPlaceholdSplashManager sharedManager] removePlaceholderSplashView];
+    
+    [[XDSPlaceholdSplashManager sharedManager] showHomePop];
 }
 
 - (void)handleUpdate{
-    NSDictionary *parameters = @{};
-    __weak typeof(self)weakself = self;
+    //    xds.update.title = 新版本提示
+    //    xds.update.update = 立即更新
+    //    xds.update.cancel = 稍后再说
     IHPForceUpdateModel *updateModel = [IHPConfigManager shareManager].forceUpdate;
-
-    //    IHP.update.title = 新版本提示
-    //    IHP.update.update = 立即更新
-    //    IHP.update.cancel = 稍后再说
     NSString *appVersion = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
     if ([updateModel.version compare:appVersion options:NSNumericSearch] == NSOrderedDescending) {
         [self.timer invalidate];
         self.timer = nil;
         //        IHP.update.content.force = 发现新版本，请前往下载最新版本！
         //        IHP.update.content = 发现新版本！是否升级？
+        __weak typeof(self)weakself = self;
         [UIAlertController showAlertInViewController:self
                                            withTitle:(updateModel.isForce > 0)?XDSLocalizedString(@"xds.update.content.force", nil):XDSLocalizedString(@"xds.update.title", nil)
                                              message:updateModel.updateMessage.length?updateModel.updateMessage:XDSLocalizedString(@"xds.update.content", nil)
                                    cancelButtonTitle:(updateModel.isForce > 0)?nil:XDSLocalizedString(@"xds.update.cancel", nil)
                                    otherButtonTitles:@[XDSLocalizedString(@"xds.update.update", nil)]
                                             tapBlock:^(UIAlertController * _Nonnull controller, UIAlertAction * _Nonnull action, NSInteger buttonIndex) {
-                                                if (controller.cancelButtonIndex != buttonIndex) {
+                                                if (controller.cancelButtonIndex == buttonIndex) {
+                                                    [[IHPConfigManager shareManager] downloadPopImage];
+                                                }else {
                                                     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:updateModel.ios_download_url]];
                                                 }
                                                 if (updateModel.isForce > 0) {
                                                     
                                                 } else {
-                                                    [self timeCountButtonClick:nil];
+                                                    [weakself timeCountButtonClick:nil];
                                                 }
                                             }];
     }else {
+        [[IHPConfigManager shareManager] downloadPopImage];
         [self downloadLaunchImageAndShow];
     }
 }
 
 
 - (void)downloadLaunchImageAndShow {
-    
-    if ([IHPConfigManager shareManager].launch_pop_list.count < 1) {
+
+    XDSSkipModel *launchModel =[IHPConfigManager shareManager].launch_pop;
+    if (launchModel.pic.length < 1) {
         [self hiddenSplashVC];
         return;
     }
     
-
-    NSInteger index = arc4random()%([IHPConfigManager shareManager].launch_pop_list.count -1);
-    XDSSkipModel *launchModel =[IHPConfigManager shareManager].launch_pop_list[index];
-    
+    self.launchAdModel = launchModel;
     if (launchModel.pic.length < 1) {
         return ;
     }

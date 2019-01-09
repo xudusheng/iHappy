@@ -20,4 +20,8 @@
 @property (strong, nonatomic) NSArray<XDSSkipModel*> *launch_pop_list;//启动广告
 @property (strong, nonatomic) NSArray<XDSSkipModel*> *home_pop_list;//首页广告
 
+
+- (void)downloadPopImage;
+@property (nonatomic,strong) UIImage *popImage;
+
 @end

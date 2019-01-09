@@ -26,6 +26,7 @@
 
 #import "UIViewController+XDSAdd.h"
 #import "UIViewController+HideNavigationBar.h"
+#import "UIAlertController+XDS.h"
 
 #import "CALayer+Addition.h"
 

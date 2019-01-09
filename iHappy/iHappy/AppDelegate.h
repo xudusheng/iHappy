@@ -10,6 +10,8 @@
 #import "XDSSideMenu.h"
 #import "IHPMenuViewController.h"
 #import "IHYMainViewController.h"
+
+#define APP_DELEGATE ((AppDelegate *)[UIApplication sharedApplication].delegate)
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;

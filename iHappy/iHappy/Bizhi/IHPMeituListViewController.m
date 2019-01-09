@@ -35,21 +35,29 @@ YBImageBrowserDelegate
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self biZhiListViewControllerDataInit];
+    self.view.backgroundColor = [UIColor whiteColor];
     [self createBiZhiListViewControllerUI];
+    [XDSUtilities showHud:self.view text:nil];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        [self biZhiListViewControllerDataInit];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self headerRequest];
+            [XDSUtilities hideHud:self.view];
+        });
+    });
 }
 
 #pragma mark - UI相关
 - (void)createBiZhiListViewControllerUI{
-
+    
     self.view.backgroundColor = [UIColor brownColor];
-
-//    UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
+    
+    //    UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
     CHTCollectionViewWaterfallLayout *flowLayout = [[CHTCollectionViewWaterfallLayout alloc] init];
     flowLayout.sectionInset = UIEdgeInsetsMake(10, 10, 10, 10);
-
-//    flowLayout.minimumLineSpacing = kBiZhiCollectionViewMinimumLineSpacing;//纵向间距
-//    flowLayout.minimumInteritemSpacing = kBiZhiCollectionViewMinimumInteritemSpacing;//横向内边距
+    
+    //    flowLayout.minimumLineSpacing = kBiZhiCollectionViewMinimumLineSpacing;//纵向间距
+    //    flowLayout.minimumInteritemSpacing = kBiZhiCollectionViewMinimumInteritemSpacing;//横向内边距
     
     self.collectionView = ({
         UICollectionView *collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:flowLayout];
@@ -65,7 +73,7 @@ YBImageBrowserDelegate
         
         collectionView.backgroundColor = [UIColor whiteColor];
         [self.view addSubview:collectionView];
-
+        
         NSDictionary *viewsDict = NSDictionaryOfVariableBindings(collectionView);
         NSArray *constraints_H = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|[collectionView]|" options:NSLayoutFormatAlignAllLeft metrics:nil views:viewsDict];
         NSArray *constraints_V = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|[collectionView]|" options:NSLayoutFormatAlignAllLeft metrics:nil views:viewsDict];
@@ -75,18 +83,17 @@ YBImageBrowserDelegate
         
         collectionView;
     });
-
+    
     
     _collectionView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self
                                                                  refreshingAction:@selector(headerRequest)];
     _collectionView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self
                                                                      refreshingAction:@selector(footerRequest)];
-    [_collectionView.mj_header beginRefreshing];
-
     
-//    [[XDSAdManager sharedManager] showInterstitialAD];
+    
+    //    [[XDSAdManager sharedManager] showInterstitialAD];
     [[XDSAdManager sharedManager] performSelector:@selector(showInterstitialAD) withObject:nil afterDelay:1];
-
+    
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -162,7 +169,7 @@ YBImageBrowserDelegate
     } else {
         [self.collectionView.mj_footer endRefreshing];
     }
-
+    
     
     NSArray *imageList = [self.imageUrlList subarrayWithRange:NSMakeRange(page_size*page_no, page_size)];
     for (NSString *imgUrl in imageList) {
@@ -183,33 +190,33 @@ YBImageBrowserDelegate
 
 - (void)fetchDetailImageListWithMd5key:(NSString *)md5key{
     
-//    NSString *url = @"http://134.175.54.80/ihappy/meizi/querydetail.php";
-//    NSDictionary *params = @{
-//                             @"md5key":md5key?md5key:@"",
-//                             };
-//    __weak typeof(self)weakSelf = self;
-//    [[[XDSHttpRequest alloc] init] GETWithURLString:url
-//                                           reqParam:params
-//                                      hudController:self
-//                                            showHUD:NO
-//                                            HUDText:nil
-//                                      showFailedHUD:YES
-//                                            success:^(BOOL success, NSDictionary *successResult) {
-//                                                XDSDetaimImageResponseModel *responseModel = [XDSDetaimImageResponseModel mj_objectWithKeyValues:successResult];
-//                                                NSArray *imageArray = responseModel.imageList;
-//                                                if (imageArray.count) {
-//                                                    [weakSelf showMediaBrowserView:imageArray];
-//                                                }
-//                                            } failed:nil];
-
+    //    NSString *url = @"http://134.175.54.80/ihappy/meizi/querydetail.php";
+    //    NSDictionary *params = @{
+    //                             @"md5key":md5key?md5key:@"",
+    //                             };
+    //    __weak typeof(self)weakSelf = self;
+    //    [[[XDSHttpRequest alloc] init] GETWithURLString:url
+    //                                           reqParam:params
+    //                                      hudController:self
+    //                                            showHUD:NO
+    //                                            HUDText:nil
+    //                                      showFailedHUD:YES
+    //                                            success:^(BOOL success, NSDictionary *successResult) {
+    //                                                XDSDetaimImageResponseModel *responseModel = [XDSDetaimImageResponseModel mj_objectWithKeyValues:successResult];
+    //                                                NSArray *imageArray = responseModel.imageList;
+    //                                                if (imageArray.count) {
+    //                                                    [weakSelf showMediaBrowserView:imageArray];
+    //                                                }
+    //                                            } failed:nil];
+    
 }
 
-//TODO:保存下一页的链接 
+//TODO:保存下一页的链接
 - (void)saveNextPageInfo:(NSDictionary *)result{
     
     NSString *nextPageHref = result[kBiZhiNextPageHrefKey];
     self.nextPageUrl = nextPageHref;
-
+    
     BOOL isLastPage = [result[kBiZhiIsLastPageKey] boolValue];
     if (isLastPage){
         [self.collectionView.mj_footer endRefreshingWithNoMoreData];
@@ -245,7 +252,7 @@ YBImageBrowserDelegate
         [cell p_loadCell];
         return cell;
     }
-
+    
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
@@ -257,7 +264,7 @@ YBImageBrowserDelegate
     }else if (model.image_src.length > 0) {
         [self showBrowserForSimpleCaseWithIndex:indexPath.row];
     }
-
+    
 }
 
 //TODO:UICollectionViewDelegateFlowLayout
@@ -294,7 +301,7 @@ YBImageBrowserDelegate
 }
 #pragma mark - 点击事件处理
 - (void)showBrowserForSimpleCaseWithIndex:(NSInteger)index {
-
+    
 #if DEBUG
     NSMutableArray *browserDataArr = [NSMutableArray arrayWithCapacity:0];
     for (int i = 0; i < self.meituList.count; i ++) {
@@ -303,6 +310,7 @@ YBImageBrowserDelegate
             YBImageBrowseCellData *data = [YBImageBrowseCellData new];
             data.url = [NSURL URLWithString:meituModel.image_src];
             data.sourceObject = [self sourceObjAtIdx:i];
+            data.maxZoomScale = 3.f;
             [browserDataArr addObject:data];
         }else {
             YBAdBrowserCellData *adCellData = [[YBAdBrowserCellData alloc] init];
@@ -310,7 +318,7 @@ YBImageBrowserDelegate
         }
     }
     
-
+    
     YBImageBrowser *browser = [YBImageBrowser new];
     browser.dataSourceArray = browserDataArr;
     browser.currentIndex = index;
@@ -358,10 +366,10 @@ YBImageBrowserDelegate
 #endif
     
     
-//    YBImageBrowser *browser = [YBImageBrowser new];
-//    browser.dataSource = self;
-//    browser.currentIndex = index;
-//    [browser show];
+    //    YBImageBrowser *browser = [YBImageBrowser new];
+    //    browser.dataSource = self;
+    //    browser.currentIndex = index;
+    //    [browser show];
 }
 #pragma mark - 其他私有方法
 - (id)sourceObjAtIdx:(NSInteger)idx {
@@ -371,35 +379,36 @@ YBImageBrowserDelegate
 #pragma mark - 内存管理相关
 - (void)biZhiListViewControllerDataInit{
     
-    NSBundle* bundle = [NSBundle bundleForClass:self.class];
-    NSString *filePath = [bundle pathForResource:@"meizi_zipai" ofType:@"txt"];
-    NSData *imgListData = [NSData dataWithContentsOfFile:filePath];
-    NSString *imgListString = [[NSString alloc] initWithData:imgListData encoding:NSUTF8StringEncoding];
-    NSArray *imgList = [imgListString componentsSeparatedByString:@";"];
-    
-    NSSet *set = [NSSet setWithArray:imgList];
-    imgList = nil;
-    imgList = set.allObjects;
-    
-    NSInteger index = 0;
-    if (imgList.count > 0) {
-        NSString *url = imgList.firstObject;
+    @autoreleasepool {
         
-        if (url.length > 23) {
-           index = arc4random()%18+1;
+        
+        NSBundle* bundle = [NSBundle bundleForClass:self.class];
+        NSString *filePath = [bundle pathForResource:@"meizi_zipai" ofType:@"txt"];
+        NSData *imgListData = [NSData dataWithContentsOfFile:filePath];
+        NSString *imgListString = [[NSString alloc] initWithData:imgListData encoding:NSUTF8StringEncoding];
+        //    NSArray *imgList = [imgListString componentsSeparatedByString:@";"];
+        
+        NSString *remoteImgListString = [IHPConfigManager shareManager].meizi;
+        if (remoteImgListString.length > 0) {
+            imgListString = [NSString stringWithFormat:@"%@;%@",imgListString, remoteImgListString];
         }
+        NSArray *imgList = [imgListString componentsSeparatedByString:@";"];
+        
+        NSSet *set = [NSSet setWithArray:imgList];
+        imgList = nil;
+        imgList = set.allObjects;
+        
+        NSInteger location = arc4random()%30+1;
+        NSInteger length = 1;
+        imgList = [imgList sortedArrayUsingComparator:^NSComparisonResult(NSString *obj1, NSString *obj2) {
+            NSString *subString1 = [obj1.xds_md5 substringWithRange:NSMakeRange(location, length)];
+            NSString *subString2 = [obj2.xds_md5 substringWithRange:NSMakeRange(location, length)];
+            return ([subString1 compare:subString2] == NSOrderedAscending);
+        }];
+        
+        self.imageUrlList = imgList;
+        self.meituList = [NSMutableArray arrayWithCapacity:0];
     }
-    
-
-    NSInteger length = arc4random()%3+1;
-    imgList = [imgList sortedArrayUsingComparator:^NSComparisonResult(NSString *obj1, NSString *obj2) {
-        NSString *subString1 = [obj1 substringWithRange:NSMakeRange(obj1.length - index, length)];
-        NSString *subString2 = [obj1 substringWithRange:NSMakeRange(obj2.length - index, length)];
-        return ([subString1 compare:subString2] == NSOrderedAscending);
-    }];
-    
-    self.imageUrlList = imgList;
-    self.meituList = [NSMutableArray arrayWithCapacity:0];
 }
 
 @end

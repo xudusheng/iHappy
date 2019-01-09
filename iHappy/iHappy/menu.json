@@ -1,7 +1,7 @@
 {
     "forceUpdate": {
         "enable": true,
-        "isForce": true,
+        "isForce": false,
         "url": "https://itunes.apple.com/cn/app/id1438199023",
         "ios_download_url": "https://itunes.apple.com/cn/app/id1438199023",
         "android_download_url": "https://itunes.apple.com/cn/app/id1438199023",
@@ -19,6 +19,14 @@
         "格子间女人"
     ],
     "menus": [
+        {
+            "title": "小微阅读",
+            "menuId": "kReader",
+            "type": "0",
+            "enable": true,
+            "rooturl": "http://120.76.205.241:8000/news/qihoo?apikey=cz1wjvkzGtuomNDXgLxmdq5aIwgytQvHHe0Dc8OcfHQva6hKQgDoDyBdUAQngGt6&site=qq.com",
+            "subMenus": []
+        },
         {
             "title": "小微美女",
             "menuId": "kPicture",
@@ -65,14 +73,6 @@
             ]
         },
         {
-            "title": "小微阅读",
-            "menuId": "kReader",
-            "type": "0",
-            "enable": true,
-            "rooturl": "http://120.76.205.241:8000/news/qihoo?apikey=cz1wjvkzGtuomNDXgLxmdq5aIwgytQvHHe0Dc8OcfHQva6hKQgDoDyBdUAQngGt6&site=qq.com",
-            "subMenus": []
-        },
-        {
             "title": "学习福利",
             "menuId": "kWelfare",
             "type": "6",
@@ -89,64 +89,35 @@
             "subMenus": []
         }
     ],
-    "home_pop_list": [
-        {
-            "pic": "https://img.bisinuolan.cn/b3a49311-0614-4914-b2c4-000e3bfa0666-1546858135781.png",
-            "content": "",
-            "title": "年货节",
-            "type": 0,
-            "type_val": ""
-        },
-        {
-            "pic": "https://img.bisinuolan.cn/b3a49311-0614-4914-b2c4-000e3bfa0666-1546858135781.png",
-            "content": "",
-            "title": "年货节",
-            "type": 0,
-            "type_val": ""
-        },
-        {
-            "pic": "https://img.bisinuolan.cn/b3a49311-0614-4914-b2c4-000e3bfa0666-1546858135781.png",
-            "content": "",
-            "title": "年货节",
-            "type": 0,
-            "type_val": ""
-        },
-        {
-            "pic": "https://img.bisinuolan.cn/b3a49311-0614-4914-b2c4-000e3bfa0666-1546858135781.png",
-            "content": "",
-            "title": "年货节",
-            "type": 0,
-            "type_val": ""
-        }
-    ],
+    "home_pop_list": [],
     "launch_pop_list": [
         {
             "pic": "http://n.sinaimg.cn/sinacn08/133/w640h1093/20180824/0868-hicsiaw0764475.jpg",
             "content": "",
             "title": "年货节",
             "type": 0,
-            "type_val": ""
+            "type_val": "https://www.baidu.com"
         },
         {
             "pic": "http://n.sinaimg.cn/sinacn08/133/w640h1093/20180824/0317-hicsiaw0768149.jpg",
             "content": "",
             "title": "年货节",
             "type": 0,
-            "type_val": ""
+            "type_val": "https://www.baidu.com"
         },
         {
             "pic": "http://img.xspic.com/img8/225/112/2453729_7.jpg",
             "content": "",
             "title": "年货节",
             "type": 0,
-            "type_val": ""
+            "type_val": "https://www.baidu.com"
         },
         {
             "pic": "http://s1.sinaimg.cn/large/006SDutnzy7hD0mnkmLbb",
             "content": "",
             "title": "年货节",
             "type": 0,
-            "type_val": ""
+            "type_val": "https://www.baidu.com"
         }
     ]
 }

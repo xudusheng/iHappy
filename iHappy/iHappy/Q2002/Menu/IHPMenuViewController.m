@@ -39,22 +39,27 @@ static NSString *kMenuTableViewCellIdentifier = @"MenuTableViewCell";
 
 #pragma mark - 代理方法
 #pragma mark UITableViewDelegate, UITableViewDataSource
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return _menuList.count;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    NSArray *sectionArray = _menuList[section];
+    return sectionArray.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kMenuTableViewCellIdentifier forIndexPath:indexPath];
     
-    IHPMenuModel *theMenu = _menuList[indexPath.row];
+    IHPMenuModel *theMenu = _menuList[indexPath.section][indexPath.row];
     cell.textLabel.text = theMenu.title;
     return cell;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    IHPMenuModel *theMenu = _menuList[indexPath.row];
-    
+    IHPMenuModel *theMenu = _menuList[indexPath.section][indexPath.row];
+
     AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     [delegate.mainmeunVC hideMenuViewController];
     delegate.mainmeunVC.contentViewController = theMenu.contentViewController;
@@ -71,6 +76,19 @@ static NSString *kMenuTableViewCellIdentifier = @"MenuTableViewCell";
 #pragma mark - 内存管理相关
 - (void)menuViewControllerDataInit{
     self.menuList = [IHPConfigManager shareManager].menus;
+    
+    NSArray<IHPMenuModel *> *menus = [IHPConfigManager shareManager].menus;
+    NSMutableArray *firstSectionArray = [NSMutableArray arrayWithCapacity:0];
+    NSMutableArray *secondSectionArray = [NSMutableArray arrayWithCapacity:0];
+    for (IHPMenuModel *menu in menus) {
+        if (menu.type == IHPMenuTypeWelfare || menu.type == IHPMenuTypeSetting) {
+            [secondSectionArray addObject:menu];
+        }else {
+            [firstSectionArray addObject:menu];
+        }
+    }
+    
+    self.menuList = [NSArray arrayWithObjects:firstSectionArray, secondSectionArray, nil];
 }
 
 

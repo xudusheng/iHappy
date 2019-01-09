@@ -87,9 +87,9 @@ GDTMobInterstitialDelegate>
 //    [[NSNotificationCenter defaultCenter] removeObserver:self
 //                                                    name:UIApplicationWillEnterForegroundNotification
 //                                                  object:nil];
-//    [[NSNotificationCenter defaultCenter] removeObserver:self
-//                                                    name:kXDSEnterMainViewFinishedNotification
-//                                                  object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:kXDSEnterMainViewFinishedNotification
+                                                  object:nil];
 }
 
 - (void)addNotificationsObservers {
@@ -100,14 +100,14 @@ GDTMobInterstitialDelegate>
 //                                             selector:@selector(handleAppDidBecomeActiveNotification)
 //                                                 name:UIApplicationWillEnterForegroundNotification
 //                                               object:nil];
-    
-//    [[NSNotificationCenter defaultCenter] removeObserver:self
-//                                                    name:kXDSEnterMainViewFinishedNotification
-//                                                  object:nil];
-//    [[NSNotificationCenter defaultCenter] addObserver:self
-//                                             selector:@selector(showSplashAd)
-//                                                 name:kXDSEnterMainViewFinishedNotification
-//                                               object:nil];
+//
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:kXDSEnterMainViewFinishedNotification
+                                                  object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(showSplashAd)
+                                                 name:kXDSEnterMainViewFinishedNotification
+                                               object:nil];
 }
 
 - (BOOL)isAdAvailible {
@@ -116,6 +116,9 @@ GDTMobInterstitialDelegate>
 //TODO: 开屏广告
 - (void)showSplashAd {
     if (self.isAdAvailible == NO) {
+        return;
+    }
+    if ([IHPConfigManager shareManager].launch_pop != nil) {
         return;
     }
     self.splashAd = [[GDTSplashAd alloc] initWithAppId:kGDTMobSDKAppId placementId:kGDTMobSDKSplashAdId];
@@ -352,6 +355,9 @@ GDTMobInterstitialDelegate>
 //TODO: 插屏广告
 - (void)showInterstitialAD{
     if (self.isAdAvailible == NO) {
+        return;
+    }
+    if ([IHPConfigManager shareManager].home_pop != nil) {
         return;
     }
     self.interstitial = [[GDTMobInterstitial alloc] initWithAppId:kGDTMobSDKAppId placementId:kGDTMobSDKInterstitialAdId];
