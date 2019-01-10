@@ -74,14 +74,6 @@
             ]
         },
         {
-            "title": "学习福利",
-            "menuId": "kWelfare",
-            "type": "6",
-            "rooturl": "",
-            "enable": true,
-            "subMenus": []
-        },
-        {
             "title": "设置",
             "menuId": "kSetting",
             "type": "100",

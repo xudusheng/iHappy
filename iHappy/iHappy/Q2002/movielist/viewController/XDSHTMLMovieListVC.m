@@ -221,13 +221,13 @@ NSString * const MovieListViewController_movieCellIdentifier = @"IHPMovieCell";
 //        model.other = other;
         [newMovies addObject:model];
         
-        
-        if ([[XDSAdManager sharedManager] isAdAvailible] && (newMovies.count + _movieList.count)%[IHPConfigManager shareManager].adInfo.index  == 0) {
-            XDSHTMLMovieModel *model = [[XDSHTMLMovieModel alloc] init];
-            [newMovies addObject:model];
-            NSString *indexIdentifier =[NSString stringWithFormat:@"%@_%ld", NSStringFromClass([XDSImageItemAdCell class]), newMovies.count + _movieList.count - 1];
+        NSInteger originCount = needClearOldData?newMovies.count:(newMovies.count + _movieList.count);
+        if ([[XDSAdManager sharedManager] isAdAvailible] && originCount%[IHPConfigManager shareManager].adInfo.index  == 0) {
+            NSString *indexIdentifier =[NSString stringWithFormat:@"%@_%ld", NSStringFromClass([XDSImageItemAdCell class]), originCount];
             [_movieCollectionView registerClass:[XDSImageItemAdCell class]
                      forCellWithReuseIdentifier:indexIdentifier];
+            XDSHTMLMovieModel *model = [[XDSHTMLMovieModel alloc] init];
+            [newMovies addObject:model];
         }
     }
     if (newMovies.count > 0) {
