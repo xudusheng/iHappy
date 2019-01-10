@@ -11,7 +11,8 @@
     "adInfo": {
         "enable": true,
         "player_enable": true,
-        "index": 23
+        "index": 23,
+        "refresh_duration":10
     },
     "searchkeys": [
         "星辰变2018",

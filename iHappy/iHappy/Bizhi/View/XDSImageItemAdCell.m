@@ -22,9 +22,36 @@
 }
 
 - (void)p_loadCell {
-    CGFloat width = CGRectGetWidth(self.contentView.bounds) - 10*2;
-    CGFloat height = width*XDS_NATIVE_EXPRESS_AD_RETIO_HEIGHT_WIDTH;
-    [[XDSAdManager sharedManager] loadNativeExpressAdInView:self.contentView adSize:CGSizeMake(width, height)];
+    if (self.contentView.subviews.count > 0) {
+        return;
+    }
+    [self updateAd];
 }
+
+- (void)updateAd {
+    if (self.contentView.subviews.count == 0) {
+        CGFloat width = CGRectGetWidth(self.contentView.bounds) - self.adMargin*2;
+        CGFloat height = width*XDS_NATIVE_EXPRESS_AD_RETIO_HEIGHT_WIDTH;
+        [[XDSAdManager sharedManager] loadNativeExpressAdInView:self.contentView adSize:CGSizeMake(width, height)];
+        NSInteger refresh_duration = [IHPConfigManager shareManager].adInfo.refresh_duration;
+        [[self class] cancelPreviousPerformRequestsWithTarget:self];
+        [self performSelector:@selector(updateAd) withObject:nil afterDelay:MAX(refresh_duration, 10)];
+    } else {
+        UICollectionView *collec = (UICollectionView *)self.superview;
+        NSArray *visibleCell = collec.visibleCells;
+        NSInteger refresh_duration = [IHPConfigManager shareManager].adInfo.refresh_duration;
+        if ([visibleCell containsObject:self]) {
+            [self.contentView removeAllSubViews];
+            CGFloat width = CGRectGetWidth(self.contentView.bounds) - self.adMargin*2;
+            CGFloat height = width*XDS_NATIVE_EXPRESS_AD_RETIO_HEIGHT_WIDTH;
+            [[XDSAdManager sharedManager] loadNativeExpressAdInView:self.contentView adSize:CGSizeMake(width, height)];
+            [[self class] cancelPreviousPerformRequestsWithTarget:self];
+            [self performSelector:@selector(updateAd) withObject:nil afterDelay:MAX(refresh_duration, 10)];
+        }else {
+            NSLog(@"滚出去了==============");
+        }
+    }
+}
+
 
 @end

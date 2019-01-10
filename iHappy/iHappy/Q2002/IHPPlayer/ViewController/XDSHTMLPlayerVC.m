@@ -38,8 +38,8 @@ UICollectionViewDelegateFlowLayout,
 UIWebViewDelegate
 >
 
-@property (strong, nonatomic) NSMutableArray<NSDictionary *> * movieButtonList;
-@property (strong, nonatomic) UICollectionView * moviedetailCollectionView;
+@property (strong, nonatomic) NSMutableArray *movieButtonList;
+@property (strong, nonatomic) UICollectionView *moviedetailCollectionView;
 
 @property (nonatomic, weak) XDSZFPlayerCell *playerContainer;
 
@@ -52,9 +52,9 @@ UIWebViewDelegate
 @end
 NSInteger const kHTMLPlayerSection = 0;
 NSInteger const kHTMLAdSection = 1;
-NSInteger const kHTMLSummarySection = 2;
+NSInteger const kHTMLSummarySection = -1;
 
-NSInteger const kHTMLPlaceholderSectionNumbers = 3;
+NSInteger const kHTMLPlaceholderSectionNumbers = 2;
 
 @implementation XDSHTMLPlayerVC
 - (void)dealloc{
@@ -120,7 +120,6 @@ NSInteger const kHTMLPlaceholderSectionNumbers = 3;
     [_moviedetailCollectionView registerClass:[XDSPlayerDisclaimerView class] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:NSStringFromClass([XDSPlayerDisclaimerView class])];
 
     [_moviedetailCollectionView mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.top.equalTo(self.playerContentView.mas_bottom);
         make.top.left.bottom.right.mas_equalTo(0);
     }];
 
@@ -174,8 +173,8 @@ NSInteger const kHTMLPlaceholderSectionNumbers = 3;
     if (section < kHTMLPlaceholderSectionNumbers) {
         return 1;
     }
-    NSDictionary * buttonList_section = _movieButtonList[section-kHTMLPlaceholderSectionNumbers];
-    return [buttonList_section[@"buttonList"] count];
+    NSArray * buttonList_section = _movieButtonList[section-kHTMLPlaceholderSectionNumbers];
+    return buttonList_section.count;
 }
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
@@ -197,8 +196,7 @@ NSInteger const kHTMLPlaceholderSectionNumbers = 3;
         
     }else {
         IHYMoviePlayButtonCell * cell  = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([IHYMoviePlayButtonCell class]) forIndexPath:indexPath];
-        NSDictionary * buttonList_section = _movieButtonList[indexPath.section - kHTMLPlaceholderSectionNumbers];
-        NSArray * buttonList = buttonList_section[@"buttonList"];
+        NSArray * buttonList = _movieButtonList[indexPath.section - kHTMLPlaceholderSectionNumbers];
         IHYMoviePlayButtonModel * buttonModel = buttonList[indexPath.row];
         cell.titleLabel.text = buttonModel.title;
         
@@ -241,8 +239,7 @@ NSInteger const kHTMLPlaceholderSectionNumbers = 3;
         }
 
     }else {
-        NSDictionary * buttonList_section = _movieButtonList[indexPath.section-kHTMLPlaceholderSectionNumbers];
-        IHYMoviePlayButtonModel *episodeModel = buttonList_section[@"buttonList"][indexPath.row];
+        IHYMoviePlayButtonModel *episodeModel =  _movieButtonList[indexPath.section-kHTMLPlaceholderSectionNumbers][indexPath.row];
         NSString *title = episodeModel.title;
         CGSize size = [title sizeWithFont:EPISODE_CELL_FONT maxSize:EPISODE_CELL_MAX_SIZE];
         return CGSizeMake(size.width + EPISODE_CELL_HEIGHT_EXCEPT_CONTENT, EPISODE_CELL_HEIGHT);
@@ -311,8 +308,7 @@ NSInteger const kHTMLPlaceholderSectionNumbers = 3;
         return;
     }
     
-    NSDictionary * buttonList_section = _movieButtonList[indexPath.section - kHTMLPlaceholderSectionNumbers];
-    NSArray * buttonList = buttonList_section[@"buttonList"];
+    NSArray * buttonList = _movieButtonList[indexPath.section - kHTMLPlaceholderSectionNumbers];
     IHYMoviePlayButtonModel * buttonModel = buttonList[indexPath.row];
     self.selectedMovieModel = buttonModel;
 }
@@ -330,7 +326,7 @@ NSInteger const kHTMLPlaceholderSectionNumbers = 3;
     self.movieModel = [[IHYMovieModel alloc] init];
     
     TFHpple * hpp = [[TFHpple alloc] initWithHTMLData:htmlData];
-    NSArray * img_lazy_elments = [hpp searchWithXPathQuery:@"//img[@class=\"lazy\"]"];
+    NSArray * img_lazy_elments = [hpp searchWithXPathQuery:@"//img[@class=\"lazy\"] | //img [@class=\"img-responsive\"]"];
     NSString * movieImage = @"";
     if (img_lazy_elments.count > 0) {
         TFHppleElement * img_lazy_elment = img_lazy_elments.firstObject;
@@ -338,7 +334,7 @@ NSInteger const kHTMLPlaceholderSectionNumbers = 3;
         self.movieModel.image_src = movieImage;
     }
 
-    NSArray * dt_dd_elements = [hpp searchWithXPathQuery:@"//dl//dt|//dd"];
+    NSArray * dt_dd_elements = [hpp searchWithXPathQuery:@"//dl//dt | //dd"];
     NSMutableArray * titleAndContentModels = [NSMutableArray arrayWithCapacity:0];
     for (TFHppleElement * dt_dd_element in dt_dd_elements) {
         NSString * content = dt_dd_element.text;
@@ -355,17 +351,14 @@ NSInteger const kHTMLPlaceholderSectionNumbers = 3;
     NSString * sumary = sumary_element.text;
     self.movieModel.summary = sumary;
     
-    NSArray * show_player_gogo_elements = [hpp searchWithXPathQuery:@"//div[@class=\"show_player_gogo\"]//ul"];
-    NSArray * bofangqi_elements = [hpp searchWithXPathQuery:@"//li[@class=\"on bofangqi\"]"];
+    sumary_element = [hpp searchWithXPathQuery:@"//div[@class=\"am-container\"]"].firstObject;
+    sumary = sumary_element.text;
+
+    
+    NSArray * show_player_gogo_elements = [hpp searchWithXPathQuery:@"//div[@class=\"show_player_gogo\"]//ul | //div[@class=\"list_name\"]//ul"];
     NSMutableArray * bofangqi = [NSMutableArray arrayWithCapacity:0];
     for (int i = 0; i < show_player_gogo_elements.count; i ++) {
         TFHppleElement * show_player_gogo_element = show_player_gogo_elements[i];
-        NSString * playerDesc = @"";
-        if (i < bofangqi_elements.count) {
-            TFHppleElement * bofangqi_element = bofangqi_elements[i];
-            playerDesc = bofangqi_element.text;
-        }
-        NSLog(@"%@", playerDesc);
         NSMutableArray * buttonArray = [NSMutableArray arrayWithCapacity:0];
         NSArray * button_li_elements = [show_player_gogo_element childrenWithTagName:@"li"];
         for (TFHppleElement * button_li_element in button_li_elements) {
@@ -377,11 +370,12 @@ NSInteger const kHTMLPlaceholderSectionNumbers = 3;
                 continue;
             }
             IHYMoviePlayButtonModel * buttonModel = [[IHYMoviePlayButtonModel alloc] init];
-            [buttonModel setValuesForKeysWithDictionary:@{@"title":buttonTitle, @"playerHref":href}];
+            buttonModel.title = buttonTitle;
+            buttonModel.playerHref = href;
             [buttonArray addObject:buttonModel];
         }
 
-        [bofangqi addObject:@{@"title":playerDesc, @"buttonList":buttonArray}];
+        [bofangqi addObject:buttonArray];
     }
 
     NSArray * footer_elements = [hpp searchWithXPathQuery:@"//div[@class=\"footer clearfix\"]//p"];
@@ -401,8 +395,7 @@ NSInteger const kHTMLPlaceholderSectionNumbers = 3;
 
 
     if (_movieButtonList.count) {
-        NSDictionary * buttonList_section = _movieButtonList.firstObject;
-        NSArray * buttonList = buttonList_section[@"buttonList"];
+        NSArray * buttonList = _movieButtonList.firstObject;
         if (buttonList.count) {
             IHYMoviePlayButtonModel * buttonModel = buttonList.firstObject;
             self.selectedMovieModel = buttonModel;

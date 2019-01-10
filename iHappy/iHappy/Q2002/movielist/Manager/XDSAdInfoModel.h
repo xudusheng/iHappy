@@ -15,6 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (assign, nonatomic) BOOL enable;//广告是否开启
 @property (assign, nonatomic) BOOL player_enable;//是否在播放器上显示广告
 @property (assign, nonatomic) NSInteger index;//随机数，collectionView中碰到这个数的倍数，插入一天广告
+@property (assign, nonatomic) NSInteger refresh_duration;//广告刷新间隔
 @end
 
 NS_ASSUME_NONNULL_END

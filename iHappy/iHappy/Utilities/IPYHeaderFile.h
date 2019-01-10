@@ -19,7 +19,7 @@
 #define ISUPPER_IOS9 ([[UIDevice currentDevice] systemVersion].floatValue>=9.0f)
 #define ISUPPER_IOS10 ([[UIDevice currentDevice] systemVersion].floatValue>=10.0f)
 
-#define IS_IPHONE_X \
+#define IS_IPHONE_X_MORE \
 ({BOOL isPhoneX = NO;\
 if (@available(iOS 11.0, *)) {\
 isPhoneX = [[UIApplication sharedApplication] delegate].window.safeAreaInsets.bottom > 0.0;\
@@ -28,8 +28,8 @@ isPhoneX = [[UIApplication sharedApplication] delegate].window.safeAreaInsets.bo
 
 #define DEVIECE_SCREEN_WIDTH [UIScreen mainScreen].bounds.size.width
 #define DEVIECE_SCREEN_HEIGHT [UIScreen mainScreen].bounds.size.height
-#define DEVICE_NAVBAR_HEIGHT (IS_IPHONE_X?88.f:64.f)
-#define DEVICE_TABBAR_HEIGHT (IS_IPHONE_X:83.f:49.f)
+#define DEVICE_NAVBAR_HEIGHT (IS_IPHONE_X_MORE?88.f:64.f)
+#define DEVICE_TABBAR_HEIGHT (IS_IPHONE_X_MORE:83.f:49.f)
 #define REQUEST_PAGE_SIZE 20
 
 #define XDS_Q2002_PLAYER_HEIGHT 230

@@ -12,6 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface XDSImageItemAdCell : IHPRootCollectionCell
 
+@property (nonatomic,assign) CGFloat adMargin;
 @end
 
 NS_ASSUME_NONNULL_END

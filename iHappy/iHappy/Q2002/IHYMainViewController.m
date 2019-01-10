@@ -40,7 +40,10 @@
 - (void)createMainViewControllerUI{
 //    self.navigationController.navigationBar.translucent = NO;
 //    self.navigationController.navigationBar.shadowImage = [UIImage new];
-    
+
+    if (self.menuModel.type == IHPMenuTypeQ2002) {
+        [[IHPConfigManager shareManager] setMovieRootUrl:self.menuModel.rooturl];
+    }
     if (self.menuModel.type == IHPMenuTypeVideo ||
         self.menuModel.type == IHPMenuTypeQ2002){
         CGFloat navHeight = 44;
@@ -133,7 +136,7 @@
 
 - (CGRect)pageController:(WMPageController *)pageController preferredFrameForContentView:(WMScrollView *)contentView {
     CGRect frame = [UIScreen mainScreen].bounds;
-    CGFloat height = DEVIECE_SCREEN_HEIGHT - [self getSafeAreaTop] - [self getSafeAreaBottom] - DEVICE_NAVBAR_HEIGHT - 35;
+    CGFloat height = DEVIECE_SCREEN_HEIGHT - DEVICE_NAVBAR_HEIGHT - 35;
     frame.origin.y = 35;
     frame.size.height = height;
     return frame;

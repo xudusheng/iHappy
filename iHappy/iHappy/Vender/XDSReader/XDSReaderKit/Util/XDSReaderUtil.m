@@ -83,8 +83,7 @@
     BOOL isPhoneX = NO;
     
     if (@available(iOS 11.0, *)) {
-        if ([UIApplication sharedApplication].delegate.window.safeAreaInsets.top > 0.0 ||
-            [UIApplication sharedApplication].delegate.window.safeAreaInsets.left > 0.0) {
+        if ([UIApplication sharedApplication].delegate.window.safeAreaInsets.top > 0.0) {
             isPhoneX = YES;
         }
     }

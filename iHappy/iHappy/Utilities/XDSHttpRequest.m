@@ -97,7 +97,10 @@ NSString *const key = @"huidaibao";
                      failed:(void(^)(NSString * errorDescription))failed{
     
     if (htmlHref && ![htmlHref hasPrefix:@"http"]) {
-        NSString * rootHref = @"http://www.q2002.com";
+        NSString * rootHref = [IHPConfigManager shareManager].movieRootUrl;
+        if (rootHref.length < 1) {
+            rootHref = @"http://www.q2002.com";
+        }
         if (![htmlHref hasPrefix:@"/"]) {
             rootHref = [rootHref stringByAppendingString:@"/"];
         }
@@ -146,7 +149,12 @@ NSString *const key = @"huidaibao";
                                    
                                    [XDSUtilities hideHud:hudController.view];
                                    NSString *errorDetail = [error localizedDescription];
+                                   NSData * data = error.userInfo[@"com.alamofire.serialization.response.error.data"];
+                                   if (data) {
+                                       errorDetail = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
+                                   }
                                    NSLog(@"error = %@", errorDetail);
+
                                    NSRange range_0 = [errorDetail rangeOfString:@"The request timed out."];
                                    NSRange range_1 = [errorDetail rangeOfString:@"请求超时"];
                                    if (range_0.location != NSNotFound || range_1.location != NSNotFound) {

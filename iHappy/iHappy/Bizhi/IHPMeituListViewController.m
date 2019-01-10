@@ -181,6 +181,9 @@ YBImageBrowserDelegate
             //广告占位
             XDSMeituModel *model = [[XDSMeituModel alloc] init];
             [self.meituList addObject:model];
+            NSString *indexIdentifier =[NSString stringWithFormat:@"%@_%ld", NSStringFromClass([XDSImageItemAdCell class]), self.meituList.count - 1];
+            [self.collectionView registerClass:[XDSImageItemAdCell class]
+                     forCellWithReuseIdentifier:indexIdentifier];
         }
     }
     
@@ -248,7 +251,9 @@ YBImageBrowserDelegate
         }];
         return cell;
     }else {
-        XDSImageItemAdCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([XDSImageItemAdCell class]) forIndexPath:indexPath];
+        NSString *indexIdentifier =[NSString stringWithFormat:@"%@_%ld", NSStringFromClass([XDSImageItemAdCell class]), indexPath.row];
+        XDSImageItemAdCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:indexIdentifier forIndexPath:indexPath];
+        cell.adMargin = 10.f;
         [cell p_loadCell];
         return cell;
     }

@@ -55,8 +55,6 @@ NSString * const MovieListViewController_movieCellIdentifier = @"IHPMovieCell";
     
     [_movieCollectionView registerNib:[UINib nibWithNibName:NSStringFromClass([IHPMovieCell class]) bundle:nil]
            forCellWithReuseIdentifier:NSStringFromClass([IHPMovieCell class])];
-    [_movieCollectionView registerClass:[XDSImageItemAdCell class]
-             forCellWithReuseIdentifier:NSStringFromClass([XDSImageItemAdCell class])];
     
     [_movieCollectionView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.mas_equalTo(0);
@@ -81,7 +79,7 @@ NSString * const MovieListViewController_movieCellIdentifier = @"IHPMovieCell";
     return _movieList.count;
 }
 
--(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     XDSHTMLMovieModel *movieModel = _movieList[indexPath.row];
     
     if (movieModel.href.length > 0) {
@@ -91,7 +89,11 @@ NSString * const MovieListViewController_movieCellIdentifier = @"IHPMovieCell";
         [cell cellWithHTMLMovieModel:movieModel];
         return cell;
     }else {
-        XDSImageItemAdCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([XDSImageItemAdCell class]) forIndexPath:indexPath];
+        NSString *indexIdentifier =[NSString stringWithFormat:@"%@_%ld", NSStringFromClass([XDSImageItemAdCell class]), indexPath.row];
+        XDSImageItemAdCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:indexIdentifier forIndexPath:indexPath];
+        cell.contentView.backgroundColor = [UIColor whiteColor];
+        cell.contentView.layer.masksToBounds = YES;
+        cell.adMargin = 0.f;
         [cell p_loadCell];
         return cell;
     }
@@ -108,6 +110,7 @@ NSString * const MovieListViewController_movieCellIdentifier = @"IHPMovieCell";
 //    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:movieDetailVC];
 //    [self.navigationController presentViewController:nav animated:YES completion:nil];
 }
+
 #pragma mark - 点击事件处理
 - (void)fetchMovieList:(BOOL)isTop{
     __weak typeof(self)weakSelf = self;
@@ -146,6 +149,7 @@ NSString * const MovieListViewController_movieCellIdentifier = @"IHPMovieCell";
     }
 }
 - (void)detailHtmlData:(NSData *)htmlData needClearOldData:(BOOL)needClearOldData{
+    
     TFHpple * hpp = [[TFHpple alloc] initWithHTMLData:htmlData];
     
     NSArray * pageElements = [hpp searchWithXPathQuery:@"//div[@class =\"pages\"]//ul"];
@@ -165,34 +169,43 @@ NSString * const MovieListViewController_movieCellIdentifier = @"IHPMovieCell";
             }
         }
     }else{
-        self.nextPageUrl = nil;
+        //    <div><a class="btn btn-primary btn-block" href="/type/2/2.html">点击查看下一页 » </a></div><footer class="footer">
+        pageElements = [hpp searchWithXPathQuery:@"//div//a[@class =\"btn btn-primary btn-block\"]"];
+        if (pageElements.count > 0) {
+            TFHppleElement * pageElement = pageElements.firstObject;
+            self.nextPageUrl = [pageElement objectForKey:@"href"];
+        }else {
+            self.nextPageUrl = nil;
+        }
     }
     
     
-    NSArray * rowElements = [hpp searchWithXPathQuery:@"//li[@class=\"p1 m1\"]"];
+    NSArray * rowElements = [hpp searchWithXPathQuery:@"//li[@class=\"p1 m1\"] | //div[@class=\"am-gallery-item\"]"];
     NSMutableArray * newMovies = [NSMutableArray arrayWithCapacity:0];
     for (TFHppleElement * oneElements in rowElements) {
-        TFHppleElement * a_link_hover =  [oneElements firstChildWithClassName:@"link-hover"];//跳转地址
-        TFHppleElement * image_lazy =  [a_link_hover firstChildWithClassName:@"lazy"];//图片
+        TFHppleElement * a_link_element =  [oneElements firstChildWithTagName:@"a"];//跳转地址
+        NSString *name = [a_link_element objectForKey:@"title"];
+        NSString *href = [a_link_element objectForKey:@"href"];
         
-        TFHppleElement * span_lzbz =  [a_link_hover firstChildWithClassName:@"lzbz"];
-        TFHppleElement * p_name = [span_lzbz firstChildWithClassName:@"name"];//名称
-        TFHppleElement * p_actor =  [span_lzbz childrenWithClassName:@"actor"].lastObject;//更新时间
-        TFHppleElement * p_other =  [a_link_hover firstChildWithClassName:@"other"];//其他描述
-        
-        NSString * name = p_name.text;
-        NSString * href = [a_link_hover objectForKey:@"href"];
-        NSString * update = p_actor.text;
-        NSString * other = p_other.text;
-        
-        NSString * imageurl = [image_lazy objectForKey:@"src"];
+        TFHppleElement * image_element =  [a_link_element firstChildWithTagName:@"img"];//图片
+        if (image_element == nil) {
+            image_element =  [[a_link_element firstChildWithTagName:@"div"] firstChildWithTagName:@"img"];//图片
+        }
+        NSString * imageurl = [image_element objectForKey:@"src"];
 
+
+        
+//        NSString * update = p_actor.text;
+//        NSString * other = p_other.text;
+
+        if (![href hasPrefix:@"http"]) {
+            href = [self.menuModel.rooturl stringByAppendingString:href];
+        }
         if (imageurl && [imageurl hasPrefix:@"//"]) {
             imageurl = [@"http:" stringByAppendingString:imageurl];
         }
         
         NSLog(@"%@", href);
-
         
         //过滤需要禁止显示的url
         NSString *fullHref = [self.menuModel.rooturl stringByAppendingString:href];
@@ -204,14 +217,17 @@ NSString * const MovieListViewController_movieCellIdentifier = @"IHPMovieCell";
         model.name = name;
         model.href = href;
         model.imageurl = imageurl;
-        model.update = update;
-        model.other = other;
+//        model.update = update;
+//        model.other = other;
         [newMovies addObject:model];
         
         
         if ([[XDSAdManager sharedManager] isAdAvailible] && (newMovies.count + _movieList.count)%[IHPConfigManager shareManager].adInfo.index  == 0) {
             XDSHTMLMovieModel *model = [[XDSHTMLMovieModel alloc] init];
             [newMovies addObject:model];
+            NSString *indexIdentifier =[NSString stringWithFormat:@"%@_%ld", NSStringFromClass([XDSImageItemAdCell class]), newMovies.count + _movieList.count - 1];
+            [_movieCollectionView registerClass:[XDSImageItemAdCell class]
+                     forCellWithReuseIdentifier:indexIdentifier];
         }
     }
     if (newMovies.count > 0) {

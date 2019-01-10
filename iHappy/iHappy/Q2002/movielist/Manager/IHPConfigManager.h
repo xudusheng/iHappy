@@ -33,6 +33,8 @@
 @property (nonatomic, copy) NSString *meizi;//远程下载的美女图片链接
 @property (nonatomic, copy) NSString *shuaige;//远程下载的帅哥图片链接
 
+@property (nonatomic, copy) NSString *movieRootUrl;//视频网站的跟路径
+
 - (void)configManagerWithJsondData:(NSData *)configData;
 - (void)configHiddenModelWithJsondData:(NSData *)hiddenModelData;
 
