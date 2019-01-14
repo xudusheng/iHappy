@@ -234,7 +234,7 @@ XDSCatalogueViewDelegate
                                         kXDSReadMenuBottomViewHeight);
     CGRect catalogueViewFrame = self.leftView.frame;
     catalogueViewFrame.origin.x = 0;
-    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationSlide];
+    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
     [UIView animateWithDuration:kXDSReadMenuAnimateDuration animations:^{
         self.bottomView.frame = bottomViewFrame;
         self.topView.frame = topFrame;

@@ -104,11 +104,13 @@
 //导出笔记
 - (void)exportNote {
     XDSNoteHTMLVC *noteWebVC = [[XDSNoteHTMLVC alloc] init];
-    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:noteWebVC];
+//    noteWebVC.hidesTopBarWhenPushed = NO;
+//    [[UIViewController xds_visiableViewController].navigationController pushViewController:noteWebVC animated:YES];
     
     UIViewController *rootVC = [UIApplication sharedApplication].keyWindow.rootViewController;
     UIViewController *presentedVC = rootVC.presentedViewController;
     if ([presentedVC isKindOfClass:[XDSReadPageViewController class]]) {
+        UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:noteWebVC];
         [presentedVC presentViewController:nav animated:YES completion:nil];
     }
 }

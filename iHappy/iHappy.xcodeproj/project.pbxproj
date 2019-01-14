@@ -1620,17 +1620,17 @@
 				181E539D214F928000E8A704 /* XDSCatalogueTabBarController.m */,
 				181E5395214F928000E8A704 /* XDSCatalogueViewController.h */,
 				181E539F214F928000E8A704 /* XDSCatalogueViewController.m */,
-				181E5396214F928000E8A704 /* XDSNoDataView.xib */,
 				181E539E214F928000E8A704 /* XDSCatalogueView.h */,
 				181E5397214F928000E8A704 /* XDSCatalogueView.m */,
+				181E5396214F928000E8A704 /* XDSNoDataView.xib */,
 				181E5399214F928000E8A704 /* XDSNoDataView.h */,
-				181E539A214F928000E8A704 /* XDSMarkViewController.h */,
-				181E539B214F928000E8A704 /* XDSNoteCell.h */,
-				181E539C214F928000E8A704 /* XDSNoteViewController.h */,
-				181E53A0214F928000E8A704 /* XDSMarkViewController.m */,
 				181E53A1214F928000E8A704 /* XDSNoDataView.m */,
-				181E53A2214F928000E8A704 /* XDSNoteViewController.m */,
+				181E539B214F928000E8A704 /* XDSNoteCell.h */,
 				181E53A3214F928000E8A704 /* XDSNoteCell.m */,
+				181E539C214F928000E8A704 /* XDSNoteViewController.h */,
+				181E53A2214F928000E8A704 /* XDSNoteViewController.m */,
+				181E539A214F928000E8A704 /* XDSMarkViewController.h */,
+				181E53A0214F928000E8A704 /* XDSMarkViewController.m */,
 			);
 			path = Catologue;
 			sourceTree = "<group>";

@@ -32,6 +32,7 @@
     _tabbarVC.cvDelegate = self.cvDelegate;
     _tabbarVC.view.frame = self.bounds;
     [self addSubview:_tabbarVC.view];
+    [self.viewController addChildViewController:_tabbarVC];
 }
 
 - (void)setCvDelegate:(id<XDSCatalogueViewDelegate>)cvDelegate{

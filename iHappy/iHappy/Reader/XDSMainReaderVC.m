@@ -107,6 +107,7 @@ OCT_SYNTHESIZE_SINGLETON_FOR_CLASS(XDSMainReaderVC)
         XDSBookModel *bookModel = [XDSBookModel bookModelWithBaseInfo:bookInfoModel];
         dispatch_async(dispatch_get_main_queue(), ^{
             XDSReadPageViewController *pageView = [[XDSReadPageViewController alloc] init];
+//            UINavigationController *navPageVC = [[UINavigationController alloc] initWithRootViewController:pageView];
             [[XDSReadManager sharedManager] setBookModel:bookModel];
             [[XDSReadManager sharedManager] setRmDelegate:pageView];
             [[XDSRootViewController sharedRootViewController].mainViewController presentViewController:pageView animated:YES completion:nil];

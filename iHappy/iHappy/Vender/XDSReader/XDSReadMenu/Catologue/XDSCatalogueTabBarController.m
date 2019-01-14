@@ -16,10 +16,18 @@
 @property (strong, nonatomic) XDSNoteViewController *noteVC;
 @property (strong, nonatomic) XDSMarkViewController *markVC;
 
+@property (nonatomic,assign) UIStatusBarStyle statusBarStyle_old;
 @end
 
 @implementation XDSCatalogueTabBarController
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+}
+
+- (void)dealloc {
+    [[UIApplication sharedApplication] setStatusBarStyle:self.statusBarStyle_old];
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
 
@@ -30,6 +38,10 @@
     _noteVC.title = @"笔记";
     UINavigationController *noteNav = [[UINavigationController alloc] initWithRootViewController:_noteVC];
 
+    
+    self.statusBarStyle_old = [UIApplication sharedApplication].statusBarStyle;
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
+    
     _markVC = [[XDSMarkViewController alloc] initWithStyle:UITableViewStyleGrouped];
     _markVC.title = @"书签";
     
