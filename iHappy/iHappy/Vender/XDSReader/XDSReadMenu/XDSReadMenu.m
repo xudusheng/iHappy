@@ -235,6 +235,8 @@ XDSCatalogueViewDelegate
     CGRect catalogueViewFrame = self.leftView.frame;
     catalogueViewFrame.origin.x = 0;
     [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
+    
     [UIView animateWithDuration:kXDSReadMenuAnimateDuration animations:^{
         self.bottomView.frame = bottomViewFrame;
         self.topView.frame = topFrame;
@@ -321,6 +323,7 @@ XDSCatalogueViewDelegate
             [self removeFromSuperview];
         }];
     }else if (CGRectGetMaxX(self.leftView.frame) > 0) {
+        [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
         [UIView animateWithDuration:kXDSReadMenuAnimateDuration animations:^{
             self.leftView.frame = leftViewFrame;
             self.topView.frame = topFrame;

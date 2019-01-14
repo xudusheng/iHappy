@@ -16,6 +16,7 @@
 #import "GDTNativeExpressAdView.h"
 #import "GDTMobInterstitial.h"
 
+#import "XDSPlaceholdSplashManager.h"
 #import "AppDelegate.h"
 //demo
 //NSString *const kGDTMobSDKAppId = @"1105344611";
@@ -358,6 +359,10 @@ GDTMobInterstitialDelegate>
         return;
     }
     if ([IHPConfigManager shareManager].home_pop != nil) {
+        return;
+    }
+    
+    if ([XDSPlaceholdSplashManager  sharedManager].isShowing == true) {
         return;
     }
     self.interstitial = [[GDTMobInterstitial alloc] initWithAppId:kGDTMobSDKAppId placementId:kGDTMobSDKInterstitialAdId];

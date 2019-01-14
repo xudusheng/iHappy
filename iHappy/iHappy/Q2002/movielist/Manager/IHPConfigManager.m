@@ -40,6 +40,9 @@
 
 }
 
+- (BOOL)isIncheck {
+    return _configModel.isIncheck;
+}
 - (IHPForceUpdateModel *)forceUpdate{
     return _configModel.forceUpdate;
 }

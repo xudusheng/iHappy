@@ -110,7 +110,6 @@ NSInteger const kLaunchAdShowTime = 3;
     [self.timer invalidate];
     self.timer = nil;
     [[XDSPlaceholdSplashManager sharedManager] removePlaceholderSplashView];
-    
     [[XDSPlaceholdSplashManager sharedManager] showHomePop];
 }
 

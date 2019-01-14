@@ -193,7 +193,7 @@ NSString *const kXDSUpdateLocalizableTaskID = @"XDSUpdateLocalizableTask";
 #if DEBUG
     NSString *requesturl = @"http://129.204.47.207/ihappy/config/menu_dev.json";
 #else
-    NSString *requesturl = @"http://129.204.47.207/ihappy/config/menu_1.0.5.json";
+    NSString *requesturl = @"http://129.204.47.207/ihappy/config/menu_1.0.6.json";
 #endif
     __weak typeof(self)weakSelf = self;
     [[[XDSHttpRequest alloc] init] htmlRequestWithHref:requesturl

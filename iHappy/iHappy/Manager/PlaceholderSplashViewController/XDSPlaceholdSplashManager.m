@@ -11,6 +11,9 @@
 #import "XDSRootViewController.h"
 
 #import "IHPHomePopAdViewController.h"
+
+#import "XDSAdManager.h"
+
 @interface XDSPlaceholdSplashManager ()
 @property (weak, nonatomic) XDSPlaceholdSplashViewController *placeholdSplashViewController;
 @end
@@ -63,6 +66,8 @@
     if ([IHPConfigManager shareManager].popImage && (NO == self.isShowing)) {
         IHPHomePopAdViewController *popVC = [[IHPHomePopAdViewController alloc] init];
         [[XDSRootViewController sharedRootViewController].mainViewController presentViewController:popVC animated:NO inRransparentForm:YES completion:nil];
+    } else {
+        [[XDSAdManager sharedManager] showInterstitialAD];
     }
 }
 

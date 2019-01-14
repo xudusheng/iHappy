@@ -17,6 +17,7 @@
 
 + (instancetype)shareManager;
 
+@property (nonatomic,assign) BOOL isIncheck;//是否正在审核
 @property (nonatomic, readonly) IHPForceUpdateModel *forceUpdate;
 @property (nonatomic, readonly) XDSAdInfoModel *adInfo;
 @property (nonatomic, readonly) NSArray<IHPMenuModel *> *menus;

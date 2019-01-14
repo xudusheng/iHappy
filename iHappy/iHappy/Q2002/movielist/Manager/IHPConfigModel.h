@@ -13,6 +13,7 @@
 #import "XDSSkipModel.h"
 @interface IHPConfigModel : NSObject
 
+@property (nonatomic,assign) BOOL isIncheck;
 @property (strong, nonatomic) IHPForceUpdateModel *forceUpdate;
 @property (strong, nonatomic) XDSAdInfoModel *adInfo;
 @property (strong, nonatomic) NSArray<IHPMenuModel*> *menus;

@@ -19,4 +19,7 @@
 
 //显示首页弹层广告
 - (void)showHomePop;
+
+//启动页是否正在显示
+- (BOOL)isShowing;
 @end
