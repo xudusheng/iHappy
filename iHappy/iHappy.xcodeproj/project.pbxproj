@@ -149,6 +149,19 @@
 		186DA10321A4E39E00C5F5F8 /* subnote.html in Resources */ = {isa = PBXBuildFile; fileRef = 186DA10121A4E39D00C5F5F8 /* subnote.html */; };
 		1877C9CC21E48A520002380F /* IHPPlaceholderSplashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1877C9CB21E48A520002380F /* IHPPlaceholderSplashViewController.m */; };
 		1877C9D221E4ABD00002380F /* XDSSkipModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1877C9D121E4ABD00002380F /* XDSSkipModel.m */; };
+		187CC66D21EF0CEE005019C1 /* LoginViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 187CC65921EF0CEE005019C1 /* LoginViewModel.m */; };
+		187CC67321EF0CEE005019C1 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 187CC66221EF0CEE005019C1 /* Login.storyboard */; };
+		187CC67921EF1BB2005019C1 /* XDSLoginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 187CC67821EF1BB2005019C1 /* XDSLoginVC.m */; };
+		187CC67C21EF1CD0005019C1 /* XDSMobileVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 187CC67B21EF1CD0005019C1 /* XDSMobileVC.m */; };
+		187CC67F21EF1D37005019C1 /* ChooseAreaNumberViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 187CC67E21EF1D36005019C1 /* ChooseAreaNumberViewController.m */; };
+		187CC68A21EF3320005019C1 /* SVRadialGradientLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 187CC68121EF3320005019C1 /* SVRadialGradientLayer.m */; };
+		187CC68B21EF3320005019C1 /* SVProgressAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 187CC68421EF3320005019C1 /* SVProgressAnimatedView.m */; };
+		187CC68C21EF3320005019C1 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 187CC68621EF3320005019C1 /* SVProgressHUD.m */; };
+		187CC68D21EF3320005019C1 /* SVIndefiniteAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 187CC68721EF3320005019C1 /* SVIndefiniteAnimatedView.m */; };
+		187CC68E21EF3320005019C1 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 187CC68821EF3320005019C1 /* SVProgressHUD.bundle */; };
+		187CC69121EF33A3005019C1 /* UIButton+Login_Animation.m in Sources */ = {isa = PBXBuildFile; fileRef = 187CC68F21EF33A3005019C1 /* UIButton+Login_Animation.m */; };
+		187CC69421EF3545005019C1 /* XDSGetVerificationCodeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 187CC69221EF3544005019C1 /* XDSGetVerificationCodeButton.m */; };
+		187CC69721EF424A005019C1 /* XDSCodeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 187CC69621EF424A005019C1 /* XDSCodeVC.m */; };
 		1885EDC421605A91004C4FD7 /* unavailible_url.json in Resources */ = {isa = PBXBuildFile; fileRef = 1885EDC321605A90004C4FD7 /* unavailible_url.json */; };
 		1885EDC721607030004C4FD7 /* IHYHiddenModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1885EDC621607030004C4FD7 /* IHYHiddenModel.m */; };
 		1885EDCA2160709D004C4FD7 /* IHYHiddenItemModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1885EDC92160709D004C4FD7 /* IHYHiddenItemModel.m */; };
@@ -654,6 +667,30 @@
 		1877C9CB21E48A520002380F /* IHPPlaceholderSplashViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IHPPlaceholderSplashViewController.m; sourceTree = "<group>"; };
 		1877C9D021E4ABD00002380F /* XDSSkipModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XDSSkipModel.h; sourceTree = "<group>"; };
 		1877C9D121E4ABD00002380F /* XDSSkipModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XDSSkipModel.m; sourceTree = "<group>"; };
+		187CC65821EF0CEE005019C1 /* LoginViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewModel.h; sourceTree = "<group>"; };
+		187CC65921EF0CEE005019C1 /* LoginViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewModel.m; sourceTree = "<group>"; };
+		187CC66221EF0CEE005019C1 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
+		187CC67721EF1BB2005019C1 /* XDSLoginVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XDSLoginVC.h; sourceTree = "<group>"; };
+		187CC67821EF1BB2005019C1 /* XDSLoginVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XDSLoginVC.m; sourceTree = "<group>"; };
+		187CC67A21EF1CD0005019C1 /* XDSMobileVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XDSMobileVC.h; sourceTree = "<group>"; };
+		187CC67B21EF1CD0005019C1 /* XDSMobileVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XDSMobileVC.m; sourceTree = "<group>"; };
+		187CC67D21EF1D36005019C1 /* ChooseAreaNumberViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseAreaNumberViewController.h; sourceTree = "<group>"; };
+		187CC67E21EF1D36005019C1 /* ChooseAreaNumberViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseAreaNumberViewController.m; sourceTree = "<group>"; };
+		187CC68121EF3320005019C1 /* SVRadialGradientLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVRadialGradientLayer.m; sourceTree = "<group>"; };
+		187CC68221EF3320005019C1 /* SVIndefiniteAnimatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVIndefiniteAnimatedView.h; sourceTree = "<group>"; };
+		187CC68321EF3320005019C1 /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
+		187CC68421EF3320005019C1 /* SVProgressAnimatedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressAnimatedView.m; sourceTree = "<group>"; };
+		187CC68521EF3320005019C1 /* SVRadialGradientLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVRadialGradientLayer.h; sourceTree = "<group>"; };
+		187CC68621EF3320005019C1 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
+		187CC68721EF3320005019C1 /* SVIndefiniteAnimatedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVIndefiniteAnimatedView.m; sourceTree = "<group>"; };
+		187CC68821EF3320005019C1 /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
+		187CC68921EF3320005019C1 /* SVProgressAnimatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressAnimatedView.h; sourceTree = "<group>"; };
+		187CC68F21EF33A3005019C1 /* UIButton+Login_Animation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+Login_Animation.m"; sourceTree = "<group>"; };
+		187CC69021EF33A3005019C1 /* UIButton+Login_Animation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+Login_Animation.h"; sourceTree = "<group>"; };
+		187CC69221EF3544005019C1 /* XDSGetVerificationCodeButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XDSGetVerificationCodeButton.m; sourceTree = "<group>"; };
+		187CC69321EF3545005019C1 /* XDSGetVerificationCodeButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDSGetVerificationCodeButton.h; sourceTree = "<group>"; };
+		187CC69521EF424A005019C1 /* XDSCodeVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XDSCodeVC.h; sourceTree = "<group>"; };
+		187CC69621EF424A005019C1 /* XDSCodeVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XDSCodeVC.m; sourceTree = "<group>"; };
 		1885EDC321605A90004C4FD7 /* unavailible_url.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = unavailible_url.json; sourceTree = "<group>"; };
 		1885EDC521607030004C4FD7 /* IHYHiddenModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IHYHiddenModel.h; sourceTree = "<group>"; };
 		1885EDC621607030004C4FD7 /* IHYHiddenModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IHYHiddenModel.m; sourceTree = "<group>"; };
@@ -1736,6 +1773,66 @@
 			path = iHappy/Q2002/movieplayer/View;
 			sourceTree = SOURCE_ROOT;
 		};
+		187CC65621EF0CEE005019C1 /* MKLogin(登陆) */ = {
+			isa = PBXGroup;
+			children = (
+				187CC65721EF0CEE005019C1 /* ViewModel */,
+				187CC65A21EF0CEE005019C1 /* Controller */,
+				187CC66A21EF0CEE005019C1 /* Model */,
+			);
+			path = "MKLogin(登陆)";
+			sourceTree = "<group>";
+		};
+		187CC65721EF0CEE005019C1 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				187CC65821EF0CEE005019C1 /* LoginViewModel.h */,
+				187CC65921EF0CEE005019C1 /* LoginViewModel.m */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		187CC65A21EF0CEE005019C1 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				187CC66221EF0CEE005019C1 /* Login.storyboard */,
+				187CC67721EF1BB2005019C1 /* XDSLoginVC.h */,
+				187CC67821EF1BB2005019C1 /* XDSLoginVC.m */,
+				187CC67A21EF1CD0005019C1 /* XDSMobileVC.h */,
+				187CC67B21EF1CD0005019C1 /* XDSMobileVC.m */,
+				187CC69521EF424A005019C1 /* XDSCodeVC.h */,
+				187CC69621EF424A005019C1 /* XDSCodeVC.m */,
+				187CC67D21EF1D36005019C1 /* ChooseAreaNumberViewController.h */,
+				187CC67E21EF1D36005019C1 /* ChooseAreaNumberViewController.m */,
+				187CC69021EF33A3005019C1 /* UIButton+Login_Animation.h */,
+				187CC68F21EF33A3005019C1 /* UIButton+Login_Animation.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		187CC66A21EF0CEE005019C1 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		187CC68021EF3320005019C1 /* SVProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				187CC68321EF3320005019C1 /* SVProgressHUD.h */,
+				187CC68621EF3320005019C1 /* SVProgressHUD.m */,
+				187CC68521EF3320005019C1 /* SVRadialGradientLayer.h */,
+				187CC68121EF3320005019C1 /* SVRadialGradientLayer.m */,
+				187CC68221EF3320005019C1 /* SVIndefiniteAnimatedView.h */,
+				187CC68421EF3320005019C1 /* SVProgressAnimatedView.m */,
+				187CC68821EF3320005019C1 /* SVProgressHUD.bundle */,
+				187CC68921EF3320005019C1 /* SVProgressAnimatedView.h */,
+				187CC68721EF3320005019C1 /* SVIndefiniteAnimatedView.m */,
+			);
+			path = SVProgressHUD;
+			sourceTree = "<group>";
+		};
 		18A6FA1B212FCB9200709EC9 /* Manager */ = {
 			isa = PBXGroup;
 			children = (
@@ -2183,6 +2280,7 @@
 				1808D3BE215BDD5300F822FD /* XDSBaseContentVC.m */,
 				1808D3C0215BDE2B00F822FD /* XDSBaseContentNavigationController.h */,
 				1808D3C1215BDE2B00F822FD /* XDSBaseContentNavigationController.m */,
+				187CC65621EF0CEE005019C1 /* MKLogin(登陆) */,
 				A2D3668121DFB677001FA648 /* guidement */,
 				180933F421DF43AA00D3A0CA /* Setting */,
 				181E5418214FCFA400E8A704 /* Reader */,
@@ -2228,6 +2326,8 @@
 			children = (
 				A05EB8F81DE0277E00148A5B /* ForbidTextField.h */,
 				A05EB8F91DE0277E00148A5B /* ForbidTextField.m */,
+				187CC69321EF3545005019C1 /* XDSGetVerificationCodeButton.h */,
+				187CC69221EF3544005019C1 /* XDSGetVerificationCodeButton.m */,
 				183E9F4F21E0564900AB764D /* EaseBlankPageView */,
 				A22C12F12144649400896F00 /* Category */,
 			);
@@ -2655,6 +2755,7 @@
 		FCAFC6061EAED5C300B48C83 /* Vender */ = {
 			isa = PBXGroup;
 			children = (
+				187CC68021EF3320005019C1 /* SVProgressHUD */,
 				A249082821B0B3BA00E23542 /* YYImage */,
 				A24907D421B0B35500E23542 /* YBImageBrowser */,
 				A2DBD4AF21A6D6FD0094A1D9 /* BaiduAdMob */,
@@ -2799,6 +2900,7 @@
 				A01579F41DE1776C00CD7DDB /* ico_back@3x.png in Resources */,
 				181E53DF214F928000E8A704 /* 华文新魏.ttf in Resources */,
 				186DA10221A4E39E00C5F5F8 /* note.html in Resources */,
+				187CC68E21EF3320005019C1 /* SVProgressHUD.bundle in Resources */,
 				18A6FAF32130DF3800709EC9 /* img_circular@2x.png in Resources */,
 				A2DBD4C821A6ECDB0094A1D9 /* btn_play_new@2x.png in Resources */,
 				092CAF2F1DE2B20F008127DA /* IHYNewsListCell.xib in Resources */,
@@ -2811,6 +2913,7 @@
 				18A041D321B2514B00B5993D /* shuaigetupian.txt in Resources */,
 				183E9F6021E0591500AB764D /* img_empty_page@2x.png in Resources */,
 				18A6FAF52130DF3800709EC9 /* btn_voice@3x.png in Resources */,
+				187CC67321EF0CEE005019C1 /* Login.storyboard in Resources */,
 				183E9F5C21E0580D00AB764D /* img_network@2x.png in Resources */,
 				18A6FAF42130DF3800709EC9 /* btn_voice@2x.png in Resources */,
 				A2D3669921DFB6CE001FA648 /* 纳新有礼@2x.png in Resources */,
@@ -2874,6 +2977,7 @@
 				"${BUILT_PRODUCTS_DIR}/MJRefresh/MJRefresh.framework",
 				"${BUILT_PRODUCTS_DIR}/Masonry/Masonry.framework",
 				"${BUILT_PRODUCTS_DIR}/Reachability/Reachability.framework",
+				"${BUILT_PRODUCTS_DIR}/ReactiveObjC/ReactiveObjC.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/WMPageController/WMPageController.framework",
 				"${BUILT_PRODUCTS_DIR}/YYModel/YYModel.framework",
@@ -2899,6 +3003,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJRefresh.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Masonry.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reachability.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveObjC.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/WMPageController.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YYModel.framework",
@@ -2939,12 +3044,14 @@
 				A2DBD4AE21A6D48C0094A1D9 /* BaiduAdManager.m in Sources */,
 				1885EDCA2160709D004C4FD7 /* IHYHiddenItemModel.m in Sources */,
 				1819E43F21A3EADF00F67F56 /* ZFSliderView.m in Sources */,
+				187CC69421EF3545005019C1 /* XDSGetVerificationCodeButton.m in Sources */,
 				18A6FAED2130DF3800709EC9 /* XDSMediaBrowserViewLayout.m in Sources */,
 				FC0B7C7E1EC7FF840022E504 /* YSEColorModel.m in Sources */,
 				092CAF071DE28620008127DA /* IHYMoviePlayerViewController.m in Sources */,
 				183E9F5521E0564900AB764D /* UIView+EaseBlankView.m in Sources */,
 				1809341821DF5D7B00D3A0CA /* UIDevice+XDSAdd.m in Sources */,
 				1819E43721A3EADF00F67F56 /* UIViewController+ZFPlayerRotation.m in Sources */,
+				187CC67C21EF1CD0005019C1 /* XDSMobileVC.m in Sources */,
 				A2D3668921DFB677001FA648 /* HQFlowView.m in Sources */,
 				092CAF041DE28620008127DA /* IHPMovieCell.m in Sources */,
 				18A6FA8D2130031600709EC9 /* NLEBNFSequenceFactory.m in Sources */,
@@ -2964,6 +3071,7 @@
 				181E53D2214F928000E8A704 /* NSString+XDSReader.m in Sources */,
 				A249082221B0B35600E23542 /* YBIBPhotoAlbumManager.m in Sources */,
 				18B3DC8D2154BB8600FFD27E /* UIViewController+XDSReader.m in Sources */,
+				187CC67F21EF1D37005019C1 /* ChooseAreaNumberViewController.m in Sources */,
 				182D55F2219EFDF200101A82 /* XDSWelfareWebViewController.m in Sources */,
 				181E53B7214F928000E8A704 /* XDSReadManager.m in Sources */,
 				092CAF131DE28D56008127DA /* OCTKeyboardObserverHelper.m in Sources */,
@@ -3005,6 +3113,7 @@
 				18BB4F442153F9EE00C4A2CD /* GCDWebServerStreamedResponse.m in Sources */,
 				A05EB8FF1DE0277E00148A5B /* ForbidTextField.m in Sources */,
 				A05EB8EF1DE0244300148A5B /* ZDProgressHUD.m in Sources */,
+				187CC67921EF1BB2005019C1 /* XDSLoginVC.m in Sources */,
 				181E53CF214F928000E8A704 /* CXHTMLDocument.m in Sources */,
 				A27BB362215FE73A004C9635 /* XDSHTMLPlayerVC.m in Sources */,
 				18A6FA52212FFF7F00709EC9 /* XDSTaskQueue.m in Sources */,
@@ -3038,9 +3147,11 @@
 				092CAF031DE28620008127DA /* IHYMovieModel.m in Sources */,
 				A27BB35C215FE087004C9635 /* XDSHTMLMovieModel.m in Sources */,
 				181E53BB214F928000E8A704 /* XDSReaderGlobleConst.m in Sources */,
+				187CC68C21EF3320005019C1 /* SVProgressHUD.m in Sources */,
 				181E540A214F928100E8A704 /* XDSCatalogueViewController.m in Sources */,
 				FCA032461F8DD7DE00600581 /* UIColor+PYSearchExtension.m in Sources */,
 				09F90D6D1DE2BD8600542684 /* IHYNewsModel.m in Sources */,
+				187CC69721EF424A005019C1 /* XDSCodeVC.m in Sources */,
 				FC1A8C371EAC255900E66FF8 /* IHPSubMenuModel.m in Sources */,
 				18A6FA8E2130031600709EC9 /* NLEBNFParser.m in Sources */,
 				181E53C7214F928000E8A704 /* CXMLNode_XPathExtensions.m in Sources */,
@@ -3050,6 +3161,7 @@
 				A05EB91D1DE03B2500148A5B /* XDSBaseViewController.m in Sources */,
 				18BB4F3B2153F9EE00C4A2CD /* GCDWebDAVServer.m in Sources */,
 				1819E43021A3EADF00F67F56 /* ZFPlayerLogManager.m in Sources */,
+				187CC69121EF33A3005019C1 /* UIButton+Login_Animation.m in Sources */,
 				181E5406214F928100E8A704 /* XDSReadMenu.m in Sources */,
 				1819E44821A3F5E300F67F56 /* XDSPlayerSourceModel.m in Sources */,
 				A05EB8EB1DE0244300148A5B /* OCAlertView.m in Sources */,
@@ -3117,15 +3229,18 @@
 				183E9F5421E0564900AB764D /* XDSEaseBlankPageView.m in Sources */,
 				18A6FAEF2130DF3800709EC9 /* XDSPlayerView.m in Sources */,
 				18A6FA2B212FCB9D00709EC9 /* XDSUrlItem.m in Sources */,
+				187CC68A21EF3320005019C1 /* SVRadialGradientLayer.m in Sources */,
 				A05EB8EE1DE0244300148A5B /* ZDLoadFailView.m in Sources */,
 				18A6FAFE2130DF3800709EC9 /* XDSMediaModel.m in Sources */,
 				FCA032451F8DD7DE00600581 /* PYSearchViewController.m in Sources */,
+				187CC66D21EF0CEE005019C1 /* LoginViewModel.m in Sources */,
 				18A6FA892130031500709EC9 /* NLEBNFFastForward.m in Sources */,
 				092CAEFB1DE28620008127DA /* IHYViewControllerModel.m in Sources */,
 				181E53C6214F928000E8A704 /* CXMLNamespaceNode.m in Sources */,
 				A2755B8F21665B5300006989 /* XDSHTMLVideoSearchVC.m in Sources */,
 				1877C9CC21E48A520002380F /* IHPPlaceholderSplashViewController.m in Sources */,
 				A249081621B0B35600E23542 /* YBImageBrowserProgressView.m in Sources */,
+				187CC68D21EF3320005019C1 /* SVIndefiniteAnimatedView.m in Sources */,
 				1819E43B21A3EADF00F67F56 /* ZFVolumeBrightnessView.m in Sources */,
 				FCAFC6111EAED7DF00B48C83 /* IHPConfigModel.m in Sources */,
 				181E53C9214F928000E8A704 /* CXMLUnsupportedNode.m in Sources */,
@@ -3151,6 +3266,7 @@
 				18A6FA49212FFF1900709EC9 /* unzip.c in Sources */,
 				A05EB91B1DE03B2500148A5B /* XDSRootRequestViewController.m in Sources */,
 				18A6FA8A2130031500709EC9 /* NLEBNFIndexFactory.m in Sources */,
+				187CC68B21EF3320005019C1 /* SVProgressAnimatedView.m in Sources */,
 				18A6FA8F2130031600709EC9 /* NLEBNFTokenizerParams.m in Sources */,
 				18A6FA8B2130031600709EC9 /* NLEBNFIndexFactoryJSON.m in Sources */,
 				181E53C5214F928000E8A704 /* CXMLNode.m in Sources */,

@@ -10,6 +10,8 @@
 
 @interface XDSBaseViewController : XDSRootRequestViewController
 
+@property (nonatomic, assign) BOOL showNoNavShadow;
+
 - (void)popBack:(UIBarButtonItem *)barButtonItem;
 
 @end

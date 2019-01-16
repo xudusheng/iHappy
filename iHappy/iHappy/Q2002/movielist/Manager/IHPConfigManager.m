@@ -29,13 +29,21 @@
     [self setConfigModel:configModel];
     
     if (self.launch_pop_list.count > 0) {
-        NSInteger index = arc4random()%(self.launch_pop_list.count -1);
-        self.launch_pop =[IHPConfigManager shareManager].launch_pop_list[index];
+        if (self.launch_pop_list.count == 1) {
+            self.launch_pop = self.launch_pop_list.firstObject;
+        }else {
+            NSInteger index = arc4random()%(self.launch_pop_list.count -1);
+            self.launch_pop =[IHPConfigManager shareManager].launch_pop_list[index];
+        }
     }
 
     if (self.home_pop_list.count > 0) {
-        NSInteger index = arc4random()%(self.home_pop_list.count -1);
-        self.home_pop =[IHPConfigManager shareManager].home_pop_list[index];
+        if (self.home_pop_list.count == 1) {
+            self.home_pop = self.home_pop_list.firstObject;
+        }else {
+            NSInteger index = arc4random()%(self.home_pop_list.count -1);
+            self.home_pop =[IHPConfigManager shareManager].home_pop_list[index];
+        }
     }
 
 }

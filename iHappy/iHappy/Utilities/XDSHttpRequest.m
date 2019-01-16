@@ -43,16 +43,32 @@ NSString *const key = @"huidaibao";
     }
     
     urlString = [urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    AFHTTPSessionManager * manager = [AFHTTPSessionManager manager];
-    manager.responseSerializer = [AFJSONResponseSerializer serializer];//使用这个将得到的是JSON
-    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript", @"text/html", nil];
-    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
+//    AFHTTPSessionManager * manager = [AFHTTPSessionManager manager];
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    manager.requestSerializer.timeoutInterval = 15;
+    manager.requestSerializer.cachePolicy = NSURLRequestReloadIgnoringLocalAndRemoteCacheData;
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithArray:@[
+                                                                              @"application/json",
+                                                                              @"text/html",
+                                                                              @"text/json",
+                                                                              @"text/plain",
+                                                                              @"text/javascript",
+                                                                              @"text/xml",
+                                                                              @"image/*",
+                                                                              @"application/x-www-form-urlencoded"
+                                                                              ]];
 
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
+    
+    AFHTTPRequestSerializer *requestSerializer =  manager.requestSerializer;
+    [requestSerializer setValue:[NSString stringWithFormat:@"Bearer %@",nil] forHTTPHeaderField:@"Authorization"];
     self.sessionDataTask = [manager GET:urlString parameters:reqParam?reqParam:@{}
                                                       progress:^(NSProgress * _Nonnull downloadProgress) {
                                                           
                                                       } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-//                                                          NSLog(@" ============ %@", responseObject);
+                                                          NSLog(@" ============ %@", responseObject);
                                                           [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
                                                           [XDSUtilities hideHud:hudController.view];
                                                           if (responseObject) {
@@ -65,6 +81,13 @@ NSString *const key = @"huidaibao";
                                                       } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
                                                           [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
                                                           [XDSUtilities hideHud:hudController.view];
+                                                          
+                                                          NSData * data = error.userInfo[@"com.alamofire.serialization.response.error.data"];
+                                                          if (data) {
+                                                              NSString * str = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
+                                                              NSLog(@"服务器的错误原因:%@",str);
+                                                          }
+                                                          
                                                           NSString *errorDetail = [error localizedDescription];
                                                           NSLog(@"error = %@", errorDetail);
                                                           NSRange range_0 = [errorDetail rangeOfString:@"The request timed out."];
@@ -340,4 +363,59 @@ NSString *const key = @"huidaibao";
     
     [_sessionDataTask resume];
 }
+
+
+
+//----------------------------------------------------------------------
+//以下为b_x的接口签名
+//----------------------------------------------------------------------
+
+/**
+ 签名操作
+ 
+ @param param 传入的数据
+ @return 返回签好名的字典
+ */
+- (NSDictionary *)signPackageWithParam:(NSDictionary *)param{
+    //判断是否存在了签名
+    if (![param objectForKey:@"sign"]) {
+        NSMutableDictionary *paramNew = [NSMutableDictionary dictionaryWithDictionary:param];
+        NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
+        
+        
+        [paramNew setObject:@"uJSE0jR6zRJPi7OE" forKey:@"api_key"];//接口KEY
+        [paramNew setObject:@"v1" forKey:@"api_version"];//接口版本号
+        [paramNew setObject:[infoDictionary objectForKey:@"CFBundleShortVersionString"] forKey:@"app_version"];//APP版本号
+        [paramNew setObject:@"iPhone X" forKey:@"phone_model"];//机型
+        [paramNew setObject:[[UIDevice currentDevice] systemVersion] forKey:@"phone_version"];//手机系统版本
+        [paramNew setObject:@"ios" forKey:@"source"];//请求来源 h5/ios/android
+        [paramNew setObject:[NSString stringWithFormat:@"%ld",(long)[[NSDate date]timeIntervalSince1970]] forKey:@"timestamp"];//unix时间戳
+        [paramNew setObject:[self createSign:paramNew] forKey:@"sign"];
+        return paramNew;
+    }
+    return param;
+}
+
+/**
+ 自定义签名方法
+@param param 需要加入签名的值
+@return MD5 Str
+*/
+- (NSString *)createSign:(NSMutableDictionary *)param{
+    NSMutableString *str = [[NSMutableString alloc] init];
+    NSArray *newArray = [param.allKeys sortedArrayUsingSelector:@selector(compare:)];
+    for (int i =0 ; i<newArray.count ; i++) {
+        NSString *key = newArray[i];
+        NSString *appStr = [NSString stringWithFormat:@"%@=%@",key,param[key]];
+        if ([NSString stringWithFormat:@"%@",param[key]].length != 0) {
+            [str appendString:appStr];
+            if (i < param.allKeys.count-1) {
+                [str appendString:@"&"];
+            }
+        }
+    }
+    [str appendString:@"&key=91GAUJRfZzkXdWtq"];
+    return [str cw_md5].uppercaseString;
+}
+
 @end

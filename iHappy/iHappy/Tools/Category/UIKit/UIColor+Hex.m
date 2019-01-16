@@ -35,5 +35,8 @@
     [[NSScanner scannerWithString:bString] scanHexInt:&b];
     return [UIColor colorWithRed:((float) r / 255.0f) green:((float) g / 255.0f) blue:((float) b / 255.0f) alpha:1.0f];
 }
-    
+
++ (UIColor *)appThemeColor {
+    return [UIColor colorWithRed:252.f/255.f green:123.f/255.f blue:153.f/255.f alpha:1];
+}
 @end

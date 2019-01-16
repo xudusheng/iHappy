@@ -96,6 +96,14 @@ NSString * const kXDSEnterMainViewFinishedNotification = @"XDSEnterMainViewFinis
 
 - (void)initMainViewLaunchingOptions:(NSDictionary *)launchOptions {
     
+    UINavigationController *loginNav = [[UIStoryboard storyboardWithName:@"Login" bundle:nil] instantiateViewControllerWithIdentifier:@"LoginNavi"];
+    loginNav.navigationBar.translucent = NO;
+    UIViewController *loginVC = loginNav.cw_rootViewController;
+    loginVC.hidesTopBarWhenPushed = YES;
+    [XDSRootViewController sharedRootViewController].mainViewController = loginNav;
+    return;
+    
+    
     NSArray<IHPMenuModel*> *menus = [IHPConfigManager shareManager].menus;
     
     IHPMenuViewController *leftMenu = [[IHPMenuViewController alloc] init];
@@ -180,13 +188,13 @@ NSString *const kXDSUpdateLocalizableTaskID = @"XDSUpdateLocalizableTask";
 
 - (void)fetchConfigData{
 
-//    NSString *path = [[NSBundle mainBundle] pathForResource:@"menu" ofType:@"json"];
-//    NSData *menuData = [NSData dataWithContentsOfFile:path];
-//    NSLog(@"%@", [[NSString alloc] initWithData:menuData encoding:NSUTF8StringEncoding]);
-//    IHPConfigManager *manager = [IHPConfigManager shareManager];
-//    [manager configManagerWithJsondData:menuData];
-//    [self finishTaskWithTaksID:kXDSFetchConfigTaskID];
-//    return;
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"menu" ofType:@"json"];
+    NSData *menuData = [NSData dataWithContentsOfFile:path];
+    NSLog(@"%@", [[NSString alloc] initWithData:menuData encoding:NSUTF8StringEncoding]);
+    IHPConfigManager *manager = [IHPConfigManager shareManager];
+    [manager configManagerWithJsondData:menuData];
+    [self finishTaskWithTaksID:kXDSFetchConfigTaskID];
+    return;
     
 //    NSString *requesturl = @"http://134.175.54.80/ihappy/menu.json";
     

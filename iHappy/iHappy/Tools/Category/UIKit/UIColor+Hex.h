@@ -12,5 +12,6 @@
 
 + (UIColor *)colorWithHexString: (NSString *) stringToConvert;//hex色值
 
++ (UIColor *)appThemeColor;
     
 @end

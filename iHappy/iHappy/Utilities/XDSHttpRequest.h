@@ -25,7 +25,6 @@ UIKIT_EXTERN NSString *const kTimeCallOut;//链接超时
                  success:(void(^)(BOOL success, id successResult))success
                   failed:(void(^)(NSString * errorDescription))failed;
 
-
 - (void)htmlRequestWithHref:(NSString *)htmlHref
               hudController:(UIViewController *)hudController
                     showHUD:(BOOL)showHUD
@@ -45,4 +44,10 @@ UIKIT_EXTERN NSString *const kTimeCallOut;//链接超时
                                failed:(void(^)(NSString * errorDescription))failed;
 #pragma mark - 取消请求
 - (void)cancelRequest;
+
+
+//----------------------------------------------------------------------
+//以下为b_x的相关操作
+//----------------------------------------------------------------------
+- (NSDictionary *)signPackageWithParam:(NSDictionary *)param;
 @end

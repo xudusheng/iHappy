@@ -13,6 +13,7 @@
 #import "WMPageController.h"
 #import <MJExtension/MJExtension.h>
 #import <MJRefresh/MJRefresh.h>
+#import "SVProgressHUD.h"
 
 
 #endif /* XDSVenderHeader_h */

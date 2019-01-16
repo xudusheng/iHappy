@@ -35,9 +35,9 @@ void hideNavigationBar_swizzleMethod(Class class, SEL originalSelector, SEL swiz
 }
 
 + (void)load{
-//    hideNavigationBar_swizzleMethod(self,
-//                  @selector(viewWillAppear:),
-//                  @selector(hideNavigationBar_ViewWillAppear:));
+    hideNavigationBar_swizzleMethod(self,
+                  @selector(viewWillAppear:),
+                  @selector(hideNavigationBar_ViewWillAppear:));
 }
 
 - (void)hideNavigationBar_ViewWillAppear:(BOOL)animated{
