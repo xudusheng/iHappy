@@ -18,7 +18,7 @@
 @end
 
 @implementation XDSMainReaderVC
-OCT_SYNTHESIZE_SINGLETON_FOR_CLASS(XDSMainReaderVC)
+XDS_SYNTHESIZE_SINGLETON_FOR_CLASS(XDSMainReaderVC)
 
 + (instancetype)sharedReaderVC {
     return [XDSMainReaderVC sharedXDSMainReaderVC];
@@ -27,21 +27,64 @@ OCT_SYNTHESIZE_SINGLETON_FOR_CLASS(XDSMainReaderVC)
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self movieListViewControllerDataInit];
+    
+
     [self createMovieListViewControllerUI];
-//    [[XDSAdManager sharedManager] showInterstitialAD];
+    [self loadLocalBookIfFirstLaunchApp];
+}
+
+- (void)loadLocalBookIfFirstLaunchApp {
+    BOOL isNotFirstLaunch = [[NSUserDefaults standardUserDefaults] boolForKey:NSStringFromClass([XDSMainReaderVC class])];
+    if (isNotFirstLaunch == YES) {
+        [XDSUtilities showHud:self.view text:nil];
+        [self loadLocalBooks];
+        return;
+    }
+
+
+    NSFileManager *filemanager = [NSFileManager defaultManager];
+    NSArray *file_list = @[@"生活小科普.txt",
+                           @"shangyemoshi.epub",
+                           @"zhongguorendaomushi.epub",
+                           @"erbafaze.epub",
+                           @"比特币读书会.epub",
+                           @"感情经济学：如果梁山伯懂点博弈论.epub",
+                           @"权力的48条法则.epub",
+                           @"在难搞的日子笑出声来——大鹏.epub"];
+    for (NSString *fileName in file_list) {
+        
+        NSString *fileName_fullPath = [fileName fullPath];
+        //documents下不存在该txt文件，则将该txt文件复制到documents文件夹里面去
+        if (![filemanager fileExistsAtPath:fileName_fullPath]) {
+            NSURL *fileURL = [[NSBundle mainBundle] URLForResource:fileName withExtension:nil];
+            if (fileURL == nil) {
+                continue;
+            }
+            NSError *error = nil;
+            BOOL success = [filemanager copyItemAtURL:fileURL toURL:[NSURL fileURLWithPath:fileName_fullPath] error:&error];
+            if (success) {
+                NSLog(@"成功将%@复制到document目录下", fileName);
+            }
+        }
+    }
+    
+    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:NSStringFromClass([XDSMainReaderVC class])];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    [XDSUtilities showHud:self.view text:nil];
+    [self loadLocalBooks];
 }
 
 #pragma mark - 点击事件处理
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    if (!_hasFirstLoadBooks) {
-        [XDSUtilities showHud:self.view text:nil];
-        [self loadLocalBooks];
-        self.hasFirstLoadBooks = YES;
-    }else {
-        [self sortBooksByModifyTime];
-    }
+//    if (!_hasFirstLoadBooks) {
+//        [XDSUtilities showHud:self.view text:nil];
+//        [self loadLocalBooks];
+//        self.hasFirstLoadBooks = YES;
+//    }else {
+//        [self sortBooksByModifyTime];
+//    }
 }
 
 #pragma mark - 点击事件处理
@@ -77,6 +120,9 @@ OCT_SYNTHESIZE_SINGLETON_FOR_CLASS(XDSMainReaderVC)
     
     UIBarButtonItem *barButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"添加书籍" style:UIBarButtonItemStyleDone target:self action:@selector(showWifiView)];
     self.navigationItem.rightBarButtonItem = barButtonItem;
+    
+    self.mCollectionView.mj_header = [XDS_CustomMjRefreshHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadLocalBooks)];
+    
 }
 
 #pragma mark - 网络请求
@@ -131,14 +177,6 @@ OCT_SYNTHESIZE_SINGLETON_FOR_CLASS(XDSMainReaderVC)
        errorReloadButtonBlock:^(id obj) {
            [weakSelf showWifiView];
        }];
-//    [self.view configWithType:BXEaseBlankPageTypeConnectError
-//                      hasData:(self.homeModel != nil)
-//                 errorMessage:self.responseModel.errorMessage
-//            reloadButtonBlock:nil
-//       errorReloadButtonBlock:^(id obj) {
-//           [BSNLUtil showHud:self.view text:nil];
-//           [self fetchHomeInitData:nil];
-//       }];
 }
 #pragma mark - 点击事件处理
 - (void)showReadPageViewControllerWithFileURL:(NSURL *)fileURL{
@@ -160,7 +198,11 @@ OCT_SYNTHESIZE_SINGLETON_FOR_CLASS(XDSMainReaderVC)
 - (void)showWifiView {
     XDSWIFIFileTransferViewController *wifiTransferVC = [XDSWIFIFileTransferViewController newInstance];
     wifiTransferVC.wDelegate = self;
-    [self presentViewController:wifiTransferVC
+    UIViewController *vc = self;
+    if (self.tabBarController != nil) {
+        vc = self.tabBarController;
+    }
+    [vc presentViewController:wifiTransferVC
                        animated: YES
               inRransparentForm:YES
                      completion:nil];
@@ -172,7 +214,7 @@ OCT_SYNTHESIZE_SINGLETON_FOR_CLASS(XDSMainReaderVC)
     
     //本地文件-同步执行
 //    NSArray *fileList = @[@"生活小科普.txt"];
-    NSArray *fileList = [IHPConfigManager shareManager].isIncheck?@[@"生活小科普.txt"]:@[];
+    NSArray *fileList = @[];
     for (NSString *fileName in fileList) {
         //注意，url初始化方法与从documents读取文件的url初始化方法的区别
         NSURL *fileURL = [[NSBundle mainBundle] URLForResource:fileName withExtension:nil];        
@@ -204,10 +246,9 @@ OCT_SYNTHESIZE_SINGLETON_FOR_CLASS(XDSMainReaderVC)
         dispatch_async(dispatch_get_main_queue(), ^{
             [self sortBooksByModifyTime];
             [XDSUtilities hideHud:self.view];
+            [self.mCollectionView.mj_header endRefreshing];
         });
     });
-
-
 }
 
 - (void)sortBooksByModifyTime {
@@ -220,6 +261,10 @@ OCT_SYNTHESIZE_SINGLETON_FOR_CLASS(XDSMainReaderVC)
     }];
     [self.mCollectionView reloadSections:[NSIndexSet indexSetWithIndex:0]];
     [self configEmptyPage];
+}
+
+- (NSMutableArray<LPPBookInfoModel *> *)bookList {
+    return _bookList;
 }
 
 #pragma mark - 内存管理相关

@@ -139,6 +139,12 @@
                 reloadTitleKey = @"xds.blank.page.reload.title.empty.bookshelf";
                 break;
             }
+            case XDSEaseBlankPageTypeEmptyBookNote:{
+                imageName = @"img_empty_page";
+                tipKey = @"xds.blank.page.tip.title.empty.booknote";
+                reloadTitleKey = @"xds.blank.page.reload.title.empty.booknote";
+                break;
+            }
             default:{
                 imageName = @"img_error";
                 tipKey = @"xds.blank.page.tip.title.unknowerror";

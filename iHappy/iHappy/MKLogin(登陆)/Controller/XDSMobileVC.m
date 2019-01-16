@@ -67,19 +67,27 @@
                                                     @"region_code":self.areaCodeNumberLab.text,
                                                     @"mobile":self.phoneTextf.text.trimString}
                                        andSuccess:^(id response) {
+                                           NSDictionary *result = response;
+
                                            sender.enabled = YES;
                                            [sender btnremoveAllAnimations];
-                                           XDSCodeVC *codeVC = [[UIStoryboard storyboardWithName:@"Login" bundle:nil] instantiateViewControllerWithIdentifier:@"XDSCodeVC"];
-                                           codeVC.phoneStr = self.phoneTextf.text.trimString;
-                                           codeVC.region_code = @"+86";
-                                           [self.navigationController pushViewController:codeVC animated:YES];
+                                           
+                                           if ([result[@"code"] integerValue] == 0) {
+                                               XDSCodeVC *codeVC = [[UIStoryboard storyboardWithName:@"Login" bundle:nil] instantiateViewControllerWithIdentifier:@"XDSCodeVC"];
+                                               codeVC.phoneStr = self.phoneTextf.text.trimString;
+                                               codeVC.region_code = @"+86";
+                                               [self.navigationController pushViewController:codeVC animated:YES];
+                                           }else {
+                                               NSString *message = result[@"msg"];
+                                               [SVProgressHUD showInfoWithStatus:message];
+                                           }
+
                                            
                                        } andFail:^(NSString *errorDescription) {
                                            [sender btnremoveAllAnimations];
                                            sender.enabled = YES;
                                            dispatch_async(dispatch_get_main_queue(), ^{
-                                               [SVProgressHUD showErrorWithStatus:errorDescription];
-                                               [SVProgressHUD dismissWithDelay:1.35];
+                                               [SVProgressHUD showInfoWithStatus:errorDescription];
                                            });
                                        }];
     });

@@ -19,6 +19,7 @@
 #import "XDSMainReaderVC.h"
 #import "AppDelegate.h"
 
+#import "XDSMainTabBarVC.h"
 NSString * const kXDSEnterMainViewFinishedNotification = @"XDSEnterMainViewFinishedNotification";
 
 @implementation XDSStartupManager
@@ -70,6 +71,7 @@ NSString * const kXDSEnterMainViewFinishedNotification = @"XDSEnterMainViewFinis
 - (void)enterMainViewWithLaunchingOptions:(NSDictionary *)launchOptions {
     
     if (!self.launchTaskQueueFinished) {
+        [[XDSUserInfo shareUser] loadLastLoginUserInfo];
         [[XDSSettingsManager sharedManager] setOnlyOnceWhenLaunchTaskQueueFinished];
         [self initMainViewLaunchingOptions:launchOptions];
         self.launchTaskQueueFinished = YES;
@@ -96,12 +98,11 @@ NSString * const kXDSEnterMainViewFinishedNotification = @"XDSEnterMainViewFinis
 
 - (void)initMainViewLaunchingOptions:(NSDictionary *)launchOptions {
     
-    UINavigationController *loginNav = [[UIStoryboard storyboardWithName:@"Login" bundle:nil] instantiateViewControllerWithIdentifier:@"LoginNavi"];
-    loginNav.navigationBar.translucent = NO;
-    UIViewController *loginVC = loginNav.cw_rootViewController;
-    loginVC.hidesTopBarWhenPushed = YES;
-    [XDSRootViewController sharedRootViewController].mainViewController = loginNav;
-    return;
+    if ([IHPConfigManager shareManager].isIncheck) {
+        XDSMainTabBarVC *tabBarVC = [[XDSMainTabBarVC alloc] init];
+        [XDSRootViewController sharedRootViewController].mainViewController = tabBarVC;
+        return;
+    }
     
     
     NSArray<IHPMenuModel*> *menus = [IHPConfigManager shareManager].menus;
@@ -188,13 +189,13 @@ NSString *const kXDSUpdateLocalizableTaskID = @"XDSUpdateLocalizableTask";
 
 - (void)fetchConfigData{
 
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"menu" ofType:@"json"];
-    NSData *menuData = [NSData dataWithContentsOfFile:path];
-    NSLog(@"%@", [[NSString alloc] initWithData:menuData encoding:NSUTF8StringEncoding]);
-    IHPConfigManager *manager = [IHPConfigManager shareManager];
-    [manager configManagerWithJsondData:menuData];
-    [self finishTaskWithTaksID:kXDSFetchConfigTaskID];
-    return;
+//    NSString *path = [[NSBundle mainBundle] pathForResource:@"menu" ofType:@"json"];
+//    NSData *menuData = [NSData dataWithContentsOfFile:path];
+//    NSLog(@"%@", [[NSString alloc] initWithData:menuData encoding:NSUTF8StringEncoding]);
+//    IHPConfigManager *manager = [IHPConfigManager shareManager];
+//    [manager configManagerWithJsondData:menuData];
+//    [self finishTaskWithTaksID:kXDSFetchConfigTaskID];
+//    return;
     
 //    NSString *requesturl = @"http://134.175.54.80/ihappy/menu.json";
     

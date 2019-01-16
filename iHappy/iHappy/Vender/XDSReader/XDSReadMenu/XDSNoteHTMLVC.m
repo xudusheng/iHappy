@@ -52,7 +52,7 @@
     NSString *subnoteString = [[NSString alloc] initWithData:subnoteData encoding:NSUTF8StringEncoding];
     
     NSMutableString *longNote = [NSMutableString string];
-    for (XDSChapterModel *chapter in CURRENT_BOOK_MODEL.chapterContainNotes) {
+    for (XDSChapterModel *chapter in self.bookModel.chapterContainNotes) {
         for (XDSNoteModel *noteModel in chapter.notes) {
             NSString *subNote = [subnoteString mutableCopy];
             
@@ -75,7 +75,7 @@
         }
     }
     
-    LPPBookInfoModel *bookBasicInfo = CURRENT_BOOK_MODEL.bookBasicInfo;
+    LPPBookInfoModel *bookBasicInfo = self.bookModel.bookBasicInfo;
     NSString *title = bookBasicInfo.title;
     title = title.length?title:@"";
     NSString *creator = bookBasicInfo.creator;
@@ -88,7 +88,8 @@
     if (creator.length > 0) {
         publisher = [NSString stringWithFormat:@"%@. 《%@》", creator, title];
         owner = @". 小微阅读.";
-        protect = @"此材料收版权保护";
+//        protect = @"此材料收版权保护";
+        protect = @"";
         publishDate = bookBasicInfo.date;
     }
     
@@ -128,7 +129,7 @@
 
 - (void)shareAction
 {
-    NSString *textToShare = [NSString stringWithFormat:@"《%@》的笔记", CURRENT_BOOK_MODEL.bookBasicInfo.title];
+    NSString *textToShare = [NSString stringWithFormat:@"《%@》的笔记", self.bookModel.bookBasicInfo.title];
     NSURL *urlToShare = [NSURL URLWithString:@"https://www.baidu.com"];
     NSArray *activityItems = @[textToShare, urlToShare];
     [self shareWithContentArray:activityItems];

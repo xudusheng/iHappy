@@ -14,6 +14,8 @@ typedef NS_ENUM(NSInteger, XDSEaseBlankPageType) {
     XDSEaseBlankPageTypeUnknownError,
     XDSEaseBlankPageTypeEmpty,
     XDSEaseBlankPageTypeEmptyBookShelf = 100,
+    XDSEaseBlankPageTypeEmptyBookNote = 101,
+
 };
 
 //xds.blank.page.tip.title.connecterror = 网络出错，请检查您的网络

@@ -58,6 +58,7 @@ isPhoneX = [[UIApplication sharedApplication] delegate].window.safeAreaInsets.bo
 #import "XDSBaseContentNavigationController.h"
 
 
+#import "XDSUserInfo.h"
 #import "IHPConfigManager.h"
 #import "IHPConfigManager.h"
 #import "IHPConfigModel.h"
@@ -73,7 +74,7 @@ isPhoneX = [[UIApplication sharedApplication] delegate].window.safeAreaInsets.bo
  ## 是分隔符
  */
 
-#define OCT_SYNTHESIZE_SINGLETON_FOR_CLASS(__class_name__) \
+#define XDS_SYNTHESIZE_SINGLETON_FOR_CLASS(__class_name__) \
 static __class_name__ *_instance; \
 \
 + (__class_name__ *)shared##__class_name__ \

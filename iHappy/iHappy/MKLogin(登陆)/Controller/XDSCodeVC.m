@@ -101,13 +101,27 @@
                 [LoginViewModel loginMobileAPIActionWithParam:param andSuccess:^(id response) {
                     @strongify(self);
                     [self.loginBtn btnremoveAllAnimations];
-
                     [subscriber sendCompleted];
-                } andFail:^(NSError *error) {
+                    
+                    NSDictionary *result = response;
+                    if ([result[@"code"] integerValue] == 0) {
+                        NSDictionary *user = result[@"data"][@"user"];
+                        
+                        XDSUserInfo *userModel = [XDSUserInfo shareUser];
+                        userModel.head_img = user[@"head_img"];
+                        userModel.mobile = user[@"mobile"];
+                        userModel.nickname = user[@"nickname"];
+                        [userModel saveUserInfo:userModel];
+                        [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+                        
+                    }else {
+                        NSString *message = result[@"msg"];
+                        [SVProgressHUD showInfoWithStatus:message];
+                    }
+                } andFail:^(NSString *errorDescription) {
                     [self.loginBtn btnremoveAllAnimations];
                     dispatch_async(dispatch_get_main_queue(), ^{
-                        [SVProgressHUD showErrorWithStatus:error.localizedDescription];
-                        [SVProgressHUD dismissWithDelay:1.35];
+                        [SVProgressHUD showInfoWithStatus:errorDescription];
                     });
                     [subscriber sendCompleted];
                 }];
@@ -140,14 +154,19 @@
 }
 
 - (void)backAction{
-//    @weakify(self);
-//    CustomAlertView *alert = [CustomAlertView alertViewWithTitle:@"是否确认返回" message:nil btnTagClicked:^(NSInteger btnIndex) {
-//        @strongify(self);
-//        if (btnIndex == 1) {
-//            [self.navigationController popViewControllerAnimated:YES];
-//        }
-//    } cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
-//    [alert show];
+    
+    @weakify(self);
+    [UIAlertController showAlertInViewController:self
+                                       withTitle:@"是否确认返回"
+                                         message:nil
+                               cancelButtonTitle:XDSLocalizedString(@"xds.ui.cancel", nil)
+                               otherButtonTitles:@[XDSLocalizedString(@"xds.ui.ok", nil)]
+                                        tapBlock:^(UIAlertController * _Nonnull controller, UIAlertAction * _Nonnull action, NSInteger buttonIndex) {
+                                            @strongify(self);
+                                            if (controller.cancelButtonIndex != buttonIndex) {
+                                                [self.navigationController popViewControllerAnimated:YES];
+                                            }
+                                        }];
 }
 
 

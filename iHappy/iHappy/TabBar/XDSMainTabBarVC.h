@@ -1,8 +1,8 @@
 //
-//  BXRetailStoreGuideVC.h
+//  XDSMainTabBarVC.h
 //  iHappy
 //
-//  Created by Hmily on 2019/1/4.
+//  Created by Hmily on 2019/1/16.
 //  Copyright © 2019 Dusheng Du. All rights reserved.
 //
 
@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface BXRetailStoreGuideVC : UIViewController
+@interface XDSMainTabBarVC : UITabBarController
 
 @end
 

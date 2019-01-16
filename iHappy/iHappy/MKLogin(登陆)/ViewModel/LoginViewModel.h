@@ -51,7 +51,7 @@
  @param success 成功回调
  @param fail 失败回调
  */
-+ (void)loginMobileAPIActionWithParam:(NSDictionary *)param andSuccess:(void(^)(id response))success andFail:(void(^)(NSError *error))fail;
++ (void)loginMobileAPIActionWithParam:(NSDictionary *)param andSuccess:(void(^)(id response))success andFail:(void(^)(NSString *errorDescription))fail;
 
 /**
  微信登录接口

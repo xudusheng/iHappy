@@ -37,9 +37,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_login_banckround" translatesAutoresizingMaskIntoConstraints="NO" id="nhv-tg-rsP">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="255"/>
-                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FmF-t2-eCx">
+                                <rect key="frame" x="0.0" y="64" width="54" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="54" id="0S9-7E-cfn"/>
+                                    <constraint firstAttribute="height" constant="44" id="bVk-UU-esn"/>
+                                </constraints>
+                                <state key="normal" image="nav_return_gray"/>
+                                <connections>
+                                    <action selector="returnButtonClick:" destination="2Z9-66-ULN" eventType="touchUpInside" id="7C3-fG-Bw7"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n0i-ly-wLA">
                                 <rect key="frame" x="30" y="320" width="315" height="50"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -61,6 +69,9 @@
                                     <constraint firstAttribute="width" secondItem="bkY-gq-wTO" secondAttribute="height" id="cae-Qx-U9Z"/>
                                 </constraints>
                             </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_login_banckround" translatesAutoresizingMaskIntoConstraints="NO" id="nhv-tg-rsP">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="255"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -68,6 +79,8 @@
                             <constraint firstItem="nhv-tg-rsP" firstAttribute="leading" secondItem="mB0-GD-VvQ" secondAttribute="leading" id="N6E-mG-ddD"/>
                             <constraint firstItem="bkY-gq-wTO" firstAttribute="bottom" secondItem="nhv-tg-rsP" secondAttribute="bottom" id="PVG-gh-HJ1"/>
                             <constraint firstAttribute="trailing" secondItem="nhv-tg-rsP" secondAttribute="trailing" id="SMN-DJ-UTG"/>
+                            <constraint firstItem="FmF-t2-eCx" firstAttribute="leading" secondItem="mB0-GD-VvQ" secondAttribute="leading" id="ZGN-J9-rBD"/>
+                            <constraint firstItem="FmF-t2-eCx" firstAttribute="top" secondItem="mB0-GD-VvQ" secondAttribute="top" constant="64" id="a56-cU-uqE"/>
                             <constraint firstItem="bkY-gq-wTO" firstAttribute="centerX" secondItem="mB0-GD-VvQ" secondAttribute="centerX" id="c1O-os-Dql"/>
                             <constraint firstAttribute="trailing" secondItem="n0i-ly-wLA" secondAttribute="trailing" constant="30" id="ixH-Mb-Qga"/>
                             <constraint firstItem="n0i-ly-wLA" firstAttribute="top" secondItem="bkY-gq-wTO" secondAttribute="bottom" constant="65" id="oga-gp-2bb"/>
@@ -78,6 +91,7 @@
                     <connections>
                         <outlet property="logoImageView" destination="bkY-gq-wTO" id="rsE-Ls-BGw"/>
                         <outlet property="phoneLoginBtn" destination="n0i-ly-wLA" id="rY7-UM-Q8H"/>
+                        <outlet property="returnBackButtonTop" destination="a56-cU-uqE" id="uL0-Mh-r6f"/>
                         <segue destination="1I1-mE-wjv" kind="show" identifier="gotoPhoneLogin" id="W1U-iq-Ano"/>
                     </connections>
                 </viewController>
@@ -509,5 +523,6 @@
         <image name="down_arrow" width="20" height="20"/>
         <image name="ihappy_logo" width="180" height="180"/>
         <image name="img_login_banckround" width="375" height="255.5"/>
+        <image name="nav_return_gray" width="20" height="20"/>
     </resources>
 </document>

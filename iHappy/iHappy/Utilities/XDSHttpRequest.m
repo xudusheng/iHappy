@@ -43,7 +43,7 @@ NSString *const key = @"huidaibao";
     }
     
     urlString = [urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-//    AFHTTPSessionManager * manager = [AFHTTPSessionManager manager];
+    //    AFHTTPSessionManager * manager = [AFHTTPSessionManager manager];
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
@@ -59,52 +59,54 @@ NSString *const key = @"huidaibao";
                                                                               @"image/*",
                                                                               @"application/x-www-form-urlencoded"
                                                                               ]];
-
+    
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
     
     AFHTTPRequestSerializer *requestSerializer =  manager.requestSerializer;
+    NSLog(@"token = %@",[NSString stringWithFormat:@"Bearer %@",nil]);
+    
     [requestSerializer setValue:[NSString stringWithFormat:@"Bearer %@",nil] forHTTPHeaderField:@"Authorization"];
     self.sessionDataTask = [manager GET:urlString parameters:reqParam?reqParam:@{}
-                                                      progress:^(NSProgress * _Nonnull downloadProgress) {
-                                                          
-                                                      } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-                                                          NSLog(@" ============ %@", responseObject);
-                                                          [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
-                                                          [XDSUtilities hideHud:hudController.view];
-                                                          if (responseObject) {
-                                                              success(YES, responseObject);
-                                                          }else {
-                                                              [self showFailedHUD:showFailedHUD Failed:kAnalysisFailed rootView:hudController.view];
-                                                              failed(kAnalysisFailed);
-                                                          }
-                                                          
-                                                      } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-                                                          [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
-                                                          [XDSUtilities hideHud:hudController.view];
-                                                          
-                                                          NSData * data = error.userInfo[@"com.alamofire.serialization.response.error.data"];
-                                                          if (data) {
-                                                              NSString * str = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
-                                                              NSLog(@"服务器的错误原因:%@",str);
-                                                          }
-                                                          
-                                                          NSString *errorDetail = [error localizedDescription];
-                                                          NSLog(@"error = %@", errorDetail);
-                                                          NSRange range_0 = [errorDetail rangeOfString:@"The request timed out."];
-                                                          NSRange range_1 = [errorDetail rangeOfString:@"请求超时"];
-                                                          if (range_0.location != NSNotFound || range_1.location != NSNotFound) {
-                                                              [self showFailedHUD:showFailedHUD Failed:kTimeCallOut rootView:hudController.view];
-                                                              errorDetail = kTimeCallOut;
-                                                          }else{
-                                                              [self showFailedHUD:showFailedHUD Failed:kLoadFailed rootView:hudController.view];
-                                                              errorDetail = kLoadFailed;
-                                                          }
-                                                          
-                                                          if (failed) {
-                                                              failed(errorDetail);
-                                                          }
-                                                          
-                                                      }];
+                               progress:^(NSProgress * _Nonnull downloadProgress) {
+                                   
+                               } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                                   NSLog(@" ============ %@", responseObject);
+                                   [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+                                   [XDSUtilities hideHud:hudController.view];
+                                   if (responseObject) {
+                                       success(YES, responseObject);
+                                   }else {
+                                       [self showFailedHUD:showFailedHUD Failed:kAnalysisFailed rootView:hudController.view];
+                                       failed(kAnalysisFailed);
+                                   }
+                                   
+                               } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                                   [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+                                   [XDSUtilities hideHud:hudController.view];
+                                   
+                                   NSData * data = error.userInfo[@"com.alamofire.serialization.response.error.data"];
+                                   if (data) {
+                                       NSString * str = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
+                                       NSLog(@"服务器的错误原因:%@",str);
+                                   }
+                                   
+                                   NSString *errorDetail = [error localizedDescription];
+                                   NSLog(@"error = %@", errorDetail);
+                                   NSRange range_0 = [errorDetail rangeOfString:@"The request timed out."];
+                                   NSRange range_1 = [errorDetail rangeOfString:@"请求超时"];
+                                   if (range_0.location != NSNotFound || range_1.location != NSNotFound) {
+                                       [self showFailedHUD:showFailedHUD Failed:kTimeCallOut rootView:hudController.view];
+                                       errorDetail = kTimeCallOut;
+                                   }else{
+                                       [self showFailedHUD:showFailedHUD Failed:kLoadFailed rootView:hudController.view];
+                                       errorDetail = kLoadFailed;
+                                   }
+                                   
+                                   if (failed) {
+                                       failed(errorDetail);
+                                   }
+                                   
+                               }];
     
     [_sessionDataTask resume];
 }
@@ -141,7 +143,7 @@ NSString *const key = @"huidaibao";
         [XDSUtilities showHud:hudController.view text:HUDText];
         self.hudController = hudController;
     }
-
+    
     htmlHref = [htmlHref stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     NSURLSessionConfiguration *config = [NSURLSessionConfiguration ephemeralSessionConfiguration];
     config.timeoutIntervalForRequest = 15.0;
@@ -152,7 +154,7 @@ NSString *const key = @"huidaibao";
     [manager.requestSerializer setValue:@"text/html" forHTTPHeaderField:@"Content-Type"];
     
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];//使用这个将得到的是NSData
-//        manager.responseSerializer = [AFJSONResponseSerializer serializer];//使用这个将得到的是JSON
+    //        manager.responseSerializer = [AFJSONResponseSerializer serializer];//使用这个将得到的是JSON
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript",@"text/html", @"text/plain",nil];
     
     
@@ -161,7 +163,7 @@ NSString *const key = @"huidaibao";
                                    
                                } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
                                    responseObject = [self replaceNoUtf8:responseObject];
-
+                                   
                                    [XDSUtilities hideHud:hudController.view];
                                    if (responseObject && success) {
                                        success(YES, responseObject);
@@ -177,7 +179,7 @@ NSString *const key = @"huidaibao";
                                        errorDetail = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
                                    }
                                    NSLog(@"error = %@", errorDetail);
-
+                                   
                                    NSRange range_0 = [errorDetail rangeOfString:@"The request timed out."];
                                    NSRange range_1 = [errorDetail rangeOfString:@"请求超时"];
                                    if (range_0.location != NSNotFound || range_1.location != NSNotFound) {
@@ -297,13 +299,13 @@ NSString *const key = @"huidaibao";
 
 
 - (void)queryInitialInfoWithUrlString:(NSString *)urlString
-                reqParam:(NSDictionary *)reqParam
-           hudController:(UIViewController *)hudController
-                 showHUD:(BOOL)showHUD
-                 HUDText:(NSString *)HUDText
-           showFailedHUD:(BOOL)showFailedHUD
-                 success:(void(^)(BOOL success, NSDictionary * successResult))success
-                  failed:(void(^)(NSString * errorDescription))failed{
+                             reqParam:(NSDictionary *)reqParam
+                        hudController:(UIViewController *)hudController
+                              showHUD:(BOOL)showHUD
+                              HUDText:(NSString *)HUDText
+                        showFailedHUD:(BOOL)showFailedHUD
+                              success:(void(^)(BOOL success, NSDictionary * successResult))success
+                               failed:(void(^)(NSString * errorDescription))failed{
     if (![self isWebAvailible]) {
         failed(kConnectWebFailed);
         [self showFailedHUD:showFailedHUD Failed:kConnectWebFailed rootView:hudController.view];
@@ -398,9 +400,9 @@ NSString *const key = @"huidaibao";
 
 /**
  自定义签名方法
-@param param 需要加入签名的值
-@return MD5 Str
-*/
+ @param param 需要加入签名的值
+ @return MD5 Str
+ */
 - (NSString *)createSign:(NSMutableDictionary *)param{
     NSMutableString *str = [[NSMutableString alloc] init];
     NSArray *newArray = [param.allKeys sortedArrayUsingSelector:@selector(compare:)];
@@ -418,4 +420,88 @@ NSString *const key = @"huidaibao";
     return [str cw_md5].uppercaseString;
 }
 
+- (void)bx_postWithURLString:(NSString *)urlString
+                    reqParam:(NSDictionary *)reqParam
+               hudController:(UIViewController *)hudController
+                     showHUD:(BOOL)showHUD
+                     HUDText:(NSString *)HUDText
+               showFailedHUD:(BOOL)showFailedHUD
+                     success:(void(^)(BOOL success, id successResult))success
+                      failed:(void(^)(NSString * errorDescription))failed {
+    
+    if (![self isWebAvailible]) {
+        failed(kConnectWebFailed);
+        [self showFailedHUD:showFailedHUD Failed:kConnectWebFailed rootView:hudController.view];
+        return;
+    }
+    
+    
+    if (showHUD) {//显示HUD
+        [XDSUtilities showHud:hudController.view text:HUDText];
+        self.hudController = hudController;
+    }
+    
+    reqParam = [self signPackageWithParam:reqParam];
+    urlString = [urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    manager.requestSerializer.timeoutInterval = 15;
+    manager.requestSerializer.cachePolicy = NSURLRequestReloadIgnoringLocalAndRemoteCacheData;
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithArray:@[
+                                                                              @"application/json",
+                                                                              @"text/html",
+                                                                              @"text/json",
+                                                                              @"text/plain",
+                                                                              @"text/javascript",
+                                                                              @"text/xml",
+                                                                              @"image/*",
+                                                                              @"application/x-www-form-urlencoded"
+                                                                              ]];
+    
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
+    
+    [manager POST:urlString parameters:reqParam constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+        
+    } progress:^(NSProgress * _Nonnull uploadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        [XDSUtilities hideHud:hudController.view];
+        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+        
+        NSLog(@" ============ %@", responseObject);
+        
+        if (responseObject) {
+            success(YES, responseObject);
+        }else {
+            [self showFailedHUD:showFailedHUD Failed:kAnalysisFailed rootView:hudController.view];
+            failed(kAnalysisFailed);
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+        [XDSUtilities hideHud:hudController.view];
+        
+        NSData * data = error.userInfo[@"com.alamofire.serialization.response.error.data"];
+        if (data) {
+            NSString * str = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
+            NSLog(@"服务器的错误原因:%@",str);
+        }
+        
+        NSString *errorDetail = [error localizedDescription];
+        NSLog(@"error = %@", errorDetail);
+        NSRange range_0 = [errorDetail rangeOfString:@"The request timed out."];
+        NSRange range_1 = [errorDetail rangeOfString:@"请求超时"];
+        if (range_0.location != NSNotFound || range_1.location != NSNotFound) {
+            [self showFailedHUD:showFailedHUD Failed:kTimeCallOut rootView:hudController.view];
+            errorDetail = kTimeCallOut;
+        }else{
+            [self showFailedHUD:showFailedHUD Failed:kLoadFailed rootView:hudController.view];
+            errorDetail = kLoadFailed;
+        }
+        
+        if (failed) {
+            failed(errorDetail);
+        }
+    }];
+}
 @end

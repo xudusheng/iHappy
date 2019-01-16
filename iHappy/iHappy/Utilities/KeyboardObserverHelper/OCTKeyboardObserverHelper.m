@@ -11,7 +11,7 @@
 @property (strong, nonatomic)UIView * toMovedView;
 @end
 @implementation OCTKeyboardObserverHelper
-OCT_SYNTHESIZE_SINGLETON_FOR_CLASS(OCTKeyboardObserverHelper)
+XDS_SYNTHESIZE_SINGLETON_FOR_CLASS(OCTKeyboardObserverHelper)
 
 + (void)addKeyboardObserverWithToMovedView:(UIView * _Nonnull)toMovedView{
     if (!toMovedView && ![toMovedView isKindOfClass:[UIView class]]) {

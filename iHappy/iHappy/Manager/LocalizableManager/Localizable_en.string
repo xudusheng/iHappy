@@ -18,12 +18,16 @@ xds.blank.page.reload.title.unknowerror = 刷新
 xds.blank.page.tip.title.empty.bookshelf = 暂无书籍\n请前往添加书籍哦~
 xds.blank.page.reload.title.empty.bookshelf = 立即添加
 
+xds.blank.page.tip.title.empty.booknote = 暂无笔记\n请前往看书做笔记~
+xds.blank.page.reload.title.empty.booknote = 去看书做笔记
+
 xds.blank.page.tip.title.unknowerror = 貌似出了点差错，请稍后重试~
 xds.blank.page.reload.title.unknowerror  = 刷新
 
 
 #setting
 xds.setting.clearmemery.content = 是否确定要清空缓存？
+xds.setting.title.logout = 是否确定退出登录？
 
 xds.update.content.force = 发现新版本
 xds.update.content = 发现新版本！是否升级？

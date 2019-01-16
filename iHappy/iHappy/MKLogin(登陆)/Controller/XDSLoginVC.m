@@ -13,6 +13,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *logoImageView;
 
 @property (weak, nonatomic) IBOutlet UIButton *phoneLoginBtn;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *returnBackButtonTop;
 
 @end
 
@@ -38,6 +39,8 @@
     self.logoImageView.layer.cornerRadius = 15;
     self.logoImageView.layer.masksToBounds = YES;
     
+    self.returnBackButtonTop.constant = DEVICE_NAVBAR_HEIGHT - 44;
+    
 }
 #pragma mark - request method 网络请求
 
@@ -47,6 +50,9 @@
 
 - (IBAction)goPhoneVC:(id)sender {
     [self performSegueWithIdentifier:@"gotoPhoneLogin" sender:nil];
+}
+- (IBAction)returnButtonClick:(id)sender {
+    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
 #pragma mark - private method 其他私有方法
 

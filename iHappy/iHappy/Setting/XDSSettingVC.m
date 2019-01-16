@@ -7,9 +7,12 @@
 //
 
 #import "XDSSettingVC.h"
-#import "BXRetailStoreGuideVC.h"
+
+#import "XDSAboutUSVC.h"
+#import <ReactiveObjC/ReactiveObjC.h>
 
 @interface XDSSettingVC ()
+@property (weak, nonatomic) IBOutlet UILabel *nicknameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *memeryLabel;
 
 @end
@@ -18,9 +21,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
 }
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    self.nicknameLabel.text = [XDSUserInfo shareUser].nickname.length > 0 ? [XDSUserInfo shareUser].nickname : @"游客";
     [self setUsedMemerySize];
 }
 
@@ -29,15 +34,26 @@
 #pragma mark - request method 网络请求
 
 #pragma mark - delegate method 代理方法
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    if ([IHPConfigManager shareManager].isIncheck) {
+        return 3;
+    }
+    return 2;
+}
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0 && indexPath.row == 0) {
-        BXRetailStoreGuideVC *guideVC = [[BXRetailStoreGuideVC alloc] init];
-        [self.navigationController pushViewController:guideVC animated:YES];
 
     }else if (indexPath.section == 0 && indexPath.row == 1) {
         [self clearMemery];
     }else if (indexPath.section == 1 && indexPath.row == 0) {
         [self shareAction];
+    }else if (indexPath.section == 1 && indexPath.row == 1) {
+        XDSAboutUSVC *aboutUs = [[UIStoryboard storyboardWithName:@"Setting" bundle:nil] instantiateViewControllerWithIdentifier:@"XDSAboutUSVC"];
+        aboutUs.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:aboutUs animated:YES];
+    }else if (indexPath.section == 2 && indexPath.row == 0) {
+        [self logout];
+        
     }
 }
 #pragma mark - event response 事件响应处理
@@ -51,9 +67,7 @@
                                cancelButtonTitle:XDSLocalizedString(@"xds.ui.cancel", nil)
                                otherButtonTitles:@[XDSLocalizedString(@"xds.ui.ok", nil)]
                                         tapBlock:^(UIAlertController * _Nonnull controller, UIAlertAction * _Nonnull action, NSInteger buttonIndex) {
-                                            if (controller.cancelButtonIndex == buttonIndex) {
-                                                [[IHPConfigManager shareManager] downloadPopImage];
-                                            }else {
+                                            if (controller.cancelButtonIndex != buttonIndex) {
                                                 __weak typeof(self)weakSelf = self;
                                                 [[SDImageCache sharedImageCache] clearMemory];
                                                 [[SDImageCache sharedImageCache] clearDiskOnCompletion:^{
@@ -104,6 +118,27 @@
     [self presentViewController:activityVC animated:YES completion:nil];
 }
 
+- (void)logout {
+    @weakify(self)
+    [UIAlertController showAlertInViewController:self
+                                       withTitle:nil
+                                         message:XDSLocalizedString(@"xds.setting.title.logout", nil)
+                               cancelButtonTitle:XDSLocalizedString(@"xds.ui.cancel", nil)
+                               otherButtonTitles:@[XDSLocalizedString(@"xds.ui.ok", nil)]
+                                        tapBlock:^(UIAlertController * _Nonnull controller, UIAlertAction * _Nonnull action, NSInteger buttonIndex) {
+                                            @strongify(self)
+                                            if (controller.cancelButtonIndex != buttonIndex) {
+                                                UINavigationController *loginNav = [[UIStoryboard storyboardWithName:@"Login" bundle:nil] instantiateViewControllerWithIdentifier:@"LoginNavi"];
+                                                loginNav.navigationBar.translucent = NO;
+                                                UIViewController *loginVC = loginNav.cw_rootViewController;
+                                                loginVC.hidesTopBarWhenPushed = YES;
+                                                [self presentViewController:loginNav animated:YES completion:^{
+                                                    [[XDSUserInfo shareUser] clearUserInfo];
+                                                    self.tabBarController.selectedIndex = 0;
+                                                }];
+                                            }
+                                        }];
+}
 #pragma mark - setter & getter
 
 #pragma mark - memery 内存管理相关

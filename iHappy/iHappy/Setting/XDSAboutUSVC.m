@@ -11,6 +11,7 @@
 @interface XDSAboutUSVC ()
 @property (weak, nonatomic) IBOutlet UILabel *appNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *appVersionLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *logoImageView;
 
 @end
 
@@ -18,8 +19,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.view.backgroundColor = [UIColor whiteColor];
     self.appNameLabel.text = [UIApplication sharedApplication].appBundleDisplayeName;
     self.appVersionLabel.text = [NSString stringWithFormat:@"V %@", [UIApplication sharedApplication].appVersion];
+    
+    self.logoImageView.layer.cornerRadius = 15;
+    self.logoImageView.layer.masksToBounds = YES;
 }
 
 

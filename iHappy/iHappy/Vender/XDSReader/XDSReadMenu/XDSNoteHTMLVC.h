@@ -10,4 +10,5 @@
 
 @interface XDSNoteHTMLVC : UIViewController
 
+@property(nonatomic, strong) XDSBookModel *bookModel;
 @end

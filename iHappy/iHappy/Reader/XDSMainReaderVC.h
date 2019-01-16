@@ -13,4 +13,6 @@
 
 + (instancetype)sharedReaderVC;
 
+@property (nonatomic, readonly) NSMutableArray<LPPBookInfoModel*> * bookList;
+
 @end

@@ -104,6 +104,7 @@
 //导出笔记
 - (void)exportNote {
     XDSNoteHTMLVC *noteWebVC = [[XDSNoteHTMLVC alloc] init];
+    noteWebVC.bookModel = CURRENT_BOOK_MODEL;
 //    noteWebVC.hidesTopBarWhenPushed = NO;
 //    [[UIViewController xds_visiableViewController].navigationController pushViewController:noteWebVC animated:YES];
     

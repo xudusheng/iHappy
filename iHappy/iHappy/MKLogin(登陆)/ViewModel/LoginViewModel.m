@@ -36,25 +36,19 @@
  @param fail 失败回调
  */
 + (void)smsSendAPIActionWithParam:(NSDictionary *)param andSuccess:(void(^)(id response))success andFail:(void(^)(NSString *errorDescription))fail{
-//    [[Bx_AfnNetManager shareInstance]postWithURL:Bx_API_SmsSend params:param success:^(id response) {
-//        if(success) success(response);
-//    } fail:^(NSError *error) {
-//        if(fail) fail(error);
-//    }];
-    
+
     XDSHttpRequest *request = [[XDSHttpRequest alloc] init];
-    param = [request signPackageWithParam:param];
-    [request GETWithURLString:@"https://bx.bisinuolan.cn/api/sms/send"
-                                           reqParam:param
-                                      hudController:[UIViewController xds_visiableViewController]
-                                            showHUD:NO
-                                            HUDText:nil
-                                      showFailedHUD:NO
-                                            success:^(BOOL isSuccess, NSDictionary *successResult) {
-                                                if(success) success(successResult);
-                                            } failed:^(NSString *errorDescription) {
-                                                if(fail) fail(errorDescription);
-                                            }];
+    [request bx_postWithURLString:@"https://bx.bisinuolan.cn/api/sms/send"
+                         reqParam:param
+                    hudController:[UIViewController xds_visiableViewController]
+                          showHUD:NO
+                          HUDText:nil
+                    showFailedHUD:NO
+                          success:^(BOOL isSuccess, NSDictionary *successResult) {
+                              if(success) success(successResult);
+                          } failed:^(NSString *errorDescription) {
+                              if(fail) fail(errorDescription);
+                          }];
 }
 
 /**
@@ -64,12 +58,20 @@
  @param success 成功回调
  @param fail 失败回调
  */
-+ (void)loginMobileAPIActionWithParam:(NSDictionary *)param andSuccess:(void(^)(id response))success andFail:(void(^)(NSError *error))fail{
-//    [[Bx_AfnNetManager shareInstance]postWithURL:Bx_API_LoginMobile params:param success:^(id response) {
-//        if(success) success(response);
-//    } fail:^(NSError *error) {
-//        if(fail) fail(error);
-//    }];
++ (void)loginMobileAPIActionWithParam:(NSDictionary *)param andSuccess:(void(^)(id response))success andFail:(void(^)(NSString *errorDescription))fail{
+    
+    XDSHttpRequest *request = [[XDSHttpRequest alloc] init];
+    [request bx_postWithURLString:@"https://bx.bisinuolan.cn/api/login/mobile"
+                         reqParam:param
+                    hudController:[UIViewController xds_visiableViewController]
+                          showHUD:NO
+                          HUDText:nil
+                    showFailedHUD:NO
+                          success:^(BOOL isSuccess, NSDictionary *successResult) {
+                              if(success) success(successResult);
+                          } failed:^(NSString *errorDescription) {
+                              if(fail) fail(errorDescription);
+                          }];
 }
 
 /**

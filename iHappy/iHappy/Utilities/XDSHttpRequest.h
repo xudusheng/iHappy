@@ -46,6 +46,14 @@ UIKIT_EXTERN NSString *const kTimeCallOut;//链接超时
 - (void)cancelRequest;
 
 
+- (void)bx_postWithURLString:(NSString *)urlString
+                reqParam:(NSDictionary *)reqParam
+           hudController:(UIViewController *)hudController
+                 showHUD:(BOOL)showHUD
+                 HUDText:(NSString *)HUDText
+           showFailedHUD:(BOOL)showFailedHUD
+                 success:(void(^)(BOOL success, id successResult))success
+                  failed:(void(^)(NSString * errorDescription))failed;
 //----------------------------------------------------------------------
 //以下为b_x的相关操作
 //----------------------------------------------------------------------

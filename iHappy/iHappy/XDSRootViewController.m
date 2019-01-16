@@ -57,8 +57,7 @@ static BOOL needAdjustPageLevelFlag = NO;
     needAdjustPageLevelFlag = flag;
 }
 
-- (void)setMainViewController:(UIViewController *)mainViewController
-{
+- (void)setMainViewController:(UIViewController *)mainViewController {
     if ([mainViewController isEqual:_mainViewController]) {
         return;
     }

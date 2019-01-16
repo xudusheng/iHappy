@@ -107,9 +107,27 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="DEq-it-eN1" kind="show" id="poJ-1P-YEs"/>
-                                        </connections>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection id="dWq-6K-w3z">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" textLabel="Qkn-tZ-ocC" style="IBUITableViewCellStyleDefault" id="lnh-7O-AIL">
+                                        <rect key="frame" x="0.0" y="283" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="lnh-7O-AIL" id="t8J-xB-VkE">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="退出登录" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Qkn-tZ-ocC">
+                                                    <rect key="frame" x="16" y="0.0" width="343" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -121,6 +139,7 @@
                     </tableView>
                     <connections>
                         <outlet property="memeryLabel" destination="GUD-Rq-xHw" id="dgD-Lc-SH9"/>
+                        <outlet property="nicknameLabel" destination="x8a-Cs-4FO" id="LOl-20-FFH"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BtG-1c-CZb" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -130,7 +149,7 @@
         <!--关于我们-->
         <scene sceneID="6tP-Fe-RbY">
             <objects>
-                <viewController title="关于我们" id="DEq-it-eN1" customClass="XDSAboutUSVC" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="XDSAboutUSVC" title="关于我们" id="DEq-it-eN1" customClass="XDSAboutUSVC" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="LII-Im-G30">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -191,6 +210,7 @@
                     <connections>
                         <outlet property="appNameLabel" destination="xqi-4O-vkf" id="sk7-Lf-m3G"/>
                         <outlet property="appVersionLabel" destination="TCo-Sh-NKT" id="C9v-Zb-psS"/>
+                        <outlet property="logoImageView" destination="HWx-LX-P7Q" id="15f-zi-v1w"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Z8v-z5-iEz" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -199,6 +219,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="ihappy_logo" width="1024" height="1024"/>
+        <image name="ihappy_logo" width="180" height="180"/>
     </resources>
 </document>

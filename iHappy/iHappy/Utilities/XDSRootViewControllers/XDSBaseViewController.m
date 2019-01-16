@@ -20,7 +20,7 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    UIBarButtonItem * barButtonItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"ico_back"] style:UIBarButtonItemStyleDone target:self action:@selector(popBack:)];
+    UIBarButtonItem * barButtonItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"nav_return_gray"] style:UIBarButtonItemStyleDone target:self action:@selector(popBack:)];
     barButtonItem.tintColor = [UIColor whiteColor];
     barButtonItem.tintColor = [UIColor brownColor];
     self.navigationItem.leftBarButtonItem = barButtonItem;
