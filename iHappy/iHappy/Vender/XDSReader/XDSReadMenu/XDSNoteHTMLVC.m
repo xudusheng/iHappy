@@ -28,13 +28,25 @@
 //    UIBarButtonItem *leftBar = [[UIBarButtonItem alloc] initWithTitle:@"分享" style:UIBarButtonItemStylePlain target:self action:@selector(shareAction)];
 //    self.navigationItem.leftBarButtonItem = leftBar;
     
-    UIBarButtonItem *rightBar = [[UIBarButtonItem alloc] initWithTitle:@"取消" style:UIBarButtonItemStylePlain target:self action:@selector(dismiss)];
+    if (self.navigationController.presentingViewController != nil) {
+        UIBarButtonItem *leftBar = [[UIBarButtonItem alloc] initWithTitle:@"取消" style:UIBarButtonItemStylePlain target:self action:@selector(dismiss)];
+        self.navigationItem.leftBarButtonItem = leftBar;
+    }
+    
+    UIBarButtonItem *rightBar = [[UIBarButtonItem alloc] initWithTitle:@"导出笔记" style:UIBarButtonItemStylePlain target:self action:@selector(exportNote)];
     self.navigationItem.rightBarButtonItem = rightBar;
+
 }
 - (void)dismiss {
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
 
+- (void)exportNote {
+    if(self.webView.isLoading == NO) {
+//        [self.webView saveAsImageToPhoto];
+        [self shareAction];
+        }
+}
 
 - (void)loadResources {
     
@@ -87,7 +99,7 @@
     NSString *publishDate = @"";
     if (creator.length > 0) {
         publisher = [NSString stringWithFormat:@"%@. 《%@》", creator, title];
-        owner = @". 小微阅读.";
+        owner = [NSString stringWithFormat:@".%@.",  [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleDisplayName"]];
 //        protect = @"此材料收版权保护";
         protect = @"";
         publishDate = bookBasicInfo.date;
@@ -126,28 +138,24 @@
 }
 
 
-
-- (void)shareAction
-{
+- (void)shareAction {
     NSString *textToShare = [NSString stringWithFormat:@"《%@》的笔记", self.bookModel.bookBasicInfo.title];
-    NSURL *urlToShare = [NSURL URLWithString:@"https://www.baidu.com"];
-    NSArray *activityItems = @[textToShare, urlToShare];
+    UIImage *noteImage = [self.webView imageRepresentation];
+    NSArray *activityItems = @[textToShare, noteImage];
     [self shareWithContentArray:activityItems];
 }
 
-- (void)shareWithContentArray:(NSArray *)contentArray
-{
+- (void)shareWithContentArray:(NSArray *)contentArray {
     UIActivityViewController *activityVC = [[UIActivityViewController alloc] initWithActivityItems:contentArray applicationActivities:nil];
-//        activityVC.excludedActivityTypes = @[ UIActivityTypePostToWeibo,UIActivityTypeMessage,UIActivityTypeMail,UIActivityTypePostToTencentWeibo,UIActivityTypeAirDrop,UIActivityTypeOpenInIBooks];
-    activityVC.completionWithItemsHandler = ^(NSString *activityType,BOOL completed,NSArray *returnedItems,NSError *activityError)
-    {
+    activityVC.completionWithItemsHandler = ^(NSString *activityType,BOOL completed,NSArray *returnedItems,NSError *activityError) {
         NSLog(@"%@", activityType);
-        
         if (completed) { // 确定分享
             NSLog(@"分享成功");
-        }
-        else {
+            [SVProgressHUD showInfoWithStatus:@"笔记导出成功"];
+        } else {
             NSLog(@"分享失败");
+            [SVProgressHUD showInfoWithStatus:@"笔记导出失败"];
+
         }
     };
     

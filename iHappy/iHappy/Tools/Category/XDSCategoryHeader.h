@@ -23,6 +23,7 @@
 #import "UIImage+XDSAdd.h"
 #import "UIImageView+XDSAddition.h"
 #import "UIButton+XDSAddition.h"
+#import "UIWebView+XDSAdd.h"
 
 #import "UIViewController+XDSAdd.h"
 #import "UIViewController+HideNavigationBar.h"

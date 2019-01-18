@@ -127,4 +127,5 @@ typedef NS_ENUM(NSInteger, CalculateType){
 ///获取window安全区顶部高度
 - (CGFloat)getWindowSafeAreaTo;
 
+
 @end

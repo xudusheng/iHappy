@@ -101,7 +101,6 @@
     NSURL *urlToShare = [NSURL URLWithString:[IHPConfigManager shareManager].forceUpdate.url];
     NSArray *activityItems = @[urlToShare];
     [self shareWithContentArray:activityItems];
-    
 }
 
 - (void)shareWithContentArray:(NSArray *)contentArray {
