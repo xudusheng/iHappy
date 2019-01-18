@@ -189,13 +189,13 @@ NSString *const kXDSUpdateLocalizableTaskID = @"XDSUpdateLocalizableTask";
 
 - (void)fetchConfigData{
 
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"menu" ofType:@"json"];
-    NSData *menuData = [NSData dataWithContentsOfFile:path];
-    NSLog(@"%@", [[NSString alloc] initWithData:menuData encoding:NSUTF8StringEncoding]);
-    IHPConfigManager *manager = [IHPConfigManager shareManager];
-    [manager configManagerWithJsondData:menuData];
-    [self finishTaskWithTaksID:kXDSFetchConfigTaskID];
-    return;
+//    NSString *path = [[NSBundle mainBundle] pathForResource:@"menu" ofType:@"json"];
+//    NSData *menuData = [NSData dataWithContentsOfFile:path];
+//    NSLog(@"%@", [[NSString alloc] initWithData:menuData encoding:NSUTF8StringEncoding]);
+//    IHPConfigManager *manager = [IHPConfigManager shareManager];
+//    [manager configManagerWithJsondData:menuData];
+//    [self finishTaskWithTaksID:kXDSFetchConfigTaskID];
+//    return;
     
 #if DEBUG
     NSString *requesturl = @"http://129.204.47.207/ihappy/config/menu_dev.json";
@@ -325,8 +325,6 @@ NSString *const kXDSUpdateLocalizableTaskID = @"XDSUpdateLocalizableTask";
 - (void)fetchMeiziFileContent {
 
     NSString *requesturl = @"http://129.204.47.207/ihappy/source/meizi.txt";
-    
-    __weak typeof(self)weakSelf = self;
     [[[XDSHttpRequest alloc] init] htmlRequestWithHref:requesturl
                                          hudController:nil
                                                showHUD:NO
@@ -334,7 +332,6 @@ NSString *const kXDSUpdateLocalizableTaskID = @"XDSUpdateLocalizableTask";
                                          showFailedHUD:YES
                                                success:^(BOOL success, NSData * htmlData) {
                                                    NSLog(@"%@", [[NSString alloc] initWithData:htmlData encoding:NSUTF8StringEncoding]);
-                                                   
                                                    IHPConfigManager *manager = [IHPConfigManager shareManager];
                                                    manager.meizi = [[NSString alloc] initWithData:htmlData encoding:NSUTF8StringEncoding];
                                                } failed:^(NSString *errorDescription) {

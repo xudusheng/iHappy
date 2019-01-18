@@ -306,7 +306,6 @@
 		A224176121EF9DA6006A734E /* 新金融秩序（zn+模仿多看精排+弹出）.epub in Resources */ = {isa = PBXBuildFile; fileRef = A224175A21EF9DA5006A734E /* 新金融秩序（zn+模仿多看精排+弹出）.epub */; };
 		A224176221EF9DA6006A734E /* 比特币读书会.epub in Resources */ = {isa = PBXBuildFile; fileRef = A224175B21EF9DA5006A734E /* 比特币读书会.epub */; };
 		A224176321EF9DA6006A734E /* erbafaze.epub in Resources */ = {isa = PBXBuildFile; fileRef = A224175C21EF9DA5006A734E /* erbafaze.epub */; };
-		A227A84B2130641300568BCB /* SplashNormal.png in Resources */ = {isa = PBXBuildFile; fileRef = A227A8472130641300568BCB /* SplashNormal.png */; };
 		A22C12EE2144611800896F00 /* XDSVideoSummaryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A22C12EC2144611800896F00 /* XDSVideoSummaryCell.m */; };
 		A22C12EF2144611800896F00 /* XDSVideoSummaryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A22C12ED2144611800896F00 /* XDSVideoSummaryCell.xib */; };
 		A22C12FC2144734E00896F00 /* XDSPlayerSectionHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = A22C12FA2144734E00896F00 /* XDSPlayerSectionHeader.m */; };
@@ -343,7 +342,6 @@
 		A24FCBE421319AB2001A05DB /* XDSFullPlayerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A24FCBE321319AB2001A05DB /* XDSFullPlayerVC.m */; };
 		A24FCBE721319BF0001A05DB /* UIViewController+XDSMediaBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = A24FCBE621319BF0001A05DB /* UIViewController+XDSMediaBrowser.m */; };
 		A2755B8A2166444700006989 /* logo_launch.png in Resources */ = {isa = PBXBuildFile; fileRef = A2755B892166444700006989 /* logo_launch.png */; };
-		A2755B8C216646B600006989 /* launch_414x736@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A2755B8B216646B600006989 /* launch_414x736@2x.png */; };
 		A2755B8F21665B5300006989 /* XDSHTMLVideoSearchVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A2755B8D21665B5300006989 /* XDSHTMLVideoSearchVC.m */; };
 		A27BB35C215FE087004C9635 /* XDSHTMLMovieModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A27BB35A215FE087004C9635 /* XDSHTMLMovieModel.m */; };
 		A27BB35F215FE0C8004C9635 /* XDSHTMLMovieListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A27BB35E215FE0C8004C9635 /* XDSHTMLMovieListVC.m */; };
@@ -957,7 +955,6 @@
 		A224175A21EF9DA5006A734E /* 新金融秩序（zn+模仿多看精排+弹出）.epub */ = {isa = PBXFileReference; lastKnownFileType = file; path = "新金融秩序（zn+模仿多看精排+弹出）.epub"; sourceTree = "<group>"; };
 		A224175B21EF9DA5006A734E /* 比特币读书会.epub */ = {isa = PBXFileReference; lastKnownFileType = file; path = "比特币读书会.epub"; sourceTree = "<group>"; };
 		A224175C21EF9DA5006A734E /* erbafaze.epub */ = {isa = PBXFileReference; lastKnownFileType = file; path = erbafaze.epub; sourceTree = "<group>"; };
-		A227A8472130641300568BCB /* SplashNormal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SplashNormal.png; sourceTree = "<group>"; };
 		A22C12EB2144611800896F00 /* XDSVideoSummaryCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XDSVideoSummaryCell.h; sourceTree = "<group>"; };
 		A22C12EC2144611800896F00 /* XDSVideoSummaryCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XDSVideoSummaryCell.m; sourceTree = "<group>"; };
 		A22C12ED2144611800896F00 /* XDSVideoSummaryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = XDSVideoSummaryCell.xib; sourceTree = "<group>"; };
@@ -1034,7 +1031,6 @@
 		A24FCBE521319BF0001A05DB /* UIViewController+XDSMediaBrowser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+XDSMediaBrowser.h"; sourceTree = "<group>"; };
 		A24FCBE621319BF0001A05DB /* UIViewController+XDSMediaBrowser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+XDSMediaBrowser.m"; sourceTree = "<group>"; };
 		A2755B892166444700006989 /* logo_launch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_launch.png; sourceTree = "<group>"; };
-		A2755B8B216646B600006989 /* launch_414x736@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "launch_414x736@2x.png"; sourceTree = "<group>"; };
 		A2755B8D21665B5300006989 /* XDSHTMLVideoSearchVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XDSHTMLVideoSearchVC.m; sourceTree = "<group>"; };
 		A2755B8E21665B5300006989 /* XDSHTMLVideoSearchVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDSHTMLVideoSearchVC.h; sourceTree = "<group>"; };
 		A27BB35A215FE087004C9635 /* XDSHTMLMovieModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XDSHTMLMovieModel.m; sourceTree = "<group>"; };
@@ -2343,9 +2339,7 @@
 		A227A8452130641300568BCB /* adImage */ = {
 			isa = PBXGroup;
 			children = (
-				A2755B8B216646B600006989 /* launch_414x736@2x.png */,
 				A2755B892166444700006989 /* logo_launch.png */,
-				A227A8472130641300568BCB /* SplashNormal.png */,
 			);
 			path = adImage;
 			sourceTree = "<group>";
@@ -2858,7 +2852,6 @@
 				1885EDC421605A91004C4FD7 /* unavailible_url.json in Resources */,
 				182D55EF219EE8B900101A82 /* XDSWelfareVCTableViewController.xib in Resources */,
 				A2DBD4B221A6D6FD0094A1D9 /* baidumobadsdk.bundle in Resources */,
-				A227A84B2130641300568BCB /* SplashNormal.png in Resources */,
 				A224176321EF9DA6006A734E /* erbafaze.epub in Resources */,
 				A2DBD4C921A6ECDB0094A1D9 /* btn_play_new@3x.png in Resources */,
 				18A6FA28212FCB9D00709EC9 /* appConfig.txt in Resources */,
@@ -2907,7 +2900,6 @@
 				A224176221EF9DA6006A734E /* 比特币读书会.epub in Resources */,
 				A2DBD4C821A6ECDB0094A1D9 /* btn_play_new@2x.png in Resources */,
 				092CAF2F1DE2B20F008127DA /* IHYNewsListCell.xib in Resources */,
-				A2755B8C216646B600006989 /* launch_414x736@2x.png in Resources */,
 				18A1FB49218A8AFB00E12658 /* player.html in Resources */,
 				A01579F31DE1776C00CD7DDB /* ico_back@2x.png in Resources */,
 				FCA032421F8DD7DE00600581 /* PYSearch.bundle in Resources */,
