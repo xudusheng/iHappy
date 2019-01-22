@@ -132,6 +132,16 @@
 		181E5421214FD25D00E8A704 /* XDSBookCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 181E541F214FD25D00E8A704 /* XDSBookCell.xib */; };
 		1825BD1A2186937D0071D2DC /* XDSNoteHTMLVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1825BD182186937C0071D2DC /* XDSNoteHTMLVC.m */; };
 		1825BD202186AAF40071D2DC /* 生活小科普.txt in Resources */ = {isa = PBXBuildFile; fileRef = 1825BD1F2186AAF40071D2DC /* 生活小科普.txt */; };
+		1829E1ED21F733360091A183 /* CHTStickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1829E1EB21F733360091A183 /* CHTStickerView.m */; };
+		1829E1F621F733460091A183 /* rotate@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1829E1EE21F733440091A183 /* rotate@2x.png */; };
+		1829E1F721F733460091A183 /* rotate@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1829E1EF21F733440091A183 /* rotate@3x.png */; };
+		1829E1F821F733460091A183 /* horizontal@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1829E1F021F733440091A183 /* horizontal@3x.png */; };
+		1829E1F921F733460091A183 /* horizontal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1829E1F121F733450091A183 /* horizontal@2x.png */; };
+		1829E1FA21F733460091A183 /* close@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1829E1F221F733450091A183 /* close@2x.png */; };
+		1829E1FB21F733460091A183 /* close@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1829E1F321F733450091A183 /* close@3x.png */; };
+		1829E1FC21F733460091A183 /* scale@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1829E1F421F733450091A183 /* scale@2x.png */; };
+		1829E1FD21F733460091A183 /* scale@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1829E1F521F733460091A183 /* scale@3x.png */; };
+		1829E20021F733550091A183 /* CHTViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1829E1FE21F733550091A183 /* CHTViewController.m */; };
 		182D55EE219EE8B900101A82 /* XDSWelfareVCTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 182D55EC219EE8B900101A82 /* XDSWelfareVCTableViewController.m */; };
 		182D55EF219EE8B900101A82 /* XDSWelfareVCTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 182D55ED219EE8B900101A82 /* XDSWelfareVCTableViewController.xib */; };
 		182D55F2219EFDF200101A82 /* XDSWelfareWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 182D55F1219EFDF200101A82 /* XDSWelfareWebViewController.m */; };
@@ -644,6 +654,18 @@
 		1825BD182186937C0071D2DC /* XDSNoteHTMLVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XDSNoteHTMLVC.m; sourceTree = "<group>"; };
 		1825BD192186937C0071D2DC /* XDSNoteHTMLVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDSNoteHTMLVC.h; sourceTree = "<group>"; };
 		1825BD1F2186AAF40071D2DC /* 生活小科普.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "生活小科普.txt"; sourceTree = "<group>"; };
+		1829E1EB21F733360091A183 /* CHTStickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHTStickerView.m; sourceTree = "<group>"; };
+		1829E1EC21F733360091A183 /* CHTStickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHTStickerView.h; sourceTree = "<group>"; };
+		1829E1EE21F733440091A183 /* rotate@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rotate@2x.png"; sourceTree = "<group>"; };
+		1829E1EF21F733440091A183 /* rotate@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rotate@3x.png"; sourceTree = "<group>"; };
+		1829E1F021F733440091A183 /* horizontal@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "horizontal@3x.png"; sourceTree = "<group>"; };
+		1829E1F121F733450091A183 /* horizontal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "horizontal@2x.png"; sourceTree = "<group>"; };
+		1829E1F221F733450091A183 /* close@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "close@2x.png"; sourceTree = "<group>"; };
+		1829E1F321F733450091A183 /* close@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "close@3x.png"; sourceTree = "<group>"; };
+		1829E1F421F733450091A183 /* scale@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "scale@2x.png"; sourceTree = "<group>"; };
+		1829E1F521F733460091A183 /* scale@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "scale@3x.png"; sourceTree = "<group>"; };
+		1829E1FE21F733550091A183 /* CHTViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHTViewController.m; sourceTree = "<group>"; };
+		1829E1FF21F733550091A183 /* CHTViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHTViewController.h; sourceTree = "<group>"; };
 		182D55EB219EE8B900101A82 /* XDSWelfareVCTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XDSWelfareVCTableViewController.h; sourceTree = "<group>"; };
 		182D55EC219EE8B900101A82 /* XDSWelfareVCTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XDSWelfareVCTableViewController.m; sourceTree = "<group>"; };
 		182D55ED219EE8B900101A82 /* XDSWelfareVCTableViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = XDSWelfareVCTableViewController.xib; sourceTree = "<group>"; };
@@ -1720,6 +1742,25 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		1829E1EA21F7331A0091A183 /* StickerView */ = {
+			isa = PBXGroup;
+			children = (
+				1829E1FF21F733550091A183 /* CHTViewController.h */,
+				1829E1FE21F733550091A183 /* CHTViewController.m */,
+				1829E1F221F733450091A183 /* close@2x.png */,
+				1829E1F321F733450091A183 /* close@3x.png */,
+				1829E1F121F733450091A183 /* horizontal@2x.png */,
+				1829E1F021F733440091A183 /* horizontal@3x.png */,
+				1829E1EE21F733440091A183 /* rotate@2x.png */,
+				1829E1EF21F733440091A183 /* rotate@3x.png */,
+				1829E1F421F733450091A183 /* scale@2x.png */,
+				1829E1F521F733460091A183 /* scale@3x.png */,
+				1829E1EC21F733360091A183 /* CHTStickerView.h */,
+				1829E1EB21F733360091A183 /* CHTStickerView.m */,
+			);
+			path = StickerView;
+			sourceTree = "<group>";
+		};
 		182D55E2219EE61A00101A82 /* Welfare */ = {
 			isa = PBXGroup;
 			children = (
@@ -2762,6 +2803,7 @@
 		FCAFC6061EAED5C300B48C83 /* Vender */ = {
 			isa = PBXGroup;
 			children = (
+				1829E1EA21F7331A0091A183 /* StickerView */,
 				187CC68021EF3320005019C1 /* SVProgressHUD */,
 				A249082821B0B3BA00E23542 /* YYImage */,
 				A24907D421B0B35500E23542 /* YBImageBrowser */,
@@ -2874,10 +2916,13 @@
 				18A6FAF62130DF3800709EC9 /* img_circular@3x.png in Resources */,
 				183E9F5D21E0580D00AB764D /* img_network@3x.png in Resources */,
 				092CAF051DE28620008127DA /* IHPMovieCell.xib in Resources */,
+				1829E1FA21F733460091A183 /* close@2x.png in Resources */,
+				1829E1F921F733460091A183 /* horizontal@2x.png in Resources */,
 				181E5407214F928100E8A704 /* XDSNoDataView.xib in Resources */,
 				1819E43E21A3EADF00F67F56 /* ZFPlayer.bundle in Resources */,
 				A05EB9251DE04EF400148A5B /* icon_jiazai@3x.png in Resources */,
 				18A6FAF22130DF3800709EC9 /* btn_stop@3x.png in Resources */,
+				1829E1F621F733460091A183 /* rotate@2x.png in Resources */,
 				18F8EB5C2139634000168506 /* down.png in Resources */,
 				181E53E2214F928000E8A704 /* 华文琥珀.ttf in Resources */,
 				1861C6E0215A1C3D005A03D7 /* logo_book.png in Resources */,
@@ -2893,6 +2938,7 @@
 				180933F621DF43C900D3A0CA /* Setting.storyboard in Resources */,
 				A249082721B0B35600E23542 /* YBImageBrowser.bundle in Resources */,
 				183E9F6421E0592D00AB764D /* img_error@2x.png in Resources */,
+				1829E1F821F733460091A183 /* horizontal@3x.png in Resources */,
 				18A6FAFD2130DF3800709EC9 /* btn_play@3x.png in Resources */,
 				18A6FA862130031500709EC9 /* json.bnf in Resources */,
 				18FD8F1D21E5C1310073B3C1 /* icon_pop_close@2x.png in Resources */,
@@ -2910,12 +2956,15 @@
 				181E53E0214F928000E8A704 /* 华文行楷.ttf in Resources */,
 				A01579F41DE1776C00CD7DDB /* ico_back@3x.png in Resources */,
 				181E53DF214F928000E8A704 /* 华文新魏.ttf in Resources */,
+				1829E1FC21F733460091A183 /* scale@2x.png in Resources */,
 				186DA10221A4E39E00C5F5F8 /* note.html in Resources */,
 				187CC68E21EF3320005019C1 /* SVProgressHUD.bundle in Resources */,
 				18A6FAF32130DF3800709EC9 /* img_circular@2x.png in Resources */,
 				A224176221EF9DA6006A734E /* 比特币读书会.epub in Resources */,
 				A2DBD4C821A6ECDB0094A1D9 /* btn_play_new@2x.png in Resources */,
 				092CAF2F1DE2B20F008127DA /* IHYNewsListCell.xib in Resources */,
+				1829E1FD21F733460091A183 /* scale@3x.png in Resources */,
+				1829E1F721F733460091A183 /* rotate@3x.png in Resources */,
 				18A1FB49218A8AFB00E12658 /* player.html in Resources */,
 				A01579F31DE1776C00CD7DDB /* ico_back@2x.png in Resources */,
 				FCA032421F8DD7DE00600581 /* PYSearch.bundle in Resources */,
@@ -2938,6 +2987,7 @@
 				A27BB370215FEF01004C9635 /* IHYMovieDetailInfoView.xib in Resources */,
 				A224175F21EF9DA6006A734E /* 感情经济学：如果梁山伯懂点博弈论.epub in Resources */,
 				1825BD202186AAF40071D2DC /* 生活小科普.txt in Resources */,
+				1829E1FB21F733460091A183 /* close@3x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3034,6 +3084,7 @@
 				FC1A8C3A1EAC296D00E66FF8 /* IHPMenuModel.m in Sources */,
 				181E53C1214F928000E8A704 /* XDSMagnifierView.m in Sources */,
 				1819E42D21A3EADF00F67F56 /* ZFPlayerGestureControl.m in Sources */,
+				1829E20021F733550091A183 /* CHTViewController.m in Sources */,
 				18BB4F472153F9EE00C4A2CD /* GCDWebServerDataRequest.m in Sources */,
 				185347642142098600013F81 /* XDSEpisodeModel.m in Sources */,
 				181E53C4214F928000E8A704 /* CXMLDocument.m in Sources */,
@@ -3201,6 +3252,7 @@
 				181E53B8214F928000E8A704 /* XDSReadConfig.m in Sources */,
 				1819E44421A3EADF00F67F56 /* ZFPortraitControlView.m in Sources */,
 				181E53CD214F928000E8A704 /* CTidy.m in Sources */,
+				1829E1ED21F733360091A183 /* CHTStickerView.m in Sources */,
 				187E27D821F1A7AA00C9F9A1 /* UIWebView+XDSAdd.m in Sources */,
 				09F90D741DE2C06000542684 /* XDSWebViewController.m in Sources */,
 				092CAF061DE28620008127DA /* IHYMovieListViewController.m in Sources */,
