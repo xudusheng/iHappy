@@ -44,6 +44,23 @@
 #pragma mark - Launch
 - (void)setupAfterLaunch {
     [self addObserverNotification];
+    
+    //清空用户数据
+    NSString *app_version_save = [[NSUserDefaults standardUserDefaults] stringForKey:@"app_version"];
+    NSString *build_version_save = [[NSUserDefaults standardUserDefaults] stringForKey:@"build_version"];
+    app_version_save = app_version_save?app_version_save:@"";
+    build_version_save = build_version_save?build_version_save:@"";
+    NSString *app_version = [UIApplication sharedApplication].appVersion;
+    NSString *build_version = [UIApplication sharedApplication].appBuildVersion;
+    
+    if ([app_version_save compare:app_version  options:NSNumericSearch] == NSOrderedAscending ||
+        ([app_version_save compare:app_version  options:NSNumericSearch] == NSOrderedSame && [build_version_save compare:build_version  options:NSNumericSearch] == NSOrderedAscending)) {
+        [[NSUserDefaults standardUserDefaults] setValue:app_version forKey:@"app_version"];
+        [[NSUserDefaults standardUserDefaults] setValue:build_version forKey:@"build_version"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        [[XDSUserInfo shareUser] clearUserInfo];
+    }
+    
 }
 - (XDSPlaceholdSplashViewController *)customPlaceholdSplashViewController {
     if (self.spashVC == nil) {

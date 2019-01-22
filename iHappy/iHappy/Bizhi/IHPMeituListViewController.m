@@ -159,6 +159,11 @@ YBImageBrowserDelegate
     
     isTop?[self.meituList removeAllObjects]:NULL;
     
+    
+    XDSMeituModel *model = [[XDSMeituModel alloc] init];
+    model.image_src = @"https://wx3.sinaimg.cn/mw690/5eef6257gy1fyqx7q0syag205e09ou0x.gif";
+    [self.meituList addObject:model];
+    
     NSInteger page_size = 40;
     NSInteger page_no = isTop?0:(self.meituList.count/page_size);
     
@@ -243,12 +248,13 @@ YBImageBrowserDelegate
     if (model.image_src.length > 0) {
         INSImageItemCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kImageItemCollectionViewCellIdentifier forIndexPath:indexPath];
         NSURL *url = [NSURL URLWithString:model.image_src];
-        [cell.bgImageView sd_setImageWithURL:url placeholderImage:nil completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
+        [cell.bgImageView bx_setImageWithURL:url placeholderImage:nil completed:^(UIImage *image) {
             if (!CGSizeEqualToSize(model.imageSize, image.size)) {
                 model.imageSize = image.size;
                 [collectionView reloadItemsAtIndexPaths:@[indexPath]];
             }
         }];
+
         return cell;
     }else {
         NSString *indexIdentifier =[NSString stringWithFormat:@"%@_%ld", NSStringFromClass([XDSImageItemAdCell class]), indexPath.row];

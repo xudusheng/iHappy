@@ -8,6 +8,7 @@
 
 #import "XDSStartupManager.h"
 #import "XDSSettingsManager.h"
+#import "XDSJPushManager.h"
 #import "XDSRootViewController.h"
 #import "XDSPlaceholdSplashManager.h"
 #import "XDSTaskQueue.h"
@@ -46,10 +47,12 @@ NSString * const kXDSEnterMainViewFinishedNotification = @"XDSEnterMainViewFinis
     //
     [[XDSSettingsManager sharedManager] setupAfterLaunch];
 
+    //注册极光推送
+    [[XDSJPushManager sharedManager] registerAppKey:launchOptions];
+    
     self.launchOptions = launchOptions;
 
-//    [self addReachabilityForInternetNotification];
-//
+    //
 //    [self removeApplicationNotifications];
 //    [self addApplicationNotifications];
 

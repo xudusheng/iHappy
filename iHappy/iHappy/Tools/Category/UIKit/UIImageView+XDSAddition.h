@@ -12,7 +12,7 @@
 
 @property(nonatomic, assign) NSInteger badgeValue;    // default is nil
 
-- (void)bx_setImageWithURL:(nullable NSURL *)url placeholderImage:(nullable UIImage *)placeholder completed:(nullable void(^)(UIImage *image))completedBlock ;
+- (void)bx_setImageWithURL:(nullable NSURL *)url placeholderImage:(nullable UIImage *)placeholder completed:(nullable void(^)(UIImage *image))completedBlock;
 - (void)bx_setImageWithURL:(nullable NSURL *)url placeholderImage:(nullable UIImage *)placeholder ;
 - (void)bx_setImageWithURL:(nullable NSURL *)url;
 

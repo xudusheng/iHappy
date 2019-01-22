@@ -134,9 +134,10 @@ NSString * const IHYNewsListViewController_IHYNewsMultableImageCellIdentifier = 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     XDSNewsModel *newsModel = _newsList[indexPath.row];
-    XDSWebViewController * webVC = [[XDSWebViewController alloc] init];
-    webVC.requestURL = newsModel.url;
-    [self.navigationController pushViewController:webVC animated:YES];
+    XDSSkipModel *skipModel = [XDSSkipModel new];
+    skipModel.type = 0;
+    skipModel.type_val = newsModel.url;
+    [self showViewControllerWithSkipModel:skipModel];
 }
 #pragma mark - 点击事件处理
 

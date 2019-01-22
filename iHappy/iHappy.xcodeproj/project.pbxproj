@@ -263,6 +263,7 @@
 		18BB4F6C2153F9EE00C4A2CD /* XDSWIFIFileTransferViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BB4F372153F9EE00C4A2CD /* XDSWIFIFileTransferViewController.m */; };
 		18DEE8B621AF81F80016BE61 /* UIImageView+XDSAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DEE8B421AF81F80016BE61 /* UIImageView+XDSAddition.m */; };
 		18DEE8B921AF82530016BE61 /* UIButton+XDSAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DEE8B821AF82530016BE61 /* UIButton+XDSAddition.m */; };
+		18F2381021F6B2C6003C5DD8 /* XDSJPushManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F2380E21F6B2C6003C5DD8 /* XDSJPushManager.m */; };
 		18F8EB502139564100168506 /* XDSNewsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F8EB4F2139564100168506 /* XDSNewsModel.m */; };
 		18F8EB592139626F00168506 /* XDS_CustomMjRefreshHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F8EB562139626F00168506 /* XDS_CustomMjRefreshHeader.m */; };
 		18F8EB5A2139626F00168506 /* XDS_CustomMjRefreshFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F8EB572139626F00168506 /* XDS_CustomMjRefreshFooter.m */; };
@@ -880,6 +881,8 @@
 		18DEE8B521AF81F80016BE61 /* UIImageView+XDSAddition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+XDSAddition.h"; sourceTree = "<group>"; };
 		18DEE8B721AF82520016BE61 /* UIButton+XDSAddition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+XDSAddition.h"; sourceTree = "<group>"; };
 		18DEE8B821AF82530016BE61 /* UIButton+XDSAddition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+XDSAddition.m"; sourceTree = "<group>"; };
+		18F2380E21F6B2C6003C5DD8 /* XDSJPushManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XDSJPushManager.m; sourceTree = "<group>"; };
+		18F2380F21F6B2C6003C5DD8 /* XDSJPushManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDSJPushManager.h; sourceTree = "<group>"; };
 		18F8EB4E2139564100168506 /* XDSNewsModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XDSNewsModel.h; sourceTree = "<group>"; };
 		18F8EB4F2139564100168506 /* XDSNewsModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XDSNewsModel.m; sourceTree = "<group>"; };
 		18F8EB532139626F00168506 /* XDS_CustomMjRefreshFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDS_CustomMjRefreshFooter.h; sourceTree = "<group>"; };
@@ -1859,6 +1862,7 @@
 				18A6FA2F212FCC1600709EC9 /* XDSSettingsManager.m */,
 				18A6FA31212FCC1700709EC9 /* XDSStartupManager.h */,
 				18A6FA30212FCC1700709EC9 /* XDSStartupManager.m */,
+				18F2380D21F6B28D003C5DD8 /* PushManager */,
 				18A6FAAA213017C100709EC9 /* AdManager */,
 				18A6FA54212FFFB900709EC9 /* PlaceholderSplashViewController */,
 				18A6FA1C212FCB9D00709EC9 /* ConfigManager */,
@@ -2188,6 +2192,15 @@
 				18BB4EEF2153F9EE00C4A2CD /* GCDWebUploader.m */,
 			);
 			path = GCDWebUploader;
+			sourceTree = "<group>";
+		};
+		18F2380D21F6B28D003C5DD8 /* PushManager */ = {
+			isa = PBXGroup;
+			children = (
+				18F2380F21F6B2C6003C5DD8 /* XDSJPushManager.h */,
+				18F2380E21F6B2C6003C5DD8 /* XDSJPushManager.m */,
+			);
+			path = PushManager;
 			sourceTree = "<group>";
 		};
 		18F8EB512139626F00168506 /* XDSMJfresh */ = {
@@ -2822,6 +2835,9 @@
 							com.apple.AccessWiFi = {
 								enabled = 1;
 							};
+							com.apple.Push = {
+								enabled = 1;
+							};
 						};
 					};
 				};
@@ -3094,6 +3110,7 @@
 				18A6FAAD213018CC00709EC9 /* XDSAdManager.m in Sources */,
 				18BB4F6C2153F9EE00C4A2CD /* XDSWIFIFileTransferViewController.m in Sources */,
 				18A6FA3A212FFF0D00709EC9 /* RegexKitLite.m in Sources */,
+				18F2381021F6B2C6003C5DD8 /* XDSJPushManager.m in Sources */,
 				FC0B7C7B1EC7FD5A0022E504 /* YSECategoryModel.m in Sources */,
 				18A6FA32212FCC1700709EC9 /* XDSSettingsManager.m in Sources */,
 				18BB4F3C2153F9EE00C4A2CD /* GCDWebServerResponse.m in Sources */,
