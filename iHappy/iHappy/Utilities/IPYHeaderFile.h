@@ -38,7 +38,6 @@ isPhoneX = [[UIApplication sharedApplication] delegate].window.safeAreaInsets.bo
 #import "JSONModelLib.h"
 #import "Masonry.h"
 #import "JSONKit.h"
-#import "Reachability.h"
 #import "AFNetworking.h"
 #import "UIImageView+WebCache.h"
 #import "MJRefresh.h"//上拉下拉刷新
@@ -56,7 +55,6 @@ isPhoneX = [[UIApplication sharedApplication] delegate].window.safeAreaInsets.bo
 #import "XDSRootControllerHeader.h"
 #import "XDSWebViewController.h"
 #import "XDSBaseContentNavigationController.h"
-
 
 #import "XDSUserInfo.h"
 #import "IHPConfigManager.h"

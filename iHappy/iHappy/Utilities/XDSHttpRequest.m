@@ -8,9 +8,22 @@
 
 #import "XDSHttpRequest.h"
 
+typedef NS_OPTIONS(NSUInteger, XDSNetWorkStatus) {
+    XDSNetWorkStatusUnknown          = 0, //未知网络
+    XDSNetWorkStatusReachableViaWiFi = 1,//wifi网络
+    XDSNetWorkStatusReachableViaWAN  = 2,//手机网络
+    XDSNetWorkStatusNoReachable      = 3,//没有网络
+};
+
 @interface XDSHttpRequest()
 @property (strong, nonatomic) NSURLSessionDataTask * sessionDataTask;
 @property (weak, nonatomic) UIViewController * hudController;
+
+/**
+ *  获取网络
+ */
+@property (nonatomic,assign) XDSNetWorkStatus networkStatus;
+
 @end
 
 @implementation XDSHttpRequest
@@ -216,15 +229,49 @@ NSString *const key = @"huidaibao";
 
 
 - (BOOL)isWebAvailible{//判断网络是否可用
-    Reachability * reach = [Reachability reachabilityForInternetConnection];
-    switch ([reach currentReachabilityStatus]){
-        case NotReachable:return NO; break;
-        case ReachableViaWiFi: return YES;break;
+    switch (self.networkStatus){
+        case XDSNetWorkStatusNoReachable:return NO;
         default: return YES;
     }
     return YES;
 }
 
+- (void)startMonitoring
+{
+    // 1.获得网络监控的管理者
+    AFNetworkReachabilityManager *mgr = [AFNetworkReachabilityManager sharedManager];
+    // 2.设置网络状态改变后的处理
+    [mgr setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
+        // 当网络状态改变了, 就会调用这个block
+        switch (status)
+        {
+            case AFNetworkReachabilityStatusUnknown: // 未知网络
+            {
+                NSLog(@"未知网络");
+                self.networkStatus = XDSNetWorkStatusUnknown;
+                break;
+            }
+            case AFNetworkReachabilityStatusNotReachable: // 没有网络(断网)
+            {
+                NSLog(@"没有网络");
+                self.networkStatus = XDSNetWorkStatusNoReachable;
+                break;
+            }
+            case AFNetworkReachabilityStatusReachableViaWWAN: // 手机自带网络
+            {
+                NSLog(@"手机自带网络");
+                self.networkStatus = XDSNetWorkStatusReachableViaWAN;
+                break;
+            }
+            case AFNetworkReachabilityStatusReachableViaWiFi: // WIFI
+            {
+                self.networkStatus = XDSNetWorkStatusReachableViaWiFi;
+                break;
+            }
+        }
+    }];
+    [mgr startMonitoring];
+}
 
 
 
