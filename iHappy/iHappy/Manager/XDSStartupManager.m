@@ -221,20 +221,24 @@ NSString *const kXDSUpdateLocalizableTaskID = @"XDSUpdateLocalizableTask";
                                                    [weakSelf handleConfigData:htmlData];
 
                                                } failed:^(NSString *errorDescription) {
-//                                                   errorDescription = errorDescription?errorDescription:kLoadFailed;
-//                                                   [XDSUtilities alertViewWithPresentingController:[XDSRootViewController sharedRootViewController]
-//                                                                                             title:nil
-//                                                                                           message:errorDescription
-//                                                                                      buttonTitles:@[@"退出", @"重新连接"]
-//                                                                                             block:^(NSInteger index) {
-//                                                                                                 if (index == 0) {
-//                                                                                                     exit(0);
-//                                                                                                 }else{
-//                                                                                                     [weakSelf fetchConfigData];
-//                                                                                                 }
-//                                                                                             }];
+#if DEBUG
+                                                   errorDescription = errorDescription?errorDescription:kLoadFailed;
+                                                   [XDSUtilities alertViewWithPresentingController:[XDSRootViewController sharedRootViewController]
+                                                                                             title:nil
+                                                                                           message:errorDescription
+                                                                                      buttonTitles:@[@"退出", @"重新连接"]
+                                                                                             block:^(NSInteger index) {
+                                                                                                 if (index == 0) {
+                                                                                                     exit(0);
+                                                                                                 }else{
+                                                                                                     [weakSelf fetchConfigData];
+                                                                                                 }
+                                                                                             }];
+#else
                                                    NSData *configData = [[NSUserDefaults standardUserDefaults] valueForKey:[UIApplication sharedApplication].appBundleID];
                                                    [weakSelf handleConfigData:configData];
+#endif
+                                                   
                                                }];
 }
 

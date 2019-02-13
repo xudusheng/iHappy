@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "XDSNavigationController.h"
 
-@interface XDSBaseContentNavigationController : UINavigationController
+@interface XDSBaseContentNavigationController : XDSNavigationController
 
 @end

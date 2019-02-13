@@ -23,19 +23,19 @@
 
 
     XDSMainReaderVC *reader = [[XDSMainReaderVC alloc] init];
-    UINavigationController *nav_reader = [self setupChildViewController:reader
+    XDSNavigationController *nav_reader = [self setupChildViewController:reader
                                                                   title:@"书库"
                                                               imageName:@"hw_tabbar_books_none_21x21"
                                                       selectedImageName:@"hw_tabbar_books_selected_21x21"];
 
     XDSMainNoteVC *note = [[XDSMainNoteVC alloc] initWithStyle:UITableViewStylePlain];
-    UINavigationController *nav_note = [self setupChildViewController:note
+    XDSNavigationController *nav_note = [self setupChildViewController:note
                                                                 title:@"笔记"
                                                             imageName:@"hw_tabbar_shelf_none_21x21"
                                                     selectedImageName:@"hw_tabbar_shelf_selected_21x21"];
     
     XDSSettingVC *setting = [[UIStoryboard storyboardWithName:@"Setting" bundle:nil] instantiateViewControllerWithIdentifier:NSStringFromClass([XDSSettingVC class])];
-    UINavigationController *nav_setting = [self setupChildViewController:setting
+    XDSNavigationController *nav_setting = [self setupChildViewController:setting
                                                                    title:@"设置"
                                                                imageName:@"hw_tabbar_find_none_21x21"
                                                        selectedImageName:@"hw_tabbar_find_selected_21x21"];
@@ -45,12 +45,12 @@
     self.delegate = self;
 }
 
-- (UINavigationController *)setupChildViewController:(UIViewController *)childVc title:(NSString *)title imageName:(NSString *)imageName selectedImageName:(NSString *)selectedImageName{
+- (XDSNavigationController *)setupChildViewController:(UIViewController *)childVc title:(NSString *)title imageName:(NSString *)imageName selectedImageName:(NSString *)selectedImageName{
     // 1.设置控制器的属性
     childVc.title = title;
     childVc.tabBarItem.image = [[UIImage imageNamed:imageName] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     childVc.tabBarItem.selectedImage = [[UIImage imageNamed:selectedImageName] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    UINavigationController *navi = [[UINavigationController alloc] initWithRootViewController:childVc];
+    XDSNavigationController *navi = [[XDSNavigationController alloc] initWithRootViewController:childVc];
     return navi;
 }
 

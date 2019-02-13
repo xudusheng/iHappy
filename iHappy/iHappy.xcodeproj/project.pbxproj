@@ -271,6 +271,7 @@
 		18BB4F4A2153F9EE00C4A2CD /* GCDWebUploader.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BB4EEF2153F9EE00C4A2CD /* GCDWebUploader.m */; };
 		18BB4F4B2153F9EE00C4A2CD /* XDSIPHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BB4EF02153F9EE00C4A2CD /* XDSIPHelper.m */; };
 		18BB4F6C2153F9EE00C4A2CD /* XDSWIFIFileTransferViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BB4F372153F9EE00C4A2CD /* XDSWIFIFileTransferViewController.m */; };
+		18C22D0E221416AB00324568 /* XDSNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C22D0D221416AB00324568 /* XDSNavigationController.m */; };
 		18DEE8B621AF81F80016BE61 /* UIImageView+XDSAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DEE8B421AF81F80016BE61 /* UIImageView+XDSAddition.m */; };
 		18DEE8B921AF82530016BE61 /* UIButton+XDSAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DEE8B821AF82530016BE61 /* UIButton+XDSAddition.m */; };
 		18F2381021F6B2C6003C5DD8 /* XDSJPushManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F2380E21F6B2C6003C5DD8 /* XDSJPushManager.m */; };
@@ -899,6 +900,8 @@
 		18BB4EF12153F9EE00C4A2CD /* XDSWIFIFileTransferViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDSWIFIFileTransferViewController.h; sourceTree = "<group>"; };
 		18BB4F372153F9EE00C4A2CD /* XDSWIFIFileTransferViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XDSWIFIFileTransferViewController.m; sourceTree = "<group>"; };
 		18BB4F382153F9EE00C4A2CD /* XDSIPHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDSIPHelper.h; sourceTree = "<group>"; };
+		18C22D0C221416AB00324568 /* XDSNavigationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XDSNavigationController.h; sourceTree = "<group>"; };
+		18C22D0D221416AB00324568 /* XDSNavigationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XDSNavigationController.m; sourceTree = "<group>"; };
 		18DEE8B421AF81F80016BE61 /* UIImageView+XDSAddition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+XDSAddition.m"; sourceTree = "<group>"; };
 		18DEE8B521AF81F80016BE61 /* UIImageView+XDSAddition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+XDSAddition.h"; sourceTree = "<group>"; };
 		18DEE8B721AF82520016BE61 /* UIButton+XDSAddition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+XDSAddition.h"; sourceTree = "<group>"; };
@@ -2350,6 +2353,8 @@
 				1808D3BE215BDD5300F822FD /* XDSBaseContentVC.m */,
 				1808D3C0215BDE2B00F822FD /* XDSBaseContentNavigationController.h */,
 				1808D3C1215BDE2B00F822FD /* XDSBaseContentNavigationController.m */,
+				18C22D0C221416AB00324568 /* XDSNavigationController.h */,
+				18C22D0D221416AB00324568 /* XDSNavigationController.m */,
 				A224174321EF5778006A734E /* TabBar */,
 				187CC65621EF0CEE005019C1 /* MKLogin(登陆) */,
 				180933F421DF43AA00D3A0CA /* Setting */,
@@ -3122,6 +3127,7 @@
 				1809341321DF5D7B00D3A0CA /* NSTimer+XDSAdd.m in Sources */,
 				18182F3D21B0C91700832736 /* YBAdBrowserCell.m in Sources */,
 				18A6FA952130031600709EC9 /* NLEStack.m in Sources */,
+				18C22D0E221416AB00324568 /* XDSNavigationController.m in Sources */,
 				18BB4F402153F9EE00C4A2CD /* GCDWebServerConnection.m in Sources */,
 				18A6FB022130E2D300709EC9 /* XDSMediaBrowserVC.m in Sources */,
 				18A6FA872130031500709EC9 /* NLEBNFToken.m in Sources */,
